@@ -1,0 +1,36 @@
+<div data-role="view" data-title="Net Anáhuac" data-layout="main" data-transition="overlay:down" data-model="app.listHomeView" data-show="app.listHomeView.onShow" data-after-show="app.listHomeView.afterShow">
+   
+     <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+      </div>
+    
+    <div class="page-view" data-bind="invisible:error">
+        
+         <ul data-role="listview">
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('searchCoursesView')"><img src="resources/img/icons/BusquedaCursos42x38.png" alt="Busqueda de Cursos" class="km-thumbnail"><span class="link-text-center">Busqueda de Cursos</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('plannedCoursesView')"><img  alt="Cursos Planeados" src="resources/img/icons/Cursosinteres42x38.png"/><span class="link-text-center">Cursos Planeados</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('inscriptionView')"><img  alt="Cita de Inscripción" src="resources/img/icons/CitaInscripcion42x38.png"/><span class="link-text-center">Cita de Inscripción</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('scheduleView')"><img  alt="Horario" src="resources/img/icons/Horario42x38.png"/><span class="link-text-center">Horario</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('perfilView')"><img  alt="Perfil" src="resources/img/icons/Perfil42x38.png"/><span class="link-text-center">Perfil</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('academicStatusView')"><img  alt="Situación Académica" src="resources/img/icons/SituacionAcademica42x38.png"/><span class="link-text-center">Situación Académica</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('gradesView')"><img alt="Calificaciones Parciales" src="resources/img/icons/Calif_Parciales42x38.png"/><span class="link-text-center">Calificaciones Parciales</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('academicHistoryView')"><img alt="Historia Académica" src="resources/img/icons/HistoriaAcademica42x38.png"/><span class="link-text-center">Historia Académica</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('statusPayView')"><img title="" alt="" src="resources/img/icons/estado42x38.png"/><span class="link-text-center">Estado de Cuenta</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('studentCreditView')"><img alt="Crédito Educativo" src="resources/img/icons/CreditoEducativo42x38.png"/><span class="link-text-center">Crédito Educativo</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('helpfinancialView')"><img  alt="Apoyo Financiero" src="resources/img/icons/ApoyoFinanciero42x38.png"/><span class="link-text-center">Apoyo Financiero</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('retentionsView')"><img  alt="Retenciones" src="resources/img/icons/Retencion42x38.png"/><span class="link-text-center">Retenciones</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('newsView')"><img  alt="Noticias" src="resources/img/icons/noticias42x38.png"/><span class="link-text-center">Noticias</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onClick="clickHandler('eventsView')"><img alt="Eventos" src="resources/img/icons/Eventos42x38.png"/><span class="link-text-center">Eventos</span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="http://redanahuac.mx/mobile/tuopinion.html" data-rel="external"><img alt="Tu Opinión" src="resources/img/icons/TuOpinion42x38.png"/><span class="link-text-center">Tu Opinión</span></a></li>
+            
+</ul>
+        
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+</div>

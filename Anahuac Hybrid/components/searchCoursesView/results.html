@@ -1,0 +1,42 @@
+<div data-role="view" data-title="Cursos Encontrados"  data-layout="main-nonav" data-show="app.resultsView.onShow" data-after-show="app.resultsView.afterShow">
+    <!-- START_CUSTOM_CODE_perfilView -->
+
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+      </div>
+    
+    
+    <div class="page-view" data-bind="invisible:error">
+        <div class="page-box">
+  
+                  <div class="list-block media-list">
+                  <ul  id="resultados" >
+                  
+                  </ul>
+                  </div>
+            
+             
+      
+            </div>
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+    
+     
+    
+    
+    <footer data-role="footer">
+            <div data-role="tabstrip" id="navigation-container">
+                <a href="components/homeView/view.html" data-icon="home">Home</a>
+                <a href="components/aboutView/view.html" data-icon="info">Acerca</a>
+            </div>
+        </footer>
+    <!-- END_CUSTOM_CODE_perfilView -->
+</div>
+
+

@@ -1,0 +1,42 @@
+<div data-role="view" data-title="Iniciar Sesión" data-transition="zoom" data-layout="main-nonav" data-model="app.authenticationView" data-show="app.authenticationView.onShow" data-after-show="app.authenticationView.afterShow">
+    <div class="signin-view">
+        
+        
+        <div class="login-screen-title">App Red Anáhuac</div>
+        <div class="card_login">
+            
+        <form>
+            <ul data-role="listview" data-style="inset">
+                <li>
+                    <label>Usuario
+                        <input type="text" id="usuario" placeholder="Usuario"  required autofocus>
+                    </label>
+                </li>
+                <li>
+                    <label>Contraseña
+                        <input type="password" id="password" placeholder="Contraseña" required>
+                    </label>
+                </li>
+            </ul>
+        </form>
+            </div>
+    </div>
+    
+      <div class="list-block">
+                
+          <a class="item-link list-button" href="javascript:void(0)" onClick="IniciarSesion()">Iniciar</a>
+          
+          <div class="list-block-label">Red de Universidades Anáhuac 2015.</div>
+
+      </div>
+    
+    
+        <!-- START_CUSTOM_CODE_authenticationViewModel -->
+        <!-- END_CUSTOM_CODE_authenticationViewModel -->
+   
+    <div class="offline" align="center" style="display:none;">
+        You are currently offline. Before using this app in offline mode you must initialize it while you are online
+    </div>
+    <!-- START_CUSTOM_CODE_authenticationView -->
+    <!-- END_CUSTOM_CODE_authenticationView -->
+</div>

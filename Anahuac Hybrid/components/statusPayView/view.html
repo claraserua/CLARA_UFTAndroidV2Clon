@@ -1,0 +1,29 @@
+<div data-role="view" data-title="Estado de Cuenta" data-layout="main"  data-model="app.statusPayView" data-show="app.statusPayView.onShow" data-after-show="app.statusPayView.afterShow">
+   
+     <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+      </div>
+    
+    <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
+       <div class="page-view" data-bind="invisible:error">
+         <div class="page-content">
+        
+   
+         <ul data-role="listview">
+             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaVencidos();">Vencidos:<span id="vencidos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaNoVencidos();">No Vencidos:<span id="novencidos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaporAplicar();">Por Aplicar:<span id="paplicar"></span></a></li>
+             <li>Saldo Total:<span id="stotal"></span></li>
+             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaMovimientos();">Movimientos:<span id="movimientos"></span></a></li>
+         </ul>
+        
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+</div>

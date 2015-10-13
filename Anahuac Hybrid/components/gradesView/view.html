@@ -1,0 +1,23 @@
+<div data-role="view" data-title="Calificaciones Parciales" data-layout="main"  data-model="app.gradesView" data-show="app.gradesView.onShow" data-after-show="app.gradesView.afterShow">
+   
+     <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+      </div>
+    
+   <div class="page-view" data-bind="invisible:error">
+        <div class="page-content">
+        <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
+         <ul data-role="listview" id="califparciales">
+             
+         </ul>
+        
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+        </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+</div>

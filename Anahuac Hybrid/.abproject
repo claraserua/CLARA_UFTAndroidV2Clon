@@ -2,12 +2,12 @@
   "ProjectName": "Anahuac Hybrid",
   "ProjectGuid": "24eba623-5d2c-42c5-a4be-2b3154b11f56",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.AnahuacHybrid",
-  "DisplayName": "Anahuac Hybrid",
-  "Author": "",
-  "Description": "Anahuac Hybrid",
-  "BundleVersion": "1.0",
-  "AndroidVersionCode": "1",
+  "AppIdentifier": "com.app.RedAnahuac",
+  "DisplayName": "RedAnahuac",
+  "Author": "Red de Universidades Anáhuac",
+  "Description": "App Anahuac",
+  "BundleVersion": "2.0",
+  "AndroidVersionCode": "2",
   "iOSDeviceFamily": [
     "1",
     "2"
@@ -22,8 +22,8 @@
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "false",
-  "iOSStatusBarStyle": "Default",
+  "AndroidHardwareAcceleration": "True",
+  "iOSStatusBarStyle": "BlackTranslucent",
   "Framework": "Cordova",
   "WP8TileTitle": "",
   "WP8Publisher": "",
@@ -43,6 +43,10 @@
     "ID_RESOLUTION_HD720P"
   ],
   "CorePlugins": [
-    "org.apache.cordova.network-information"
-  ]
+    "org.apache.cordova.device-orientation",
+    "org.apache.cordova.dialogs",
+    "org.apache.cordova.network-information",
+    "org.apache.cordova.splashscreen"
+  ],
+  "iOSDeploymentTarget": "8.4"
 }

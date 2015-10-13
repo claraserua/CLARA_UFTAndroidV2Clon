@@ -1,0 +1,71 @@
+<div data-role="view" data-title="Estado acad&eacute;mico" data-layout="main-nonav" data-model="app.academicStatusView" data-show="app.academicStatusView.onShow" data-after-show="app.academicStatusView.afterShow">
+    <!-- START_CUSTOM_CODE_academicStatusView -->
+
+	<div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+	</div>
+    
+	<div class="page-view" data-bind="invisible:error">
+        <div class="page-box">
+             <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
+            <div class="card">
+            <div class="card-header">Periodo:<span id="periodo_id" class="item-after"></span></div>           
+            </div>
+            
+            <div class="card">
+            <div class="card-header">Numero de intentos cursos sin aprobar:</div>
+            <div class="card-content">
+            <div class="card-content-inner"><span id="intentos_cursos_id"></span></div>
+            </div>
+            </div>
+            
+            <div class="card">
+            <div class="card-header">Materias reprobadas:</div>
+            <div class="card-content">
+            <div class="card-content-inner"><span id="reprobadas_id"></span></div>
+            </div>
+            </div>
+            
+            <div class="card">
+            <div class="card-header">Nivel de ingles:</div>
+            <div class="card-content">
+            <div class="card-content-inner"><span id="nivel_ingles_id"></span></div>
+            </div>
+            </div>
+            
+             <div class="card">
+            <div class="card-header">Promedio ponderado del periodo:<span id="prom_pond_periodo_id" class="item-after"></span></div>           
+            </div>
+            
+             <div class="card">
+            <div class="card-header">Promedio ponderado global:<span id="prom_pond_global_id" class="item-after"></span></div>           
+            </div>
+            
+             <div class="card">
+            <div class="card-header">Avance (%):<span id="avance_id" class="item-after"></span></div>           
+            </div>
+            
+             <div class="card">
+            <div class="card-header">Créditos inscritos:<span id="creditos_inscritos" class="item-after"></span></div>           
+            </div>
+            
+             <div class="card">
+            <div class="card-header">Estándar Académico:<span id="estandar_academico_id" class="item-after"></span></div>           
+            </div>
+            
+        </div>
+    </div>
+
+    
+    <footer data-role="footer">
+		<a href="view.html"></a>
+            <div data-role="tabstrip" id="navigation-container">
+                <a href="components/homeView/view.html" data-icon="home">Home</a>
+                <a href="components/aboutView/view.html" data-icon="info">Acerca</a>
+            </div>
+        </footer>
+    <!-- END_CUSTOM_CODE_academicStatusView -->
+</div>

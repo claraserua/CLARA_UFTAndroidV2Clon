@@ -1,0 +1,23 @@
+<div data-role="view" data-title="Acerca" data-layout="main" data-model="app.aboutView" data-show="app.aboutView.onShow" data-after-show="app.aboutView.afterShow">
+    <div class="page-view" data-bind="invisible:error">
+        <div class="icon-group">
+
+            <div class="app-details">
+                <h2>Red Anáhuac</h2>
+                <h4>Version 1.0</h4>
+            </div>
+        </div>
+
+        <p>App description</p>
+
+        <div class="button-group button-group-vertical">
+            <a data-role="button" data-rel="external" href="mailto:support@example.com">Contactanos</a>
+            <a data-role="button" data-rel="external" href="#" onclick="app.aboutView.aboutViewModel.openLink('https://www.facebook.com/Telerik');">Like us on Facebook</a>
+            <a data-role="button" data-rel="external" href="#" onclick="app.aboutView.aboutViewModel.openLink('https://twitter.com/telerik');">Follow us on Twitter</a>
+        </div>
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+</div>

@@ -12,7 +12,7 @@
                 // you can change the default transition (slide, zoom or fade)
                 transition: 'slide',
                 // the application needs to know which view to load first
-                initial: 'components/homeView/view.html',
+                initial: 'components/authenticationView/view.html',
                 statusBarStyle: 'black-translucent'
             });
         });
@@ -64,4 +64,29 @@
 }());
 
 // START_CUSTOM_CODE_kendoUiMobileApp
+
+
+function showNotification(message,title){
+    
+    navigator.notification.alert(
+    message,  // message
+    null,         // callback
+    title,            // title
+    'Aceptar'                  // buttonName
+     );
+    
+}
+
+
+function showErrorLogin(){
+    
+    navigator.notification.alert(
+    'El usuario y/o password ingresados son incorrectos',  // message
+    cleanLogin,         // callback
+    'Datos Incorrectos',            // title
+    'Aceptar'                  // buttonName
+     );
+    
+}
+
 // END_CUSTOM_CODE_kendoUiMobileApp

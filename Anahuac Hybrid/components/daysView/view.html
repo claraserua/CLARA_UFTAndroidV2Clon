@@ -1,0 +1,46 @@
+<div data-role="view" data-title="Días"  data-layout="main-nonav" data-model="app.daysView" data-show="app.daysView.onShow" data-after-show="app.daysView.afterShow">
+    <!-- START_CUSTOM_CODE_perfilView -->
+
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="right" onclick="sendDays();">Aceptar</a>
+        </div>
+      </div>
+    
+    
+    <div class="page-view" data-bind="invisible:error">
+        <div class="page-content">
+         
+            <div class="content-block-title">Elige los días</div>
+           
+                  <ul class="pagelist" id="dias">
+                  <li> <input type="checkbox" name="itemsdays" id="Lu" class="km-checkbox" onclick="setDay(this.id)"  value="Lu"/>Lunes</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Ma" class="km-checkbox" onclick="setDay(this.id)"  value="Ma"/>Martes</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Mi" class="km-checkbox" onclick="setDay(this.id)"  value="Mi"/>Miercoles</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Ju" class="km-checkbox" onclick="setDay(this.id)"  value="Ju"/>Jueves</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Vi" class="km-checkbox" onclick="setDay(this.id)"  value="Vi"/>Viernes</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Sa" class="km-checkbox" onclick="setDay(this.id)"  value="Sa"/>Sabado</li>
+                  <li> <input type="checkbox" name="itemsdays" id="Do" class="km-checkbox" onclick="setDay(this.id)"  value="Do"/>Domingo</li>
+                  </ul>
+            
+          </div>
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+    
+     
+    
+    
+    <footer data-role="footer">
+            <div data-role="tabstrip" id="navigation-container">
+                <a href="components/homeView/view.html" data-icon="home">Home</a>
+                <a href="components/aboutView/view.html" data-icon="info">Acerca</a>
+            </div>
+        </footer>
+    <!-- END_CUSTOM_CODE_perfilView -->
+</div>
+
+

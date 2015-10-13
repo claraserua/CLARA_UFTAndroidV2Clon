@@ -1,0 +1,39 @@
+<div data-role="view" data-title="Historia Acad&eacute;mica" data-layout="main-nonav" data-model="app.academicHistoryView" data-show="app.academicHistoryView.onShow" data-after-show="app.academicHistoryView.afterShow">
+    <!-- START_CUSTOM_CODE_academicStatusView -->
+
+	<div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+	</div>
+    
+	   <div class="page-view" data-bind="invisible:error">
+         <div>
+         
+             <div class="card">
+            <div class="card-header">Promedio del periodo:<span id="prom_periodo_id" class="badget"></span></div>           
+            </div>
+             
+             <div class="card">
+            <div class="card-header">Promedio global:<span id="prom_global_id"></span></div>           
+            </div>
+           
+             <div id="div_content_id">
+
+			</div>
+           
+         </div>
+       </div>
+
+
+    
+    <footer data-role="footer">
+		<a href="view.html"></a>
+            <div data-role="tabstrip" id="navigation-container">
+                <a href="components/homeView/view.html" data-icon="home">Home</a>
+                <a href="components/aboutView/view.html" data-icon="info">Acerca</a>
+            </div>
+        </footer>
+    <!-- END_CUSTOM_CODE_academicStatusView -->
+</div>
