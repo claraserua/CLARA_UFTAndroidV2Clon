@@ -104,7 +104,7 @@ function CI_updateCitas(){
         }
     });
     $('#div_inscripcion_id').html(html);
-    $('#div_periodo').html(termDes);
+    $('#div_periodo_CI').html(termDes);
 }
 function CI_showPrevius(){
     if(0<CI_current_index){

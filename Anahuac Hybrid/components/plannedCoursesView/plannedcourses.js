@@ -27,7 +27,7 @@ function CoursesPlaned()
     			{
                     html +=
                      '<div class="card" id="PC_div_'+index+'">'+
-                     '<div class="card-header"><span>'+element.plTitu+'</span><span><img src="resources/img/delete-icon.png"/></span></div>'+
+                     '<div class="card-header"><span>'+element.plTitu+'</span><span class="km-icon km-trash"></span></div>'+
                      '<div class="card-content">'+
                      '<div class="card-content-inner"><div><span class="item-orange-bold">Instructor:</span><span class="item-after"> '+element.plNomD+'</span></div><div><span class="item-orange-bold">Horario:</span><span class="item-after"> '+element.plHCre+'</span></div></div>'+
                      '</div>'+
