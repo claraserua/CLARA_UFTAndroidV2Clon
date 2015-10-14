@@ -1,26 +1,23 @@
-<div data-role="view" data-title="Eventos" data-layout="main"  data-model="app.eventsView" data-show="app.eventsView.onShow" data-after-show="app.eventsView.afterShow">
-   
-     <div data-role="header">
+<div data-role="view" data-title="Eventos" data-layout="main-nonav" data-model="app.eventsView" data-show="app.eventsView.onShow" data-after-show="app.eventsView.afterShow">
+    <!-- START_CUSTOM_CODE_academicStatusView -->
+
+	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="initEvents();">&nbsp;</a>
         </div>
-      </div>
+	</div>
     
-     <div class="page-view" data-bind="invisible:error">
-         <div class="page-content">
+     
+	
+	<div style="margin:5pt;">
+		<div class="sty_content" id="div_events_id">
+            Lista de eventos
+        </div>
         
-             <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
- 
-         <ul data-role="listview" id="eventos">
-             
-             
-         </ul>
-        
-       <!-- START_CUSTOM_CODE_newsModel -->
-        <!-- END_CUSTOM_CODE_newsViewModel -->
     </div>
-    </div>
-    <!-- START_CUSTOM_CODE_newsView -->
-    <!-- END_CUSTOM_CODE_newsView -->
+    
+   
+    <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

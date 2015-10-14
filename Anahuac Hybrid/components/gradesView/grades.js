@@ -25,12 +25,15 @@ function getCalificaciones(){
      contentType: "application/json; charset=utf-8",
      success:function(data){
          // do stuff with json (in this case an array)
-       $('#load-content').remove();
+      var titleCourse = '';
+      var profesor = '';
       $.each(data, function(index, element) {
              
+          titleCourse = element.crseSubj+' '+element.crseCrnn+' '+element.crseTitl;
+          profesor = element.nameFacu;
           //$('#nivel1').html(element.crseTitl);
           //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
-         var link = '<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>';
+         var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="getDetalleGrade(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\')">'+element.crseTitl+'</a></li>';
           
           $( "#califparciales" ).append( link );
           

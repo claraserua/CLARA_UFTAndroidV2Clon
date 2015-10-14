@@ -1,6 +1,6 @@
 'use strict';
 
-function llenarForma()
+function llenarFormaAcademicStatus()
 {
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -13,7 +13,7 @@ function llenarForma()
 		contentType: "application/json; charset=utf-8",
 		success:function(data)
 		{
-             $('#load-content').remove();
+             
 			// do stuff with json (in this case an array)
 			$.each(data, function(index, element) {
 				$('#periodo_id').html(element.headSitu);
@@ -41,7 +41,7 @@ function llenarForma()
 }
 
 app.academicStatusView = kendo.observable({
-    onShow: function() { llenarForma(); },
+    onShow: function() { llenarFormaAcademicStatus(); },
     afterShow: function() { }
 });
 

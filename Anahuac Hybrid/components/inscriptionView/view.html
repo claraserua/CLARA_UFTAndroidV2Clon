@@ -5,21 +5,41 @@
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
         </div>
-      </div>
+    </div>
+    <div data-role="header">
+        <div>
+            <div style="float: left" onclick="CI_showPrevius()"> (Atras) </div>
+            <div style="float: left" onclick="CI_showNext()"> (adelante) </div>
+            <div style="float: left" id="div_periodo"> periodo </div>
+         </div>
+	</div>
     
     
     <div class="page-view" data-bind="invisible:error">
-         <div class="page-box">
+        <div class="page-box">
 
-        <div id="inscripcion">
-                        
+            <div id="div_inscripcion_id">
+                <!--
+                <div>Campus:        <span id="CI_campus_id"></span> </div>
+                <div>A partir de:   <span id="CI_fecha1_id"></span> </div>
+                <div>Horario inicio:<span id="CI_hora1_id"></span> </div>
+                <div>Hasta:         <span id="CI_fecha2_id"></span> </div>
+                <div>Hora final:    <span id="CI_hora2_id"></span> </div>
+                -->
+            </div>
+            <div class="card" id="div_nodata_id">
+                <div class="card-content">
+                    <div class="card-content-inner"><span class="item-orange-bold">NO HAY FECHAS DISPONIBLES PARA INSCRIPCIÓN.</span></div>
+                </div>
+            </div>
+           
+            <!-- START_CUSTOM_CODE_retentionsModel -->
+            <!-- END_CUSTOM_CODE_retentionsModel -->
         </div>
-
-       
-        <!-- START_CUSTOM_CODE_retentionsModel -->
-        <!-- END_CUSTOM_CODE_retentionsModel -->
-    </div>
     </div>
     <!-- START_CUSTOM_CODE_retentionsView -->
+    
+    
     <!-- END_CUSTOM_CODE_retentionsView -->
+    
 </div>

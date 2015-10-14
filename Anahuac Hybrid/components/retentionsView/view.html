@@ -3,15 +3,16 @@
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getRetenciones();">&nbsp;</a>
         </div>
       </div>
     
     
   <div class="page-view" data-bind="invisible:error">
-         <div class="page-content">
-        <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
-        <div id="retenciones">
+         <div class="page-box">
+        
+        <div id="retenciones" style="margin-top:10px;">
                         
         </div>
 

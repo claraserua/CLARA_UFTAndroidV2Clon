@@ -1,5 +1,6 @@
 'use strict';
 
+
 function showDetail(idOption)
 {
 	$('#div_detalle_'+idOption).toggle();
@@ -26,7 +27,7 @@ function buildScheduleOptions()
     var password = window.localStorage.getItem("password");
 	var websevicename = 'schedule/'+usuario+'/2015-10-02/2015-10-09';
     
-    
+    var lastName = '';
     
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
@@ -51,39 +52,37 @@ function buildScheduleOptions()
 				
                 
                 html +=
-					'<div class="card">'+
+					'<div class="card-2">'+
                     '<div class="card-header"><span>'+diaDeLaSemana(date.date)+'</span><span class="item-after">'+date.date+'</span></div> '+
-                    '<div class="km-listview-wrapper">'+
-					'	<ul data-role="listview" data-style="inset" data-type="group" style="background-color:#F0F0F0;" class="km-widget km-listview km-listgroupinset">';
+                    '</div><div class="list-block media-list">'+
+					'<ul>';
 				$.each(date.courses, function(index2, course)
 				{
 					var html_instructors='';
 					
 					$.each(course.instructors, function(index3, instructor){
-                        var lastName = instructor.lastName.replace("*"," ");
+                        lastName = instructor.lastName.replace("*"," ");
 						html_instructors += ''+instructor.firstName+' '+lastName+'<br/>';
 					});
 					
 					html+=
-						'<li class="km-group-container">'+
-                        '	<div class="km-group-title">'+
-                        '		<div class="km-text">'+course.title+' - '+course.description+'</div>'+
-                        '	</div>'+
-						'	<ul class="km-list">'+
-						'		<li>'+
-						'			<div style="float: left; width:92%; ">'+
-						'			'+course.startTime+' - '+course.endTime+' | '+course.location+'<br/>'+
-						'			</div>'+
-						'			<a class="km-widget km-contactadd km-detail" data-role="detailbutton" data-style="contactadd" onclick="javascript:showDetail('+counter+');"></a>'+
-						'		</li>'+
-						'	</ul>'+
-						'	<div id="div_detalle_'+counter+'">'+html_instructors+'</div>'+
+						'<li class="swipeout">'+
+                        '<div class="swipeout-content" style="padding:10px 15px !important;"><a class="item-link item-content" onclick="javascript:showDetail('+counter+');">'+
+                        '<div class="item-inner">'+
+                        '<div class="item-title-row">'+
+                        '<div class="item-subtitle">'+course.title+' - '+course.description+'</div>'+
+                        '<div class="item-after"></div>'+
+                        '</div>'+
+                        '<div class="item-title">Lugar: '+course.location+'</div>'+
+                        '<div class="item-title">Horario: '+course.startTime+' - '+course.endTime+'</div>'+
+                        '<div class="item-title" id="div_detalle_'+counter+'">Profesor:'+html_instructors+'</div>'+
+                        '</div></a></div>'+
 						'</li>';
 						counter++;
 						//console.log('counter='+counter);
 				});
 				html += '</ul>';
-				html += '</div></div>';
+				html += '</div>';
            
             });
             

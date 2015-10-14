@@ -1,23 +1,25 @@
 'use strict';
 
-app.detailcourseView = kendo.observable({
+app.gradeDetalleView = kendo.observable({
     onShow: function() { },
     afterShow: function() {  }
 });
 
 // START_CUSTOM_CODE_perfilView
-
-
-function getDetalleCurso(id,periodo){
+function getDetalleGrade(crn,curso,profesor){
     
-    app.mobileApp.navigate('components/searchCoursesView/detallecourse.html');
+    app.mobileApp.navigate('components/gradesView/gradedetalle.html');
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
    
-    var websevicename = 'cursodt/'+usuario+'/'+periodo+'/'+id;
+    var websevicename = 'componente/'+usuario;
  
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    
+      var titulo = '<div class="normal-header-title">'+curso+'</div><div class="small-header-title">'+profesor+'</div>';
+     $('#div_course_DG').html(titulo);
+    $('#GRD_CALIF_COURSE').empty();
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
@@ -28,35 +30,26 @@ function getDetalleCurso(id,periodo){
      success:function(data){
          // do stuff with json (in this case an array)
       
-         var html='';
-         var periodo='';
+             var html =
+                    '<tr>'+
+                        '<td class="item-title">Criterio de Evaluación</td>'+
+                        '<td class="item-title">%</td>'+
+                        '<td class="item-title">Calificación</td>'+
+                    '</tr>';
+        
          if(data.length!=0){
          $.each(data, function(index, element) {
             
-            periodo = '<div class="normal-header-title">Periodo('+element.vsPeriodo+')</div><div class="small-header-title">Creditos:'+element.vsHorasCredito+'</div>';
-            html +=
-                '<div class="card">'+
-                '<div class="card-content">'+
-                '<div class="card-content-inner">'+
-                '<div class="item-title">'+element.vsSubj+' '+element.vsCrn+' - '+element.vsTitulo+'</div>'+
-                '<div>Instructor: '+element.vsNomDocente+' </div>'+
-                '<div>Horario: '+element.vsHorarioFormato+' </div>'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-             
-                '<div class="card">'+
-                '<div class="card-header">Descripción Curso</div>'+
-                '<div class="card-content">'+
-                '<div class="card-content-inner">'+
-                '<div>'+element.vsDetalle+'</div>'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-             
-             
-             
+          
+           if(element.cparCrnn == crn){ 
+             html +=
+                '<tr>'+
+                  '<td>'+element.compDesc+' </td>'+
+                  '<td>'+element.compPond+' </td>'+
+                  '<td>'+element.stcrTipo+' </td>'+
+                '</tr>'+  
                 '';
+               }
              
         });
              }else{
@@ -71,8 +64,8 @@ function getDetalleCurso(id,periodo){
              }
          
         
-         $('#div_course_periodo').html(periodo);
-         $('#detallecurso').html(html);
+        
+         $('#GRD_CALIF_COURSE').append(html);
      },
      error:function(){
          

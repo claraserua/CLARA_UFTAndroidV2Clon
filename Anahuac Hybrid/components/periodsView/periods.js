@@ -31,7 +31,7 @@ function getPeriodos(){
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setPeriodo(\''+element.termCode+'\',\''+element.termDesc+'\')">'+element.termDesc+'</a></li>';
           
         });
-         $('#load-content').remove();
+         
          $('#periodos').html(html);
      },
      error:function(){

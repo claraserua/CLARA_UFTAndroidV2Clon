@@ -13,7 +13,7 @@ function getRetenciones(){
     var websevicename = 'retencion/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    $('#load-content').remove();
+    
     $( "#retenciones" ).empty();
    
     
@@ -31,7 +31,7 @@ function getRetenciones(){
          // alert(element.crseCrnn); 
           
           html +=
-                 '<div class="card">'+
+                 '<div class="card-2">'+
                  '<div class="card-header">'+element.holdDesc+'</div>'+
                  '<div class="card-footer"><span>Inicio:'+element.fInicio+'</span><span>Fin:'+element.fFin+'</span></div>'+
                  '</div>'+

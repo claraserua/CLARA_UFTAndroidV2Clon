@@ -1,3 +1,27 @@
+.km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-navbar {
+background-color:#666666 !important;
+}
+
+.km-navbar-orange{
+    
+    background-color:#F7881C !important;
+}
+
+.km-ios7 .km-view-title {
+    
+    color:#FFF !important;
+}
+
+.km-view-title-light{
+  line-height: 2.5em;
+  text-align:center;
+}
+
+.km-ios7 .km-footer, .km-ios7 .km-tabstrip .km-button {
+  background: #F7881C;
+}
+
+
 #kendoUiMobileApp .image-with-text img {
     float: left;
     margin-right: 15px;
@@ -30,6 +54,7 @@
 
 #kendoUiMobileApp .button-group.button-group-vertical .km-button {
     display: block;
+    color: #F7881C !important;
 }
 
 #kendoUiMobileApp.km-flat .button-group .km-button.primary {
@@ -39,7 +64,7 @@
 
 #kendoUiMobileApp.km-ios7 .button-group .km-button.primary {
     color: #fff !important;
-    background-color: #E54E2C !important;
+    background-color: #F7881C !important;
 }
 
 #kendoUiMobileApp.km-android .button-group .km-button.primary {
@@ -109,8 +134,20 @@
 
 /* START_CUSTOM_CODE_kendoUiMobileApp */
 .km-ios7 .k-list, .km-ios7 .k-slider, .km-ios7 .km-widget {
-    color: #E54E2C !important;
+    color: #FFF !important;
 }
+
+
+#bglogin{
+    position:fixed;
+    top:27%;
+    left:0;
+    z-index:-1;
+    width:200%;
+    
+}
+
+
 
 .login-screen-title {
     font-size: 30px;
@@ -124,11 +161,11 @@
 
 .list-block {
     font-size: 17px;
-    margin: 35px 0;
+    
 }
 
 .list-block .item-link.list-button {
-    color: #E54E2C;
+    color: #F7881C;
     display: block;
     line-height: 43px;
     padding: 0 15px;
@@ -194,7 +231,6 @@
     box-sizing: border-box;
     height: 100%;
     position: relative;
-    min-height:400px;
     background: #FFFFFF;
     color: #000;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -211,14 +247,27 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 }
 
-.item-title{
+.normal-header-title{
+     margin-top:-10px;
+   }
+
+
+.small-header-title{
     font-size: 13px;
     font-weight: normal;
-    color: #8e8e93;
+    line-height:2em;
+    margin-top:-15px;
+}
+
+.item-title{
+    font-size: 17px;
+    font-weight: normal;
+    color: #000;
+    
 }
 
 .item-after{
-    font-size: 13px;
+    font-size: 15px;
     font-weight: normal;
     color: #8e8e93;
 }
@@ -310,6 +359,30 @@
     position: relative;
 }
 
+.card-2{
+    background: #F7881C none repeat scroll 0 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    position: relative;    
+    
+}
+
+.card-2 .card-header{
+    color:#fff;  
+    
+}
+
+.card-2 .card-header .item-after{
+    color:#fff;  
+    
+}
+
+
+.card-2 .card-footer{
+    background: #fff none repeat scroll 0 0;
+}
+
 .card_light {
     background: #fff none repeat scroll 0 0;
     font-size: 14px;
@@ -319,7 +392,7 @@
 
 .card-header {
     border-radius: 2px 2px 0 0;
-    font-size: 15px;
+    font-size: 17px;
     font-weight:normal;
 }
 
@@ -346,6 +419,7 @@
     min-height: 44px;
     padding: 10px 15px;
     position: relative;
+    color: #000;
 }
 
 .badget{
@@ -358,13 +432,15 @@
 
 .card-content {
     position: relative;
+    background-color:#fff;
 }
 
 .card-content-inner {
     padding: 15px;
-    font-size: 13px;
+    font-size: 15px;
     color: #8e8e93;
     position: relative;
+    
 }
 
 
@@ -520,6 +596,7 @@
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000;
 }
 
 
@@ -537,6 +614,13 @@ a {
     color: #007aff;
     text-decoration: none;
 }
+
+.color-a { color:#008800; font-size:22px; font-weight:bold;}
+.color-b { color:#889900; font-size:22px; font-weight:bold;}
+.color-c { color:#ddAE00; font-size:22px; font-weight:bold;}
+.color-d { color:#D78635; font-size:22px; font-weight:bold;}
+.color-e { color:#cc0000; font-size:22px; font-weight:bold;}
+
 
 /*END LIST VIEW DESCRIPTION*/
 

@@ -5,8 +5,18 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="llenarFormaNoVencidos();">&nbsp;</a>
         </div>
 	</div>
+    
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" id="term_periodo_vc"><div class="normal-header-title">Periodo</div><div class="small-header-title">(NO VENCIDOS)</div></div>
+            <a data-role="button" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+        </div>
+	</div>
+    
     
 	   <div class="page-view" data-bind="invisible:error">
          <div class="page-box">
@@ -15,7 +25,7 @@
              
              <div class="card">
              <div class="card-content">
-                  <div class="card-header">No Vencidos</div>  
+                  
                  <div class="card-content-inner">
                      
                      <table id="id_novencidos">
@@ -31,13 +41,5 @@
        </div>
 
 
-    
-    <footer data-role="footer">
-		<a href="view.html"></a>
-            <div data-role="tabstrip" id="navigation-container">
-                <a href="components/homeView/view.html" data-icon="home">Home</a>
-                <a href="components/aboutView/view.html" data-icon="info">Acerca</a>
-            </div>
-        </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

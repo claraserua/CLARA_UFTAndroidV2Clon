@@ -4,26 +4,29 @@
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="backbutton" data-align="left">Atras</a>
-            <div> Inter&eacute;s posterior plan 201010 </div>
+            <a data-role="backbutton" data-align="left" href="components/studentCreditView/view.html">Atras</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="initInteresPosteriorPlan();">&nbsp;</a>
+            
         </div>
 	</div>
     
-     
+ 
+    
+     <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" id="term_periodo_vc"><div class="normal-header-title">Inter&eacute;s posterior plan</div><div class="small-header-title">(201010)</div></div>
+            <a data-role="button" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+        </div>
+	</div>
 	
-	<div style="margin:5pt;">
-		<div class="sty_content" id="div_student_credit_4_id">
+	<div class="page-view">
+		<div class="page-content" id="div_student_credit_4_id">
         </div>
     </div>
     
     
     
-    <footer data-role="footer">
-		<a href="view.html"></a>
-            <div data-role="tabstrip" id="navigation-container">
-                <a href="components/homeView/view.html" data-icon="home">Home</a>
-                <a href="components/aboutView/view.html" data-icon="info">Info</a>
-            </div>
-        </footer>
+    
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

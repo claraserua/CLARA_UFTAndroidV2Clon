@@ -3,11 +3,12 @@
      <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getEstadoCuenta();">&nbsp;</a>
         </div>
       </div>
     
-    <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
+    
        <div class="page-view" data-bind="invisible:error">
          <div class="page-content">
         

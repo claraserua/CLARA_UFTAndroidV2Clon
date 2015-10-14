@@ -1,16 +1,29 @@
 <div data-role="view" data-title="Apoyo Financiero" data-layout="main" data-model="app.aboutView" data-show="app.helpfinancialView.onShow" data-after-show="app.helpfinancialView.afterShow">
     
+    
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getApoyoFinanciero();">&nbsp;</a>
         </div>
-      </div>
+    </div>
+    
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;">Periodo (<span id="term_periodo_hf"></span>)</div>
+            <a data-role="button" class="km-widget km-button km-back" onclick="HF_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" data-align="right" onclick="HF_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+        </div>
+	</div>
+    
+    
+    
     
     
     <div class="page-view" data-bind="invisible:error">
-       <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
-        <div class="page-content">
+       
+        <div class="page-box">
 
         <div id="apoyof">
                         

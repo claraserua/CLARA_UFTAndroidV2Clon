@@ -28,7 +28,7 @@ function getCampus(){
          $.each(data, function(index, element) {
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCampus(\''+element.campCode+'\',\''+element.campDesc+'\')">'+element.campDesc+'</a></li>';
         });
-         $('#load-content').remove();
+         
          $('#campus').html(html);
      },
      error:function(){

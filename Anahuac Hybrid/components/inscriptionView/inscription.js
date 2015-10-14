@@ -5,6 +5,9 @@ app.inscriptionView = kendo.observable({
     afterShow: function() {}
 });
 
+var CI_array_json = null;
+var CI_array_citas = [];
+var CI_current_index = 0;
 // START_CUSTOM_CODE_aboutView
 function getInscripcion(){
    
@@ -26,41 +29,97 @@ function getInscripcion(){
      success:function(data){
          // do stuff with json (in this case an array)
          
-         var html = '';
-         $('#load-content').remove();
-         if(data.length!=0){
-         $.each(data, function(index, element) {
-         // alert(element.crseCrnn); 
-          //var link = '<tr><td>'+element.holdDesc+'</td><td>'+element.fInicio+'</td><td>'+element.fFin+'</td></tr>';
-        //  $( "#retenciones" ).append( link );
-         
-        });
+         //$('#load-content').remove();
+         CI_array_json = data;
+         console.log('data.length='+data.length);
+         if(data.length>0)
+         {
+             $('#div_inscripcion_id').show();
+             $('#div_nodata_id').hide();
+             $.each(data, function(index, element)
+             {
+                 /*
+                 $('#CI_campus_id').html(element.campDes);
+                 $('#CI_fecha1_id').html(element.fechIni);
+                 $('#CI_hora1_id').html(element.horaIni);
+                 $('#CI_fecha2_id').html(element.fechFin);
+                 $('#CI_hora2_id').html(element.horaFin);
+                 //*/
+                 CI_addCita(element.termDes);
+             });
+             CI_current_index = CI_array_citas.length-1;
+             CI_updateCitas();
          }else{
-              html +=
-                 '<div class="card">'+
-                 '<div class="card-content">'+
-                 '<div class="card-content-inner"><span class="item-orange-bold">NO HAY FECHAS DISPONIBLES PARA INSCRIPCIÓN.</span></div>'+
-                 '</div>'+
-                 '</div>'+
-                 '';
-             $('#inscripcion').html(html);
+             $('#div_inscripcion_id').hide();
+             $('#div_nodata_id').show();
          }
      },
      error:function(){
          
-    navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
+        navigator.notification.alert(
+        'Opps!',  // message
+        alertDismissed,         // callback
+        'Inicie Sesion!',            // title
+        'Aceptar'                  // buttonName
+         );
      
          ExitApp();
      }      
      });
-    
-    
 }
+
+function CI_searchCitaIndex(str_cita){
+    if(PC_array_period!=null)
+        for(var i=0; i<PC_array_period.length; i++)
+            if(PC_array_period[i]==str_period)
+                return i;
+    return -1;
+}
+function CI_addCita(str_cita){
+    str_cita = str_cita.trim();
+    if(CI_searchCitaIndex(str_cita)==-1)
+        CI_array_citas.push(str_cita);
+}
+function CI_updateCitas(){
+    var termDes = CI_array_citas[CI_current_index];
+    console.log('imprimir: '+termDes);
+    var html='';
+    $.each(data, function(index, element)
+    {
+        if(element.termDes == termDes)
+        {
+             html +=
+                '<div>Campus:        <span>'+element.campDes+'</span> </div>'+
+                '<div>A partir de:   <span>'+element.fechIni+'</span> </div>'+
+                '<div>Horario inicio:<span>'+element.horaIni+'</span> </div>'+
+                '<div>Hasta:         <span>'+element.fechFin+'</span> </div>'+
+                '<div>Hora final:    <span>'+element.horaFin+'</span> </div>';
+            /*
+            $('#CI_campus_id').html(element.campDes);
+            $('#CI_fecha1_id').html(element.fechIni);
+            $('#CI_hora1_id').html(element.horaIni);
+            $('#CI_fecha2_id').html(element.fechFin);
+            $('#CI_hora2_id').html(element.horaFin);
+            */
+        }
+    });
+    $('#div_inscripcion_id').html(html);
+    $('#div_periodo').html(termDes);
+}
+function CI_showPrevius(){
+    if(0<CI_current_index){
+        CI_current_index--;
+        CI_updateCitas();
+    }
+}
+
+function CI_showNext(){
+    if(CI_current_index<CI_array_citas.length-1){
+        CI_current_index++;
+        CI_updateCitas();
+    }
+}
+
 
 // END_CUSTOM_CODE_aboutView
 (function(parent) {

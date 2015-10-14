@@ -23,7 +23,7 @@ function getEstadoCuenta(){
      success:function(data){
          // do stuff with json (in this case an array)
       $.each(data, function(index, element) {
-          $('#load-content').remove();
+         
           $('#vencidos').html(element.adeudoSiVenc);
           $('#novencidos').html(element.adeudoNoVenc);
           $('#paplicar').html(element.saldoACuenta);

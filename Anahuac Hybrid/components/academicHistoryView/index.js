@@ -1,12 +1,17 @@
 'use strict';
 
+// Ejemplo: http://redanahuac.mx/mobile/webservice/curl.php?websevicename=promedio/00131632&username=00131632&password=chacha
+var AH_promedio=null;
+var AH_historia=null;
+var AH_current_element=null;
+var AH_current_index=0;
+
 function llenarFormaHistoria()
 {
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	
     var websevicename_promedio = 'promedio/'+usuario;
-	
 	
     $.ajax({
 		data: {websevicename: websevicename_promedio, username:usuario, password:password},
@@ -16,12 +21,15 @@ function llenarFormaHistoria()
 		contentType: "application/json; charset=utf-8",
 		success:function(data)
 		{
+            AH_promedio = data;
+            
+            /*
 			$.each(data, function(index, element)
 			{
 				$('#prom_periodo_id').html(element.tgpaGpaa);
 				$('#prom_global_id').html(element.promGlob);
 			});
-            
+            */
             getDetalleHistory();
 		},
 		error:function(){
@@ -34,6 +42,7 @@ function llenarFormaHistoria()
 }
 
 
+// Ejemplo: http://redanahuac.mx/mobile/webservice/curl.php?websevicename=historia/00131632&username=00131632&password=chacha
 function getDetalleHistory(){
     
     var usuario =  window.localStorage.getItem("usuario");
@@ -48,29 +57,64 @@ function getDetalleHistory(){
 		contentType: "application/json; charset=utf-8",
 		success:function(data)
 		{
-			var html = '';
-			$.each(data, function(index, element)
-			{
-                html +=
-                 '<div class="card">'+
-                 '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span>'+element.grdeFinl+'</span></div>'+
-                 '<div class="card-content">'+
-                 '<div class="card-content-inner"><div>Instructor:</div>'+element.nameFacu+'</div>'+
-                 '<div class="card-footer"><span>Créditos</span><span>'+element.credHour+'</span></div>'+
-                 '</div>'+
-                 '</div>'+
-                 '';
-               
-			});
-		
-			
-			$('#div_content_id').html(html);
+            AH_historia = data;
+            if(0<AH_promedio.length)
+            {
+                AH_current_index = AH_promedio.length-1;
+                AH_current_element = AH_promedio[AH_current_index];
+                
+                updateDetalleHistory();
+            }
 		},
 		error:function(){
 			alert("Error");
 		}
 	});
     
+}
+function updateDetalleHistory()
+{
+    var html='';
+    var periodo = '';
+	$('#prom_periodo_id').html('<span class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span>');
+	$('#prom_global_id').html('<span class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span>');
+    
+	$.each(AH_historia, function(index, element)
+	{
+        if(element.termCode == AH_current_element.termCode)
+        {
+            periodo = element.termDesc;
+            html +=
+             '<div class="card">'+
+             '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
+             '<div class="card-content">'+
+             '<div class="card-content-inner"><span>Instructor:</span>'+element.nameFacu+'</div>'+
+             '<div class="card-footer"><span></span><span>Créditos: '+element.credHour+'</span></div>'+
+             '</div>'+
+             '</div>'+
+             '';
+        }
+	});
+    $('#div_content_id').html(html);
+    $('#div_term_periodo').html(periodo);
+    
+}
+
+function AH_showPrevius(){
+    if(0<AH_current_index){
+        AH_current_index--;
+        AH_current_element = AH_promedio[AH_current_index];
+        updateDetalleHistory();
+    }
+    
+}
+
+function AH_showNext(){
+    if(AH_current_index<AH_promedio.length-1){
+        AH_current_index++;
+        AH_current_element = AH_promedio[AH_current_index];
+        updateDetalleHistory();
+    }
 }
 
 

@@ -2,7 +2,7 @@
 
 app.authenticationView = kendo.observable({
     onShow: function() { window.localStorage.setItem("access","FALSE"); },
-    afterShow: function() {}
+    afterShow: function() { }
 });
 
 // START_CUSTOM_CODE_authenticationView
