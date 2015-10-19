@@ -1,6 +1,6 @@
 'use strict';
 
-app.aboutView = kendo.observable({
+app.opinionView = kendo.observable({
     onShow: function() {},
     afterShow: function() {}
 });
@@ -8,7 +8,7 @@ app.aboutView = kendo.observable({
 // START_CUSTOM_CODE_aboutView
 // END_CUSTOM_CODE_aboutView
 (function(parent) {
-    var aboutViewModel = kendo.observable({
+    var opinionViewModel = kendo.observable({
         openLink: function(url) {
             window.open(url, '_system');
             if (window.event) {
@@ -18,8 +18,8 @@ app.aboutView = kendo.observable({
         }
     });
 
-    parent.set('aboutViewModel', aboutViewModel);
-})(app.aboutView);
+    parent.set('opinionViewModel', opinionViewModel);
+})(app.opinionView);
 
 // START_CUSTOM_CODE_aboutViewModel
 // END_CUSTOM_CODE_aboutViewModel

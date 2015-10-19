@@ -1,8 +1,8 @@
 'use strict';
 
 app.periodsView = kendo.observable({
-    onShow: function() { getPeriodos(); },
-    afterShow: function() {  }
+    onShow: function() {  },
+    afterShow: function() {  getPeriodos(); }
 });
 
 // START_CUSTOM_CODE_perfilView
@@ -15,22 +15,27 @@ function getPeriodos(){
     var websevicename = 'termoa/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
+    $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
      url:url,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();  
+     },
      success:function(data){
          // do stuff with json (in this case an array)
          
-         var html='';
+         var html='<ul class="km-widget km-listview km-list">';
          $.each(data, function(index, element) {
          // alert(element.crseCrnn);
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setPeriodo(\''+element.termCode+'\',\''+element.termDesc+'\')">'+element.termDesc+'</a></li>';
           
         });
+         
+         html +='</ul>';
          
          $('#periodos').html(html);
      },

@@ -22,7 +22,7 @@ function IniciarSesion(){
            
         // LANDSCAPE:
         }else{
-           redirect = 'homeSplitView';
+          // redirect = 'homeSplitView';
            //window.scrollTo(0,0);
         }
     }

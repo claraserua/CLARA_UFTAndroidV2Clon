@@ -1,8 +1,8 @@
 'use strict';
 var arrayatributos = new Array();
 app.attributesView = kendo.observable({
-    onShow: function() { getAtributos(); arrayatributos = new Array();  },
-    afterShow: function() {  }
+    onShow: function() {   },
+    afterShow: function() { getAtributos(); arrayatributos = new Array(); }
 });
 
 // START_CUSTOM_CODE_perfilView
@@ -15,24 +15,29 @@ function getAtributos(){
     var websevicename = 'atributo/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
+    $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
      url:url,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();  
+     },
      success:function(data){
          // do stuff with json (in this case an array)
-      
-         var html='';
+        
+         var html='<ul class="pagelist">';
          $.each(data, function(index, element) { 
            
          // alert(element.crseCrnn);
-          html += '<li> <input type="checkbox" name="itemsatributos" id="'+element.attrCode+'" class="km-checkbox" value="'+element.attrCode+'" onclick="setAtributo(this.id)"/>'+element.attrDesc+'</li>';
+          html += '<li> <input type="checkbox" name="itemsatributos" id="'+element.attrCode+'" class="km-checkbox" value="'+element.attrCode+'" onclick="setAtributo(this.id)"/> '+element.attrDesc+'</li>';
       
         });
-         $('#load-content').remove();
+         
+         html +='</ul>';
+         
          $('#atributos').html(html);
      },
      error:function(){
@@ -55,7 +60,8 @@ function sendAtributos(){
     var cadenaatributos = "";
      if(arrayatributos.length>0){
   	cadenaatributos = arrayatributos.join(",");
-      }else{ cadenaatributos="null" }
+         $('#txt-atributos').html(": "+cadenaatributos);
+      }else{ cadenaatributos="null";   $('#txt-atributos').html("");}
     
     $('#val_atributos').val(cadenaatributos);
     app.mobileApp.navigate('components/searchCoursesView/view.html');

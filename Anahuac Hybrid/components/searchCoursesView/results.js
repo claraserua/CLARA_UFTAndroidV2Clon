@@ -2,25 +2,54 @@
 
 app.resultsView = kendo.observable({
     onShow: function() { },
-    afterShow: function() {  }
+    afterShow: function() { getCursosfound(); }
 });
 
 // START_CUSTOM_CODE_perfilView
 
 
-function getCursosfound(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time){
+var SC_titulo ='';
+var SC_instructor ='';
+var SC_periodo ='';
+var SC_campus ='';
+var SC_atributos ='';
+var SC_dias ='';
+var SC_hora ='';
+var SC_minuto ='';
+var SC_time ='';
+var SC_desc_periodo ='';
+
+
+function setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo){
+    
+    SC_titulo = titulo;
+    SC_instructor = instructor;
+    SC_periodo = periodo;
+    SC_campus = campus;
+    SC_atributos = atributos;
+    SC_dias = dias;
+    SC_hora = hora;
+    SC_minuto = minuto;
+    SC_time = time;
+    SC_desc_periodo = desc_periodo;
+    
+    $('#resultados_SC').empty();
+    
+}
+
+function getCursosfound(){
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
    
-    $('#resultados').empty();
- 
+    
+    
     //curso/00158012/201575/UAN/null/null/null/am/null/inte/null
     
     //curso/00158012/201560/UAN/Lu,Ma,Mi,Ju,Vi,Sa,Do/01/05/am/null/inte/ASEM,ALIN,AING,CADI,DERE,RIN2,RIN3,RIN5
-    var websevicename = 'curso/'+usuario+'/'+periodo+'/'+campus+'/'+dias+'/'+hora+'/'+minuto+'/'+time+'/'+instructor+'/'+titulo+'/'+atributos;
+    var websevicename = 'curso/'+usuario+'/'+SC_periodo+'/'+SC_campus+'/'+SC_dias+'/'+SC_hora+'/'+SC_minuto+'/'+SC_time+'/'+SC_instructor+'/'+SC_titulo+'/'+SC_atributos;
     
- 
+    $('.km-loader').show();
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $.ajax({
@@ -30,27 +59,27 @@ function getCursosfound(titulo,instructor,periodo,campus,atributos,dias,hora,min
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
      complete:function(data){
-         $('.km-loader').hide();
-         
+         $('.km-loader').hide(); 
      },
      success:function(data){
          // do stuff with json (in this case an array)
-      
+      $('#r387periodo').html(SC_desc_periodo);
+      $('#res-uni').html(SC_campus);
+         
+         
          var html='';
          if(data.length!=0){
          $.each(data, function(index, element) {
             
-         
             html +=
                 '<li class="swipeout">'+
                 '<div class="swipeout-content"><a class="item-link item-content" onclick="getDetalleCurso(\''+element.vsCrn+'\',\''+element.vsPeriodo+'\')">'+
                 '<div class="item-inner">'+
                 '<div class="item-title-row">'+
                 '<div class="item-subtitle">'+element.vsSubj+' '+element.vsCrn+' - '+element.vsTitulo+'</div>'+
-                '<div class="item-after"></div>'+
                 '</div>'+
-                '<div class="item-title">Instructor: '+element.vsNomDocente +'</div>'+
-                '<div class="item-title">Horario: '+element.vsHorarioFormato +'</div>'+
+                '<div class="item-after">Instructor: '+element.vsNomDocente +'</div>'+
+                '<div class="item-after">Horario: '+element.vsHorarioFormato +'</div>'+
                 '</div></a></div>'+
                 '</li>'+
                 '';
@@ -67,7 +96,7 @@ function getCursosfound(titulo,instructor,periodo,campus,atributos,dias,hora,min
                  
              }
         
-         $('#resultados').html(html);
+         $('#resultados_SC').html(html);
      },
      error:function(){
          
@@ -85,11 +114,6 @@ function getCursosfound(titulo,instructor,periodo,campus,atributos,dias,hora,min
     
 }
 
-function setAtributo(name){
-    
-    //$('#desc_atributo').html(name);
-    //app.mobileApp.navigate('components/searchCoursesView/view.html');
-    
-}
+
 
 // END_CUSTOM_CODE_perfilView

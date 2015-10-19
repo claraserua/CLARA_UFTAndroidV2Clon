@@ -4,8 +4,17 @@
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="buildScheduleOptions();">&nbsp;</a>
+            
+           
+            <div data-role="button" data-align="left">
+            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="yyyy-mm-dd">
+				<input class="span2" id="date-daily" size="16" type="hidden" value="12-02-2012" readonly>
+				<span class="add-on"><i class="km-icon km-organize"></i></span>
+			  </div>
+            </div>
+            
+            <a data-role="button" data-align="right" href="components/homeView/view.html" data-icon="home">Home</a>
+            
         </div>
 	</div>
     <!-- ____________________________________________________________________________________________ -->
@@ -24,7 +33,7 @@
     <!-- ____________________________________________________________________________________________ -->
    <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
-                <a onClick="buildScheduleOptions();" data-role="button" data-icon="add">MOSTRAR MAS</a>
+                <a  data-role="button" data-icon="add">MOSTRAR MAS</a>
             </div>
         </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->

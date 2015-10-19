@@ -12,13 +12,16 @@ function llenarFormaHistoria()
     var password = window.localStorage.getItem("password");
 	
     var websevicename_promedio = 'promedio/'+usuario;
-	
+	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename_promedio, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
 		dataType: 'jsonp', 
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         $('.km-loader').hide(); 
+        },
 		success:function(data)
 		{
             AH_promedio = data;
@@ -48,13 +51,16 @@ function getDetalleHistory(){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename_detalle = 'historia/'+usuario;
-    
+    $('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename_detalle, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         $('.km-loader').hide(); 
+        },
 		success:function(data)
 		{
             AH_historia = data;
@@ -88,15 +94,33 @@ function updateDetalleHistory()
              '<div class="card">'+
              '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
              '<div class="card-content">'+
-             '<div class="card-content-inner"><span>Instructor:</span>'+element.nameFacu+'</div>'+
-             '<div class="card-footer"><span></span><span>Créditos: '+element.credHour+'</span></div>'+
+             '<div class="card-content-inner"><span>Instructor: </span>'+element.nameFacu+'</div>'+
+             '<div class="card-footer"><span>Créditos: '+element.credHour+'</span></div>'+
              '</div>'+
              '</div>'+
              '';
         }
 	});
-    $('#div_content_id').html(html);
+    $('#div_content_idHA').html(html);
     $('#div_term_periodo').html(periodo);
+    
+    if(AH_promedio.length==1){
+        $('#AH_prev_arrow').hide();
+        $('#AH_next_arrow').hide();
+    
+    }else{
+        if(AH_current_index==AH_promedio.length-1){
+            $('#AH_next_arrow').hide();
+            $('#AH_prev_arrow').show();
+              return;
+        }
+         if(AH_current_index==0){
+             $('#AH_prev_arrow').hide();
+             return;
+        }
+        
+        if(AH_current_index<=AH_promedio.length-1){$('#AH_next_arrow').show();  $('#AH_prev_arrow').show();}
+    }
     
 }
 

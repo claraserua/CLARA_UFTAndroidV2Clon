@@ -1,7 +1,7 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { $('.km-loader').hide(); },
     afterShow: function() { showLoading(); }
 });
 
@@ -46,10 +46,10 @@ $(window).resize(function(){
 if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
         // PORTRAIT:
         if ($(window).height()>$(window).width()){
-           app.mobileApp.navigate('components/homeView/view.html');
+           //app.mobileApp.navigate('components/homeView/view.html');
         // LANDSCAPE:
         }else{
-           app.mobileApp.navigate('components/homeSplitView/view.html');
+           //app.mobileApp.navigate('components/homeSplitView/view.html');
         }
     }
 });

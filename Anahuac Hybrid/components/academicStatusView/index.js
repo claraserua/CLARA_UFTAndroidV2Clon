@@ -4,13 +4,17 @@ function llenarFormaAcademicStatus()
 {
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
-	var websevicename = 'situacion/'+usuario;;
+	var websevicename = 'situacion/'+usuario;
+    $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         $('.km-loader').hide(); 
+        },
 		success:function(data)
 		{
              

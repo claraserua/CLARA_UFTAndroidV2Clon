@@ -16,13 +16,16 @@ function getCalificaciones(){
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $( "#califparciales" ).empty();
-    
+    $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
      url:url,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();   
+     },
      success:function(data){
          // do stuff with json (in this case an array)
       var titleCourse = '';

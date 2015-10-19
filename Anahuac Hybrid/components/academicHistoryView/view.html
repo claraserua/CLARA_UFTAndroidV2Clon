@@ -13,8 +13,8 @@
     <div data-role="header">
         <div data-role="navbar" style="background-color:#F7881C !important;">
           <div class="km-view-title" style="font-weight: normal !important;" id="div_term_periodo"></div>
-            <a data-role="button" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+            <a data-role="button" id="AH_prev_arrow" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" id="AH_next_arrow" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
         </div>
 	</div>
     
@@ -30,7 +30,7 @@
                 <div class="card-header">Promedio global:<span id="prom_global_id"></span></div>           
             </div>
            
-            <div id="div_content_id">
+            <div id="div_content_idHA">
 
 			</div>
            

@@ -18,19 +18,21 @@ function initEvents()
 	var usuario = '00146190';
 	var password = '191919';
 	var websevicename = 'evento/' + usuario;
-   
+    $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         $('.km-loader').hide(); 
+        },
 		success:function(data)
 		{
 			eventsView_arrayEvents = data;
 			var html='';
-			var counter=0;
-            
+            if(data.length!=0){
 			$.each(data, function(index1, event)
 			{
 				html +=
@@ -43,14 +45,19 @@ function initEvents()
                         '<div class="item-inner">'+
                         '<div class="item-title-row">'+
                         '<div class="item-subtitle">'+event.vsAsunto+'</div>'+
-                        '<div class="item-after"></div>'+
                         '</div>'+
-                        '<div class="item-title">Hora: '+event.vsRangoHora+'</div>'+
+                        '<div class="item-after">Hora: '+event.vsRangoHora+'</div>'+
                         '</div></a></div>'+
 						'</li>'+
                     '</ul>'+
 				    '</div>';
-			});
+			});}else{
+           html =
+                 '<div class="card-2">'+
+                 '<div class="card-header">NO TIENE EVENTOS</div>'+
+                 '</div>'+
+                 '';
+      }
 			
 			$('#div_events_id').html(html);
 		},
@@ -68,15 +75,15 @@ function initEventDetail(){
     $('#lugar_id').html(event.vsUbiEvento);
     $('#fechas_id').html(event.vsRangoFecha);
     $('#hora_id').html(event.vsRangoHora);
-    $('#campus_id').html(event.vsCampus);
     $('#evento_id').html(event.vsDetEvento);
     $('#contacto_id').html(event.vsUbicacionContacto);
     $('#telefono_id').html(event.vsTelefono);
-    $('#link_id').html(event.vsLiga);
+    $('#link_id').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
 }
 
 var eventsView_arrayEvents=null;
 var eventsView_selectedIndex=-1;
+
 function clickHandler_4(id_option) {
     eventsView_selectedIndex = id_option;
     app.mobileApp.navigate('components/eventsView/eventDetail.html');

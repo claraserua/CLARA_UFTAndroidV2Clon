@@ -31,7 +31,7 @@ function CancelLogout(){
     });
 
     parent.set('logoutViewModel', logoutViewModel);
-})(app.aboutView);
+})(app.logoutView);
 
 // START_CUSTOM_CODE_aboutViewModel
 // END_CUSTOM_CODE_aboutViewModel

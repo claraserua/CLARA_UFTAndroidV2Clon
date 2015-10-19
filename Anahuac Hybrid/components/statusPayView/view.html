@@ -8,17 +8,24 @@
         </div>
       </div>
     
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" ></div>
+            
+        </div>
+	</div>
+    
     
        <div class="page-view" data-bind="invisible:error">
          <div class="page-content">
         
    
          <ul data-role="listview">
-             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaVencidos();">Vencidos:<span id="vencidos"></span></a></li>
-             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaNoVencidos();">No Vencidos:<span id="novencidos"></span></a></li>
-             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaporAplicar();">Por Aplicar:<span id="paplicar"></span></a></li>
-             <li>Saldo Total:<span id="stotal"></span></li>
-             <li><a class="km-listview-link" data-role="listview-link" onclick="llenarFormaMovimientos();">Movimientos:<span id="movimientos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/vencidos.html"><span style="font-size:19px;">Vencidos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="vencidos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/novencidos.html"><span style="font-size:19px;">No Vencidos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="novencidos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/poraplicar.html"><span style="font-size:19px;">Por Aplicar</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="paplicar"></span></a></li>
+             <li><span style="font-size:19px;">Saldo Total</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="stotal"></span></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/movimientos.html"><span style="font-size:19px;">Movimientos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="movimientos"></span></a></li>
          </ul>
         
         <!-- START_CUSTOM_CODE_aboutViewModel -->

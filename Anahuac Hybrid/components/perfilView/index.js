@@ -9,13 +9,13 @@ app.perfilView = kendo.observable({
 
 
 function getPerfil(){
-   
+     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'perfil/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
+    $('.km-loader').show();
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
@@ -23,9 +23,15 @@ function getPerfil(){
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();
+         
+     },
      success:function(data){
+         
+         
          // do stuff with json (in this case an array)
-      $('#load-content').remove();
+     
       $.each(data, function(index, element) {
          
           $('#nivel1').html(element.crseTitl);

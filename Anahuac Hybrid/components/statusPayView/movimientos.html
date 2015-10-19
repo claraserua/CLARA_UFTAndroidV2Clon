@@ -11,9 +11,9 @@
     
     <div data-role="header">
         <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" id="term_periodo_vc"><div class="normal-header-title">Periodo</div><div class="small-header-title">(MOVIMIENTOS)</div></div>
-            <a data-role="button" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+          <div class="km-view-title" style="font-weight: normal !important;"><div class="normal-header-title" id="term_periodo_vc">Periodo</div><div class="small-header-title">(MOVIMIENTOS)</div></div>
+            <a data-role="button" id="SPM_prev_arrow" class="km-widget km-button km-back" onclick="SPM_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" id="SPM_next_arrow" data-align="right" onclick="SPM_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
         </div>
 	</div>
     
@@ -26,11 +26,12 @@
                    
                  <div class="card-content-inner">
                      
-                     <table id="id_movimientos">
+                     <table id="id_movimientos" width="100%">
                          
                      </table>
                      
                  </div>
+                 
                  </div>
             </div>
            

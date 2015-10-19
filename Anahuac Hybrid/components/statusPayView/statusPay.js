@@ -13,21 +13,24 @@ function getEstadoCuenta(){
     var websevicename = 'estado/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
+    $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
      url:url,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+      complete:function(data){
+         $('.km-loader').hide(); 
+     },
      success:function(data){
          // do stuff with json (in this case an array)
       $.each(data, function(index, element) {
          
-          $('#vencidos').html(element.adeudoSiVenc);
-          $('#novencidos').html(element.adeudoNoVenc);
-          $('#paplicar').html(element.saldoACuenta);
-          $('#stotal').html(element.totalCargo);
+          $('#vencidos').html("$"+element.adeudoSiVenc);
+          $('#novencidos').html("$"+element.adeudoNoVenc);
+          $('#paplicar').html("$"+element.saldoACuenta);
+          $('#stotal').html("$"+element.totalCargo);
           
            
          

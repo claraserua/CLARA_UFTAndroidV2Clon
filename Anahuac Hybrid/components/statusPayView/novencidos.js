@@ -2,21 +2,23 @@
 
 function llenarFormaNoVencidos()
 {
-    app.mobileApp.navigate('components/statusPayView/novencidos.html');
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	var websevicename = 'estadovn/'+usuario;
-	
+	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         $('.km-loader').hide(); 
+        },
 		success:function(data)
 		{
-              var html ='<tr><td>Descripción</td><td>Fecha de Vencimiento</td><td>Total</td></tr>';
+              var html ='<tr><td class="item-title">Descripción</td><td class="item-title">Vencimiento</td><td class="item-title">Total</td></tr>';
              
             
 			// do stuff with json (in this case an array)
@@ -26,7 +28,7 @@ function llenarFormaNoVencidos()
                           '<tr>'+
                              '<td>'+element.detlDesc+'</td>'+
                              '<td>'+element.detlFevn+'</td>'+
-                             '<td>'+element.detlAmnt+'</td>'+
+                             '<td>$'+element.detlAmnt+'</td>'+
                          '</tr>'+
                          '';
                 
@@ -53,7 +55,7 @@ function llenarFormaNoVencidos()
 
 app.novencidosView = kendo.observable({
     onShow: function() {  },
-    afterShow: function() { }
+    afterShow: function() { llenarFormaNoVencidos(); }
 });
 
 // START_CUSTOM_CODE_academicStatus

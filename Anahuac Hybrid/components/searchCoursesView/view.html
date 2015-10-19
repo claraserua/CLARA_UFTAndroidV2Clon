@@ -20,23 +20,9 @@
             <div class="page-box">
             <form action="./index.html">
              
-                <div class="content-block-title">Indique Titulo o Instructor</div>
+                <!--<div class="content-block-title">Indique Titulo o Instructor</div>-->
                 
-             <div class="card">
-            <ul data-role="listview" data-style="inset">
-            <li>
-                <label>Titulo:
-                    <input type="text" id="titulo" value="" placeholder="Titulo" />
-                </label>
-             </li>
-                <li>
-                <label>Instructor:
-                    <input type="text" id="instructor" value="" placeholder="Instructor" />
-                </label>
-            </li>
-           
-        </ul>
-           </div>
+            
                 
                 <div class="card">
                 <ul data-role="listview">
@@ -64,7 +50,7 @@
                 <ul data-role="listview">
              <li> 
                  <input type="hidden" name="val_atributos" id="val_atributos" value="">
-                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('attributesView')">Atributo</a></li>
+                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('attributesView')">Atributo <span id="txt-atributos"></span></a></li>
                 </ul>
                 </div>
                 
@@ -72,7 +58,7 @@
                 <ul data-role="listview">
              <li>
                  <input type="hidden" name="val_dias" id="val_dias" value="">
-                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('daysView')">Días</a></li>
+                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('daysView')">Días <span id="txt-days"></span></a> </li>
                 </ul>
                 </div>
                 
@@ -102,9 +88,17 @@
                  <select name="minutos" id="minutos">
                      <option value="null">MINUTOS</option>
                     <option value="00">00</option>
-                    <option value="15">15</option>
-                     <option value="30">30</option> 
-                     <option value="45">45</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                      <option value="15">15</option> 
+                     <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option> 
                  </select>
                     
                  <select name="time" id="time">
@@ -115,7 +109,22 @@
             </div>
             </div>
           </div>
-                
+                 <div class="content-block-title">Indique Titulo o Instructor</div>
+                 <div class="card">
+            <ul data-role="listview" data-style="inset">
+            <li>
+                <div style="padding:1px;">
+                    <input type="text" style="position:relative !important;" id="titulo" value="" placeholder="Titulo" />
+                </div>
+             </li>
+                <li>
+                <div style="padding:1px;">
+                    <input type="text" style="position:relative !important;" id="instructor" value="" placeholder="Instructor" />
+                </div>
+            </li>
+           
+        </ul>
+           </div>
                
        </form>
              

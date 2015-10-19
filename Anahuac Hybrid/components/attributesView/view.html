@@ -4,22 +4,22 @@
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="button" data-align="right" onclick="sendAtributos();">Aceptar</a>
+            <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getAtributos();">&nbsp;</a>
         </div>
       </div>
     
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;"></div>
+        </div>
+	</div>
+    
     
     <div class="page-view" data-bind="invisible:error">
-        <div class="page-content">
+        <div class="page-content" id="atributos">
             
   
-                 <div id="load-content" class="external-load"><img src="resources/load.gif"/></div>
-                  <ul  id="atributos" class="pagelist">
-                  
-                  </ul>
-            
-             
-      
             </div>
         <!-- START_CUSTOM_CODE_aboutViewModel -->
         <!-- END_CUSTOM_CODE_aboutViewModel -->
@@ -28,7 +28,11 @@
     <!-- END_CUSTOM_CODE_aboutView -->
     
      
-    
+     <footer data-role="footer">
+            <div data-role="tabstrip" id="navigation-container">
+                <a onClick="sendAtributos();" data-role="button" data-icon="reply">Aceptar</a>
+            </div>
+        </footer>
     
     
     <!-- END_CUSTOM_CODE_perfilView -->

@@ -5,6 +5,7 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
+             <a data-role="button" data-align="right" data-icon="refresh" onClick="getDetalleCurso_DCD();">&nbsp;</a>
         </div>
       </div>
     
@@ -12,13 +13,13 @@
     <div data-role="header">
         <div data-role="navbar" style="background-color:#F7881C !important;">
           <div class="km-view-title" style="font-weight: normal !important;" id="div_course_periodo"></div>
-            
         </div>
 	</div>
     
     
     <div class="page-view" data-bind="invisible:error">
-        
+        <input type="hidden" id="DC_PERIODO" value="" />
+        <input type="hidden" id="DC_CRN" value="" />
         
         <div id="detallecurso">
   
@@ -30,7 +31,13 @@
     <!-- END_CUSTOM_CODE_aboutView -->
     
      
-    
+     <footer data-role="footer">
+            <div data-role="tabstrip" id="navigation-container">
+                
+            <a id="SC_btn_set" onclick="set_favorit_Course()" data-role="tab"  class="km-button km-state-active"><span id="icon-cd" class="km-icon km-toprated"></span><span class="km-text" id="txt-favorit">Agregar a cursos planeados</span></a>   
+         
+         </div>
+        </footer>
     
    
     <!-- END_CUSTOM_CODE_perfilView -->

@@ -10,9 +10,10 @@ function ValidFoundCourses() {
     var hora = $('#horas').val();
     var minuto = $('#minutos').val();
     var time = $('#time').val();
+    var desc_periodo = $('#desc_periodo').html();
     
-    //alert(titulo.length);
     
+    /*
     if (titulo.length == 0 && instructor.length == 0) { 
         showNotification('Ingresa Titulo o Instructor', 'Datos requeridos');
         return;
@@ -33,7 +34,7 @@ function ValidFoundCourses() {
                 }
             }else{if (instructor.length <4) { showNotification('El campo debe contener 4 caracteres minimo', 'Instructor');  return;}}
         }
-    }
+    }*/
     
     
     if(periodo==""){showNotification('El campo es necesario', 'Periodo'); return;}
@@ -44,8 +45,9 @@ function ValidFoundCourses() {
     if(atributos==""){ atributos="null";}
     if(dias==""){ dias="null";}
     
-     app.mobileApp.navigate('components/searchCoursesView/results.html');
-     getCursosfound(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time);
+     
+    setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo);
+    app.mobileApp.navigate('components/searchCoursesView/results.html');
 }
 
 app.searchCoursesView = kendo.observable({

@@ -1,6 +1,15 @@
 .km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-navbar {
 background-color:#666666 !important;
+z-index:1000;
 }
+
+.km-ios7.km-pane>.km-loader, .km-ios7 .km-pane>.km-loader{
+    z-index:1;
+}
+
+label {
+   font-weight: normal !important;  
+    }
 
 .km-navbar-orange{
     
@@ -8,8 +17,8 @@ background-color:#666666 !important;
 }
 
 .km-ios7 .km-view-title {
-    
     color:#FFF !important;
+    
 }
 
 .km-view-title-light{
@@ -138,16 +147,6 @@ background-color:#666666 !important;
 }
 
 
-#bglogin{
-    position:fixed;
-    top:27%;
-    left:0;
-    z-index:-1;
-    width:200%;
-    
-}
-
-
 
 .login-screen-title {
     font-size: 30px;
@@ -200,6 +199,32 @@ background-color:#666666 !important;
     
 }
 
+.signin-view{
+   
+    /*
+    background-image: url("../resources/img/bganahuac.png");
+    position:fixed;
+    top:27%;
+    left:0;
+    z-index:-1;
+    width:200%;
+  */   
+}
+
+.km-content .home{
+  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 900px !important;
+  
+}
+
+
+body{
+     background-image: url("../resources/bg/fondo_1_iphone.png");
+}
+
 
 .external-load{
     position: absolute;
@@ -239,8 +264,8 @@ background-color:#666666 !important;
     margin-top:.9em;
     margin-left: .9em;
     margin-right: .9em;
-    padding-top:.7em;
-    padding-bottom:.7em;
+    /*padding-top:.7em;*/
+    /*padding-bottom:.7em;*/
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
@@ -249,6 +274,7 @@ background-color:#666666 !important;
 
 .normal-header-title{
      margin-top:-10px;
+    line-height:1em !important;
    }
 
 
@@ -256,7 +282,7 @@ background-color:#666666 !important;
     font-size: 13px;
     font-weight: normal;
     line-height:2em;
-    margin-top:-15px;
+   
 }
 
 .item-title{
@@ -297,10 +323,10 @@ background-color:#666666 !important;
 }
 
 .menu ul li a {
-    color: #333;
+    color: #fff;
     text-align: center;
     text-decoration: none;
-    text-shadow: 1px 1px #fff;
+    text-shadow: 1px 1px #333;
 }
 
 .menu ul li img {
@@ -622,6 +648,24 @@ a {
 .color-e { color:#cc0000; font-size:22px; font-weight:bold;}
 
 
+.opinion {
+   /*position: relative;*/
+   padding-bottom: 56.25%;
+   overflow: hidden;
+}
+
+.opinion iframe
+ {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 900px;
+}
+
+
+
 /*END LIST VIEW DESCRIPTION*/
 
 
@@ -646,4 +690,50 @@ a {
 
 #kendoUiMobileApp #navigation-container .active:after {
     color: #fff;
+}
+
+
+
+/*******   MEDIA QUERYS    ****/
+
+/******* iPhone 6 in portrait ****/
+@media screen and (device-aspect-ratio: 16/9) {
+    .km-content .home{
+  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 736px;
+  width:414px;
+}
+    
+}
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px)
+and (-webkit-min-device-pixel-ratio: 2){ 
+.km-content .home{
+  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 736px;
+  width:414px;
+}
+}
+
+
+
+/******* iPhone 6 Plus in portrait ****/
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
+and (orientation : portrait) { /* STYLES GO HERE */
+  .km-content .home{
+  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 736px;
+  width:414px;
+}
+
 }

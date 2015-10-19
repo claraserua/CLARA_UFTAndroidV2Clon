@@ -1,0 +1,25 @@
+<div data-role="view" data-title="Opinion" data-layout="main" data-model="app.opinionView" data-show="app.opinionView.onShow" data-after-show="app.opinionView.afterShow">
+   
+    
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="right" data-icon="refresh" href="components/opinionView/view.html">&nbsp;</a>
+        </div>
+      </div>
+    
+    
+    <div data-bind="invisible:error">
+       
+        <div class="opinion">
+        <iframe width="640" height="900" src="http://redanahuac.mx/mobile/tuopinion.html" frameborder="0" allowfullscreen>
+        </iframe>
+        </div>
+        
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+</div>

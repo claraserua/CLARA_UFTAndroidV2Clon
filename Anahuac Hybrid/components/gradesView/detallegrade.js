@@ -17,9 +17,10 @@ function getDetalleGrade(crn,curso,profesor){
  
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
-      var titulo = '<div class="normal-header-title">'+curso+'</div><div class="small-header-title">'+profesor+'</div>';
-     $('#div_course_DG').html(titulo);
+    var titulo = '<div class="normal-header-title">'+curso+'</div><div class="small-header-title">'+profesor+'</div>';
+     
     $('#GRD_CALIF_COURSE').empty();
+    $('.km-loader').show();
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
@@ -27,6 +28,9 @@ function getDetalleGrade(crn,curso,profesor){
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();   
+     },
      success:function(data){
          // do stuff with json (in this case an array)
       
@@ -64,7 +68,7 @@ function getDetalleGrade(crn,curso,profesor){
              }
          
         
-        
+         $('#div_course_DG').html(titulo);
          $('#GRD_CALIF_COURSE').append(html);
      },
      error:function(){

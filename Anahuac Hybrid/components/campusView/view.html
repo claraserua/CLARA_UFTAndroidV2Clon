@@ -5,21 +5,22 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getCampus();">&nbsp;</a>
         </div>
       </div>
     
+     <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" id="div_course_periodo"></div>
+        </div>
+	</div>
+    
     
     <div class="page-view" data-bind="invisible:error">
-        <div class="page-content">
+        <div class="page-content" id="campus">
             
-                 
-                  <ul data-role="listview" id="campus">
-                  
-                  </ul>
-            
-             
       
-            </div>
+        </div>
         <!-- START_CUSTOM_CODE_aboutViewModel -->
         <!-- END_CUSTOM_CODE_aboutViewModel -->
     </div>
