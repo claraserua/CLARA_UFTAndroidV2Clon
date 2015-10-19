@@ -1,8 +1,8 @@
 'use strict';
 
 app.gradesView = kendo.observable({
-    onShow: function() { getCalificaciones(); },
-    afterShow: function() {}
+    onShow: function() {  },
+    afterShow: function() { getCalificaciones(); }
 });
 
 // START_CUSTOM_CODE_gradesViewView

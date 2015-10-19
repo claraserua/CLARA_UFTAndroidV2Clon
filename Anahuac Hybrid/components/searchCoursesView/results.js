@@ -18,7 +18,13 @@ var SC_hora ='';
 var SC_minuto ='';
 var SC_time ='';
 var SC_desc_periodo ='';
+var SC_busqueda = true;
 
+
+function Cursos_search_back(){
+    
+     app.mobileApp.navigate('components/searchCoursesView/view.html');
+}
 
 function setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo){
     
@@ -32,25 +38,37 @@ function setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,
     SC_minuto = minuto;
     SC_time = time;
     SC_desc_periodo = desc_periodo;
+    SC_busqueda = true;
     
     $('#resultados_SC').empty();
     
 }
+
+function RefreshCursosfound(){
+    SC_busqueda=true;
+    getCursosfound();
+}
+
 
 function getCursosfound(){
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
    
-    
-    
     //curso/00158012/201575/UAN/null/null/null/am/null/inte/null
     
     //curso/00158012/201560/UAN/Lu,Ma,Mi,Ju,Vi,Sa,Do/01/05/am/null/inte/ASEM,ALIN,AING,CADI,DERE,RIN2,RIN3,RIN5
     var websevicename = 'curso/'+usuario+'/'+SC_periodo+'/'+SC_campus+'/'+SC_dias+'/'+SC_hora+'/'+SC_minuto+'/'+SC_time+'/'+SC_instructor+'/'+SC_titulo+'/'+SC_atributos;
     
+    if(SC_busqueda==false)
+       return;
+    
     $('.km-loader').show();
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    $('#resultados_SC').empty();
+    $('#RC_csc').html('0');
+    $('#r387periodo').html(SC_desc_periodo);
+    $('#res-uni').html(SC_campus);
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
@@ -63,12 +81,11 @@ function getCursosfound(){
      },
      success:function(data){
          // do stuff with json (in this case an array)
-      $('#r387periodo').html(SC_desc_periodo);
-      $('#res-uni').html(SC_campus);
+      $('#RC_csc').html(data.length);
+      
+      var html='';
          
-         
-         var html='';
-         if(data.length!=0){
+      if(data.length!=0){
          $.each(data, function(index, element) {
             
             html +=

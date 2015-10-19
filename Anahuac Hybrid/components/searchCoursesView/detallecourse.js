@@ -10,6 +10,13 @@ app.detailcourseView = kendo.observable({
 var crn_DC = '';
 var periodo_DC = '';
 
+function Cursos_back(){
+    
+    SC_busqueda = false;
+    
+    app.mobileApp.navigate('components/searchCoursesView/results.html');
+}
+
 
 function getDetalleCurso(id,periodo){
      crn_DC = id;
@@ -41,7 +48,7 @@ function getDetalleCurso_DCD(){
          // do stuff with json (in this case an array)
       
          var html='';
-         var periodo='';
+         var title_course ='';
          
          var idvalperiodo = '';
          var idvalcrn = '';
@@ -60,8 +67,7 @@ function getDetalleCurso_DCD(){
              if(element.vsEsFavo =='N'){favorito='N';}else{favorito='S';}
              
              
-              
-            periodo = '<div class="normal-header-title">'+element.vsSubj+' '+element.vsCrn+' - '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
+            title_course = '<div class="normal-header-title">'+element.vsSubj+' '+element.vsCrn+' - '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
             
             html +=
                 '<div class="card">'+
@@ -113,7 +119,8 @@ function getDetalleCurso_DCD(){
          $('#DC_PERIODO').val(idvalperiodo);
          $('#DC_CRN').val(idvalcrn);
          
-         $('#div_course_periodo').html(periodo);
+         
+         $('#title_course_DC').html(title_course);
          $('#detallecurso').html(html);
          
          if(favorito=='N'){

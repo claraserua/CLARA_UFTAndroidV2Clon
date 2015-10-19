@@ -201,8 +201,8 @@ function delete_favorit_CoursePC(crn,periodo,index){
 
 
 app.plannedCoursesView = kendo.observable({
-    onShow: function() { CoursesPlaned(); },
-    afterShow: function() {  }
+    onShow: function() {  },
+    afterShow: function() { CoursesPlaned();  }
 });
 
 // START_CUSTOM_CODE_plannedCoursesView

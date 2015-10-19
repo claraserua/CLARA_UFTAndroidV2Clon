@@ -45,8 +45,8 @@ function llenarFormaAcademicStatus()
 }
 
 app.academicStatusView = kendo.observable({
-    onShow: function() { llenarFormaAcademicStatus(); },
-    afterShow: function() { }
+    onShow: function() {  },
+    afterShow: function() { llenarFormaAcademicStatus(); }
 });
 
 // START_CUSTOM_CODE_academicStatus

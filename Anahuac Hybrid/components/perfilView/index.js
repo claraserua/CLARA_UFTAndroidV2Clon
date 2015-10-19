@@ -1,8 +1,8 @@
 'use strict';
 
 app.perfilView = kendo.observable({
-    onShow: function() { getPerfil(); },
-    afterShow: function() {  }
+    onShow: function() {  },
+    afterShow: function() { getPerfil(); }
 });
 
 // START_CUSTOM_CODE_perfilView
