@@ -5,7 +5,7 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
              <a data-role="backbutton" data-align="left">Atras</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="llenarFormaMovimientos();">&nbsp;</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="SPMovimientosFuct_Refresh();">&nbsp;</a>
         </div>
 	</div>
     
@@ -19,21 +19,9 @@
     
     
 	   <div class="page-view" data-bind="invisible:error">
-         <div class="page-box">
+         <div class="page-box" id="id_movimientos">
                   
-             <div class="card">
-             <div class="card-content">
-                   
-                 <div class="card-content-inner">
-                     
-                     <table id="id_movimientos" width="100%">
-                         
-                     </table>
-                     
-                 </div>
-                 
-                 </div>
-            </div>
+             
            
            
          </div>

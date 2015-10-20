@@ -2,16 +2,27 @@
 
 app.gradesView = kendo.observable({
     onShow: function() {  },
-    afterShow: function() { getCalificaciones(); }
+    afterShow: function() { getCalificacionesP(); }
 });
 
 // START_CUSTOM_CODE_gradesViewView
+var CPGrades_Refresh = true;
 
-function getCalificaciones(){
+function Refresh_CalifParc(){
+      CPGrades_Refresh = true;
+      getCalificacionesP();
+  }
+
+
+
+function getCalificacionesP(){
    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'parcial/'+usuario;
+    
+    if(CPGrades_Refresh==false)
+        return;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
@@ -28,6 +39,7 @@ function getCalificaciones(){
      },
      success:function(data){
          // do stuff with json (in this case an array)
+      CPGrades_Refresh=false;
       var titleCourse = '';
       var profesor = '';
       $.each(data, function(index, element) {
@@ -36,7 +48,7 @@ function getCalificaciones(){
           profesor = element.nameFacu;
           //$('#nivel1').html(element.crseTitl);
           //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
-         var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="getDetalleGrade(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\')">'+element.crseTitl+'</a></li>';
+         var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="setDetalleGrade_gd(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\',\''+element.stcrGrde+'\',\''+element.stcrMidd+'\')">'+element.crseTitl+'</a></li>';
           
           $( "#califparciales" ).append( link );
           

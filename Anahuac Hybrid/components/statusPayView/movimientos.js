@@ -1,11 +1,28 @@
 'use strict';
 
+app.movimientosView = kendo.observable({
+    onShow: function() {  },
+    afterShow: function() { llenarFormaMovimientos(); }
+});
+
+
 var SPM_array_json=null;
 var SPM_current_index=0;
 var SPM_array_period=[];
 
+
+var SPMovimientos_Refresh = true;
+
+function SPMovimientosFuct_Refresh(){
+      SPMovimientos_Refresh = true;
+      llenarFormaMovimientos();
+  }
+
+
 function llenarFormaMovimientos()
 {
+    if(SPMovimientos_Refresh==false)
+        return;
   
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -22,6 +39,7 @@ function llenarFormaMovimientos()
         },
 		success:function(data)
 		{
+            SPMovimientos_Refresh = false;
             SPM_array_json = data;
             SPM_array_period = [];
             
@@ -47,22 +65,30 @@ function llenarFormaMovimientos()
 
 function SPM_updateMovimientos()
 {
-    var SPM_html='<tr><td class="item-title">Descripción</td><td class="item-title">Tipo</td><td class="item-title" width="30%">Monto</td></tr>';
+    var SPM_html =
+             '<div class="card">'+
+             '<div class="card-content">'+
+                 '<div class="card-content-inner">'+
+                     '<table  width="100%">';
+    
+    
+    SPM_html +='<tr><td class="item-title" width="40%">Descripción</td><td class="item-title" width="30%" style="text-align:center;">Tipo</td><td class="item-title" width="30%" style="text-align:right;">Monto</td></tr>';
     var termDesc = SPM_array_period[SPM_current_index];
     $.each(SPM_array_json, function(index, element)
     {
         if(element.termDesc == termDesc)
         {
             SPM_html +=
-                '<tr>'+
+                '<tr style="border-bottom: 1px solid #ccc;">'+
                     '<td>'+element.detlDesc+'</td>'+
-                    '<td>'+element.detlType+'</td>'+
-                    '<td>$'+element.detlAmon+'</td>'+
+                    '<td style="text-align:center;">'+element.detlType+'</td>'+
+                    '<td style="text-align:right;">$'+element.detlAmon.trim()+'</td>'+
                 '</tr>';
-            
-          
         }
     });
+    
+     SPM_html += '</table></div></div></div>';
+    
     //console.log('>>html.length='+SPM_html.length);
     $('#id_movimientos').html(SPM_html);
     $('#term_periodo_vc').html(termDesc);
@@ -113,10 +139,7 @@ function SPM_showNext(){
     } 
 }
 
-app.movimientosView = kendo.observable({
-    onShow: function() {  },
-    afterShow: function() { llenarFormaMovimientos(); }
-});
+
 
 // START_CUSTOM_CODE_academicStatus
 // END_CUSTOM_CODE_academicStatus

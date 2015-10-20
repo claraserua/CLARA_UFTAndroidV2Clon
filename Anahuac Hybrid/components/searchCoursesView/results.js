@@ -78,6 +78,7 @@ function getCursosfound(){
      contentType: "application/json; charset=utf-8",
      complete:function(data){
          $('.km-loader').hide(); 
+         //$("body").scrollTop(0);
      },
      success:function(data){
          // do stuff with json (in this case an array)

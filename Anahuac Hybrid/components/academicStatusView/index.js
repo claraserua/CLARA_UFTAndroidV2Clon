@@ -1,10 +1,28 @@
 'use strict';
 
+app.academicStatusView = kendo.observable({
+    onShow: function() {  },
+    afterShow: function() { llenarFormaAcademicStatus(); }
+});
+
+
+var SAcademica_Refresh = true;
+
+function Refresh_SAcademica(){
+      SAcademica_Refresh = true;
+      llenarFormaAcademicStatus();
+  }
+
+
 function llenarFormaAcademicStatus()
 {
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	var websevicename = 'situacion/'+usuario;
+    
+    if(SAcademica_Refresh==false)
+        return;
+    
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
@@ -17,7 +35,7 @@ function llenarFormaAcademicStatus()
         },
 		success:function(data)
 		{
-             
+            SAcademica_Refresh=false;
 			// do stuff with json (in this case an array)
 			$.each(data, function(index, element) {
 				$('#periodo_id').html(element.headSitu);
@@ -44,10 +62,7 @@ function llenarFormaAcademicStatus()
 	});
 }
 
-app.academicStatusView = kendo.observable({
-    onShow: function() {  },
-    afterShow: function() { llenarFormaAcademicStatus(); }
-});
+
 
 // START_CUSTOM_CODE_academicStatus
 // END_CUSTOM_CODE_academicStatus

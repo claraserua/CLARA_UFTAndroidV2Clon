@@ -6,6 +6,13 @@ app.campusView = kendo.observable({
 });
 
 // START_CUSTOM_CODE_perfilView
+var PSCampus_Refresh = true;
+
+function Refresh_campus(){
+      PSCampus_Refresh = true;
+      getCampus();
+  }
+
 
 
 function getCampus(){
@@ -13,6 +20,9 @@ function getCampus(){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'campuz/'+usuario;
+    
+    if(PSCampus_Refresh==false)
+        return;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
@@ -27,7 +37,7 @@ function getCampus(){
      },
      success:function(data){
          // do stuff with json (in this case an array)
-       
+         PSCampus_Refresh = false;
          var html='<ul class="km-widget km-listview km-list" >';
          $.each(data, function(index, element) {
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCampus(\''+element.campCode+'\',\''+element.campDesc+'\')">'+element.campDesc+'</a></li>';

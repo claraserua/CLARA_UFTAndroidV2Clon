@@ -6,13 +6,21 @@ app.periodsView = kendo.observable({
 });
 
 // START_CUSTOM_CODE_perfilView
+var PSC_Refresh = true;
 
+function Refresh_periodos(){
+      PSC_Refresh = true;
+      getPeriodos();
+  }
 
 function getPeriodos(){
    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'termoa/'+usuario;
+    
+    if(PSC_Refresh==false)
+        return;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
@@ -23,11 +31,11 @@ function getPeriodos(){
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
      complete:function(data){
-         $('.km-loader').hide();  
+         $('.km-loader').hide();
      },
      success:function(data){
          // do stuff with json (in this case an array)
-         
+         PSC_Refresh = false;
          var html='<ul class="km-widget km-listview km-list">';
          $.each(data, function(index, element) {
          // alert(element.crseCrnn);

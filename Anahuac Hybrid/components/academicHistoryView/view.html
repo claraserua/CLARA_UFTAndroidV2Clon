@@ -5,14 +5,14 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="llenarFormaHistoria();">&nbsp;</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_HAcademic();">&nbsp;</a>
         </div>
 	</div>
     
     
     <div data-role="header">
         <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" id="div_term_periodo"></div>
+          <div class="km-view-title" style="font-weight: normal !important;" id="div_term_periodoHA"></div>
             <a data-role="button" id="AH_prev_arrow" class="km-widget km-button km-back" onclick="AH_showPrevius()" data-align="left">&nbsp;</a>
             <a data-role="button" id="AH_next_arrow" data-align="right" onclick="AH_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
         </div>
@@ -20,15 +20,7 @@
     
     
 	   <div class="page-view" data-bind="invisible:error">
-         <div>
-            
-            <div class="card">
-                <div class="card-header">Promedio del periodo:<span id="prom_periodo_id"></span></div>           
-            </div>
-             
-            <div class="card">
-                <div class="card-header">Promedio global:<span id="prom_global_id"></span></div>           
-            </div>
+          <div class="page-content">
            
             <div id="div_content_idHA">
 

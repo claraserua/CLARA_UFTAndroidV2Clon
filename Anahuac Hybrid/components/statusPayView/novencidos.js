@@ -1,7 +1,23 @@
 'use strict';
+app.novencidosView = kendo.observable({
+    onShow: function() {  },
+    afterShow: function() { llenarFormaNoVencidos(); }
+});
+
+
+
+var SPNOVencidos_Refresh = true;
+
+function SPNOVencidosFuct_Refresh(){
+      SPNOVencidos_Refresh = true;
+      llenarFormaNoVencidos();
+  }
+
 
 function llenarFormaNoVencidos()
 {
+       if(SPNOVencidos_Refresh==false)
+        return;
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -18,25 +34,37 @@ function llenarFormaNoVencidos()
         },
 		success:function(data)
 		{
-              var html ='<tr><td class="item-title">Descripción</td><td class="item-title">Vencimiento</td><td class="item-title">Total</td></tr>';
+            SPNOVencidos_Refresh = false;
+               var html =
+                        '<div class="card">'+
+                         '<div class="card-content">'+
+                          '<div class="card-content-inner">'+
+                            '<table  width="100%">';
+            
+                   html +='<tr><td class="item-title" width="40%">Descripción</td><td class="item-title" width="30%" style="text-align:center;">Vencimiento</td><td class="item-title" width="30%" style="text-align:right;">Total</td></tr>';
              
             
 			// do stuff with json (in this case an array)
 			$.each(data, function(index, element) {
 				
                         html +=
-                          '<tr>'+
+                          '<tr style="border-bottom: 1px solid #ccc;">'+
                              '<td>'+element.detlDesc+'</td>'+
-                             '<td>'+element.detlFevn+'</td>'+
-                             '<td>$'+element.detlAmnt+'</td>'+
+                             '<td style="text-align:center;">'+element.detlFevn+'</td>'+
+                             '<td style="text-align:right;">$'+element.detlAmnt.trim()+'</td>'+
                          '</tr>'+
                          '';
-                
 			});
+            
+               html +=
+                      '</table>'+
+                       '</div>'+
+                        '</div>'+
+                       '</div>';
             
            
             
-            $('#id_novencidos').html(html);
+            $('#id_novencidosSP').html(html);
             
             
 		},
@@ -53,10 +81,7 @@ function llenarFormaNoVencidos()
 	});
 }
 
-app.novencidosView = kendo.observable({
-    onShow: function() {  },
-    afterShow: function() { llenarFormaNoVencidos(); }
-});
+
 
 // START_CUSTOM_CODE_academicStatus
 // END_CUSTOM_CODE_academicStatus

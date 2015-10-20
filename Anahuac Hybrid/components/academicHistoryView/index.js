@@ -1,18 +1,40 @@
 'use strict';
 
+app.academicHistoryView = kendo.observable({
+    onShow: function() {  },
+    afterShow: function() { llenarFormaHistoria(); }
+});
+
+
+var VHA_Refresh = true;
+
+
+function Refresh_HAcademic(){
+      VHA_Refresh = true;
+      llenarFormaHistoria();
+  }
+
+
+
 // Ejemplo: http://redanahuac.mx/mobile/webservice/curl.php?websevicename=promedio/00131632&username=00131632&password=chacha
 var AH_promedio=null;
 var AH_historia=null;
 var AH_current_element=null;
 var AH_current_index=0;
 
+var AH_HTML_Promedios = '';
+
 function llenarFormaHistoria()
 {
-	var usuario =  window.localStorage.getItem("usuario");
+	 if(VHA_Refresh==false)
+        return;
+    
+    var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	
     var websevicename_promedio = 'promedio/'+usuario;
 	$('.km-loader').show();
+    
     $.ajax({
 		data: {websevicename: websevicename_promedio, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
@@ -20,19 +42,11 @@ function llenarFormaHistoria()
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
         complete:function(data){
-         $('.km-loader').hide(); 
+         
         },
 		success:function(data)
 		{
             AH_promedio = data;
-            
-            /*
-			$.each(data, function(index, element)
-			{
-				$('#prom_periodo_id').html(element.tgpaGpaa);
-				$('#prom_global_id').html(element.promGlob);
-			});
-            */
             getDetalleHistory();
 		},
 		error:function(){
@@ -51,7 +65,7 @@ function getDetalleHistory(){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename_detalle = 'historia/'+usuario;
-    $('.km-loader').show();
+    
     $.ajax({
 		data: {websevicename: websevicename_detalle, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
@@ -63,6 +77,7 @@ function getDetalleHistory(){
         },
 		success:function(data)
 		{
+            VHA_Refresh=false;
             AH_historia = data;
             if(0<AH_promedio.length)
             {
@@ -82,8 +97,9 @@ function updateDetalleHistory()
 {
     var html='';
     var periodo = '';
-	$('#prom_periodo_id').html('<span class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span>');
-	$('#prom_global_id').html('<span class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span>');
+    
+	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
+	html +='<div class="card_light"><div class="card-header">Promedio global:<span class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
     
 	$.each(AH_historia, function(index, element)
 	{
@@ -91,7 +107,7 @@ function updateDetalleHistory()
         {
             periodo = element.termDesc;
             html +=
-             '<div class="card">'+
+             '<div class="card_light">'+
              '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
              '<div class="card-content">'+
              '<div class="card-content-inner"><span>Instructor: </span>'+element.nameFacu+'</div>'+
@@ -101,8 +117,9 @@ function updateDetalleHistory()
              '';
         }
 	});
+    $('.km-loader').hide();
     $('#div_content_idHA').html(html);
-    $('#div_term_periodo').html(periodo);
+    $('#div_term_periodoHA').html(periodo);
     
     if(AH_promedio.length==1){
         $('#AH_prev_arrow').hide();
@@ -142,10 +159,7 @@ function AH_showNext(){
 }
 
 
-app.academicHistoryView = kendo.observable({
-    onShow: function() { llenarFormaHistoria(); },
-    afterShow: function() {  }
-});
+
 
 // START_CUSTOM_CODE_academicHistoryView
 // END_CUSTOM_CODE_academicHistoryView

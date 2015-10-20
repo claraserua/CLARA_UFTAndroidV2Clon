@@ -5,7 +5,7 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="llenarFormaVencidos();">&nbsp;</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="SPVencidosFuct_Refresh();">&nbsp;</a>
         </div>
 	</div>
     
@@ -19,39 +19,11 @@
     
     
 	   <div class="page-view" data-bind="invisible:error">
-         <div class="page-box">
+         <div class="page-box" id="id_vencidosSP">
          
              
              
-             <div class="card">
-             <div class="card-content">
-                   
-                 <div class="card-content-inner">
-                     
-                     <table id="id_vencidos" width="100%">
-                         
-                     </table>
-                     
-                 </div>
-                 </div>
-            </div>
-             
-              <div class="card">
-             <div class="card-content">
-                  <div class="card-header">Tramites y Derechos de Incorp.</div>  
-                 <div class="card-content-inner">
-                     
-                    <div>Monto: $<span id="trm_id_monto"></span></div>
-                     <div>Recargos: $<span id="trm_id_recagro"></span></div>
-                     <div>Saldo: $<span id="trm_id_saldo"></span></div>
-                     <div>Fecha Vencimiento:<span id="trm_id_fvencimiento"></span></div>
-                     
-                 </div>
-                 </div>
-            </div>
-           
-           
-           
+            
          </div>
        </div>
 

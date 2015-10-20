@@ -6,13 +6,21 @@ app.perfilView = kendo.observable({
 });
 
 // START_CUSTOM_CODE_perfilView
+var BPerfil_Refresh = true;
 
+function Refresh_perfil(){
+      BPerfil_Refresh = true;
+      getPerfil();
+  }
 
 function getPerfil(){
      
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'perfil/'+usuario;
+    
+    if(BPerfil_Refresh==false)
+        return;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
@@ -29,7 +37,7 @@ function getPerfil(){
      },
      success:function(data){
          
-         
+         BPerfil_Refresh = false;
          // do stuff with json (in this case an array)
      
       $.each(data, function(index, element) {

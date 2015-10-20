@@ -6,6 +6,15 @@ app.inscriptionView = kendo.observable({
 });
 
 
+var PSCitaIns_Refresh = true;
+
+function Refresh_CitaIns(){
+      PSCitaIns_Refresh = true;
+      getInscripcion();
+  }
+
+
+
 // START_CUSTOM_CODE_aboutView
 function getInscripcion(){
    
@@ -13,8 +22,10 @@ function getInscripcion(){
     var password = window.localStorage.getItem("password");
     var websevicename = 'cita/'+usuario;
     
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    if(PSCitaIns_Refresh==false)
+        return;
     
+    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $('.km-loader').show();
     
@@ -29,7 +40,7 @@ function getInscripcion(){
         }, 
      success:function(data){
          // do stuff with json (in this case an array)
-       
+        PSCitaIns_Refresh = false;
        var html='';
        if(data.length>0)
          {
@@ -60,13 +71,8 @@ function getInscripcion(){
              
             
          }else{
-              html +=
-               '<div class="card">'+
-                '<div class="card-content">'+
-                    '<div class="card-content-inner"><span class="item-orange-bold">NO HAY FECHAS DISPONIBLES PARA INSCRIPCIÓN.</span></div>'+
-                '</div>'+
-            '</div>';
-             
+              html ='<div class="card-content-inner">NO HAY FECHAS DISPONIBLES PARA INSCRIPCIÓN.</div>';
+                             
          }
          $('#div_inscripcion_id').html(html);
      },

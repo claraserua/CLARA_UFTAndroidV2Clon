@@ -1,13 +1,25 @@
 'use strict';
 
 app.statusPayView = kendo.observable({
-    onShow: function() { getEstadoCuenta(); },
-    afterShow: function() {}
+    onShow: function() { },
+    afterShow: function() { getEstadoCuenta(); }
 });
 
 // START_CUSTOM_CODE_statusPayView
+
+var SPCuenta_Refresh = true;
+
+function SPCuenta_Refresh(){
+      SPCuenta_Refresh = true;
+      getEstadoCuenta();
+  }
+
+
 function getEstadoCuenta(){
    
+    if(SPCuenta_Refresh==false)
+        return;
+    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'estado/'+usuario;
@@ -24,13 +36,14 @@ function getEstadoCuenta(){
          $('.km-loader').hide(); 
      },
      success:function(data){
+         
+      SPCuenta_Refresh=false;
          // do stuff with json (in this case an array)
       $.each(data, function(index, element) {
          
-          $('#vencidos').html("$"+element.adeudoSiVenc);
-          $('#novencidos').html("$"+element.adeudoNoVenc);
-          $('#paplicar').html("$"+element.saldoACuenta);
-          $('#stotal').html("$"+element.totalCargo);
+          $('#vencidos').html("$"+element.adeudoSiVenc.trim());
+          $('#novencidos').html("$"+element.adeudoNoVenc.trim());
+          $('#stotal').html("$"+element.saldoACuenta.trim());
           
            
          

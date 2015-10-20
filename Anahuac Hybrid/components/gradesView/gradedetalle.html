@@ -5,6 +5,7 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="getDetalleGrade_gd();">&nbsp;</a>
         </div>
       </div>
     
@@ -17,31 +18,10 @@
 	</div>
     
     
-    <div class="page-view" data-bind="invisible:error">
+    <div class="page-view" data-bind="invisible:error" id="GRD_CALIF_COURSE">
         
         
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content-inner">
-                <table id="GRD_CALIF_COURSE" width="100%">
-                    
-                    
-                </table>
-                     </div>
-            </div>
-        </div>
-        
-        
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content-inner">
-            <div>*P/A - POR ASIGNAR</div>
-            <div>*P (PARCIAL) Y F (FINAL)</div>
-                </div>
-         </div>
-         </div>
-        <!-- START_CUSTOM_CODE_aboutViewModel -->
-        <!-- END_CUSTOM_CODE_aboutViewModel -->
+       
     </div>
     <!-- START_CUSTOM_CODE_aboutView -->
     <!-- END_CUSTOM_CODE_aboutView -->
