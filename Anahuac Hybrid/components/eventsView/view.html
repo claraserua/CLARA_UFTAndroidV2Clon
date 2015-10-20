@@ -5,14 +5,13 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="initEvents();">&nbsp;</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_Events();">&nbsp;</a>
         </div>
 	</div>
     
-     
-	
-	<div style="margin:5pt;">
-		<div class="sty_content" id="div_events_id">
+            
+      <div class="page-view" data-bind="invisible:error">
+         <div class="page-box" id="div_events_id">
             Lista de eventos
         </div>
         

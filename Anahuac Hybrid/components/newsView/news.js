@@ -10,13 +10,24 @@ app.newsView = kendo.observable({
 
 
 app.newsdetailView = kendo.observable({
-    onShow: function() { },
-    afterShow: function() {setDetailNews();}
+    onShow: function() { setDetailNews(); },
+    afterShow: function() {}
 });
+
+
+var News_Refresh = true;
+
+function Refresh_News(){
+      News_Refresh = true;
+      getNoticias();
+  }
 
 
 // START_CUSTOM_CODE_newsView
 function getNoticias(){
+    
+     if(News_Refresh==false)
+        return;
    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -37,6 +48,7 @@ function getNoticias(){
      },
      success:function(data){
          // do stuff with json (in this case an array)
+      News_Refresh=false;
      var html = '';
      var categoria = true;
      var categoriaitem = '';
@@ -86,7 +98,7 @@ function getNoticias(){
           
         });}else{
            html =
-                 '<div class="card-2">'+
+                 '<div class="card">'+
                  '<div class="card-header">NO TIENE NOTICIAS</div>'+
                  '</div>'+
                  '';

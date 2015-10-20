@@ -4,21 +4,23 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="getRetenciones();">&nbsp;</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_VRetention();">&nbsp;</a>
         </div>
       </div>
     
     
-  <div class="page-view" data-bind="invisible:error">
-         <div class="page-box">
-        
-        <div id="retenciones" style="margin-top:10px;">
-                        
+     <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;"></div>
         </div>
-
-       
-        <!-- START_CUSTOM_CODE_retentionsModel -->
-        <!-- END_CUSTOM_CODE_retentionsModel -->
+	</div>
+    
+    
+    
+  <div class="page-view" data-bind="invisible:error">
+         <div class="page-content" id="retenciones">
+        
+        
     </div>
          </div>
     <!-- START_CUSTOM_CODE_retentionsView -->

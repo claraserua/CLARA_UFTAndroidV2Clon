@@ -683,6 +683,43 @@ a {
 }
 
 
+/*  scheduleTable  */
+.sty_line_1{
+	color: #333;
+	background-color: #CCC;
+	border-width: 0pt;
+	border-style: solid;
+	border-color: #AAA;
+	border-left-width: 1pt;
+	border-right-width: 1pt;
+}
+.sty_line_2{
+	color: #333;
+	background-color: #DDD;
+	border-width: 0pt;
+	border-style: solid;
+	border-color: #AAA;
+	border-left-width: 1pt;
+	border-right-width: 1pt;
+}
+.sty_table{
+	border-width: 0pt;
+	border-style: solid;
+	border-color: #AAA;
+	border-top-width: 1pt;
+	border-bottom-width: 1pt;
+    width:100%;
+}
+.sty_cell{
+	color: #333;
+	background-color: #EEE;
+	border-width: 1pt;
+	border-style: solid;
+	border-color: #AAA;
+	font-size: 10pt;
+	text-align: center;
+}
+
 
 /*END LIST VIEW DESCRIPTION*/
 

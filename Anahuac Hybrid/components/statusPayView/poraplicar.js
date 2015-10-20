@@ -2,8 +2,7 @@
 
 function llenarFormaporAplicar()
 {
-   
-    
+
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	var websevicename = 'estadopa/'+usuario;

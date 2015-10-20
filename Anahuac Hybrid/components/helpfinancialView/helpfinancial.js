@@ -9,9 +9,22 @@ app.helpfinancialView = kendo.observable({
     afterShow: function() {}
 });
 
+
+// START_CUSTOM_CODE_perfilView
+var HFinancial_Refresh = true;
+
+function Refresh_HFinancial(){
+      HFinancial_Refresh = true;
+      getApoyoFinanciero();
+  }
+
+
 // START_CUSTOM_CODE_aboutView
 function getApoyoFinanciero(){
    
+    if(HFinancial_Refresh==false)
+        return;
+    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'apoyo/'+usuario;
@@ -33,8 +46,8 @@ function getApoyoFinanciero(){
      },
      success:function(data){
          // do stuff with json (in this case an array)
-     
-         var html = '';
+       HFinancial_Refresh=false;  
+       var html = '';
          var credito = '';
          var beca = '';
          
@@ -43,13 +56,20 @@ function getApoyoFinanciero(){
              if(element.desBeca=='nulo'){beca='NINGUNA';}else{beca=element.desBeca; }
              if(element.desCredito=='nulo'){credito='NINGUNO';}else{credito=element.desCredito; }
              array_periodos_HF[index] = element.periodo;
-              html =
-                 '<div class="card" id="HF_div_'+index+'">'+
-                 '<div class="card-content">'+
-                 '<div class="card-content-inner"><div><strong>BECA:</strong> '+beca+'</div><div><strong>CREDITO: </strong>'+credito+'</div></div>'+
-                 '</div>'+
-                 '</div>'+
-                 '';
+             
+             html =
+             '<div id="HF_div_'+index+'">'+
+             '<div class="card_light" id="HF_div_'+index+'">'+
+             '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after">'+beca+'</span></div>'+
+             '</div>'+
+              
+             '<div class="card_light">'+
+             '<div class="card-header"><span class="item-title">Crédito:</span><span class="item-after">'+credito+'</span></div>'+
+             '</div>'+
+             '</div>'+
+             '';
+             
+             
               $( "#apoyof" ).append( html );
         });
         

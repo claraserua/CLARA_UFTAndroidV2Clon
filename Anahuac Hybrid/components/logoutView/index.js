@@ -8,6 +8,25 @@ app.logoutView = kendo.observable({
 // START_CUSTOM_CODE_aboutView
 
 function LogoutApp(){
+     
+ 
+    
+     VHA_Refresh = true;
+     SAcademica_Refresh = true;
+     Events_Refresh = true;
+     CPGrades_Refresh = true;
+     HFinancial_Refresh = true;
+     PSCitaIns_Refresh = true;
+     News_Refresh = true;
+     BPerfil_Refresh = true;
+     VRetention_Refresh = true;
+     SPCuenta_Refresh = true;
+     SPMovimientos_Refresh = true;
+     SPNOVencidos_Refresh = true;
+     SPVencidos_Refresh = true;
+     RCEducativo_Refresh = true;
+     variabProgramName = true;
+    
      window.localStorage.setItem("access","FALSE");
      app.mobileApp.navigate('components/authenticationView/view.html');
 }

@@ -29,6 +29,7 @@ function CoursesPlaned()
             $('#load-content').remove();
             if(data.length != 0)
             {
+                ST_initialice();
                 PC_array_period=[];
     			$.each(data, function(index, element)
     			{
@@ -40,8 +41,11 @@ function CoursesPlaned()
                      '</div>'+
                      '<input type="hidden" id="PC_hidden_'+index+'" value="'+element.plTerD.trim()+'"> </div>'+
                      '';
-                   PC_addPeriod(element.plTerD);
+                    PC_addPeriod(element.plTerD);
+                    ST_addCourse(element.plHCre,element.plTitu);
     			});
+                
+                ST_buildTable(schedule);
             }
             else
             {

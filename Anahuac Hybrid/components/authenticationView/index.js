@@ -57,10 +57,14 @@ function IniciarSesion(){
      contentType: "application/json; charset=utf-8",
      success:function(data){
          // do stuff with json (in this case an array)
-         
+        
+        
         window.localStorage.setItem("usuario",usuario);
         window.localStorage.setItem("password",password);
         window.localStorage.setItem("access","TRUE"); 
+         
+         //vibrate();
+         
         setTimeout(function() {
                     app.mobileApp.navigate('components/' + redirect + '/view.html');
                     $('.km-loader').hide();
@@ -77,6 +81,19 @@ function IniciarSesion(){
 
     
 }
+
+
+
+
+
+function vibrate(){
+        navigator.notification.vibrate(10000);
+    }
+
+function playBeep(){
+        navigator.notification.beep(1);
+    }
+
 
 function cleanLogin(){
     $('.km-loader').hide();

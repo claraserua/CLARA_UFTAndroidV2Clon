@@ -34,11 +34,11 @@ function buildStudentCredit()
             RCEducativo_Refresh = false;
             
             if(1<=data.length)
-            {
-                $('#CANT_id').html('$'+data[0].capitalActual+'&nbsp;&nbsp;');
-                $('#IANT_id').html('$'+data[0].interesActual+'&nbsp;&nbsp;');
-                $('#CNVO_id').html('$'+data[0].capitalAnterior+'&nbsp;&nbsp;');
-                $('#INVO_id').html('$'+data[0].interesAnterior+'&nbsp;&nbsp;');
+            { 
+                $('#CANT_id').html('$'+data[0].capitalAnterior+'&nbsp;&nbsp;');
+                $('#IANT_id').html('$'+data[0].interesAnterior+'&nbsp;&nbsp;');
+                $('#CNVO_id').html('$'+data[0].capitalActual+'&nbsp;&nbsp;');
+                $('#INVO_id').html('$'+data[0].interesActual+'&nbsp;&nbsp;');
             }
 		},
 		error:function(){ alert("Error"); }
@@ -133,19 +133,33 @@ function buildTable(programName, div_id)
                 case 'INVO': INVO=false; break;
             }
 
+            var html =
+             '<div class="card">'+
+             '<div class="card-content">'+
+                 '<div class="card-content-inner">';
+                     
             
+            html +='<table style="width: 100%;">';
+            html+='<tr>  <td class="item-title" width="40%" style="text-align:center;">Fecha</td><td class="item-title" width="30%" style="text-align:center;">Tipo</td><td class="item-title" width="30%" style="text-align:right;">Monto</td>  </tr>';
             
-            var html='<table style="width: 100%;">';
-            html+='<tr>  <td class="item-title">Tipo</td><td class="item-title">Monto</td><td class="item-title">Fecha</td>  </tr>';
+            if(data.length!=0){
             $.each(data, function(index1, capital){
                 html+=
-                    '<tr>'+
-                    '	<td>'+capital.detTipoAdeudo+'</td>'+
-                    '	<td>$'+capital.detMonto+'</td>'+
-                    '	<td>'+capital.detFecTran+'</td>'+
-                	  '</tr>';
+                    '<tr style="border-bottom: 1px solid #ccc;">'+
+                    '	<td style="text-align:center;">'+capital.detFecTran+'</td>'+
+                    '	<td style="text-align:center;">'+capital.detTipoAdeudo+'</td>'+
+                    '	<td style="text-align:right;">$'+capital.detMonto.trim()+'</td>'+
+                	'</tr>';
             });
-            html+='</table>';
+            html+='</table></div></div></div>';
+                }else{
+                 
+               html =
+             '<div class="card">'+
+             '<div class="card-content">'+
+                 '<div class="card-content-inner">NO EXSTEN DATOS </div></div></div>';
+                    
+                }
             $('#'+div_id).html(html);
 		},
 		error:function(){ alert("Error"); }

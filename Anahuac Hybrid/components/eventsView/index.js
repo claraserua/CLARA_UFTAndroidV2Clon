@@ -1,5 +1,23 @@
 'use strict';
 
+app.eventsView = kendo.observable({
+    onShow: function() {  },
+    afterShow: function() { initEvents();  }
+});
+
+app.eventDetailView = kendo.observable({
+    onShow: function() { initEventDetail(); },
+    afterShow: function() {  }
+});
+
+
+var Events_Refresh = true;
+
+function Refresh_Events(){
+      Events_Refresh = true;
+      initEvents();
+  }
+
 function translateDay(day_english){
 	day_english = day_english.trim().toLowerCase();
 	switch(day_english){
@@ -14,10 +32,15 @@ function translateDay(day_english){
 	return day_english;
 }
 function initEvents()
-{
-	var usuario = '00146190';
-	var password = '191919';
-	var websevicename = 'evento/' + usuario;
+{  
+	
+     if(Events_Refresh==false)
+        return;
+    
+    var usuario =  window.localStorage.getItem("usuario");
+    var password = window.localStorage.getItem("password");
+	
+    var websevicename = 'evento/' + usuario;
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
@@ -30,6 +53,7 @@ function initEvents()
         },
 		success:function(data)
 		{
+            Events_Refresh=false;
 			eventsView_arrayEvents = data;
 			var html='';
             if(data.length!=0){
@@ -53,7 +77,7 @@ function initEvents()
 				    '</div>';
 			});}else{
            html =
-                 '<div class="card-2">'+
+                 '<div class="card">'+
                  '<div class="card-header">NO TIENE EVENTOS</div>'+
                  '</div>'+
                  '';
@@ -89,15 +113,7 @@ function clickHandler_4(id_option) {
     app.mobileApp.navigate('components/eventsView/eventDetail.html');
 }
 
-app.eventsView = kendo.observable({
-    onShow: function() { initEvents(); },
-    afterShow: function() {  }
-});
 
-app.eventDetailView = kendo.observable({
-    onShow: function() { initEventDetail(); },
-    afterShow: function() {  }
-});
 
 // START_CUSTOM_CODE_academicHistoryView
 // END_CUSTOM_CODE_academicHistoryView
