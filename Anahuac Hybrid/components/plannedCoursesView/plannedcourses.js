@@ -34,9 +34,10 @@ function CoursesPlaned()
                 PC_array_period=[];
     			$.each(data, function(index, element)
     			{
+                    
                     html +=
                      '<div class="card" id="PC_div_'+index+'">'+
-                     '<div class="card-header"><span>'+element.plSubj +' '+element.plCRN+' '+element.plTitu+'</span><a onclick="delete_favorit_CoursePC(\''+element.plCRN+'\',\''+element.plTerm+'\','+index+');"><span class="km-icon km-trash"></span></a></div>'+
+                     '<div class="card-header"><span>'+element.plCRN+' '+element.plSubj+element.plCrse+' '+element.plTitu+'</span><a onclick="delete_favorit_CoursePC(\''+element.plCRN+'\',\''+element.plTerm+'\','+index+');"><span class="km-icon km-trash" style="float:right;"></span></a></div>'+
                      '<div class="card-content">'+
                      '<div class="card-content-inner"><div><span class="item-orange-bold">Instructor:</span><span class="item-after"> '+element.plNomD+'</span></div><div><span class="item-orange-bold">Horario:</span><span class="item-after"> '+element.plHCre+'</span></div></div>'+
                      '</div>'+
@@ -180,8 +181,7 @@ function delete_favorit_CoursePC(crn,periodo,index){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 
-    var websevicename = 'favoritos/'+usuario+'/'+periodo+'/'+crn+'/DE';
-    
+    var websevicename = 'favoritos/'+usuario+'/'+periodo+'/'+crn+'/DE';    
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $.ajax({
@@ -192,13 +192,10 @@ function delete_favorit_CoursePC(crn,periodo,index){
      contentType: "application/json; charset=utf-8",
      success:function(data){
          // do stuff with json (in this case an array)
-         
-         $('#PC_div_'+index).hide();
-         //showNotification('El curso se elimino de sus cursos Planeados','Curso Eliminado')
-         
+         $('#PC_div_'+index).remove();
+         //showNotification('El curso se elimino de sus cursos Planeados','Curso Eliminado')  
      },
-     error:function(){
-         
+     error:function(){         
        showNotification('Ocurrio un error!','Opps!')
      }      
      });

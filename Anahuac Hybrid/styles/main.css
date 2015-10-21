@@ -4,8 +4,6 @@ z-index:1000;
 }
 
 
-
-
     .km-calendar:after,
     .km-calendar:before
     {
@@ -231,7 +229,7 @@ label {
 
 
 body{
-     background-image: url("../resources/bg/fondo_1_iphone.png");
+     /*background-image: url("../resources/bg/fondo_1_iphone.png");*/
 }
 
 

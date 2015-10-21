@@ -13,7 +13,8 @@
                 transition: 'slide',
                 // the application needs to know which view to load first
                 initial: 'components/authenticationView/view.html',
-                statusBarStyle: 'black-translucent'
+                statusBarStyle: 'black-translucent',
+                useNativeScrolling: false
                              
             });
         });
