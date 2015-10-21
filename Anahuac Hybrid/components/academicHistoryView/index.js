@@ -28,6 +28,7 @@ function llenarFormaHistoria()
 {
 	 if(VHA_Refresh==false)
         return;
+     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -65,6 +66,9 @@ function getDetalleHistory(){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename_detalle = 'historia/'+usuario;
+    
+     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     
     $.ajax({
 		data: {websevicename: websevicename_detalle, username:usuario, password:password},

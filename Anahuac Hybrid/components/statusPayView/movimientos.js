@@ -65,6 +65,7 @@ function llenarFormaMovimientos()
 
 function SPM_updateMovimientos()
 {
+    
     var SPM_html =
              '<div class="card">'+
              '<div class="card-content">'+
@@ -92,6 +93,8 @@ function SPM_updateMovimientos()
     //console.log('>>html.length='+SPM_html.length);
     $('#id_movimientos').html(SPM_html);
     $('#term_periodo_vc').html(termDesc);
+    
+    initscrollTop();
     
     if(SPM_array_period.length==1){
         $('#SPM_prev_arrow').hide();

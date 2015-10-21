@@ -96,7 +96,7 @@ function PC_addPeriod(str_period){
 }
 function PC_updateCourses()
 {     
-    //initscrollTop();
+    initscrollTop();
     
      $('#div_term_CPperiodo').html(PC_array_period[PC_current_index]);
     var str_period = PC_array_period[PC_current_index];

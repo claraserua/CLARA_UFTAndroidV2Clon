@@ -10,11 +10,12 @@ app.authenticationView = kendo.observable({
 
 function IniciarSesion(){
    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     var usuario = $('#usuario').val();
     var password = $('#password').val();
     window.localStorage.setItem("access","FALSE");
     var redirect = 'homeView';
-    
     
        if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
         // PORTRAIT:
@@ -48,6 +49,7 @@ function IniciarSesion(){
    
     var websevicename = 'security/getUserInfo';
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},

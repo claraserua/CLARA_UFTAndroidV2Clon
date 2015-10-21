@@ -23,6 +23,8 @@ function llenarFormaAcademicStatus()
     if(SAcademica_Refresh==false)
         return;
     
+     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
