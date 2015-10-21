@@ -60,11 +60,11 @@ function getApoyoFinanciero(){
              html =
              '<div id="HF_div_'+index+'">'+
              '<div class="card_light" id="HF_div_'+index+'">'+
-             '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after">'+beca+'</span></div>'+
+             '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after-right">'+beca+'</span></div>'+
              '</div>'+
               
              '<div class="card_light">'+
-             '<div class="card-header"><span class="item-title">Crédito:</span><span class="item-after">'+credito+'</span></div>'+
+             '<div class="card-header"><span class="item-title">Crédito:</span><span class="item-after-right">'+credito+'</span></div>'+
              '</div>'+
              '</div>'+
              '';

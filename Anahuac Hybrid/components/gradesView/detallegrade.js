@@ -119,10 +119,10 @@ function getDetalleGrade_gd(){
                    '<div class="card">'+
                      '<div class="card-header">'+
                        '<div class="card-content-inner" >'+
-                        '<div style="float:right;" >'+
-                       '<div><span class="item-title">Promedio Parcial:</span>'+GD_PromParcial+'</div>'+
-                       '<div><span class="item-title">Promedio Final:</span>'+GD_PromFinal+'</div>'+
-                       '</div>'+  
+                        '<table width="100%">'+
+                       '<tr><td align="right"><span class="item-title">Promedio Parcial:</span>'+GD_PromParcial+'</td></tr>'+
+                       '<tr><td align="right"><span class="item-title">Promedio Final:</span>'+GD_PromFinal+'</td></tr>'+
+                       '</table>'+  
                      '</div>'+
                     '</div>'+
                    '</div>';

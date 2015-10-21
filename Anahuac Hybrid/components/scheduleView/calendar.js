@@ -10,13 +10,16 @@ app.calendarView = kendo.observable({
            language: 'es',
            todayHighlight: true,
            orientation: "bottom left",
-                     }); 
+       }); 
         
        $('.datepicker-days').on('click', 'td.day', function (e) {
-        e.preventDefault();
-       alert($('#date-daily').val());
-        return false;
-    });
+           alert('cambio');
+           var dato = e.getDate();
+           alert('>>'+dato);
+           e.preventDefault();
+       
+           return false;
+       });
     
     
     }

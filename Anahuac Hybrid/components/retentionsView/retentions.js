@@ -48,7 +48,7 @@ function getRetenciones(){
           html +=
                  '<div class="card-light">'+
                  '<div class="card-header">'+element.holdDesc+'</div>'+
-                 '<div class="card-footer"><span>Inicio:'+element.fInicio+'</span><span>Fin:'+element.fFin+'</span></div>'+
+                 '<div class="card-footer"><span>Inicio:'+element.fInicio+'</span><span style="float:right;">Fin:'+element.fFin+'</span></div>'+
                  '</div>'+
                  '';
           
