@@ -59,6 +59,7 @@ function buildScheduleOptions()
     
     var lastName = '';
     $('.km-loader').show();
+    showScheduleView();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
@@ -70,6 +71,8 @@ function buildScheduleOptions()
         },
 		success:function(data)
 		{
+            var count_sch=0;
+            ST_initialice();
             
             var html = '';		
 			var counter=0;
@@ -77,12 +80,9 @@ function buildScheduleOptions()
     
 			$.each(data.dates, function(index1, date)
 			{
-             
 				if(date.courses.length==0)
-                  
 					return;
 				var fecha = new Date(date.date);
-				
                 
                 html +=
 					'<div class="card-2">'+
@@ -114,14 +114,19 @@ function buildScheduleOptions()
                         '<div class="item-after">Lugar: '+course.location+'</div>'+
                         '</div></div>'+
 						'</li>';
-						counter++;
-						//console.log('counter='+counter);
+					counter++;
+					
+                    ST_addCourse2(date.date, course.startTime, course.endTime, course.title);
 				});
 				html += '</ul>';
 				html += '</div>';
-           
+           		
+
             });
-            
+            /**/
+            if(counter!=0)
+                ST_buildTable(schedule);
+            //*/
             if(counter==0){
                  html =
                  '<div class="card">'+
@@ -281,10 +286,28 @@ function clickHandler_2(redirect) {
     
 }
 
+
+var divScheduleTable=true;
+function toogleScheduleView(){
+    divScheduleTable = ! divScheduleTable;
+    showScheduleView();
+}
+function showScheduleView()
+{
+    if(divScheduleTable){
+        $('#div_horario').hide();
+        $('#tbody_sched_id').show();
+    }
+    else{
+        $('#div_horario').show();
+        $('#tbody_sched_id').hide();
+    }
+}
+
 app.scheduleView = kendo.observable({
     onShow: function() { buildScheduleOptions(); },
     afterShow: function() { 
-       
+       /*
        $('#dp3').datepicker({
            "setDate": new Date(),
            autoclose: true,
@@ -298,6 +321,7 @@ app.scheduleView = kendo.observable({
        
            buildScheduleOptionsCalendar($('#date-daily').val());
     });
+        //*/
     }
 });
 

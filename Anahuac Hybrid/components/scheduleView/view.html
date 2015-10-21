@@ -4,17 +4,7 @@
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            
-           
-            <div data-role="button" data-align="left">
-            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="yyyy-mm-dd">
-				<input class="span2" id="date-daily" size="16" type="hidden" value="12-02-2012" readonly>
-				<span class="add-on"><i class="km-icon km-organize"></i></span>
-			  </div>
-            </div>
-            
-            <a data-role="button" data-align="right" href="components/homeView/view.html" data-icon="home">Home</a>
-            
+            <a data-role="backbutton" data-align="left">Atras</a>
         </div>
 	</div>
     <!-- ____________________________________________________________________________________________ -->
@@ -23,17 +13,22 @@
 	 <div class="page-view" data-bind="invisible:error">
          <div class="page-box">
 	
-		<div  id="div_horario">
-        </div>
+    		<div id="div_horario">
+            </div>
+			<table id="table_schedule_id" border="0" cellspacing="0" cellpadding="2" class="sty_table"style="width:100%">
+				<tbody id="tbody_sched_id"></tbody>
+			</table>
     
          </div>
     </div>
     
     
     <!-- ____________________________________________________________________________________________ -->
-   <footer data-role="footer">
+    <footer data-role="footer">
+		<a href="view.html"></a>
             <div data-role="tabstrip" id="navigation-container">
-                <a  data-role="button" data-icon="add">MOSTRAR MAS</a>
+                <a data-icon="home" onclick="">Calendar</a>
+                <a data-icon="home" onclick="toogleScheduleView();">Calendar</a>
             </div>
         </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->
