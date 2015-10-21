@@ -22,6 +22,8 @@ function getPeriodos(){
     if(PSC_Refresh==false)
         return;
     
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
     $.ajax({

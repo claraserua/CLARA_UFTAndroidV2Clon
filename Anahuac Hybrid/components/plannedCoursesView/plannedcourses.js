@@ -12,6 +12,9 @@ function CoursesPlaned()
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	var websevicename = 'planeados/'+usuario;
+    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
 	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},

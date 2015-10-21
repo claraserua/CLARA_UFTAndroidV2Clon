@@ -41,7 +41,7 @@ function setDetalleGrade_gd(crn,curso,profesor,PromFinal,PromParcial){
 function getDetalleGrade_gd(){
     
     
-     $('#GRD_CALIF_COURSE').empty();
+    $('#GRD_CALIF_COURSE').empty();
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
    
@@ -53,6 +53,7 @@ function getDetalleGrade_gd(){
      
     $('#div_course_DG').html(titulo);
     
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
     $('.km-loader').show();
     

@@ -32,7 +32,9 @@ function getDetalleCurso_DCD(){
     var password = window.localStorage.getItem("password");
    
     var websevicename = 'cursodt/'+usuario+'/'+periodo_DC+'/'+crn_DC;
- 
+    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
      $('.km-loader').show();
     $.ajax({

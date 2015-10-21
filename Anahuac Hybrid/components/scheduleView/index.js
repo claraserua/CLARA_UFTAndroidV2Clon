@@ -56,6 +56,10 @@ function buildScheduleOptions()
 	var websevicename = 'schedule/'+usuario+'/'+today+'/'+to;
     
     var lastName = '';
+    
+    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     $('.km-loader').show();
     showScheduleView();
 	$.ajax({

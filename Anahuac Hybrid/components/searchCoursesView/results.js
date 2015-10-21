@@ -67,6 +67,9 @@ function getCursosfound(){
     if(SC_busqueda==false)
        return;
     
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
+    
     $('.km-loader').show();
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('#resultados_SC').empty();

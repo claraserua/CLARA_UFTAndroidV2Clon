@@ -28,6 +28,8 @@ function getNoticias(){
     
      if(News_Refresh==false)
         return;
+    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");

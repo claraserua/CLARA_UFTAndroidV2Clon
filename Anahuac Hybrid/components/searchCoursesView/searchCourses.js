@@ -50,6 +50,8 @@ function ValidFoundCourses() {
     if(dias==""){ dias="null";}
     
      
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo,carrera);
     app.mobileApp.navigate('components/searchCoursesView/results.html');
 }

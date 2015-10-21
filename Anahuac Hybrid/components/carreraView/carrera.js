@@ -27,6 +27,9 @@ function getCarreras(){
     
     if(SCCarrera_Refresh==false)
         return;
+    
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     $('#carreras').empty();
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();

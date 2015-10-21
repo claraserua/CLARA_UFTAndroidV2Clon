@@ -14,6 +14,8 @@ function getAtributos(){
     var password = window.localStorage.getItem("password");
     var websevicename = 'atributo/'+usuario;
     
+    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
     $.ajax({
