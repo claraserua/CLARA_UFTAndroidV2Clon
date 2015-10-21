@@ -41,7 +41,7 @@ function ValidFoundCourses() {
     
     if(periodo==""){showNotification('El campo es necesario', 'Periodo'); return;}
     if(campus==""){showNotification('El campo es necesario', 'Campus'); return;}
-    if(carrera==""){showNotification('El campo es necesario', 'Carrera'); return;}
+    /*if(carrera==""){showNotification('El campo es necesario', 'Carrera'); return;}*/
     
     
     if(titulo==""){ titulo="null";}

@@ -65,7 +65,7 @@ function getCampus(){
 function setCampus(campuscode,name){
     SCCarrera_Refresh = true;
     $('#val_carrera').val('');
-    $('#desc_carrera').html('*Carrera');
+    $('#desc_carrera').html('Materia');
     $('#desc_campus').html(name);
     $('#val_campus').val(campuscode);
     app.mobileApp.navigate('components/searchCoursesView/view.html');

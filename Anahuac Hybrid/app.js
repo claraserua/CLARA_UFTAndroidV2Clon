@@ -115,9 +115,7 @@ function checkConnection ()
       states[Connection.NONE] = 'No network connection';
  
      
-      alert(states[networkState]);
-      
-      if (states[networkState] == 'No network connection') {
+      if (states[networkState] == 'No network connection' || states[networkState] == 'Cell generic connection') {
           return false;
       }else{
           return true; 
