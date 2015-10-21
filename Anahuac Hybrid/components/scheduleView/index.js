@@ -1,6 +1,4 @@
 'use strict';
-
-
 function showDetail(idOption)
 {
 	$('#div_detalle_'+idOption).toggle();
@@ -72,7 +70,7 @@ function buildScheduleOptions()
 		success:function(data)
 		{
             var count_sch=0;
-            ST_initialice();
+            SV_initialice();
             
             var html = '';		
 			var counter=0;
@@ -116,17 +114,17 @@ function buildScheduleOptions()
 						'</li>';
 					counter++;
 					
-                    ST_addCourse2(date.date, course.startTime, course.endTime, course.title);
+                    SV_addCourse(date.date, course.startTime, course.endTime, course.title);
 				});
 				html += '</ul>';
 				html += '</div>';
            		
 
             });
-            /**/
+            
             if(counter!=0)
-                ST_buildTable(schedule);
-            //*/
+                SV_buildTable();
+            
             if(counter==0){
                  html =
                  '<div class="card">'+
@@ -288,7 +286,7 @@ function clickHandler_2(redirect) {
 
 
 var divScheduleTable=true;
-function toogleScheduleView(){
+function toggleScheduleView(){
     divScheduleTable = ! divScheduleTable;
     showScheduleView();
 }

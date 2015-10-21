@@ -1,10 +1,12 @@
 'use strict';
 
 function ValidFoundCourses() {
+    
     var titulo = $('#titulo').val();
     var instructor = $('#instructor').val();
     var periodo = $('#val_periodo').val();
     var campus = $('#val_campus').val();
+    var carrera = $('#val_carrera').val();
     var atributos = $('#val_atributos').val();
     var dias = $('#val_dias').val();
     var hora = $('#horas').val();
@@ -39,6 +41,8 @@ function ValidFoundCourses() {
     
     if(periodo==""){showNotification('El campo es necesario', 'Periodo'); return;}
     if(campus==""){showNotification('El campo es necesario', 'Campus'); return;}
+    if(carrera==""){showNotification('El campo es necesario', 'Carrera'); return;}
+    
     
     if(titulo==""){ titulo="null";}
     if(instructor==""){ instructor="null";}
@@ -46,8 +50,29 @@ function ValidFoundCourses() {
     if(dias==""){ dias="null";}
     
      
-    setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo);
+    setCursosfound_SC(titulo,instructor,periodo,campus,atributos,dias,hora,minuto,time,desc_periodo,carrera);
     app.mobileApp.navigate('components/searchCoursesView/results.html');
+}
+
+
+function ValidaGetCarrera(){
+    
+    var periodo = $('#val_periodo').val();
+    var campus = $('#val_campus').val();
+    
+    if(periodo == ""){
+        showNotification('Seleccione un periodo','Campo necesario');
+        return;
+        }
+    
+    if(campus == ""){
+         showNotification('Seleccione un campus','Campo necesario');
+        return;
+        }
+    
+    
+    app.mobileApp.navigate('components/carreraView/view.html');
+    
 }
 
 app.searchCoursesView = kendo.observable({

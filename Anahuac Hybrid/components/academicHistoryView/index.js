@@ -98,8 +98,8 @@ function updateDetalleHistory()
     var html='';
     var periodo = '';
     
-	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
-	html +='<div class="card_light"><div class="card-header">Promedio global:<span class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
+	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
+	html +='<div class="card_light"><div class="card-header">Promedio global:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
     
 	$.each(AH_historia, function(index, element)
 	{
@@ -108,7 +108,7 @@ function updateDetalleHistory()
             periodo = element.termDesc;
             html +=
              '<div class="card_light">'+
-             '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
+             '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span style="float:right;" class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
              '<div class="card-content">'+
              '<div class="card-content-inner"><span>Instructor: </span>'+element.nameFacu+'</div>'+
              '<div class="card-footer"><span>Créditos: '+element.credHour+'</span></div>'+

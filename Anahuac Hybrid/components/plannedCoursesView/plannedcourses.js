@@ -29,6 +29,7 @@ function CoursesPlaned()
             $('#load-content').remove();
             if(data.length != 0)
             {
+                $('#table_overlap_id').hide();
                 ST_initialice();
                 PC_array_period=[];
     			$.each(data, function(index, element)
@@ -45,7 +46,7 @@ function CoursesPlaned()
                     ST_addCourse(element.plHCre,element.plTitu);
     			});
                 
-                ST_buildTable(schedule);
+                ST_buildTable();
             }
             else
             {

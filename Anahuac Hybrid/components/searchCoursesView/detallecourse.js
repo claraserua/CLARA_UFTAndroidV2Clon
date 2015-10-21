@@ -67,7 +67,7 @@ function getDetalleCurso_DCD(){
              if(element.vsEsFavo =='N'){favorito='N';}else{favorito='S';}
              
              
-            title_course = '<div class="normal-header-title">'+element.vsSubj+' '+element.vsCrn+' - '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
+            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
             
             html +=
                 '<div class="card">'+

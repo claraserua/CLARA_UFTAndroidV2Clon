@@ -3,6 +3,15 @@ background-color:#666666 !important;
 z-index:1000;
 }
 
+
+
+
+    .km-calendar:after,
+    .km-calendar:before
+    {
+        content: "\e109";
+    }
+
 .km-ios7.km-pane>.km-loader, .km-ios7 .km-pane>.km-loader{
     z-index:1;
 }
@@ -296,6 +305,14 @@ body{
     font-size: 15px;
     font-weight: normal;
     color: #8e8e93;
+   
+}
+
+.item-after-right{
+    font-size: 15px;
+    font-weight: normal;
+    color: #8e8e93;
+    float: right;
 }
 
 .menu {

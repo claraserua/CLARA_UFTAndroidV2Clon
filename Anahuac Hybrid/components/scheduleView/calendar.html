@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Horario" data-layout="main-nonav" data-model="app.scheduleView" data-show="app.scheduleView.onShow" data-after-show="app.scheduleView.afterShow">
+<div data-role="view" data-title="Calendario" data-layout="main-nonav"  data-show="app.calendarView.onShow" data-after-show="app.calendarView.afterShow">
     <!-- START_CUSTOM_CODE_academicStatusView -->
 
 	<div data-role="header">
@@ -12,13 +12,9 @@
     
      
 	 <div class="page-view" data-bind="invisible:error">
-         <div class="page-box">
+         <div class="page-content">
 	
-    		<div id="div_horario">
-            </div>
-			<table id="table_schedule_id" border="0" cellspacing="0" cellpadding="2" class="sty_table"style="width:100%">
-				<tbody id="tbody_sched_id"></tbody>
-			</table>
+    		<div id="dp3" data-date-format="dd-mm-yyyy"></div>
     
          </div>
     </div>
@@ -26,12 +22,13 @@
     
     <!-- ____________________________________________________________________________________________ -->
     <footer data-role="footer">
+		
             <div data-role="tabstrip" id="navigation-container">
      
-                <a data-role="button" data-icon="organize" onclick="toggleScheduleView()" onclick="">Cambiar Vista</a>
-                <a  data-icon="calendar" href="components/scheduleView/calendar.html">Calendario</a>
+                <a data-icon="organize"  href="components/scheduleView/view.html">Cambiar Vista</a>
+                <a data-role="button" data-icon="calendar">Calendario</a>
                 
             </div>
-    </footer>
+        </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

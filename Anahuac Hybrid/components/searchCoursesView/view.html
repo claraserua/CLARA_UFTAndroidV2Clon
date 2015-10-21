@@ -22,7 +22,15 @@
              
                 <!--<div class="content-block-title">Indique Titulo o Instructor</div>-->
                 
-            
+            <div class="card">
+                <ul data-role="listview">
+             <li> 
+                 <input type="hidden" id="val_campus" value="" />
+                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('campusView')"><span id="desc_campus">*Campus</span></a>
+                 
+             </li>
+                </ul>
+                </div>
                 
                 <div class="card">
                 <ul data-role="listview">
@@ -35,15 +43,20 @@
                 </ul>
                 </div>
                 
+                
+                
                 <div class="card">
                 <ul data-role="listview">
              <li> 
-                 <input type="hidden" id="val_campus" value="" />
-                 <a class="km-listview-link" data-role="listview-link" onClick="clickHandler('campusView')"><span id="desc_campus">*Campus</span></a>
+                 
+                 <input type="hidden" name="val_carrera" id="val_carrera" value="">
+                 <a class="km-listview-link" data-role="listview-link" onclick="ValidaGetCarrera();"><span id="desc_carrera">*Carrera</span></a>
                  
              </li>
                 </ul>
                 </div>
+                
+                
                 
                 
                 <div class="card">

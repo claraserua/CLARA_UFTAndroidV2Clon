@@ -64,7 +64,9 @@ function getPeriodos(){
 }
 
 function setPeriodo(termperiodo,name){
-    
+    SCCarrera_Refresh = true;
+    $('#val_carrera').val('');
+    $('#desc_carrera').html('*Carrera');
     $('#desc_periodo').html(name);
     $('#val_periodo').val(termperiodo);
     app.mobileApp.navigate('components/searchCoursesView/view.html');
