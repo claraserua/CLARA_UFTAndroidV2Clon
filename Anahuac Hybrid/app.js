@@ -115,6 +115,8 @@ function checkConnection ()
       states[Connection.NONE] = 'No network connection';
  
      
+      alert(states[networkState]);
+      
       if (states[networkState] == 'No network connection') {
           return false;
       }else{
