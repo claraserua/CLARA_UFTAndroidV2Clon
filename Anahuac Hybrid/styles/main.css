@@ -3,6 +3,11 @@ background-color:#666666 !important;
 z-index:1000;
 }
 
+a:hover   
+{   
+ text-decoration:none !important;   
+}
+
 
     .km-calendar:after,
     .km-calendar:before

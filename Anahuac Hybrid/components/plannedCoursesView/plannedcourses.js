@@ -30,7 +30,7 @@ function CoursesPlaned()
             if(data.length != 0)
             {
                 $('#table_overlap_id').hide();
-                ST_initialice();
+                //ST_initialice();
                 PC_array_period=[];
     			$.each(data, function(index, element)
     			{
@@ -44,10 +44,10 @@ function CoursesPlaned()
                      '<input type="hidden" id="PC_hidden_'+index+'" value="'+element.plTerD.trim()+'"> </div>'+
                      '';
                     PC_addPeriod(element.plTerD);
-                    ST_addCourse(element.plHCre,element.plTitu);
+                    //ST_addCourse(element.plHCre,element.plTitu);
     			});
                 
-                ST_buildTable();
+                //ST_buildTable();
             }
             else
             {
@@ -96,6 +96,8 @@ function PC_addPeriod(str_period){
 }
 function PC_updateCourses()
 {     
+    //initscrollTop();
+    
      $('#div_term_CPperiodo').html(PC_array_period[PC_current_index]);
     var str_period = PC_array_period[PC_current_index];
     for(var i=0; i<PC_max_courses; i++)

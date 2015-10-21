@@ -91,6 +91,12 @@ function showErrorLogin(){
     
 }
 
+function initscrollTop(){
+    
+    $('.km-content:visible').data('kendoMobileScroller').reset();
+     
+}
+
 
 
 // END_CUSTOM_CODE_kendoUiMobileApp

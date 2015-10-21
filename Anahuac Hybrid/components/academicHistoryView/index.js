@@ -94,7 +94,8 @@ function getDetalleHistory(){
     
 }
 function updateDetalleHistory()
-{
+{    
+    initscrollTop();
     var html='';
     var periodo = '';
     
