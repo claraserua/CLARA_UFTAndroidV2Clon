@@ -12,11 +12,11 @@ app.calendarView = kendo.observable({
            orientation: "bottom left",
                      }); 
         
-          $('#date-daily').change(function () {
-       
-              alert('prueba');
-          // buildScheduleOptionsCalendar($('#date-daily').val());
-         });
+       $('.datepicker-days').on('click', 'td.day', function (e) {
+        e.preventDefault();
+       alert($('#date-daily').val());
+        return false;
+    });
     
     
     }

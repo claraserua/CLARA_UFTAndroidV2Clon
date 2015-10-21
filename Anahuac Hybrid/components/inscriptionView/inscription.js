@@ -49,19 +49,19 @@ function getInscripcion(){
              {
                  html +=
                 '<div class="card_light">'+
-                '<div class="card-header"><span class="item-title">Campus:</span><span class="item-after">'+element.campDes+'</span></div>'+        
+                '<div class="card-header"><span class="item-title">Campus:</span><span class="item-after-right">'+element.campDes+'</span></div>'+        
                 '</div>'+
                  '<div class="card_light">'+
-                '<div class="card-header"><span class="item-title">A partir de:</span><span class="item-after">'+element.fechIni+'</span></div>'+        
+                '<div class="card-header"><span class="item-title">A partir de:</span><span class="item-after-right">'+element.fechIni+'</span></div>'+        
                 '</div>'+
                  '<div class="card_light">'+
-                '<div class="card-header"><span class="item-title">Hora inicio:</span><span class="item-after">'+element.horaIni+'</span></div>'+        
+                '<div class="card-header"><span class="item-title">Hora inicio:</span><span class="item-after-right">'+element.horaIni+'</span></div>'+        
                 '</div>'+
                  '<div class="card_light">'+
-                '<div class="card-header"><span class="item-title">Hasta:</span><span class="item-after">'+element.fechFin+'</span></div>'+        
+                '<div class="card-header"><span class="item-title">Hasta:</span><span class="item-after-right">'+element.fechFin+'</span></div>'+        
                 '</div>'+
                  '<div class="card_light">'+
-                '<div class="card-header"><span class="item-title">Hora final:</span><span class="item-after">'+element.horaFin+'</span></div>'+        
+                '<div class="card-header"><span class="item-title">Hora final:</span><span class="item-after-right">'+element.horaFin+'</span></div>'+        
                 '</div>';
                  
                  $('#ci_periodo01').html(element.termDes);
