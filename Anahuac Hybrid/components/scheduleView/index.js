@@ -51,54 +51,27 @@ function Refresh_Shedule(){
     
     gateDayActual();
 }
-
-
-function H_showPrevius(){
-    
+/*
+function H_showPrevius()
+{
     var today = new Date(H_date_Actual);
     today.setDate(today.getDate() - 5);
     var to = new Date(H_date_Actual);
+    
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy;
+    var descmes =  month[mm] +' '+yyyy+' '+dd;
     $('#desc_H_Fecha').html(descmes);
     
     
-    if(dd<10) {
-    dd='0'+dd;
-    } 
-
-    if(mm<10) {
-    mm='0'+mm;
-    }
-    
-    var ddto = to.getDate();
-    var mmto = to.getMonth()+1; //January is 0!
-    var yyyyto = to.getFullYear();
-
-    if(ddto<10) {
-    ddto='0'+ddto;
-    } 
-
-    if(mmto<10) {
-    mmto='0'+mmto;
-    }
-    
-    
-    
-    
-    today = yyyy+'-'+mm+'-'+dd;
-    to = yyyyto+'-'+mmto+'-'+ddto;
-    
-    H_today = today;
-    H_to = to;
+    H_today = format_YYYY_MM_DD(today);
+    H_to = format_YYYY_MM_DD(to);
     
     H_date_Actual = H_today;
+    numeracionXSemana(today,H_today);
     buildScheduleOptions();
-    
-    
 }
 
 
@@ -111,128 +84,99 @@ function H_showNext(){
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy;
+    var descmes =  month[mm] +' '+yyyy+' '+dd;
     $('#desc_H_Fecha').html(descmes);
     
-    if(dd<10) {
-    dd='0'+dd;
-    } 
-
-    if(mm<10) {
-    mm='0'+mm;
-    }
     
-    var ddto = to.getDate();
-    var mmto = to.getMonth()+1; //January is 0!
-    var yyyyto = to.getFullYear();
-
-    if(ddto<10) {
-    ddto='0'+ddto;
-    } 
-
-    if(mmto<10) {
-    mmto='0'+mmto;
-    }
-    
-    today = yyyy+'-'+mm+'-'+dd;
-    to = yyyyto+'-'+mmto+'-'+ddto;
-    
-    H_today = today;
-    H_to = to;
+    H_today = format_YYYY_MM_DD(today);
+    H_to = format_YYYY_MM_DD(to);
     
     H_date_Actual = H_today;
+    numeracionXSemana(today,H_today);
     buildScheduleOptions();
     
+}
+/**/
+//*/
+function H_showPrevius(){
+    var customDay = new Date(H_date_Actual);
+    customDay.setDate(customDay.getDate() - 6);
+    getdayCalendar(customDay);
+}
+function H_showNext(){
+    
+    var customDay = new Date(H_date_Actual);
+    customDay.setDate(customDay.getDate() + 8);
+    //console.log('H_showNext() / H_date_Actual='+H_date_Actual+',  customDay='+format_YYYY_MM_DD(customDay));
+    getdayCalendar(customDay);
 }
 
 function gateDayActual(){
+    var today = new Date();               // dia actual.
+    var monday = getMonday(today);        // lunes de la semana actual
+    var friday = getFriday(today);        // viernes de la semana actual
     
-    var today = new Date();
-    var to = new Date();
-    to.setDate(today.getDate() + 5);
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth(); //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy;
+    var descmes =  month[mm] +' '+yyyy+' '+dd;
     $('#desc_H_Fecha').html(descmes);
+   
     
-    if(dd<10) {
-    dd='0'+dd;
-    } 
+    H_today = format_YYYY_MM_DD(monday);
+    H_to = format_YYYY_MM_DD(friday);
+    H_date_Actual = format_YYYY_MM_DD(today);
 
-    if(mm<10) {
-    mm='0'+mm;
-    }
-    
-    var ddto = to.getDate();
-    var mmto = to.getMonth()+1; //January is 0!
-    var yyyyto = to.getFullYear();
-
-    if(ddto<10) {
-    ddto='0'+ddto;
-    } 
-
-    if(mmto<10) {
-    mmto='0'+mmto;
-    }
-    
-    today = yyyy+'-'+mm+'-'+dd;
-    to = yyyyto+'-'+mmto+'-'+ddto;
-    
-    H_today = today;
-    H_to = to;
-    
-    H_date_Actual = H_today;
+    numeracionXSemana(monday,H_today);
     buildScheduleOptions();
-    
 }
 
 
 
-function getdayCalendar(today){
+function getdayCalendar(customDay){
+    var today = new Date(customDay);      // dia actual.
+    var monday = getMonday(today);        // lunes de la semana actual
+    var friday = getFriday(today);        // viernes de la semana actual
     
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+
+    var descmes =  month[mm] +' '+yyyy+' '+dd;
+    $('#desc_H_Fecha').html(descmes);
+   
+    
+    H_today = format_YYYY_MM_DD(monday);
+    H_to = format_YYYY_MM_DD(friday);
+    H_date_Actual = format_YYYY_MM_DD(today);
+
+    numeracionXSemana(monday,H_today);
+    buildScheduleOptions();
+}/*
+function getdayCalendar(today)
+{
     var today = new Date(today);
+    
     var to = new Date();
     to.setDate(today.getDate() + 5);
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy;
+    var descmes =  month[mm] +' '+yyyy+' '+dd;
     $('#desc_H_Fecha').html(descmes);
     
-    if(dd<10) {
-    dd='0'+dd;
-    } 
+    
+    H_today = format_YYYY_MM_DD(today);
+    H_to = format_YYYY_MM_DD(to);
 
-    if(mm<10) {
-    mm='0'+mm;
-    }
-    
-    var ddto = to.getDate();
-    var mmto = to.getMonth()+1; //January is 0!
-    var yyyyto = to.getFullYear();
-
-    if(ddto<10) {
-    ddto='0'+ddto;
-    } 
-
-    if(mmto<10) {
-    mmto='0'+mmto;
-    }
-    
-    today = yyyy+'-'+mm+'-'+dd;
-    to = yyyyto+'-'+mmto+'-'+ddto;
-    
-    H_today = today;
-    H_to = to;
-    
     H_date_Actual = H_today;
+    numeracionXSemana(today,H_today);
     buildScheduleOptions();
     
 }
-
+//*/
 function buildScheduleOptions()
 {
     
@@ -243,7 +187,8 @@ function buildScheduleOptions()
 	var websevicename = 'schedule/'+usuario+'/'+H_today+'/'+H_to;
     var lastName = '';
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    //if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    console.log('/'+H_today+'/'+H_to+'?');
     
     $('.km-loader').show();
     showScheduleView();
@@ -258,59 +203,65 @@ function buildScheduleOptions()
         },
 		success:function(data)
 		{
-            var count_sch=0;
-            SV_initialice();
-            
             var html = '';		
 			var counter=0;
-            $('#load-content').remove();
-    
-			$.each(data.dates, function(index1, date)
-			{
-				if(date.courses.length==0)
-					return;
-				var fecha = new Date(date.date);
+            if(data==null || data.dates==null)
+            {
+                ST_numDia=['Lu','Ma','Mi','Ju','Vi'];
+                console.log('data.dates='+data.dates);
+            }
+            else
+            {
+                $('#load-content').remove();
+                SV_initialice();
                 
-                html +=
-					'<div class="card-2">'+
-                    '<div class="card-header"><span>'+diaDeLaSemana(date.date)+'</span><span class="item-after">'+date.date+'</span></div> '+
-                    '</div><div class="list-block media-list">'+
-					'<ul>';
-				$.each(date.courses, function(index2, course)
-				{
-					var html_instructors='';
-					
-					$.each(course.instructors, function(index3, instructor){
-                        
-                        if(instructor!=null && instructor.lastName!=null){
-                        lastName = instructor.lastName.replace("*"," ");
-						html_instructors += ''+instructor.firstName+' '+lastName+'<br/>';
-                          }
-					});
-					
-					html+=
-						'<li class="swipeout">'+
-                        '<div class="swipeout-content" style="padding:10px 15px !important;">'+
-                        '<div class="item-inner">'+
-                        '<div class="item-title-row">'+
-                        '<div class="item-subtitle">'+course.title+' - '+course.description+'</div>'+
-                        '<div class="item-after"></div>'+
-                        '</div>'+
-                        '<div class="item-after">Instructor: '+html_instructors+'</div>'+
-                        '<div class="item-after">Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+'</div>'+
-                        '<div class="item-after">Lugar: '+course.location+'</div>'+
-                        '</div></div>'+
-						'</li>';
-					counter++;
-					
-                    SV_addCourse(date.date, course.startTime, course.endTime, course.title);
-				});
-				html += '</ul>';
-				html += '</div>';
-           		
+    			$.each(data.dates, function(index1, date)
+    			{
+    				if(date.courses.length==0)
+    					return;
+    				var fecha = new Date(date.date);
+                    
+                    html +=
+    					'<div class="card-2">'+
+                        '<div class="card-header"><span>'+diaDeLaSemana(date.date)+'</span><span class="item-after">'+date.date+'</span></div> '+
+                        '</div><div class="list-block media-list">'+
+    					'<ul>';
+    				$.each(date.courses, function(index2, course)
+    				{
+    					var html_instructors='';
+    					
+    					$.each(course.instructors, function(index3, instructor){
+                            
+                            if(instructor!=null && instructor.lastName!=null){
+                                lastName = instructor.lastName.replace("*"," ");
+        						html_instructors += ''+instructor.firstName+' '+lastName+'<br/>';
+                            }
+    					});
+    					
+    					html+=
+    						'<li class="swipeout">'+
+                            '<div class="swipeout-content" style="padding:10px 15px !important;">'+
+                            '<div class="item-inner">'+
+                            '<div class="item-title-row">'+
+                            '<div class="item-subtitle">'+course.title+' - '+course.description+'</div>'+
+                            '<div class="item-after"></div>'+
+                            '</div>'+
+                            '<div class="item-after">Instructor: '+html_instructors+'</div>'+
+                            '<div class="item-after">Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+'</div>'+
+                            '<div class="item-after">Lugar: '+course.location+'</div>'+
+                            '</div></div>'+
+    						'</li>';
+    					counter++;
+    					
+                        SV_addCourse(date.date, course.startTime, course.endTime, course.title);
+    				});
+    				html += '</ul>';
+    				html += '</div>';
+               		
 
-            });
-            
+                });
+            }
+                
             if(counter!=0)
                 SV_buildTable();
             
@@ -365,7 +316,7 @@ function showScheduleView()
 app.scheduleView = kendo.observable({
     onShow: function() {  },
     afterShow: function() { if(H_calendar==false){gateDayActual();} }
-    });
+});
 
         
       

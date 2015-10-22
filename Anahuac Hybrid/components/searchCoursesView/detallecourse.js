@@ -58,7 +58,7 @@ function getDetalleCurso_DCD(){
          var prerequisitos = '';
          var favorito = 'N';
          
-         if(data.length!=0){
+     
          $.each(data, function(index, element) {
             
             idvalperiodo = element.vsPeriodo;
@@ -106,16 +106,7 @@ function getDetalleCurso_DCD(){
                 '';
              
         });
-             }else{
-                  html +=
-                 '<div class="card">'+
-                 '<div class="card-content">'+
-                 '<div class="card-content-inner"><span class="item-orange-bold">NO SE ENCONTRARON CURSOS.</span></div>'+
-                 '</div>'+
-                 '</div>'+
-                 '';
-                 
-             }
+             
           
         
          $('#DC_PERIODO').val(idvalperiodo);
@@ -204,6 +195,10 @@ function delete_favorit_Course(){
          $("#SC_btn_set").attr("onClick","set_favorit_Course()");
          $( "#icon-cd" ).removeClass( "km-icon km-trash" ).addClass( "km-icon km-toprated" );
          $( "#txt-favorit" ).html('Agregar a cursos planeados');
+         
+         $("#cvs-"+crn).css("color", "");
+         $( "#if-"+crn ).removeClass( "km-icon km-toprated" );
+         
              
          //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
          
@@ -241,7 +236,9 @@ function set_favorit_Course(){
          $( "#txt-favorit" ).html('Eliminar de cursos planeados');
          
          
-         
+         $("#cvs-"+crn).css("color", "#F7881C");
+         $( "#if-"+crn ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-toprated" );
+         $("#if-"+crn).css("float", "right");
          
          
          //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')

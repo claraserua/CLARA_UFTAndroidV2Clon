@@ -150,7 +150,6 @@ function playBeep(){
 
 function cleanLogin(){
     $('.km-loader').hide();
-    $('#usuario').val('');
     $('#password').val('');
 }
 

@@ -38,9 +38,22 @@ function llenarFormaNoVencidos()
 		success:function(data)
 		{
             SPNOVencidos_Refresh = false;
-           
+            var html = '';
             SPNV_array_json = data;
             SPNV_array_period=[];
+          
+            if(data.length==0){
+                 
+               html =
+                 '<div class="card">'+
+                 '<div class="card-header">NO TIENE NO VENCIDOS</div>'+
+                 '</div>'+
+                 '';
+             $('#id_novencidosSP').html(html);
+               
+                  return;
+                }
+            
             
 			// do stuff with json (in this case an array)
 			$.each(data, function(index, element) {
@@ -93,7 +106,7 @@ function SPNV_updateNoVencidos()
 
     $('#id_novencidosSP').html(html);
     $('#term_periodo_nv').html(termDesc);
-
+     initscrollTop();
     
     // ------- Flechas de navegacion de paginado -------
     $('#SPNV_prev_arrow').show();

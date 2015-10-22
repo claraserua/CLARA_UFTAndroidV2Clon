@@ -9,7 +9,7 @@ app.statusPayView = kendo.observable({
 
 var SPCuenta_Refresh = true;
 
-function SPCuenta_Refresh(){
+function SPCuentaPay_Refresh(){
       SPCuenta_Refresh = true;
       getEstadoCuenta();
   }

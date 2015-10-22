@@ -94,7 +94,7 @@ function SPMO_updateMovimientos()
     
     $('#id_movimientosSP').html(html);
     $('#term_periodo_mov').html(termDesc);
-   
+    initscrollTop();
     // ------- Flechas de navegacion de paginado -------
     $('#SPMO_prev_arrow').show();
     $('#SPMO_next_arrow').show();

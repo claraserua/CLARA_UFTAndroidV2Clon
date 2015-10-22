@@ -98,17 +98,17 @@ function getCursosfound(){
       if(data.length!=0){
          $.each(data, function(index, element) {
              
-             if(element.vsEsFavo=="S"){ stylefavorit = 'style="color:#F7881C !important;"'; iconfavorit = '<span class="km-icon km-toprated" style="float:right;"></span>'; }else{stylefavorit = ''; iconfavorit = '';}
+             if(element.vsEsFavo=="S"){ stylefavorit = 'style="color:#F7881C !important;"'; iconfavorit = 'class="km-icon km-toprated" style="float:right;"'; }else{stylefavorit = ''; iconfavorit = '';}
             
             html +=
                 '<li class="swipeout">'+
                 '<div class="swipeout-content"><a class="item-link item-content" onclick="getDetalleCurso(\''+element.vsCrn+'\',\''+element.vsPeriodo+'\')">'+
                 '<div class="item-inner">'+
                 '<div class="item-title-row">'+
-                '<div class="item-subtitle" '+stylefavorit+'>'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div>'+
+                '<div class="item-subtitle"><span '+stylefavorit+' id="cvs-'+element.vsCrn+'">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</span></div>'+
                 '</div>'+
                 '<div class="item-after">Instructor: '+element.vsNomDocente +'</div>'+
-                '<div class="item-after">Horario: '+element.vsHorarioFormato +' '+iconfavorit+'</div>'+
+                '<div class="item-after">Horario: '+element.vsHorarioFormato +'<span id="if-'+element.vsCrn+'" '+iconfavorit+'><span></div>'+
                 '</div></a></div>'+
                 '</li>'+
                 '';
@@ -129,14 +129,9 @@ function getCursosfound(){
      },
      error:function(){
          
-    navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
+        alert('error');
      
-         ExitApp();
+       
      }      
      });
     

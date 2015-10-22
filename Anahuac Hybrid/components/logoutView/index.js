@@ -8,9 +8,7 @@ app.logoutView = kendo.observable({
 // START_CUSTOM_CODE_aboutView
 
 function LogoutApp(){
-     
  
-    
      VHA_Refresh = true;
      SAcademica_Refresh = true;
      Events_Refresh = true;
@@ -29,6 +27,9 @@ function LogoutApp(){
     
      window.localStorage.setItem("access","FALSE");
      app.mobileApp.navigate('components/authenticationView/view.html');
+    
+    $('#usuario').val('');
+    $('#password').val('');
 }
 
 

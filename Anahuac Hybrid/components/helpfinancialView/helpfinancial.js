@@ -53,14 +53,17 @@ function getApoyoFinanciero(){
          var credito = '';
          var beca = '';
          
+         
+         if(data.length!=0){
          $.each(data, function(index, element)
          {
+             
              if(element.desBeca=='nulo'){beca='NINGUNA';}else{beca=element.desBeca; }
              if(element.desCredito=='nulo'){credito='NINGUNO';}else{credito=element.desCredito; }
              array_periodos_HF[index] = element.periodo;
              
              html =
-             '<div id="HF_div_'+index+'">'+
+             '<div id="HF_div_'+index+'" style="margin-top:15px;">'+
              '<div class="card_light" id="HF_div_'+index+'">'+
              '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after-right">'+beca+'</span></div>'+
              '</div>'+
@@ -73,7 +76,20 @@ function getApoyoFinanciero(){
              
              
               $( "#apoyof" ).append( html );
-        });
+        });}else{
+             
+              html =
+                 '<div class="card">'+
+                 '<div class="card-header">NO CUENTAS CON APOYO FINANCIERO</div>'+
+                 '</div>'+
+                 '';
+            
+                 $('#term_periodo_hf').html('');
+                 $('#HF_prev_arrow').hide();
+                 $('#HF_next_arrow').hide();
+              
+             $( "#apoyof" ).append( html );
+        }
         
          HF_max_elements= data.length;
         HF_current_index = data.length-1;

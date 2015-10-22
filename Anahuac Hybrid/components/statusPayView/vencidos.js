@@ -41,11 +41,24 @@ function llenarFormaVencidos()
 		success:function(data)
 		{
             SPVencidos_Refresh=false;
-            
+            var html = '';
             SPV_vencido_json = data;
             SPV_array_period=[];
             
 			// do stuff with json (in this case an array)
+            if(data.length==0){
+                 
+               html =
+                 '<div class="card">'+
+                 '<div class="card-header">NO TIENE VENCIDOS</div>'+
+                 '</div>'+
+                 '';
+                
+            
+            $('#id_vencidosSP').html(html);
+               
+                  return;}
+            
 			$.each(data, function(index, element)
             {
                 if(element.detlCode=="TRAM"){ SPV_indexTRAM = index; }
@@ -54,18 +67,13 @@ function llenarFormaVencidos()
 			});
             
             SPV_current_index = SPV_array_period.length-1;
-            
             SPV_updateVencidos();
+            
+            
 		},
 		error:function()
         {
-            navigator.notification.alert(
-                'Opps!',  // message
-                alertDismissed,         // callback
-                'Inicie Sesion!',            // title
-                'Aceptar'                  // buttonName
-            );
-            ExitApp();
+           
 		}
 	});
 }
@@ -124,7 +132,7 @@ function SPV_updateVencidos()
     
     $('#id_vencidosSP').html(html);
     $('#term_periodo_ve').html(termDesc);    
-    
+    initscrollTop();
     
     // ------- Flechas de navegacion de paginado -------
     $('#SPV_prev_arrow').show();
