@@ -4,7 +4,7 @@ app.calendarView = kendo.observable({
     onShow: function() {  },
     afterShow: function() { 
     
-        
+       var curDate = new Date();
        $('#dp3').datepicker({
            "setDate": new Date(),
            language: 'es',
@@ -12,25 +12,22 @@ app.calendarView = kendo.observable({
            orientation: "bottom left",
        }).on('changeDate', function(e){
            
-           //var date = new Date();
-           var date = $("#dp3").datepicker("getDate");
+           curDate = e.date;
+           
+           var mes = parseInt(curDate.getMonth())+1;
+           var dia = parseInt(curDate.getDate())+1;
+           var year = curDate.getFullYear();
            
            
-           console.log(date);
-           //formatted = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours + ":" + date.getMinutes() + ":" + date.getSeconds();
-           
-       });
+           var date = year+'-'+mes+'-'+dia;
+          
+           H_calendar=true;
+           getdayCalendar(date);
+           clickHandler_2('scheduleView');
+                
+                });
+            }
         
-        
-        /*
-       $('.datepicker-days').on('click', 'td.day', function (e) {
-           alert('cambio');
-           
-           e.preventDefault();
-       
-           return false;
-       });*/
+        });
     
-    
-    }
-});
+   

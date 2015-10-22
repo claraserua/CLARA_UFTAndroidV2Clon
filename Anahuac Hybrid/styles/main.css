@@ -9,6 +9,27 @@ a:hover
 }
 
 
+.datepicker-inline{
+     
+    position: relative;
+    margin: auto;
+    top: 50%; left: 0; bottom: 0; right: 0;
+}
+
+
+.icon-arrow-right:after,
+.icon-arrow-right:before
+{
+     content: "\e084";
+}
+
+.icon-arrow-left:after,
+.icon-arrow-left:before
+{
+    content: "\e091";
+}
+
+
     .km-calendar:after,
     .km-calendar:before
     {

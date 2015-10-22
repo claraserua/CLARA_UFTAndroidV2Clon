@@ -15,7 +15,7 @@ function IniciarSesion(){
     var usuario = $('#usuario').val();
     var password = $('#password').val();
     window.localStorage.setItem("access","FALSE");
-    var redirect = 'homeView';
+    
     
        if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
         // PORTRAIT:
@@ -46,7 +46,6 @@ function IniciarSesion(){
 
             
    $('.km-loader').show();
-   
     var websevicename = 'security/getUserInfo';
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
@@ -65,12 +64,10 @@ function IniciarSesion(){
         window.localStorage.setItem("password",password);
         window.localStorage.setItem("access","TRUE"); 
          
-         //vibrate();
          
-        setTimeout(function() {
-                    app.mobileApp.navigate('components/' + redirect + '/view.html');
-                    $('.km-loader').hide();
-                }, 0);
+        getRolAccess();
+         
+       
      },
      error:function(){
      window.localStorage.setItem("access","FALSE");
@@ -85,6 +82,60 @@ function IniciarSesion(){
 }
 
 
+
+function getRolAccess(){
+    
+    
+    var usuario =  window.localStorage.getItem("usuario");
+    var password = window.localStorage.getItem("password");
+    var websevicename = 'security/getUserInfo';
+    var redirect = 'homeView';
+    
+    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    $.ajax({
+     data: {websevicename: websevicename,username:usuario,password:password},
+     url:url,
+     dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
+     jsonp: 'callback',
+     contentType: "application/json; charset=utf-8",
+     complete:function(data){
+         $('.km-loader').hide();  
+     },
+     success:function(data){
+         
+         // do stuff with json (in this case an array)
+         if(data.roles.length == 1){      
+               if(data.roles[0].trim() == "student"){
+                    //vibrate();
+                    setTimeout(function() {
+                    app.mobileApp.navigate('components/' + redirect + '/view.html');
+                    $('.km-loader').hide();
+                    }, 0);
+               }else{
+                   showNotification('Disponible solo para Alumnos','Acceso Negado');
+               }
+         }else{
+                if(data.roles[0].trim() == "student" || data.roles[1].trim() == "student"){
+                    //vibrate();
+                    setTimeout(function() {
+                    app.mobileApp.navigate('components/' + redirect + '/view.html');
+                    $('.km-loader').hide();
+                    }, 0);
+                    
+                }else{
+                    showNotification('Disponible solo para Alumnos','Acceso Negado');
+                }
+         }
+         
+     },
+     error:function(){
+     
+    
+     }      
+     });
+    
+    
+}
 
 
 

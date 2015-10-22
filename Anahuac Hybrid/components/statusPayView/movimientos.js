@@ -6,9 +6,9 @@ app.movimientosView = kendo.observable({
 });
 
 
-var SPM_array_json=null;
-var SPM_current_index=0;
-var SPM_array_period=[];
+var SPMO_array_json=null;
+var SPMO_current_index=0;
+var SPMO_array_period=[];
 
 
 var SPMovimientos_Refresh = true;
@@ -23,7 +23,6 @@ function llenarFormaMovimientos()
 {
     if(SPMovimientos_Refresh==false)
         return;
-    
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
   
 	var usuario =  window.localStorage.getItem("usuario");
@@ -42,16 +41,19 @@ function llenarFormaMovimientos()
 		success:function(data)
 		{
             SPMovimientos_Refresh = false;
-            SPM_array_json = data;
-            SPM_array_period = [];
+            SPMO_array_json = data;
+            SPMO_array_period = [];
+            /*
+            for(var i=0; i<data.length; i++)
+            {
+                addElement(SPMO_array_period, data[i].termDesc);
+            }*/
+			$.each(data, function(index, element) {
+				addElement(SPMO_array_period, element.termDesc);
+			});
             
-            for(var i=0; i<data.length; i++){
-                addElement(SPM_array_period, data[i].termDesc);
-                
-            }
-            
-            SPM_current_index = 0;
-            SPM_updateMovimientos();
+            SPMO_current_index = SPMO_array_period.length-1;
+            SPMO_updateMovimientos();
 		},
 		error:function(){
             navigator.notification.alert(
@@ -65,23 +67,22 @@ function llenarFormaMovimientos()
 	});
 }
 
-function SPM_updateMovimientos()
+function SPMO_updateMovimientos()
 {
-    
-    var SPM_html =
+    var html =
              '<div class="card">'+
              '<div class="card-content">'+
                  '<div class="card-content-inner">'+
                      '<table  width="100%">';
     
+    html +='<tr><td class="item-title" width="40%">Descripción</td><td class="item-title" width="30%" style="text-align:center;">Tipo</td><td class="item-title" width="30%" style="text-align:right;">Monto</td></tr>';
     
-    SPM_html +='<tr><td class="item-title" width="40%">Descripción</td><td class="item-title" width="30%" style="text-align:center;">Tipo</td><td class="item-title" width="30%" style="text-align:right;">Monto</td></tr>';
-    var termDesc = SPM_array_period[SPM_current_index];
-    $.each(SPM_array_json, function(index, element)
+    var termDesc = SPMO_array_period[SPMO_current_index];
+    $.each(SPMO_array_json, function(index, element)
     {
         if(element.termDesc == termDesc)
         {
-            SPM_html +=
+            html +=
                 '<tr style="border-bottom: 1px solid #ccc;">'+
                     '<td>'+element.detlDesc+'</td>'+
                     '<td style="text-align:center;">'+element.detlType+'</td>'+
@@ -89,32 +90,18 @@ function SPM_updateMovimientos()
                 '</tr>';
         }
     });
+    html += '</table></div></div></div>';
     
-     SPM_html += '</table></div></div></div>';
-    
-    //console.log('>>html.length='+SPM_html.length);
-    $('#id_movimientos').html(SPM_html);
-    $('#term_periodo_vc').html(termDesc);
-    
-    initscrollTop();
-    
-    if(SPM_array_period.length==1){
-        $('#SPM_prev_arrow').hide();
-        $('#SPM_next_arrow').hide();
-    
-    }else{
-        if(SPM_current_index==0){
-            $('#SPM_next_arrow').hide();
-            $('#SPM_prev_arrow').show();
-              return;
-        }
-         if(SPM_current_index==SPM_array_period.length-1){
-             $('#SPM_prev_arrow').hide();
-             return;
-        }
-        
-        if(SPM_current_index<=SPM_array_period.length-1){$('#SPM_next_arrow').show();  $('#SPM_prev_arrow').show();}
-    }
+    $('#id_movimientosSP').html(html);
+    $('#term_periodo_mov').html(termDesc);
+   
+    // ------- Flechas de navegacion de paginado -------
+    $('#SPMO_prev_arrow').show();
+    $('#SPMO_next_arrow').show();
+    if(SPMO_current_index==0)
+        $('#SPMO_prev_arrow').hide();
+    if(SPMO_current_index==SPMO_array_period.length-1)
+        $('#SPMO_next_arrow').hide();
 }
 
 function searchElement(array, element){
@@ -130,20 +117,20 @@ function addElement(array,element){
         array.push(element);
 }
 
-function SPM_showPrevius(){
-     if(SPM_current_index<SPM_array_period.length-1){
-        SPM_current_index++;
-        SPM_updateMovimientos();
+
+function SPMO_showPrevius(){
+    if(0<SPMO_current_index){
+        SPMO_current_index--;
+        SPMO_updateMovimientos();
     }
 }
 
-function SPM_showNext(){
-    if(0<SPM_current_index){
-        SPM_current_index--;
-        SPM_updateMovimientos();
-    } 
+function SPMO_showNext(){
+    if(SPMO_current_index<SPMO_array_period.length-1){
+        SPMO_current_index++;
+        SPMO_updateMovimientos();
+    }
 }
-
 
 
 // START_CUSTOM_CODE_academicStatus
