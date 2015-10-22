@@ -133,15 +133,16 @@ function getDetalleCurso_DCD(){
          
      },
      error:function(){
+          showNotification('Intentalo Nuevamente','Alerta');
          
-    navigator.notification.alert(
+   /* navigator.notification.alert(
     'Opps!',  // message
     alertDismissed,         // callback
     'Inicie Sesion!',            // title
     'Aceptar'                  // buttonName
      );
      
-         ExitApp();
+         ExitApp();*/
      }      
      });
     
@@ -197,7 +198,7 @@ function delete_favorit_Course(){
          $( "#txt-favorit" ).html('Agregar a cursos planeados');
          
          $("#cvs-"+crn).css("color", "");
-         $( "#if-"+crn ).removeClass( "km-icon km-toprated" );
+         $( "#if-"+crn ).html( "" );
          
              
          //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
@@ -237,8 +238,8 @@ function set_favorit_Course(){
          
          
          $("#cvs-"+crn).css("color", "#F7881C");
-         $( "#if-"+crn ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-toprated" );
-         $("#if-"+crn).css("float", "right");
+         $( "#if-"+crn ).html( '<img src="resources/img/favorit.png"/>' );
+         
          
          
          //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')

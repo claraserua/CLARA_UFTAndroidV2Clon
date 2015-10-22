@@ -25,6 +25,17 @@ function llenarFormaAcademicStatus()
     
      if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
+                $('#periodo_id').html('');
+				$('#intentos_cursos_id').html('');
+				$('#reprobadas_id').html('');
+				$('#nivel_ingles_id').html('');
+				$('#prom_pond_periodo_id').html('');
+				$('#prom_pond_global_id').html('');
+				$('#avance_id').html('');
+				$('#creditos_inscritos').html('');
+				$('#estandar_academico_id').html('');
+    
+    
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
@@ -52,15 +63,25 @@ function llenarFormaAcademicStatus()
 			});
 		},
 		error:function(){
-     navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();
+            
+              showNotification('Intentalo Nuevamente','Alerta');
+            
+
+            /* navigator.notification.alert(
+            'Opps!',  // message
+            alertDismissed,         // callback
+            'Inicie Sesion!',            // title
+            'Aceptar'                  // buttonName
+             );
+
+                 ExitApp();*/       
+            
+            
+            
 		}
+        
+        
+        
 	});
 }
 

@@ -79,15 +79,16 @@ function getInscripcion(){
          $('#div_inscripcion_id').html(html);
      },
      error:function(){
+          showNotification('Intentalo Nuevamente','Alerta');
          
-        navigator.notification.alert(
+       /* navigator.notification.alert(
         'Opps!',  // message
         alertDismissed,         // callback
         'Inicie Sesion!',            // title
         'Aceptar'                  // buttonName
          );
      
-         ExitApp();
+         ExitApp();*/
      }      
      });
 }

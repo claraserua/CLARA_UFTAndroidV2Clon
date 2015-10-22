@@ -8,7 +8,7 @@ month[3] = "Abril";
 month[4] = "Mayo";
 month[5] = "Junio";
 month[6] = "Julio";
-month[7] = "Augosto";
+month[7] = "Agosto";
 month[8] = "Septiembre";
 month[9] = "Octubre";
 month[10] = "Noviembre";
@@ -20,6 +20,7 @@ month[11] = "Diciembre";
 function showDetail(idOption)
 {
 	$('#div_detalle_'+idOption).toggle();
+      initscrollTop();
 }
 
 function diaDeLaSemana(date_yyyymmdd){
@@ -100,13 +101,13 @@ function H_showNext(){
 //*/
 function H_showPrevius(){
     var customDay = new Date(H_date_Actual);
-    customDay.setDate(customDay.getDate() - 6);
+    customDay.setDate(customDay.getDate() - 7);
     getdayCalendar(customDay);
 }
 function H_showNext(){
     
     var customDay = new Date(H_date_Actual);
-    customDay.setDate(customDay.getDate() + 8);
+    customDay.setDate(customDay.getDate() + 7);
     //console.log('H_showNext() / H_date_Actual='+H_date_Actual+',  customDay='+format_YYYY_MM_DD(customDay));
     getdayCalendar(customDay);
 }
@@ -120,7 +121,7 @@ function gateDayActual(){
     var mm = today.getMonth(); //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy+' '+dd;
+    var descmes =  month[mm] +' '+yyyy;
     $('#desc_H_Fecha').html(descmes);
    
     
@@ -143,7 +144,7 @@ function getdayCalendar(customDay){
     var mm = today.getMonth(); //January is 0!
     var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy+' '+dd;
+    var descmes =  month[mm] +' '+yyyy;
     $('#desc_H_Fecha').html(descmes);
    
     
@@ -262,8 +263,8 @@ function buildScheduleOptions()
                 });
             }
                 
-            if(counter!=0)
-                SV_buildTable();
+            //if(counter!=0)
+                SV_buildTable(counter);
             
             if(counter==0){
                  html =
@@ -273,6 +274,7 @@ function buildScheduleOptions()
                  '</div>'+
                  '</div>'+
                  '';
+                //$('#tbody_sched_id').html('<tr><td>'+html+'</td></tr>');
             }
 			
 			$('#div_horario').html(html);
@@ -303,6 +305,7 @@ function toggleScheduleView(){
 
 function showScheduleView()
 {
+    initscrollTop();
     if(divScheduleTable){
         $('#div_horario').hide();
         $('#tbody_sched_id').show();
@@ -314,7 +317,7 @@ function showScheduleView()
 }
 
 app.scheduleView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(H_calendar==false){ $('#tbody_sched_id').html(''); } },
     afterShow: function() { if(H_calendar==false){gateDayActual();} }
 });
 

@@ -27,6 +27,19 @@ function getPerfil(){
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
     
+          $('#nivel1').html('');
+          $('#periodo').html('');
+          $('#idalumno').html('');
+          $('#nombre').html('');
+           $('#nivel').html('');
+           $('#carrera').html('');
+           $('#programa').html('');
+           $('#status').html('');
+           $('#telefono').html('');
+           $('#correo').html('');
+           $('#direccion').html('');
+    
+    
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
      url:url,

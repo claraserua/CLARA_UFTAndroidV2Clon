@@ -66,6 +66,7 @@ function getCarreras(){
          $('#carreras').html(html);
      },
      error:function(){
+          showNotification('Intentalo Nuevamente','Alerta');
          
      
          //ExitApp();

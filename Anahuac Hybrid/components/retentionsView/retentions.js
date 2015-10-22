@@ -49,8 +49,8 @@ function getRetenciones(){
           
           html +=
                  '<div class="card-light">'+
-                 '<div class="card-header">'+element.holdDesc+'</div>'+
-                 '<div class="card-footer"><span>Inicio:'+element.fInicio+'</span><span style="float:right;">Fin:'+element.fFin+'</span></div>'+
+                 '<div class="card-header" style="position:static !important;">'+element.holdDesc+'</div>'+
+                 '<div class="card-footer" style="position:static !important;"><span>Inicio:'+element.fInicio+'</span><span style="float:right;">Fin:'+element.fFin+'</span></div>'+
                  '</div>'+
                  '';
           
@@ -61,15 +61,16 @@ function getRetenciones(){
         });
      },
      error:function(){
+          showNotification('Intentalo Nuevamente','Alerta');
          
-    navigator.notification.alert(
+   /* navigator.notification.alert(
     'Opps!',  // message
     alertDismissed,         // callback
     'Inicie Sesion!',            // title
     'Aceptar'                  // buttonName
      );
      
-         ExitApp();
+         ExitApp();*/
      }      
      });
     

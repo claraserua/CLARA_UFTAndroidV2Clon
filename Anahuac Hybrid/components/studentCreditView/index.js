@@ -42,7 +42,7 @@ function buildStudentCredit()
                 $('#INVO_id').html('$'+data[0].interesActual+'&nbsp;&nbsp;');
             }
 		},
-		error:function(){ alert("Error"); }
+		error:function(){  showNotification('Intentalo Nuevamente','Alerta');     }
 	});
 }
 // __________________________________________
@@ -160,7 +160,7 @@ function buildTable(programName, div_id)
                html =
              '<div class="card">'+
              '<div class="card-content">'+
-                 '<div class="card-content-inner">NO EXSTEN DATOS </div></div></div>';
+                 '<div class="card-content-inner">NO HAY ADEUDO </div></div></div>';
                     
                 }
             $('#'+div_id).html(html);

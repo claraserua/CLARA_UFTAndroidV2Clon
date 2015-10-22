@@ -1,7 +1,7 @@
 'use strict';
 
 app.gradesView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(CPGrades_Refresh == true){ $( "#califparciales" ).empty(); }  },
     afterShow: function() { getCalificacionesP(); }
 });
 
@@ -46,7 +46,7 @@ function getCalificacionesP(){
       var profesor = '';
       $.each(data, function(index, element) {
              
-          titleCourse = element.crseSubj+' '+element.crseCrnn+' '+element.crseTitl;
+          titleCourse = element.crseCrnn+' '+element.crseSubj+element.crseCrse+' '+element.crseTitl;
           profesor = element.nameFacu;
           //$('#nivel1').html(element.crseTitl);
           //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
@@ -58,14 +58,22 @@ function getCalificacionesP(){
      },
      error:function(){
          
-    navigator.notification.alert(
+         
+          showNotification('Intentalo Nuevamente','Alerta');
+         
+         
+         
+   /* navigator.notification.alert(
     'Opps!',  // message
     alertDismissed,         // callback
     'Inicie Sesion!',            // title
     'Aceptar'                  // buttonName
      );
      
-         ExitApp();
+         ExitApp();*/
+         
+         
+         
      }      
      });
     

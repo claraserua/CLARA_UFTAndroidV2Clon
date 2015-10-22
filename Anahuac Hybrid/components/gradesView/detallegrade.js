@@ -121,8 +121,9 @@ function getDetalleGrade_gd(){
                      '<div class="card-header">'+
                        '<div class="card-content-inner" >'+
                         '<table width="100%">'+
-                       '<tr><td align="right"><span class="item-title">Promedio Parcial:</span>'+GD_PromParcial+'</td></tr>'+
-                       '<tr><td align="right"><span class="item-title">Promedio Final:</span>'+GD_PromFinal+'</td></tr>'+
+                       
+                       '<tr><td width="70%" style="text-align:right;"><span class="item-title">Promedio Parcial:</span></td><td width="30%" style="text-align:center;">'+GD_PromParcial+'</td></tr>'+
+                       '<tr><td width="70%" style="text-align:right;"><span class="item-title">Promedio Final:</span></td><td width="30%" style="text-align:center;">'+GD_PromFinal+'</td></tr>'+
                        '</table>'+  
                      '</div>'+
                     '</div>'+

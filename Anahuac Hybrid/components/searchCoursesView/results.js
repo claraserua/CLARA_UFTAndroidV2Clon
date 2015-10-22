@@ -98,7 +98,7 @@ function getCursosfound(){
       if(data.length!=0){
          $.each(data, function(index, element) {
              
-             if(element.vsEsFavo=="S"){ stylefavorit = 'style="color:#F7881C !important;"'; iconfavorit = 'class="km-icon km-toprated" style="float:right;"'; }else{stylefavorit = ''; iconfavorit = '';}
+             if(element.vsEsFavo=="S"){ stylefavorit = 'style="color:#F7881C !important;"'; iconfavorit = '<img src="resources/img/favorit.png"/> '; }else{stylefavorit = ''; iconfavorit = '';}
             
             html +=
                 '<li class="swipeout">'+
@@ -108,7 +108,7 @@ function getCursosfound(){
                 '<div class="item-subtitle"><span '+stylefavorit+' id="cvs-'+element.vsCrn+'">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</span></div>'+
                 '</div>'+
                 '<div class="item-after">Instructor: '+element.vsNomDocente +'</div>'+
-                '<div class="item-after">Horario: '+element.vsHorarioFormato +'<span id="if-'+element.vsCrn+'" '+iconfavorit+'><span></div>'+
+                '<div class="item-after">Horario: '+element.vsHorarioFormato +'<span id="if-'+element.vsCrn+'" style="float:right;">'+iconfavorit+'<span></div>'+
                 '</div></a></div>'+
                 '</li>'+
                 '';
@@ -129,7 +129,8 @@ function getCursosfound(){
      },
      error:function(){
          
-        alert('error');
+       showNotification('Intentalo Nuevamente','Alerta');
+         
      
        
      }      

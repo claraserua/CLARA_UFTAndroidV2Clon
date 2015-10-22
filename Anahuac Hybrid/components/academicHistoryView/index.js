@@ -1,13 +1,13 @@
 'use strict';
 
 app.academicHistoryView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_VHA_login2 == true){ $('#div_content_idHA').empty(); } },
     afterShow: function() { llenarFormaHistoria(); }
 });
 
 
 var VHA_Refresh = true;
-
+var Refresh_VHA_login2 = false;
 
 function Refresh_HAcademic(){
       VHA_Refresh = true;
@@ -26,8 +26,11 @@ var AH_HTML_Promedios = '';
 
 function llenarFormaHistoria()
 {
+     Refresh_VHA_login2 = false;
+    
 	 if(VHA_Refresh==false)
         return;
+    
      if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
@@ -51,7 +54,8 @@ function llenarFormaHistoria()
             getDetalleHistory();
 		},
 		error:function(){
-			alert("Error");
+            
+			showNotification('Intentalo Nuevamente','Alerta');
 		}
 	});
 
@@ -103,8 +107,8 @@ function updateDetalleHistory()
     var html='';
     var periodo = '';
     
-	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
-	html +='<div class="card_light"><div class="card-header">Promedio global:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
+	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
+	html +='<div class="card_light"><div class="card-header">Promedio global:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
     
 	$.each(AH_historia, function(index, element)
 	{
@@ -113,11 +117,11 @@ function updateDetalleHistory()
             periodo = element.termDesc;
             html +=
              '<div class="card_light">'+
-             '<div class="card-header"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span style="float:right;" class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
+             '<div class="card-header" style="position:static;"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span style="float:right;" class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
              '<div class="card-content">'+
-             '<div class="card-content-inner"><span>Instructor: </span>'+element.nameFacu+'</div>'+
-             '<div class="card-footer"><span>Créditos: '+element.credHour+'</span></div>'+
+             '<div class="card-content-inner"><div><span>Instructor: </span>'+element.nameFacu+'</div><div><span>Créditos: '+element.credHour+'</span></div></div>'+
              '</div>'+
+            
              '</div>'+
              '';
         }

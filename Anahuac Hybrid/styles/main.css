@@ -381,7 +381,6 @@ body{
 }
 
 .link-text-center{
-    bottom: .7em;
     position: relative;
     margin-left: .3em;
 }
@@ -698,11 +697,11 @@ a {
     text-decoration: none;
 }
 
-.color-a { color:#008800; font-size:22px; font-weight:bold;}
-.color-b { color:#889900; font-size:22px; font-weight:bold;}
-.color-c { color:#ddAE00; font-size:22px; font-weight:bold;}
-.color-d { color:#D78635; font-size:22px; font-weight:bold;}
-.color-e { color:#cc0000; font-size:22px; font-weight:bold;}
+.color-a { color:#33B551; font-size:22px; font-weight:bold;}
+.color-b { color:#ACCE70; font-size:22px; font-weight:bold;}
+.color-c { color:#EAD900; font-size:22px; font-weight:bold;}
+.color-d { color:#F8B528; font-size:22px; font-weight:bold;}
+.color-e { color:#EE1C25; font-size:22px; font-weight:bold;}
 
 
 .opinion {

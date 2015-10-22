@@ -56,13 +56,16 @@ function llenarFormaMovimientos()
             SPMO_updateMovimientos();
 		},
 		error:function(){
-            navigator.notification.alert(
+            
+             showNotification('Intentalo Nuevamente','Alerta');
+         
+            /*navigator.notification.alert(
             'Opps!',  // message
             alertDismissed,         // callback
             'Inicie Sesion!',            // title
             'Aceptar'                  // buttonName
             );
-            ExitApp();
+            ExitApp();*/
 		}
 	});
 }

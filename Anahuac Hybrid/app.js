@@ -82,8 +82,7 @@ function showNotification(message,title){
 
 function showErrorLogin(){
     
-  
-    
+ 
      navigator.notification.alert(
     'El usuario y/o password ingresados son incorrectos',  // message
     cleanLogin,         // callback

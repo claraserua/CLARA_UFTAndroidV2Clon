@@ -24,6 +24,10 @@ function LogoutApp(){
      SPVencidos_Refresh = true;
      RCEducativo_Refresh = true;
      variabProgramName = true;
+     H_calendar=false;
+     Refresh_VHA_login2 = true;
+    
+    
     
      window.localStorage.setItem("access","FALSE");
      app.mobileApp.navigate('components/authenticationView/view.html');

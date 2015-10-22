@@ -43,8 +43,9 @@ function SV_addCourse(fecha, hour_1, hour_2, data)
 	schedule[day].push(course);
 }
 
-function SV_buildTable()
+function SV_buildTable(curseCounter)
 {
+    initscrollTop();
 	var hours=[];
 	for(var i=7.0; i<=22.0001; i+=0.5)
 		hours.push(i)
@@ -60,16 +61,16 @@ function SV_buildTable()
     {
         var style = (j%2==0?'sty_line_1':'sty_line_2');
 		html+='<tr class="'+style+'">';
-        html+='<td>'+Math.floor(7+j/2)+':'+(j%2==0?'00':'30')+'</td>';
+        html+='<td style="text-align: center;">'+Math.floor(7+j/2)+':'+(j%2==0?'00':'30')+'</td>';
 		for(var i=0; i<dias.length; i++)
-            html+='<td class="'+style+'"><div>. </div></td>';
+            html+='<td class="'+style+'">&nbsp;</td>';
             //html+='<td></td>';
 		html+='</tr>';
 	}
 	
 	$('#tbody_sched_id').html(html);
-	
-    console.log("-----------------------------");
+	if(curseCounter==0)
+        return;
 	var tbody = document.getElementById("tbody_sched_id");
 	for(var d=dias.length-1; d>=0; d--)
 	{

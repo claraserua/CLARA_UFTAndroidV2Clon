@@ -87,7 +87,7 @@ function initEvents()
 			
 			$('#div_events_id').html(html);
 		},
-		error:function(){ alert("Error en ajax"); }
+		error:function(){ showNotification('Intentalo Nuevamente','Alerta');    }
 	});
 }
 

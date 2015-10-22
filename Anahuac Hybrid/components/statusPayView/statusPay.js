@@ -27,6 +27,8 @@ function getEstadoCuenta(){
     var websevicename = 'estado/'+usuario;
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
+    
+
     $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
