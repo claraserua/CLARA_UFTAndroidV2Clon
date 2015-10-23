@@ -1,12 +1,16 @@
 .km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-navbar {
 background-color:#666666 !important;
-z-index:1000;
+z-index:2;
 }
 
-a:hover   
-{   
- text-decoration:none !important;   
-}
+a:hover {  text-decoration:none !important;  }
+
+.tooltip-inner {background-color: #000; position: relative;  z-index:3 !important;  }
+
+
+.datepicker-inline {    width: 100%; }
+.datepicker table {  width: 100%; }
+
 
 
 .datepicker-inline{
@@ -17,16 +21,19 @@ a:hover
 }
 
 
+ .favorite:before{ content: "\2770\ "; }
+ .favorite:after{ content: "\ \2764"; } 
+
 .icon-arrow-right:after,
 .icon-arrow-right:before
 {
-     content: "\e084";
+     content: ">";
 }
 
 .icon-arrow-left:after,
 .icon-arrow-left:before
 {
-    content: "\e091";
+    content: "<"; 
 }
 
 

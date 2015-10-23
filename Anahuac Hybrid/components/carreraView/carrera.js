@@ -57,7 +57,7 @@ function getCarreras(){
                return;
           }*/
          
-         
+         html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarreraNinguno()">Ninguna</a></li>';
          $.each(data, function(index, element) {
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarrera(\''+element.subjCode+'\',\''+element.subjDesc+'\')">'+element.subjDesc+'</a></li>';
         });
@@ -74,6 +74,14 @@ function getCarreras(){
      });
     
     
+}
+
+
+function setCarreraNinguno(){
+    
+    $('#desc_carrera').html('Materia');
+    $('#val_carrera').val('');
+    app.mobileApp.navigate('components/searchCoursesView/view.html');
 }
 
 function setCarrera(carreracode,name){

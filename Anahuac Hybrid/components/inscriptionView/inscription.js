@@ -1,12 +1,13 @@
 'use strict';
 
 app.inscriptionView = kendo.observable({
-    onShow: function() { },
+    onShow: function() { if(Refresh_VINSC_login2 == true){ $('#div_inscripcion_id').empty(); } },
     afterShow: function() { getInscripcion(); }
 });
 
 
 var PSCitaIns_Refresh = true;
+var Refresh_VINSC_login2 = false;
 
 function Refresh_CitaIns(){
       PSCitaIns_Refresh = true;
@@ -18,6 +19,8 @@ function Refresh_CitaIns(){
 // START_CUSTOM_CODE_aboutView
 function getInscripcion(){
    
+    Refresh_VINSC_login2 = false;
+    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'cita/'+usuario;
@@ -64,7 +67,7 @@ function getInscripcion(){
                 '</div>'+
                  '<div class="card_light">'+
                 '<div class="card-header"><span class="item-title">Hora final:</span><span class="item-after-right">'+element.horaFin+'</span></div>'+        
-                '</div>';
+                '</div><br/>';
                  
                  $('#ci_periodo01').html(element.termDes);
              });

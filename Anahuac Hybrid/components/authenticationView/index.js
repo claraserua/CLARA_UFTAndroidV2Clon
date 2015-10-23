@@ -106,7 +106,7 @@ function getRolAccess(){
          // do stuff with json (in this case an array)
          if(data.roles.length == 1){      
                if(data.roles[0].trim() == "student"){
-                    //vibrate();
+                    vibrate();
                     setTimeout(function() {
                     app.mobileApp.navigate('components/' + redirect + '/view.html');
                     $('.km-loader').hide();

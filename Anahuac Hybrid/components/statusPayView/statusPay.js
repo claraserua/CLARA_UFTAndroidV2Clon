@@ -1,22 +1,32 @@
 'use strict';
 
 app.statusPayView = kendo.observable({
-    onShow: function() { },
+    onShow: function() { if(Refresh_VEC_login2 == true){ emptyEstadoCuenta(); }  },
     afterShow: function() { getEstadoCuenta(); }
 });
 
 // START_CUSTOM_CODE_statusPayView
 
 var SPCuenta_Refresh = true;
+var Refresh_VEC_login2 = false;
 
 function SPCuentaPay_Refresh(){
       SPCuenta_Refresh = true;
       getEstadoCuenta();
   }
 
+function emptyEstadoCuenta(){
+    
+     $('#vencidos').html('');
+     $('#novencidos').html('');
+     $('#stotal').html('');
+}
+
 
 function getEstadoCuenta(){
    
+    Refresh_VEC_login2 = false;
+    
     if(SPCuenta_Refresh==false)
         return;
     

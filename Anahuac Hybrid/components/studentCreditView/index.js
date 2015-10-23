@@ -2,6 +2,7 @@
 
 var RCEducativo_Refresh = true;
 
+
 function CEducativoFuct_Refresh(){
       RCEducativo_Refresh = true;
       buildStudentCredit();
@@ -32,6 +33,7 @@ function buildStudentCredit()
         }, 
 		success:function(data)
 		{
+            Refresh_VSC_login2 = false;
             RCEducativo_Refresh = false;
             
             if(1<=data.length)
@@ -73,6 +75,7 @@ var variabProgramName = false;
 
 
 function initCapitalHastaPlan(){
+   
 	buildTable('CANT','div_student_credit_1_id');
 }
 function initInteresHastaPlan(){
@@ -96,17 +99,15 @@ function buildTable(programName, div_id)
     var websevicename = 'creedudt/'+usuario+'/'+programName;
     var loaded = eval(programName);
     
-    /*if(loaded){
-        //alert('Previamente cargado');
-        return;
-    }*/
     
+        
     switch(programName){
-        case 'CANT': variabProgramName = CANT; break;
-        case 'IANT': variabProgramName = IANT; break;
-        case 'CNVO': variabProgramName = CNVO; break;
-        case 'INVO': variabProgramName = INVO; break;
+        case 'CANT': variabProgramName = CANT; if(Refresh_CANT_login2 == true){variabProgramName = true;} break;
+        case 'IANT': variabProgramName = IANT; if(Refresh_IANT_login2 == true){variabProgramName = true;} break;
+        case 'CNVO': variabProgramName = CNVO; if(Refresh_CNVO_login2 == true){variabProgramName = true;} break;
+        case 'INVO': variabProgramName = INVO; if(Refresh_INVO_login2 == true){variabProgramName = true;} break;
     }
+    
     
      if(variabProgramName==false)
         return;
@@ -130,10 +131,10 @@ function buildTable(programName, div_id)
             
             
             switch(programName){
-                case 'CANT': CANT=false; break;
-                case 'IANT': IANT=false; break;
-                case 'CNVO': CNVO=false; break;
-                case 'INVO': INVO=false; break;
+                case 'CANT': CANT=false; Refresh_CANT_login2=false; break;
+                case 'IANT': IANT=false; Refresh_IANT_login2=false; break;
+                case 'CNVO': CNVO=false; Refresh_CNVO_login2=false; break;
+                case 'INVO': INVO=false; Refresh_INVO_login2=false; break;
             }
 
             var html =
@@ -173,30 +174,42 @@ function clickHandler_3(redirect) {
     app.mobileApp.navigate('components/studentCreditView/'+redirect+'.html');
 }
 
+var Refresh_VSC_login2 = false;
+var Refresh_CANT_login2 = false;
+var Refresh_IANT_login2=false; 
+var Refresh_CNVO_login2=false; 
+var Refresh_INVO_login2=false; 
+
+function emptyCreStudent(){
+                $('#CANT_id').html('$0.00');
+                $('#IANT_id').html('$0.00');
+                $('#CNVO_id').html('$0.00');
+                $('#INVO_id').html('$0.00');
+}
 
 app.studentCreditView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_VHA_login2 == true){ emptyCreStudent(); variabProgramName = true; }  },
     afterShow: function() { buildStudentCredit(); }
 });
 
 // ----------------------------------------------
 app.capitalHastaPlan = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_CANT_login2 == true){ $('#div_student_credit_1_id').empty(); variabProgramName = true; } },
     afterShow: function() { initCapitalHastaPlan(); }
 });
 
 app.interesHastaPlan = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_IANT_login2 == true){ $('#div_student_credit_2_id').empty(); variabProgramName = true; } },
     afterShow: function() { initInteresHastaPlan(); }
 });
 
 app.capitalPosteriorPlan = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_CNVO_login2 == true){ $('#div_student_credit_3_id').empty(); variabProgramName = true; } },
     afterShow: function() {initCapitalPosteriorPlan(); }
 });
 
 app.interesPosteriorPlan = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_INVO_login2 == true){ $('#div_student_credit_4_id').empty(); variabProgramName = true; } },
     afterShow: function() { initInteresPosteriorPlan(); }
 });
 // ----------------------------------------------

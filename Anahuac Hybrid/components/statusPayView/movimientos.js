@@ -1,7 +1,7 @@
 'use strict';
 
 app.movimientosView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_VMSP_login2 == true){ $('#id_movimientosSP').empty(); }  },
     afterShow: function() { llenarFormaMovimientos(); }
 });
 
@@ -12,6 +12,7 @@ var SPMO_array_period=[];
 
 
 var SPMovimientos_Refresh = true;
+var Refresh_VMSP_login2 = false;
 
 function SPMovimientosFuct_Refresh(){
       SPMovimientos_Refresh = true;
@@ -21,6 +22,7 @@ function SPMovimientosFuct_Refresh(){
 
 function llenarFormaMovimientos()
 {
+    Refresh_VMSP_login2 = false;
     if(SPMovimientos_Refresh==false)
         return;
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }

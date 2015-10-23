@@ -1,16 +1,18 @@
 'use strict';
 
+app.vencidosView = kendo.observable({
+    onShow: function() {  if(Refresh_VENCSP_login2 == true){ $('#id_vencidosSP').empty(); } },
+    afterShow: function() { llenarFormaVencidos(); }
+});
+
 var SPV_vencido_json=null;
 var SPV_current_index=0;
 var SPV_indexTRAM=0;
 var SPV_array_period=[];
 
-app.vencidosView = kendo.observable({
-    onShow: function() {  },
-    afterShow: function() { llenarFormaVencidos(); }
-});
 
 var SPVencidos_Refresh = true;
+var Refresh_VENCSP_login2 = false;
 
 function SPVencidosFuct_Refresh(){
       SPVencidos_Refresh = true;
@@ -20,6 +22,7 @@ function SPVencidosFuct_Refresh(){
 
 function llenarFormaVencidos()
 {
+    Refresh_VENCSP_login2 = false;
     if(SPVencidos_Refresh==false)
         return;
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }

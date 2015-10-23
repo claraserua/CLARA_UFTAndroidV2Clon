@@ -193,6 +193,7 @@ function buildScheduleOptions()
     
     $('.km-loader').show();
     showScheduleView();
+    
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
 		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
@@ -235,7 +236,7 @@ function buildScheduleOptions()
                             
                             if(instructor!=null && instructor.lastName!=null){
                                 lastName = instructor.lastName.replace("*"," ");
-        						html_instructors += ''+instructor.firstName+' '+lastName+'<br/>';
+        						html_instructors += ''+instructor.firstName+' '+lastName+', ';
                             }
     					});
     					
@@ -253,8 +254,12 @@ function buildScheduleOptions()
                             '</div></div>'+
     						'</li>';
     					counter++;
+                        var tooltip =
+                            '<div>'+
+                            '  <a data-toggle="tooltip" class="red-tooltip" '+
+                            '  title="'+course.title+' - '+course.description+' | Instructors: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'</a></div>';
     					
-                        SV_addCourse(date.date, course.startTime, course.endTime, course.title);
+                        SV_addCourse(date.date, course.startTime, course.endTime, tooltip);
     				});
     				html += '</ul>';
     				html += '</div>';
@@ -265,7 +270,7 @@ function buildScheduleOptions()
                 
             //if(counter!=0)
                 SV_buildTable(counter);
-            
+                $('[data-toggle="tooltip"]').tooltip();  
             if(counter==0){
                  html =
                  '<div class="card">'+

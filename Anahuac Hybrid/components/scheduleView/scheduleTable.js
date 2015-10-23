@@ -88,10 +88,11 @@ function SV_buildTable(curseCounter)
                         //if(d+1<tbody.rows[y].cells.length)
 						   tbody.rows[y].deleteCell(d+1);
 					}
+                   
 					var content=tbody.rows[h+1].cells[1+d];
 					content.tag=course;
 					content.className='sty_cell';
-					content.innerHTML='<div>'+course.data+'</div>';
+					content.innerHTML=course.data;
 					content.rowSpan=course.rows;
 					break;
 				}

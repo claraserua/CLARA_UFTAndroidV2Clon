@@ -26,6 +26,19 @@ function LogoutApp(){
      variabProgramName = true;
      H_calendar=false;
      Refresh_VHA_login2 = true;
+     Refresh_VPERF_login2 = true;
+     Refresh_VSIAC_login2 = true;
+     Refresh_VINSC_login2 = true;
+     Refresh_VEC_login2 = true;
+     Refresh_VMSP_login2 = true;
+     Refresh_VENCSP_login2 = true;
+     Refresh_NOVENCSP_login2 = true;
+     Refresh_VSC_login2 = true;
+     Refresh_CANT_login2 = true;
+     Refresh_IANT_login2=true; 
+     Refresh_CNVO_login2=true; 
+     Refresh_INVO_login2=true; 
+     
     
     
     

@@ -57,6 +57,7 @@ function getDetalleCurso_DCD(){
          var detalle= '';
          var prerequisitos = '';
          var favorito = 'N';
+         var iconfavorit = '';
          
      
          $.each(data, function(index, element) {
@@ -66,10 +67,10 @@ function getDetalleCurso_DCD(){
              
              if(element.vsDetalle==null){detalle = '';}else{detalle=element.vsDetalle; }
              if(element.vsPrerequisito==null){prerequisitos= 'Ninguno';}else{prerequisitos=element.vsPrerequisito;}
-             if(element.vsEsFavo =='N'){favorito='N';}else{favorito='S';}
+             if(element.vsEsFavo =='N'){favorito='N'; iconfavorit = '';}else{favorito='S'; iconfavorit = '<img src="resources/img/favorit.png"/> ';}
              
              
-            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
+            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')<span>'+iconfavorit+'<span></div>';
             
             html +=
                 '<div class="card">'+

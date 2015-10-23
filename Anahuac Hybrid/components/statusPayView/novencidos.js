@@ -1,11 +1,12 @@
 'use strict';
 app.novencidosView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_NOVENCSP_login2 == true){ $('#id_novencidosSP').empty(); } },
     afterShow: function() { llenarFormaNoVencidos(); }
 });
 
 
 var SPNOVencidos_Refresh = true;
+var Refresh_NOVENCSP_login2 = false;
 
 function SPNOVencidosFuct_Refresh(){
     SPNOVencidos_Refresh = true;
@@ -18,6 +19,7 @@ var SPNV_array_period=[];
 
 function llenarFormaNoVencidos()
 {
+    Refresh_NOVENCSP_login2 = false;
     if(SPNOVencidos_Refresh==false)
         return;
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }

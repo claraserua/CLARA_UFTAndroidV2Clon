@@ -1,30 +1,20 @@
 'use strict';
 
 app.academicStatusView = kendo.observable({
-    onShow: function() {  },
+    onShow: function() { if(Refresh_VPERF_login2 == true){ emptySituAcadem(); }   },
     afterShow: function() { llenarFormaAcademicStatus(); }
 });
 
 
 var SAcademica_Refresh = true;
+var Refresh_VSIAC_login2 = false;
 
 function Refresh_SAcademica(){
       SAcademica_Refresh = true;
       llenarFormaAcademicStatus();
   }
 
-
-function llenarFormaAcademicStatus()
-{
-	var usuario =  window.localStorage.getItem("usuario");
-    var password = window.localStorage.getItem("password");
-	var websevicename = 'situacion/'+usuario;
-    
-    if(SAcademica_Refresh==false)
-        return;
-    
-     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
-    
+function emptySituAcadem(){
                 $('#periodo_id').html('');
 				$('#intentos_cursos_id').html('');
 				$('#reprobadas_id').html('');
@@ -33,9 +23,23 @@ function llenarFormaAcademicStatus()
 				$('#prom_pond_global_id').html('');
 				$('#avance_id').html('');
 				$('#creditos_inscritos').html('');
-				$('#estandar_academico_id').html('');
+				$('#estandar_academico_id').html('');   
+}
+
+
+function llenarFormaAcademicStatus()
+{
+    Refresh_VSIAC_login2 = false;
     
+	var usuario =  window.localStorage.getItem("usuario");
+    var password = window.localStorage.getItem("password");
+	var websevicename = 'situacion/'+usuario;
     
+    if(SAcademica_Refresh==false)
+        return;
+    
+     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
