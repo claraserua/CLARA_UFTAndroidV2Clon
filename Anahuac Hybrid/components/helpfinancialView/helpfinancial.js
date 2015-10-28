@@ -25,7 +25,7 @@ function getApoyoFinanciero(){
     if(HFinancial_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -98,15 +98,7 @@ function getApoyoFinanciero(){
      error:function(){
          
           showNotification('Intentalo Nuevamente','Alerta');      
-         
-         
-        /*navigator.notification.alert(
-        'Opps!',  // message
-        alertDismissed,         // callback
-        'Inicie Sesion!',            // title
-        'Aceptar'                  // buttonName
-         );
-         ExitApp();*/
+       
      }      
      });
 }

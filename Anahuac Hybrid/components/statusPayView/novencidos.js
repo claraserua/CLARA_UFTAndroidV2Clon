@@ -1,12 +1,12 @@
 'use strict';
 app.novencidosView = kendo.observable({
-    onShow: function() { if(Refresh_NOVENCSP_login2 == true){ $('#id_novencidosSP').empty(); } },
+    onShow: function() { if(SPNOVencidos_Refresh == true){ $('#id_novencidosSP').empty(); } },
     afterShow: function() { llenarFormaNoVencidos(); }
 });
 
 
 var SPNOVencidos_Refresh = true;
-var Refresh_NOVENCSP_login2 = false;
+
 
 function SPNOVencidosFuct_Refresh(){
     SPNOVencidos_Refresh = true;
@@ -19,10 +19,10 @@ var SPNV_array_period=[];
 
 function llenarFormaNoVencidos()
 {
-    Refresh_NOVENCSP_login2 = false;
+   
     if(SPNOVencidos_Refresh==false)
         return;
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -66,17 +66,9 @@ function llenarFormaNoVencidos()
             
 		},
 		error:function(){
-            
-            
+               
              showNotification('Intentalo Nuevamente','Alerta');
          
-           /* navigator.notification.alert(
-            'Opps!',  // message
-            alertDismissed,         // callback
-            'Inicie Sesion!',            // title
-            'Aceptar'                  // buttonName
-            );
-            ExitApp();*/
 		}
 	});
 }
@@ -97,7 +89,7 @@ function SPNV_updateNoVencidos()
         if(element.termDesc == termDesc)
         {
             html +=
-            '<tr style="border-bottom: 1px solid #ccc;">'+
+            '<tr style="border-top: 1px solid #BFBFD2;">'+
             '  <td>'+element.detlDesc+'</td>'+
             '  <td style="text-align:center;">'+element.detlFevn+'</td>'+
             '  <td style="text-align:right;">$'+element.detlAmnt.trim()+'</td>'+

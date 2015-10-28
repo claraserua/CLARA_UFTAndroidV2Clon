@@ -19,7 +19,7 @@ function getRetenciones(){
     if(VRetention_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -27,7 +27,7 @@ function getRetenciones(){
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
-    $( "#retenciones").empty();
+   $( "#retenciones").empty();
    $('.km-loader').show();
     
     $.ajax({
@@ -45,32 +45,31 @@ function getRetenciones(){
          var html = '';
       $.each(data, function(index, element) {
            
-         // alert(element.crseCrnn); 
-          
+        
+            if(element.holdDesc.trim()!='not'){
           html +=
-                 '<div class="card-light">'+
+                 '<div class="card-light" style="border-bottom: 1px solid #ccc !important;">'+
                  '<div class="card-header" style="position:static !important;">'+element.holdDesc+'</div>'+
-                 '<div class="card-footer" style="position:static !important;"><span>Inicio:'+element.fInicio+'</span><span style="float:right;">Fin:'+element.fFin+'</span></div>'+
+                 '<div class="card-footer" style="position:static !important;" ><span>Inicio:'+element.fInicio+'</span><span style="float:right;">Fin:'+element.fFin+'</span></div>'+
                  '</div>'+
                  '';
-          
-          
-          
-          $( "#retenciones" ).append( html );
+                }else{
+                    
+                    html +=
+                 '<div class="card-light" style="border-bottom: 1px solid #ccc !important;">'+
+                 '<div class="card-header" style="position:static !important;">No cuentas con restricciones en este momento</div>'+
+                 '</div>'+
+                 ''; 
+                }
          
         });
+         
+         
+         $( "#retenciones" ).html( html );
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
-         
-   /* navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();*/
+   
      }      
      });
     

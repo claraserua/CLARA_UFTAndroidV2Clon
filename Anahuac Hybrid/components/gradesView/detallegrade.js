@@ -53,7 +53,7 @@ function getDetalleGrade_gd(){
      
     $('#div_course_DG').html(titulo);
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     $('.km-loader').show();
     
@@ -118,12 +118,20 @@ function getDetalleGrade_gd(){
              
              html +=
                    '<div class="card">'+
-                     '<div class="card-header">'+
+                     '<div class="card-content">'+
                        '<div class="card-content-inner" >'+
                         '<table width="100%">'+
+                        '<tr>'+
+                        '<td class="item-title" width="40%">&nbsp;</td>'+
+                        '<td class="item-title" width="30%" style="text-align:right;">Promedio Parcial:</td>'+
+                        '<td class="item-title" width="30%" style="text-align:center;">'+GD_PromParcial+'</td>'+
+                        '</tr>'+
+                        '<tr>'+
+                        '<td class="item-title" width="40%">&nbsp;</td>'+
+                        '<td class="item-title" width="30%" style="text-align:right;">Promedio Final:</td>'+
+                        '<td class="item-title" width="30%" style="text-align:center;">'+GD_PromFinal+'</td>'+
+                        '</tr>'+
                        
-                       '<tr><td width="70%" style="text-align:right;"><span class="item-title">Promedio Parcial:</span></td><td width="30%" style="text-align:center;">'+GD_PromParcial+'</td></tr>'+
-                       '<tr><td width="70%" style="text-align:right;"><span class="item-title">Promedio Final:</span></td><td width="30%" style="text-align:center;">'+GD_PromFinal+'</td></tr>'+
                        '</table>'+  
                      '</div>'+
                     '</div>'+
@@ -159,14 +167,8 @@ function getDetalleGrade_gd(){
      },
      error:function(){
          
-    navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();
+    showNotification('Intentalo Nuevamente','Alerta');
+         
      }      
      });
     

@@ -11,12 +11,11 @@ var CPGrades_Refresh = true;
 function Refresh_CalifParc(){
       CPGrades_Refresh = true;
       getCalificacionesP();
-  }
+}
 
 
-
-function getCalificacionesP(){
-   
+function getCalificacionesP()
+{
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'parcial/'+usuario;
@@ -24,11 +23,13 @@ function getCalificacionesP(){
     if(CPGrades_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $( "#califparciales" ).empty();
+    $("#califparciales").show();
+    $("#califparcialesMsg").hide();
     $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
@@ -40,44 +41,35 @@ function getCalificacionesP(){
          $('.km-loader').hide();   
      },
      success:function(data){
-         // do stuff with json (in this case an array)
-      CPGrades_Refresh=false;
-      var titleCourse = '';
-      var profesor = '';
-      $.each(data, function(index, element) {
-             
-          titleCourse = element.crseCrnn+' '+element.crseSubj+element.crseCrse+' '+element.crseTitl;
-          profesor = element.nameFacu;
-          //$('#nivel1').html(element.crseTitl);
-          //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
-         var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="setDetalleGrade_gd(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\',\''+element.stcrGrde+'\',\''+element.stcrMidd+'\')">'+element.crseTitl+'</a></li>';
-          
-          $( "#califparciales" ).append( link );
+        // do stuff with json (in this case an array)
+        CPGrades_Refresh=false;
+        var titleCourse = '';
+        var profesor = '';
+        $.each(data, function(index, element){
+            //alert('element.crseSubj='+element.crseSubj);
+            if(element.crseSubj=="HOLD" || element.crseSubj=="OTRO" ||
+            	(element.vsCrseTitl=="" && element.crseSubj!="HOLD" && element.crseSubj!="SINP"))
+            {
+                $("#califparciales").hide();
+                $("#califparcialesMsg").show();
+            }
+            else{
+
+                titleCourse = element.crseCrnn+' '+element.crseSubj+' '+element.crseCrse+' '+element.crseTitl;
+                profesor = element.nameFacu;
+                //$('#nivel1').html(element.crseTitl);
+                //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
+                var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="setDetalleGrade_gd(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\',\''+element.stcrGrde+'\',\''+element.stcrMidd+'\')">'+element.crseTitl+'</a></li>';
+
+                $( "#califparciales" ).append( link );
+            }
           
         });
      },
      error:function(){
-         
-         
           showNotification('Intentalo Nuevamente','Alerta');
-         
-         
-         
-   /* navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();*/
-         
-         
-         
      }      
-     });
-    
-    
+  });
 }
 
 

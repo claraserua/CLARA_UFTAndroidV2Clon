@@ -1,13 +1,13 @@
 'use strict';
 
 app.academicStatusView = kendo.observable({
-    onShow: function() { if(Refresh_VPERF_login2 == true){ emptySituAcadem(); }   },
+    onShow: function() { if(SAcademica_Refresh==true){ emptySituAcadem(); } },
     afterShow: function() { llenarFormaAcademicStatus(); }
 });
 
 
 var SAcademica_Refresh = true;
-var Refresh_VSIAC_login2 = false;
+
 
 function Refresh_SAcademica(){
       SAcademica_Refresh = true;
@@ -15,6 +15,7 @@ function Refresh_SAcademica(){
   }
 
 function emptySituAcadem(){
+    
                 $('#periodo_id').html('');
 				$('#intentos_cursos_id').html('');
 				$('#reprobadas_id').html('');
@@ -29,7 +30,7 @@ function emptySituAcadem(){
 
 function llenarFormaAcademicStatus()
 {
-    Refresh_VSIAC_login2 = false;
+    
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -38,7 +39,7 @@ function llenarFormaAcademicStatus()
     if(SAcademica_Refresh==false)
         return;
     
-     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+      if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
 
     $('.km-loader').show();
 	$.ajax({
@@ -69,18 +70,7 @@ function llenarFormaAcademicStatus()
 		error:function(){
             
               showNotification('Intentalo Nuevamente','Alerta');
-            
 
-            /* navigator.notification.alert(
-            'Opps!',  // message
-            alertDismissed,         // callback
-            'Inicie Sesion!',            // title
-            'Aceptar'                  // buttonName
-             );
-
-                 ExitApp();*/       
-            
-            
             
 		}
         

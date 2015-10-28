@@ -2,27 +2,38 @@
 background-color:#666666 !important;
 z-index:2;
 }
+  
 
 a:hover {  text-decoration:none !important;  }
 
-.tooltip-inner {background-color: #000; position: relative;  z-index:3 !important;  }
+.tooltip-inner {background-color: #000;   z-index:2 !important; width:150px; position:absolute;     
 
+    margin: 5% auto;
+left: 0;
+right: 0;
+    
+background: #606c88;
+background: -moz-linear-gradient(top, #606c88 0%, #3f4c6b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606c88), color-stop(100%,#3f4c6b));
+background: -webkit-linear-gradient(top, #606c88 0%,#3f4c6b 100%);
+background: -o-linear-gradient(top, #606c88 0%,#3f4c6b 100%);
+
+
+}
 
 .datepicker-inline {    width: 100%; }
 .datepicker table {  width: 100%; }
 
 
-
-.datepicker-inline{
-     
+.datepicker-inline{     
     position: relative;
     margin: auto;
     top: 50%; left: 0; bottom: 0; right: 0;
 }
 
 
- .favorite:before{ content: "\2770\ "; }
- .favorite:after{ content: "\ \2764"; } 
+.favorite:before{ content: "\2770\ "; }
+.favorite:after{ content: "\ \2764"; } 
 
 .icon-arrow-right:after,
 .icon-arrow-right:before
@@ -36,9 +47,8 @@ a:hover {  text-decoration:none !important;  }
     content: "<"; 
 }
 
-
-    .km-calendar:after,
-    .km-calendar:before
+.km-calendar:after,
+.km-calendar:before
     {
         content: "\e109";
     }
@@ -251,19 +261,6 @@ label {
   */   
 }
 
-.km-content .home{
-  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  position: fixed;
-  height: 900px !important;
-  
-}
-
-
-body{
-     /*background-image: url("../resources/bg/fondo_1_iphone.png");*/
-}
 
 
 .external-load{
@@ -380,6 +377,18 @@ body{
 .menu ul li img {
     display: inline-block;
     max-width: 60%;
+   -webkit-box-shadow: 0px 0px 30px 0px rgba(49, 50, 50, 1);
+   -moz-box-shadow: 0px 0px 30px 0px rgba(49, 50, 50, 1);
+    box-shadow: 0px 0px 30px 0px rgba(49, 50, 50, 1);
+}
+
+
+.menu ul li img:hover {
+    display: inline-block;
+    max-width: 60%;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(49, 50, 50, 0.01);
+    -moz-box-shadow:    0px 0px 30px 0px rgba(49, 50, 50, 0.01);
+     box-shadow: 0px 0px 30px 0px rgba(49, 50, 50, 0.01);
 }
 
 .menu ul li a div div {
@@ -409,6 +418,12 @@ body{
     color: #6d6d72;
     margin: 35px 0;
     padding: 0 15px;
+}
+
+
+.card_login {
+    position:relative;
+    max-width:350px;
 }
 
 .card_logout {
@@ -730,40 +745,304 @@ a {
 
 /*  scheduleTable  */
 .sty_line_1{
-	color: #333;
-	background-color: #CCC;
+	color: #000;
+    background-clip: border-box;
+	background-color: #EEE0D0;
 	border-width: 0pt;
 	border-style: solid;
-	border-color: #AAA;
-	border-left-width: 1pt;
-	border-right-width: 1pt;
+	border-color: #FFF;
+	border-left-width: 2pt;
+	border-right-width: 2pt;
+    font-size: 8pt;
 }
 .sty_line_2{
-	color: #333;
-	background-color: #DDD;
+	color: #444;
+    background-clip: border-box;
+	background-color: #FFF0E0;
 	border-width: 0pt;
 	border-style: solid;
-	border-color: #AAA;
-	border-left-width: 1pt;
-	border-right-width: 1pt;
+	border-color: #FFF;
+	border-left-width: 2pt;
+	border-right-width: 2pt;
+    font-size: 8pt;
 }
 .sty_table{
+    color: #FFFFFF;
+    background: #1e5799;
+background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+background: -webkit-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+background: -o-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+background: -ms-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
 	border-width: 0pt;
 	border-style: solid;
-	border-color: #AAA;
+	border-color: #FFF;
 	border-top-width: 1pt;
 	border-bottom-width: 1pt;
     width:100%;
+    text-align: center;
+    font-size: 10pt;
 }
-.sty_cell{
-	color: #333;
-	background-color: #EEE;
-	border-width: 1pt;
+.sty_sched_header{
+    height: 45px; 
+	border-width: 0pt;
 	border-style: solid;
-	border-color: #AAA;
-	font-size: 10pt;
+	border-color: #FFF;
+	border-bottom-width: 2pt;
+}
+
+.sty_cell_hour{
+    text-align: center;
+	font-size: 8pt;
+}
+
+.sty_cell_0{
+	color: #fff;
+    background-clip: border-box;
+	background: #eab92d;
+background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eab92d), color-stop(100%,#c79810));
+background: -webkit-linear-gradient(top, #eab92d 0%,#c79810 100%);
+background: -o-linear-gradient(top, #eab92d 0%,#c79810 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
 	text-align: center;
 }
+.sty_cell_1{
+	color: #fff;
+    background-clip: border-box;
+	background: #606c88;
+background: #499bea;
+background: -moz-linear-gradient(top, #499bea 0%, #207ce5 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5));
+background: -webkit-linear-gradient(top, #499bea 0%,#207ce5 100%);
+background: -o-linear-gradient(top, #499bea 0%,#207ce5 100%);
+background: -ms-linear-gradient(top, #499bea 0%,#207ce5 100%);
+background: linear-gradient(to bottom, #499bea 0%,#207ce5 100%);
+
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+.sty_cell_2{
+	color: #fff;
+    background-clip: border-box;
+	background: #73880a;
+background: -moz-linear-gradient(top, #73880a 0%, #73880a 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73880a), color-stop(100%,#73880a));
+background: -webkit-linear-gradient(top, #73880a 0%,#73880a 100%);
+background: -o-linear-gradient(top, #73880a 0%,#73880a 100%);
+
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+.sty_cell_3{
+	color: #fff;
+    background-clip: border-box;
+	background: #606c88;
+background: -moz-linear-gradient(top, #606c88 0%, #3f4c6b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606c88), color-stop(100%,#3f4c6b));
+background: -webkit-linear-gradient(top, #606c88 0%,#3f4c6b 100%);
+background: -o-linear-gradient(top, #606c88 0%,#3f4c6b 100%);
+
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+.sty_cell_4{
+	color: #fff;
+    background-clip: border-box;
+	background: #ff670f;
+background: -moz-linear-gradient(top, #ff670f 0%, #ff670f 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff670f), color-stop(100%,#ff670f));
+background: -webkit-linear-gradient(top, #ff670f 0%,#ff670f 100%);
+background: -o-linear-gradient(top, #ff670f 0%,#ff670f 100%);
+
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.sty_cell_5{
+	color: #fff;
+    background-clip: border-box;
+	background: #febbbb;
+background: -moz-linear-gradient(top, #febbbb 0%, #fe9090 45%, #ff5c5c 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#febbbb), color-stop(45%,#fe9090), color-stop(100%,#ff5c5c));
+background: -webkit-linear-gradient(top, #febbbb 0%,#fe9090 45%,#ff5c5c 100%);
+background: -o-linear-gradient(top, #febbbb 0%,#fe9090 45%,#ff5c5c 100%);
+background: -ms-linear-gradient(top, #febbbb 0%,#fe9090 45%,#ff5c5c 100%);
+
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+.sty_cell_6{
+	color: #fff;
+    background-clip: border-box;
+	background: #cc0000;
+background: -moz-linear-gradient(top, #cc0000 0%, #cc0000 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc0000), color-stop(100%,#cc0000));
+background: -webkit-linear-gradient(top, #cc0000 0%,#cc0000 100%);
+background: -o-linear-gradient(top, #cc0000 0%,#cc0000 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+
+.sty_cell_7{
+	color: #fff;
+    background-clip: border-box;
+	background: #e570e7;
+background: -moz-linear-gradient(top, #e570e7 0%, #c85ec7 47%, #a849a3 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e570e7), color-stop(47%,#c85ec7), color-stop(100%,#a849a3));
+background: -webkit-linear-gradient(top, #e570e7 0%,#c85ec7 47%,#a849a3 100%);
+background: -o-linear-gradient(top, #e570e7 0%,#c85ec7 47%,#a849a3 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.sty_cell_8{
+	color: #fff;
+    background-clip: border-box;
+	background: #b5bdc8;
+background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(36%,#828c95), color-stop(100%,#28343b));
+background: -webkit-linear-gradient(top, #b5bdc8 0%,#828c95 36%,#28343b 100%);
+background: -o-linear-gradient(top, #b5bdc8 0%,#828c95 36%,#28343b 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+.sty_cell_9{
+	color: #fff;
+    background-clip: border-box;
+	background: #627d4d;
+background: -moz-linear-gradient(top, #627d4d 0%, #1f3b08 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#627d4d), color-stop(100%,#1f3b08));
+background: -webkit-linear-gradient(top, #627d4d 0%,#1f3b08 100%);
+background: -o-linear-gradient(top, #627d4d 0%,#1f3b08 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+.sty_cell_10{
+	color: #fff;
+    background-clip: border-box;
+	background: #f2825b;
+background: -moz-linear-gradient(top, #f2825b 0%, #e55b2b 50%, #f07146 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2825b), color-stop(50%,#e55b2b), color-stop(100%,#f07146));
+background: -webkit-linear-gradient(top, #f2825b 0%,#e55b2b 50%,#f07146 100%);
+background: -o-linear-gradient(top, #f2825b 0%,#e55b2b 50%,#f07146 100%);
+background: -ms-linear-gradient(top, #f2825b 0%,#e55b2b 50%,#f07146 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+
+.sty_cell_11{
+	color: #fff;
+    background-clip: border-box;
+	background: #ffd65e;
+background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04));
+background: -webkit-linear-gradient(top, #ffd65e 0%,#febf04 100%);
+background: -o-linear-gradient(top, #ffd65e 0%,#febf04 100%);
+background: -ms-linear-gradient(top, #ffd65e 0%,#febf04 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+.sty_cell_12{
+	color: #fff;
+    background-clip: border-box;
+	background: #49c0f0;
+background: -moz-linear-gradient(top, #49c0f0 0%, #2cafe3 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49c0f0), color-stop(100%,#2cafe3));
+background: -webkit-linear-gradient(top, #49c0f0 0%,#2cafe3 100%);
+background: -o-linear-gradient(top, #49c0f0 0%,#2cafe3 100%);
+background: -ms-linear-gradient(top, #49c0f0 0%,#2cafe3 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.sty_cell_13{
+	color: #fff;
+    background-clip: border-box;
+	background: #a90329;
+background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019));
+background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: -o-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: -ms-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
+
+
+.sty_cell_14{
+	color: #fff;
+    background-clip: border-box;
+	background: #e4efc0;
+background: -moz-linear-gradient(top, #e4efc0 0%, #abbd73 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4efc0), color-stop(100%,#abbd73));
+background: -webkit-linear-gradient(top, #e4efc0 0%,#abbd73 100%);
+background: -o-linear-gradient(top, #e4efc0 0%,#abbd73 100%);
+background: -ms-linear-gradient(top, #e4efc0 0%,#abbd73 100%);
+	border-width: 2pt;
+	border-style: solid;
+	border-color: #FFF;
+	font-size: 8pt;
+	text-align: center;
+}
+
 
 
 /*END LIST VIEW DESCRIPTION*/
@@ -793,47 +1072,74 @@ a {
 }
 
 
-
-/*******   MEDIA QUERYS    ****/
-
-/******* iPhone 6 in portrait ****/
-@media screen and (device-aspect-ratio: 16/9) {
-    .km-content .home{
-  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
-  background-repeat: no-repeat;
-  position: absolute;
-  height: 736px;
-  width:414px;
-}
+/*Iphone 5 PORTRAIT*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)  { 
+  
+    body{
+     background-image: url("../resources/bg/iphone_320x568.png");
+     }
     
+    .km-content .home{  
+  background-image: url("../resources/bg/iphone5v_home_320x568.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 568px !important;
+  }
 }
-
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px)
-and (-webkit-min-device-pixel-ratio: 2){ 
-.km-content .home{
-  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
-  background-repeat: no-repeat;
-  position: absolute;
-  height: 736px;
-  width:414px;
-}
-}
+/*End Iphone 6 PORTRAIT*/
 
 
 
-/******* iPhone 6 Plus in portrait ****/
-@media only screen 
-and (min-device-width : 414px) 
-and (max-device-width : 736px) 
-and (orientation : portrait) { /* STYLES GO HERE */
-  .km-content .home{
-  background-image: url("../resources/bg/fondo_2_iphone.png") !important;
-  background-repeat: no-repeat;
-  position: absolute;
-  height: 736px;
-  width:414px;
+/*Iphone 6 PORTRAIT*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px)  { 
+  
+    body{
+     background-image: url("../resources/bg/iphone_375x667.png");
+     }
+    
+    .km-content .home{  
+  background-image: url("../resources/bg/iphone6v_home_375x667.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 667px !important;
+  }
+}
+/*End Iphone 6 PORTRAIT*/
+
+
+
+/*iPad  PORTRAIT*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait) { 
+    
+    body{
+     background-image: url("../resources/bg/ipad_768x1024.png");
+     }
+    
+  .km-content .home{  
+  background-image: url("../resources/bg/ipadv_home_768X1024.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 1050px !important;
+  }  
+}
+/*End iPad  PORTRAIT*/
+
+/*iPad  LANDSCAPE*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape) { 
+  .km-content .home{  
+  background-image: url("../resources/bg/ipadh_home_768x2014.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 768px !important;
+  }
 }
 
-}
+/*iPad  LANDSCAPE*/
+
+
+
+

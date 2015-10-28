@@ -4,28 +4,28 @@
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
              <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_Shedule();">&nbsp;</a>
         </div>
 	</div>
     <!-- ____________________________________________________________________________________________ -->
     
-        <div data-role="header" style="z-index:0;">
+        <div data-role="header" >
         <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" id="desc_H_Fecha"></div>
-            <a data-role="button" id="PC_prev_arrow" class="km-widget km-button km-back" onclick="H_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" id="PC_next_arrow" data-align="right" onclick="H_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
+          <div class="km-view-title" style="font-weight: normal !important; z-index:0;" id="desc_H_Fecha"></div>
+            <a data-role="button" class="km-widget km-button km-back" onclick="H_showPrevius()" data-align="left">&nbsp;</a>
+            <a data-role="button" data-align="right" onclick="H_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
         </div>
 	</div>
     
     
-     
+    
 	 <div class="page-view" data-bind="invisible:error">
          <div class="page-box">
 	
     		<div id="div_horario">
             </div>
-			<table id="table_schedule_id" border="0" cellspacing="0" cellpadding="2" class="sty_table"style="width:100%">
+			<table id="table_schedule_id" border="0" cellspacing="0" cellpadding="2" class="sty_table" style=" width:100%; z-index:0;">
 				<tbody id="tbody_sched_id"></tbody>
 			</table>
     
@@ -37,8 +37,8 @@
     <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
      
-                <a data-role="button" data-icon="organize" onclick="toggleScheduleView()" onclick="">Cambiar Vista</a>
-                <a  data-icon="calendar" href="components/scheduleView/calendar.html">Calendario</a>
+                <a data-role="button" class="km-state-active" data-icon="organize" onclick="toggleScheduleView()" >Cambiar Vista</a>
+                <a data-role="button" data-icon="calendar"  href="components/scheduleView/calendar.html">Calendario</a>
                 
             </div>
     </footer>

@@ -28,7 +28,7 @@ function getCarreras(){
     if(SCCarrera_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     $('#carreras').empty();
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
@@ -48,15 +48,6 @@ function getCarreras(){
          var html='<ul class="km-widget km-listview km-list" >';
          
          
-          /*if(data.length == 0){
-              
-               $('#carreras').html(html);
-               html += '<li><a class="km-listview" data-role="listview">No hay carreras para esta opción</a></li>';
-               html +='</ul>';
-               $('#carreras').html(html);
-               return;
-          }*/
-         
          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarreraNinguno()">Ninguna</a></li>';
          $.each(data, function(index, element) {
           html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarrera(\''+element.subjCode+'\',\''+element.subjDesc+'\')">'+element.subjDesc+'</a></li>';
@@ -67,9 +58,7 @@ function getCarreras(){
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
-         
      
-         //ExitApp();
      }      
      });
     

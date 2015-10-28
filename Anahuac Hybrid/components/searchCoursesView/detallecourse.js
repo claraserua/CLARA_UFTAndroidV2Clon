@@ -1,7 +1,7 @@
 'use strict';
 
 app.detailcourseView = kendo.observable({
-    onShow: function() { },
+    onShow: function() { initscrollTop(); },
     afterShow: function() { getDetalleCurso_DCD(); }
 });
 
@@ -67,10 +67,10 @@ function getDetalleCurso_DCD(){
              
              if(element.vsDetalle==null){detalle = '';}else{detalle=element.vsDetalle; }
              if(element.vsPrerequisito==null){prerequisitos= 'Ninguno';}else{prerequisitos=element.vsPrerequisito;}
-             if(element.vsEsFavo =='N'){favorito='N'; iconfavorit = '';}else{favorito='S'; iconfavorit = '<img src="resources/img/favorit.png"/> ';}
              
              
-            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')<span>'+iconfavorit+'<span></div>';
+             
+            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
             
             html +=
                 '<div class="card">'+
@@ -135,15 +135,6 @@ function getDetalleCurso_DCD(){
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
-         
-   /* navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();*/
      }      
      });
     
@@ -201,8 +192,6 @@ function delete_favorit_Course(){
          $("#cvs-"+crn).css("color", "");
          $( "#if-"+crn ).html( "" );
          
-             
-         //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
          
      },
      error:function(){
@@ -240,10 +229,7 @@ function set_favorit_Course(){
          
          $("#cvs-"+crn).css("color", "#F7881C");
          $( "#if-"+crn ).html( '<img src="resources/img/favorit.png"/>' );
-         
-         
-         
-         //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
+       
          
      },
      error:function(){

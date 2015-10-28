@@ -53,21 +53,19 @@ function RefreshCursosfound(){
 
 
 function getCursosfound(){
-    
+    initscrollTop();
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
    
-    //curso/00158012/201575/UAN/null/null/null/am/null/inte/null
-    
     SC_titulo = encodeURIComponent(SC_titulo);
     SC_instructor = encodeURIComponent(SC_instructor);
-    //curso/00158012/201560/UAN/Lu,Ma,Mi,Ju,Vi,Sa,Do/01/05/am/null/inte/ASEM,ALIN,AING,CADI,DERE,RIN2,RIN3,RIN5
+    
     var websevicename = 'curso/'+usuario+'/'+SC_periodo+'/'+SC_campus+'/'+SC_dias+'/'+SC_hora+'/'+SC_minuto+'/'+SC_time+'/'+SC_instructor+'/'+SC_titulo+'/'+SC_atributos+'/'+SC_carrera;
         
     if(SC_busqueda==false)
        return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     
     $('.km-loader').show();
@@ -91,7 +89,7 @@ function getCursosfound(){
          // do stuff with json (in this case an array)
       $('#RC_csc').html(data.length);
       
-      var html='';
+      var html='<div class="list-block media-list"><ul>';
       var stylefavorit = '';
       var iconfavorit = '';
          
@@ -114,8 +112,10 @@ function getCursosfound(){
                 '';
              
         });
+          
+            html += '</ul></div>';
              }else{
-                  html +=
+                  html =
                  '<div class="card">'+
                  '<div class="card-content">'+
                  '<div class="card-content-inner"><span class="item-orange-bold">NO SE ENCONTRARON CURSOS.</span></div>'+
@@ -131,14 +131,10 @@ function getCursosfound(){
          
        showNotification('Intentalo Nuevamente','Alerta');
          
-     
-       
      }      
      });
     
     
 }
-
-
 
 // END_CUSTOM_CODE_perfilView

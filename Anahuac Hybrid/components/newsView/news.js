@@ -3,6 +3,26 @@
 var newsView_arrayNews = null;
 var index_detail_news = 0;
 
+function translateMes(mes_english){
+	mes_english = mes_english.trim().toLowerCase();
+	switch(mes_english){
+		case 'january': return 'Enero';
+		case 'february': return 'Febrero';
+		case 'march': return 'Marzo';
+		case 'april': return 'Abril';
+		case 'may': return 'Mayo';
+		case 'june': return 'Junio';
+		case 'july': return 'Julio';
+        case 'august': return 'Agosto';
+        case 'september': return 'Septiembre';
+        case 'october': return 'Octubre';
+        case 'november': return 'Noviembre';
+        case 'december': return 'Diciembre';
+	}
+	return mes_english;
+}
+
+
 app.newsView = kendo.observable({
     onShow: function() { },
     afterShow: function() { getNoticias();  }
@@ -29,7 +49,7 @@ function getNoticias(){
      if(News_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
    
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -54,6 +74,9 @@ function getNoticias(){
      var html = '';
      var categoria = true;
      var categoriaitem = '';
+     var fecha='';
+     var day='';
+     var mes='';
       
          newsView_arrayNews = data;
          
@@ -81,6 +104,17 @@ function getNoticias(){
 					'<ul>';
                   }
           
+            fecha = element.vsFechaNoticia.split(" ");
+            day = translateDay(fecha[0]);            
+            fecha = fecha[4];
+            if(fecha!=null){
+            fecha = fecha.split("-");  
+            mes = translateMes(fecha[1]);
+            mes = fecha[0]+'-'+mes+'-'+fecha[2];
+             }
+          
+            
+          
             html+=
 						'<li class="swipeout">'+
                         '<div class="swipeout-content" style="padding:10px 15px !important;"><a class="item-link item-content" onclick="getviewDetalle('+index+');">'+
@@ -89,7 +123,7 @@ function getNoticias(){
                         '<div class="item-subtitle">'+element.vsAsunto+'</div>'+
                         '<div class="item-after"></div>'+
                         '</div>'+
-                        '<div class="item-after">Lugar: '+element.vsFechaNoticia+'</div>'+
+                        '<div class="item-after">Lugar: '+day+' '+mes+'</div>'+
                         '</div></a></div>'+
 						'</li>';
           
@@ -111,15 +145,7 @@ function getNoticias(){
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
-         
-    /*navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();*/
+
      }      
      });
     
@@ -141,7 +167,23 @@ function setDetailNews(){
     var event = newsView_arrayNews[index_detail_news];
     $('#N_categoria').html(event.vsCategoria);
     $('#N_asunto').html(event.vsAsunto);
-    $('#N_fecha').html(event.vsFechaNoticia);
+    
+    var fecha='';
+     var day='';
+     var mes='';
+    
+    fecha = event.vsFechaNoticia.split(" ");
+            day = translateDay(fecha[0]);            
+            fecha = fecha[4];
+            if(fecha!=null){
+            fecha = fecha.split("-");  
+            mes = translateMes(fecha[1]);
+            mes = fecha[0]+'-'+mes+'-'+fecha[2];
+            day = day + ' '+ mes; 
+            }
+    
+    
+    $('#N_fecha').html(day);
     $('#N_campus').html(event.vsCampus);
     $('#N_detalle').html(event.vsDetalleNoticia);
     $('#N_link').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');

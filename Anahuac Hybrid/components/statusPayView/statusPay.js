@@ -1,14 +1,14 @@
 'use strict';
 
 app.statusPayView = kendo.observable({
-    onShow: function() { if(Refresh_VEC_login2 == true){ emptyEstadoCuenta(); }  },
+    onShow: function() { if(SPCuenta_Refresh == true){ emptyEstadoCuenta(); }  },
     afterShow: function() { getEstadoCuenta(); }
 });
 
 // START_CUSTOM_CODE_statusPayView
 
 var SPCuenta_Refresh = true;
-var Refresh_VEC_login2 = false;
+
 
 function SPCuentaPay_Refresh(){
       SPCuenta_Refresh = true;
@@ -24,13 +24,12 @@ function emptyEstadoCuenta(){
 
 
 function getEstadoCuenta(){
-   
-    Refresh_VEC_login2 = false;
+
     
     if(SPCuenta_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -59,20 +58,12 @@ function getEstadoCuenta(){
           $('#novencidos').html("$"+element.adeudoNoVenc.trim());
           $('#stotal').html("$"+element.saldoACuenta.trim());
           
-           
-         
+          
         });
      },
      error:function(){
          
-    navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();
+    showNotification('Intentalo Nuevamente','Alerta');
      }      
      });
     

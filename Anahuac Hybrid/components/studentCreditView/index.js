@@ -15,7 +15,7 @@ function buildStudentCredit()
      if(RCEducativo_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -33,7 +33,7 @@ function buildStudentCredit()
         }, 
 		success:function(data)
 		{
-            Refresh_VSC_login2 = false;
+            
             RCEducativo_Refresh = false;
             
             if(1<=data.length)
@@ -102,15 +102,15 @@ function buildTable(programName, div_id)
     
         
     switch(programName){
-        case 'CANT': variabProgramName = CANT; if(Refresh_CANT_login2 == true){variabProgramName = true;} break;
-        case 'IANT': variabProgramName = IANT; if(Refresh_IANT_login2 == true){variabProgramName = true;} break;
-        case 'CNVO': variabProgramName = CNVO; if(Refresh_CNVO_login2 == true){variabProgramName = true;} break;
-        case 'INVO': variabProgramName = INVO; if(Refresh_INVO_login2 == true){variabProgramName = true;} break;
+        case 'CANT': variabProgramName = CANT;  break;
+        case 'IANT': variabProgramName = IANT;  break;
+        case 'CNVO': variabProgramName = CNVO;  break;
+        case 'INVO': variabProgramName = INVO;  break;
     }
     
     
-     if(variabProgramName==false)
-        return;
+     /*if(variabProgramName==false)
+        return;*/
     
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
@@ -128,13 +128,13 @@ function buildTable(programName, div_id)
         },
 		success:function(data)
 		{
-            
+            variabProgramName=false;
             
             switch(programName){
-                case 'CANT': CANT=false; Refresh_CANT_login2=false; break;
-                case 'IANT': IANT=false; Refresh_IANT_login2=false; break;
-                case 'CNVO': CNVO=false; Refresh_CNVO_login2=false; break;
-                case 'INVO': INVO=false; Refresh_INVO_login2=false; break;
+                case 'CANT': CANT=false;   break;
+                case 'IANT': IANT=false;   break;
+                case 'CNVO': CNVO=false;   break;
+                case 'INVO': INVO=false;   break;
             }
 
             var html =
@@ -166,7 +166,7 @@ function buildTable(programName, div_id)
                 }
             $('#'+div_id).html(html);
 		},
-		error:function(){ alert("Error"); }
+		error:function(){ showNotification('Intentalo Nuevamente','Alerta'); }
 	});
 }
 
@@ -174,11 +174,7 @@ function clickHandler_3(redirect) {
     app.mobileApp.navigate('components/studentCreditView/'+redirect+'.html');
 }
 
-var Refresh_VSC_login2 = false;
-var Refresh_CANT_login2 = false;
-var Refresh_IANT_login2=false; 
-var Refresh_CNVO_login2=false; 
-var Refresh_INVO_login2=false; 
+
 
 function emptyCreStudent(){
                 $('#CANT_id').html('$0.00');
@@ -188,28 +184,28 @@ function emptyCreStudent(){
 }
 
 app.studentCreditView = kendo.observable({
-    onShow: function() { if(Refresh_VHA_login2 == true){ emptyCreStudent(); variabProgramName = true; }  },
+    onShow: function() { if(variabProgramName == true){ emptyCreStudent(); }  },
     afterShow: function() { buildStudentCredit(); }
 });
 
 // ----------------------------------------------
 app.capitalHastaPlan = kendo.observable({
-    onShow: function() { if(Refresh_CANT_login2 == true){ $('#div_student_credit_1_id').empty(); variabProgramName = true; } },
+    onShow: function() {  $('#div_student_credit_1_id').empty();  },
     afterShow: function() { initCapitalHastaPlan(); }
 });
 
 app.interesHastaPlan = kendo.observable({
-    onShow: function() { if(Refresh_IANT_login2 == true){ $('#div_student_credit_2_id').empty(); variabProgramName = true; } },
+    onShow: function() {  $('#div_student_credit_2_id').empty();    },
     afterShow: function() { initInteresHastaPlan(); }
 });
 
 app.capitalPosteriorPlan = kendo.observable({
-    onShow: function() { if(Refresh_CNVO_login2 == true){ $('#div_student_credit_3_id').empty(); variabProgramName = true; } },
+    onShow: function() {  $('#div_student_credit_3_id').empty();   },
     afterShow: function() {initCapitalPosteriorPlan(); }
 });
 
 app.interesPosteriorPlan = kendo.observable({
-    onShow: function() { if(Refresh_INVO_login2 == true){ $('#div_student_credit_4_id').empty(); variabProgramName = true; } },
+    onShow: function() { $('#div_student_credit_4_id').empty();   },
     afterShow: function() { initInteresPosteriorPlan(); }
 });
 // ----------------------------------------------

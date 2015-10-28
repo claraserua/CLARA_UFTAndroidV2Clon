@@ -31,13 +31,15 @@ function translateDay(day_english){
 	}
 	return day_english;
 }
+
+
 function initEvents()
 {  
 	
      if(Events_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -63,7 +65,7 @@ function initEvents()
 			{
 				html +=
 					'<div class="card-2">'+
-                    '<div class="card-header"><span>'+translateDay(event.vsDiaFecInicio)+'</span><span class="item-after">'+event.vsFecInicio+'</span></div> '+
+                    '<div class="card-header"><span>'+translateDay(event.vsDiaFecInicio)+'</span><span class="item-after" style="float:right;">'+event.vsFecInicio+'</span></div> '+
                     '</div><div class="list-block media-list">'+
 					'<ul>'+
                         '<li class="swipeout">'+
@@ -94,12 +96,31 @@ function initEvents()
 
 function initEventDetail(){
     var event = eventsView_arrayEvents[eventsView_selectedIndex];
+    var fecha='';
+    var fecha1='';
+    var fecha2='';
+    var mesinicio='';
+    var mesfin='';
+    
+    
+    
+    fecha = event.vsRangoFecha.split("al");  
+    fecha1 = fecha[0].split("-");
+    mesinicio = fecha1[0]+'-'+translateMes(fecha1[1])+'-'+fecha1[2];
+    
+    
+    fecha2 = fecha[1].split("-");
+    mesfin = fecha2[0]+'-'+translateMes(fecha2[1])+'-'+fecha2[2];
+    
+    fecha = mesinicio +' al '+ mesfin;
+    
+   
     
     $('#dia_id').html(translateDay(event.vsDiaFecInicio));
     $('#fecha_id').html(event.vsFecInicio);
     $('#asunto_id').html(event.vsAsunto);
     $('#lugar_id').html(event.vsUbiEvento);
-    $('#fechas_id').html(event.vsRangoFecha);
+    $('#fechas_id').html(fecha);
     $('#hora_id').html(event.vsRangoHora);
     $('#evento_id').html(event.vsDetEvento);
     $('#contacto_id').html(event.vsUbicacionContacto);

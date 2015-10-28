@@ -28,7 +28,7 @@ function getInscripcion(){
     if(PSCitaIns_Refresh==false)
         return;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
@@ -53,21 +53,21 @@ function getInscripcion(){
              $.each(data, function(index, element)
              {
                  html +=
-                '<div class="card_light">'+
+                '<div class="card">'+
                 '<div class="card-header"><span class="item-title">Campus:</span><span class="item-after-right">'+element.campDes+'</span></div>'+        
-                '</div>'+
-                 '<div class="card_light">'+
+                
+                
                 '<div class="card-header"><span class="item-title">A partir de:</span><span class="item-after-right">'+element.fechIni+'</span></div>'+        
-                '</div>'+
-                 '<div class="card_light">'+
+                
+                
                 '<div class="card-header"><span class="item-title">Hora inicio:</span><span class="item-after-right">'+element.horaIni+'</span></div>'+        
-                '</div>'+
-                 '<div class="card_light">'+
+                
+                
                 '<div class="card-header"><span class="item-title">Hasta:</span><span class="item-after-right">'+element.fechFin+'</span></div>'+        
-                '</div>'+
-                 '<div class="card_light">'+
+                
+                
                 '<div class="card-header"><span class="item-title">Hora final:</span><span class="item-after-right">'+element.horaFin+'</span></div>'+        
-                '</div><br/>';
+                '</div>';
                  
                  $('#ci_periodo01').html(element.termDes);
              });
@@ -83,15 +83,7 @@ function getInscripcion(){
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
-         
-       /* navigator.notification.alert(
-        'Opps!',  // message
-        alertDismissed,         // callback
-        'Inicie Sesion!',            // title
-        'Aceptar'                  // buttonName
-         );
-     
-         ExitApp();*/
+       
      }      
      });
 }

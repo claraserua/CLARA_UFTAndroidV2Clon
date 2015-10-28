@@ -52,53 +52,7 @@ function Refresh_Shedule(){
     
     gateDayActual();
 }
-/*
-function H_showPrevius()
-{
-    var today = new Date(H_date_Actual);
-    today.setDate(today.getDate() - 5);
-    var to = new Date(H_date_Actual);
-    
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
 
-    var descmes =  month[mm] +' '+yyyy+' '+dd;
-    $('#desc_H_Fecha').html(descmes);
-    
-    
-    H_today = format_YYYY_MM_DD(today);
-    H_to = format_YYYY_MM_DD(to);
-    
-    H_date_Actual = H_today;
-    numeracionXSemana(today,H_today);
-    buildScheduleOptions();
-}
-
-
-function H_showNext(){
-    
-    var today = new Date(H_date_Actual);
-    var to = new Date();
-    to.setDate(today.getDate() + 5);
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    var descmes =  month[mm] +' '+yyyy+' '+dd;
-    $('#desc_H_Fecha').html(descmes);
-    
-    
-    H_today = format_YYYY_MM_DD(today);
-    H_to = format_YYYY_MM_DD(to);
-    
-    H_date_Actual = H_today;
-    numeracionXSemana(today,H_today);
-    buildScheduleOptions();
-    
-}
-/**/
-//*/
 function H_showPrevius(){
     var customDay = new Date(H_date_Actual);
     customDay.setDate(customDay.getDate() - 7);
@@ -154,41 +108,23 @@ function getdayCalendar(customDay){
 
     numeracionXSemana(monday,H_today);
     buildScheduleOptions();
-}/*
-function getdayCalendar(today)
-{
-    var today = new Date(today);
-    
-    var to = new Date();
-    to.setDate(today.getDate() + 5);
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    var descmes =  month[mm] +' '+yyyy+' '+dd;
-    $('#desc_H_Fecha').html(descmes);
-    
-    
-    H_today = format_YYYY_MM_DD(today);
-    H_to = format_YYYY_MM_DD(to);
-
-    H_date_Actual = H_today;
-    numeracionXSemana(today,H_today);
-    buildScheduleOptions();
-    
 }
-//*/
+
+function convert_YYYYMMDD_to_DDMMYYYY(YYYYMMDD)
+{
+    var arr=YYYYMMDD.split('-');
+    return arr[2]+'-'+arr[1]+'-'+arr[0];
+}
+
 function buildScheduleOptions()
 {
-    
-    
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     
 	var websevicename = 'schedule/'+usuario+'/'+H_today+'/'+H_to;
     var lastName = '';
     
-    //if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     console.log('/'+H_today+'/'+H_to+'?');
     
     $('.km-loader').show();
@@ -225,7 +161,7 @@ function buildScheduleOptions()
                     
                     html +=
     					'<div class="card-2">'+
-                        '<div class="card-header"><span>'+diaDeLaSemana(date.date)+'</span><span class="item-after">'+date.date+'</span></div> '+
+                        '<div class="card-header"><span>'+diaDeLaSemana(date.date)+'</span><span class="item-after" style="float:right;">'+convert_YYYYMMDD_to_DDMMYYYY(date.date)+'</span></div> '+
                         '</div><div class="list-block media-list">'+
     					'<ul>';
     				$.each(date.courses, function(index2, course)
@@ -254,12 +190,15 @@ function buildScheduleOptions()
                             '</div></div>'+
     						'</li>';
     					counter++;
+                        var arr = course.location.split('|');
+                        var salon='';
+                        if(arr!=null && 0<arr.length) salon=arr[1];
                         var tooltip =
                             '<div>'+
                             '  <a data-toggle="tooltip" class="red-tooltip" '+
-                            '  title="'+course.title+' - '+course.description+' | Instructors: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'</a></div>';
+                            '  title="'+course.title+' - '+course.description+' | Instructores: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'<br/>'+salon+'   </a></div>'; // <br/><img src="resources/img/plus.png"/>
     					
-                        SV_addCourse(date.date, course.startTime, course.endTime, tooltip);
+                        SV_addCourse(date.date, course.startTime, course.endTime, tooltip, course);
     				});
     				html += '</ul>';
     				html += '</div>';
@@ -290,7 +229,7 @@ function buildScheduleOptions()
 			
 		},
 		error:function(){
-			alert("Error");
+			 showNotification('Intentalo Nuevamente','Alerta');
 		}
 	});
 }

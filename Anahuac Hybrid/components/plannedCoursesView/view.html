@@ -1,10 +1,10 @@
-<div data-role="view" data-title="Cursos Planeados." data-layout="main-nonav" data-model="app.plannedCoursesView" data-show="app.plannedCoursesView.onShow" data-after-show="app.plannedCoursesView.afterShow">
+<div data-role="view" data-title="Cursos Planeados" data-layout="main-nonav" data-model="app.plannedCoursesView" data-show="app.plannedCoursesView.onShow" data-after-show="app.plannedCoursesView.afterShow">
     <!-- START_CUSTOM_CODE_plannedCoursesView -->
 
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
-            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
             <a data-role="button" data-align="right" data-icon="refresh" onClick="CoursesPlaned();">&nbsp;</a>
         </div>
 	</div>
@@ -21,6 +21,8 @@
        
 	   <div class="page-view" data-bind="invisible:error">
          <div class="page-box">
+             
+             <div class="card-content-inner">Está opción te permite consultar los cursos que planeas inscribir.</div>
          
              <div id="courseplaneados">
 

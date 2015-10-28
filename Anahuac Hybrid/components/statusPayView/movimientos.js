@@ -1,7 +1,12 @@
 'use strict';
 
 app.movimientosView = kendo.observable({
-    onShow: function() { if(Refresh_VMSP_login2 == true){ $('#id_movimientosSP').empty(); }  },
+    onShow: function() {
+        $('#SPMO_prev_arrow').hide();
+        $('#SPMO_next_arrow').hide();
+        $('#term_periodo_mov').html('');
+        if(SPMovimientos_Refresh == true){ $('#id_movimientosSP').empty(); }
+    },
     afterShow: function() { llenarFormaMovimientos(); }
 });
 
@@ -12,7 +17,7 @@ var SPMO_array_period=[];
 
 
 var SPMovimientos_Refresh = true;
-var Refresh_VMSP_login2 = false;
+
 
 function SPMovimientosFuct_Refresh(){
       SPMovimientos_Refresh = true;
@@ -22,10 +27,10 @@ function SPMovimientosFuct_Refresh(){
 
 function llenarFormaMovimientos()
 {
-    Refresh_VMSP_login2 = false;
+   
     if(SPMovimientos_Refresh==false)
         return;
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
   
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -61,13 +66,7 @@ function llenarFormaMovimientos()
             
              showNotification('Intentalo Nuevamente','Alerta');
          
-            /*navigator.notification.alert(
-            'Opps!',  // message
-            alertDismissed,         // callback
-            'Inicie Sesion!',            // title
-            'Aceptar'                  // buttonName
-            );
-            ExitApp();*/
+           
 		}
 	});
 }
@@ -85,10 +84,11 @@ function SPMO_updateMovimientos()
     var termDesc = SPMO_array_period[SPMO_current_index];
     $.each(SPMO_array_json, function(index, element)
     {
+        
         if(element.termDesc == termDesc)
         {
             html +=
-                '<tr style="border-bottom: 1px solid #ccc;">'+
+                '<tr style="border-top: 1px solid #BFBFD2;">'+
                     '<td>'+element.detlDesc+'</td>'+
                     '<td style="text-align:center;">'+element.detlType+'</td>'+
                     '<td style="text-align:right;">$'+element.detlAmon.trim()+'</td>'+

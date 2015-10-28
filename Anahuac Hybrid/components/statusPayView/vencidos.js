@@ -1,7 +1,7 @@
 'use strict';
 
 app.vencidosView = kendo.observable({
-    onShow: function() {  if(Refresh_VENCSP_login2 == true){ $('#id_vencidosSP').empty(); } },
+    onShow: function() {  if(SPVencidos_Refresh == true){ $('#id_vencidosSP').empty(); } },
     afterShow: function() { llenarFormaVencidos(); }
 });
 
@@ -12,7 +12,7 @@ var SPV_array_period=[];
 
 
 var SPVencidos_Refresh = true;
-var Refresh_VENCSP_login2 = false;
+
 
 function SPVencidosFuct_Refresh(){
       SPVencidos_Refresh = true;
@@ -22,10 +22,10 @@ function SPVencidosFuct_Refresh(){
 
 function llenarFormaVencidos()
 {
-    Refresh_VENCSP_login2 = false;
+   
     if(SPVencidos_Refresh==false)
         return;
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -81,20 +81,7 @@ function llenarFormaVencidos()
 		}
 	});
 }
-/*
-function searchElement(array, element){
-    if(array!=null)
-        for(var i=0; i<array.length; i++)
-            if(array[i]==element)
-                return i;
-    return -1;
-}
-function addElement(array,element){
-    element = element.trim();
-    if(searchElement(array,element)==-1)
-        array.push(element);
-}
-//*/
+
 
 function SPV_updateVencidos()
 {
@@ -107,11 +94,12 @@ function SPV_updateVencidos()
 
     var termDesc = SPV_array_period[SPV_current_index];
     $.each(SPV_vencido_json, function(index, element)
-    {
+    {   
         if(element.termDesc == termDesc)
         {
+            
             html +=
-              '<tr style="border-bottom: 1px solid #ccc;">'+
+              '<tr style="border-top: 1px solid #BFBFD2;">'+
                  '<td>'+element.detlDesc+'</td>'+
                  '<td style="text-align:center;">'+element.detlFevn+'</td>'+
                  '<td style="text-align:right;">$'+element.detlAmnt.trim()+'</td>'+
@@ -124,7 +112,7 @@ function SPV_updateVencidos()
     html +=
     '<div class="card">'+
      '<div class="card-content">'+
-          '<div class="card-header">Tramites y Derechos de Incorp.</div>'+  
+          '<div class="card-header">Trámites y Derechos de Incorp.</div>'+  
           '<div class="card-content-inner">'+
              '<div>Monto: $<span id="trm_id_monto">'+data[SPV_indexTRAM].detlAmnt.trim()+'</span></div>'+
              '<div>Recargos: $<span id="trm_id_recagro">'+data[SPV_indexTRAM].detlRecg.trim()+'</span></div>'+
@@ -161,8 +149,6 @@ function SPV_showNext(){
         SPV_updateVencidos();
     }
 }
-
-
 
 
 // START_CUSTOM_CODE_academicStatus

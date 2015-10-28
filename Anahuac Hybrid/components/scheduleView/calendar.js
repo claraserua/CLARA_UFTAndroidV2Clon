@@ -4,6 +4,8 @@ app.calendarView = kendo.observable({
     onShow: function() {  },
     afterShow: function() { 
     
+        
+        
        var curDate = new Date();
        $('#dp3').datepicker({
            "setDate": new Date(),

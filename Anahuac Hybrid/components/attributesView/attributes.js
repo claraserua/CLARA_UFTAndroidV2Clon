@@ -14,7 +14,7 @@ function getAtributos(){
     var password = window.localStorage.getItem("password");
     var websevicename = 'atributo/'+usuario;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
@@ -46,16 +46,6 @@ function getAtributos(){
    
          showNotification('Intentalo Nuevamente','Alerta');
          
-    /*navigator.notification.alert(
-    'Opps!',  // message
-    alertDismissed,         // callback
-    'Inicie Sesion!',            // title
-    'Aceptar'                  // buttonName
-     );
-     
-         ExitApp();*/        
-         
-         
      }
         
      });
@@ -68,7 +58,7 @@ function sendAtributos(){
      if(arrayatributos.length>0){
   	cadenaatributos = arrayatributos.join(",");
          $('#txt-atributos').html(": "+cadenaatributos);
-      }else{ cadenaatributos="null";   $('#txt-atributos').html("");}
+      }else{ cadenaatributos="";   $('#txt-atributos').html("");}
     
     $('#val_atributos').val(cadenaatributos);
     app.mobileApp.navigate('components/searchCoursesView/view.html');

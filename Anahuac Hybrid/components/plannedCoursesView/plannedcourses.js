@@ -13,10 +13,12 @@ function CoursesPlaned()
     var password = window.localStorage.getItem("password");
 	var websevicename = 'planeados/'+usuario;
     
-    if(!checkConnection()){ showNotification('No network connection','Network'); return; }
-    
-    
     $('#courseplaneados').empty();
+    $('#PC_next_arrow').hide();
+    $('#PC_prev_arrow').hide();
+    $('#div_term_CPperiodo').empty();
+    
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     
 	$('.km-loader').show();
@@ -27,18 +29,14 @@ function CoursesPlaned()
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
         complete:function(data){
-         $('.km-loader').hide();
-         
-     },
+         	$('.km-loader').hide();
+        },
 		success:function(data)
 		{
     	    var html = '';
             PC_max_courses = data.length;             
-            PC_current_index = 0;            
-            $('#PC_next_arrow').hide();
-            $('#PC_prev_arrow').hide();
-            
-            
+            PC_current_index = 0;
+
             $('#load-content').remove();
             if(data.length != 0)
             {
@@ -59,25 +57,30 @@ function CoursesPlaned()
                     PC_addPeriod(element.plTerD);
                   
     			});
-               // PC_current_index = PC_array_period.length-1;
+                PC_current_index = PC_array_period.length-1;
+                
+                $('#courseplaneados').html(html); 
                 PC_updateCourses();
             }
             else
             {
-                 html +=
-                 '<div class="card">'+
-                 '<div class="card-content">'+
-                 '<div class="card-content-inner"><span class="item-orange-bold">NO CUENTA CON CURSOS PLANEADOS.</span></div>'+
-                   '<ul class="km-widget km-listview km-list">'+
-                 '<li><a class="km-listview-link" data-role="listview-link" href="components/searchCoursesView/view.html"><img src="resources/img/icons/BusquedaCursos42x38.png" alt="Busqueda de de Cursos" class="km-thumbnail"><span class="link-text-center">Busqueda de Cursos</span></a></li>'+
-                 '</ul>'+ 
+                html +=
+                '<div class="card">'+
+                '<div class="card-content">'+
+                '<div class="card-content-inner"><span class="item-orange-bold">NO CUENTA CON CURSOS PLANEADOS.</span></div>'+
+                '  <ul class="km-widget km-listview km-list">'+
+                '    <li><a class="km-listview-link" data-role="listview-link" href="components/searchCoursesView/view.html"><img src="resources/img/icons/BusquedaCursos42x38.png" alt="Búsqueda de de Cursos" class="km-thumbnail"><span class="link-text-center">Búsqueda de Cursos</span></a></li>'+
+                '</ul>'+
                 '</div>'+
-                 '</div>'+
-                 '';   
-                
-                
+                '</div>'+
+                '';
+
+                $('#courseplaneados').html(html);
+                $('#PC_next_arrow').hide();
+                $('#PC_prev_arrow').hide();
+                $('#div_term_CPperiodo').empty();
             }
-			$('#courseplaneados').html(html);        
+			       
 		
           
 		},
@@ -110,18 +113,20 @@ function PC_updateCourses()
 {     
     initscrollTop();
     
-     $('#div_term_CPperiodo').html(PC_array_period[PC_current_index]);
+    $('#div_term_CPperiodo').html(PC_array_period[PC_current_index]);
     var str_period = PC_array_period[PC_current_index];
     for(var i=0; i<PC_max_courses; i++)
     {
         
-        if($('#PC_hidden_'+i).val() == str_period){
+        if($('#PC_hidden_'+i).val() == str_period)
+        {
             $('#PC_div_'+i).show();
         }
-        else
+        else{
             $('#PC_div_'+i).hide();
+        }
     }
-    
+  
    
     
     $('#PC_prev_arrow').show();
@@ -130,32 +135,7 @@ function PC_updateCourses()
         $('#PC_prev_arrow').hide();
     if(PC_current_index==PC_array_period.length-1)
         $('#PC_next_arrow').hide();
-	/*
-    if(PC_array_period.length==1){
-        $('#PC_prev_arrow').hide();
-        $('#PC_next_arrow').hide();
-    
-    }else{
-        if(PC_current_index==0){
-             $('#PC_next_arrow').hide();
-            $('#PC_prev_arrow').show();
-              return;
-        }
-        
-         if(PC_current_index<PC_array_period.length && PC_current_index==PC_array_period.length-1){
-             $('#PC_next_arrow').show();
-             $('#PC_prev_arrow').hide();
-             return;
-        }
-        
-         if(PC_current_index==PC_array_period.length-1){
-             $('#PC_prev_arrow').hide();
-             return;
-        }
-        
-        if(PC_current_index<=PC_array_period.length-1){$('#PC_next_arrow').show();  $('#PC_prev_arrow').show();}
-    }
-    //*/
+	
 }
 
 function PC_showPrevius(){
@@ -214,6 +194,8 @@ function delete_favorit_CoursePC(crn,periodo,index){
      success:function(data){
          // do stuff with json (in this case an array)
          $('#PC_div_'+index).remove();
+         update
+
          //showNotification('El curso se elimino de sus cursos Planeados','Curso Eliminado')  
      },
      error:function(){         
@@ -226,10 +208,10 @@ function delete_favorit_CoursePC(crn,periodo,index){
 app.plannedCoursesView = kendo.observable({
     onShow: function() {        
         
-        $('#courseplaneados').html(""); 
+        $('#courseplaneados').html(''); 
         $('#PC_next_arrow').hide();
         $('#PC_prev_arrow').hide();
-         $('#div_term_CPperiodo').html(""); 
+        $('#div_term_CPperiodo').html('');
         
     
     },

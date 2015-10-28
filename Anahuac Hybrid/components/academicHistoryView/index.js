@@ -1,22 +1,19 @@
 'use strict';
 
 app.academicHistoryView = kendo.observable({
-    onShow: function() { if(Refresh_VHA_login2 == true){ $('#div_content_idHA').empty(); } },
+    onShow: function() { if(VHA_Refresh == true){ $('#div_content_idHA').empty(); } },
     afterShow: function() { llenarFormaHistoria(); }
 });
 
 
 var VHA_Refresh = true;
-var Refresh_VHA_login2 = false;
+
 
 function Refresh_HAcademic(){
       VHA_Refresh = true;
       llenarFormaHistoria();
   }
 
-
-
-// Ejemplo: http://redanahuac.mx/mobile/webservice/curl.php?websevicename=promedio/00131632&username=00131632&password=chacha
 var AH_promedio=null;
 var AH_historia=null;
 var AH_current_element=null;
@@ -26,12 +23,12 @@ var AH_HTML_Promedios = '';
 
 function llenarFormaHistoria()
 {
-     Refresh_VHA_login2 = false;
+    
     
 	 if(VHA_Refresh==false)
         return;
     
-     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
+     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -63,8 +60,6 @@ function llenarFormaHistoria()
    
 }
 
-
-// Ejemplo: http://redanahuac.mx/mobile/webservice/curl.php?websevicename=historia/00131632&username=00131632&password=chacha
 function getDetalleHistory(){
     
     var usuario =  window.localStorage.getItem("usuario");
@@ -96,7 +91,7 @@ function getDetalleHistory(){
             }
 		},
 		error:function(){
-			alert("Error");
+			 showNotification('Intentalo Nuevamente','Alerta');
 		}
 	});
     
@@ -107,25 +102,38 @@ function updateDetalleHistory()
     var html='';
     var periodo = '';
     
-	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
-	html +='<div class="card_light"><div class="card-header">Promedio global:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
+    var message_no_grades='Su historia acad&eacute;mica no est&aacute; disponible o tiene retenciones en su registro.';
+    if(AH_historia!=null && AH_historia.length > 0)
+    {
+    	html += '<div class="card_light"><div class="card-header">Promedio del periodo:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGpaa+'">'+AH_promedio[AH_current_index].tgpaGpaa+'</span></div></div>';
+    	html +='<div class="card_light"><div class="card-header">Promedio global:<span style="float:right;" class="color-'+AH_promedio[AH_current_index].coloGlob+'">'+AH_promedio[AH_current_index].promGlob+'</span></div></div>';
+        
+    	$.each(AH_historia, function(index, element)
+    	{
+            if(element.termCode=="HOLD" || element.termCode=="OTRO" ||
+               (element.vsCrseTitl=="" && element.termCode!="HOLD" && element.termCode!="SINP"))
+            {
+                html = '<div class="card_light"><div class="card-header"> '+message_no_grades+' </div></div>';
+            }
+            else
+            if(element.termCode == AH_current_element.termCode)
+            {
+                periodo = element.termDesc;
+                html +=
+                 '<div class="card_light">'+
+                 '  <div class="card-header" style="position:static;"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span style="float:right; " class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
+                 '  <div class="card-content">'+
+                 '    <div class="card-content-inner">'+
+                 '      <div><span>Instructor: </span>'+element.nameFacu+'</div>'+
+                 '      <div><span>Créditos: '+element.credHour+'</span></div>'+
+                 '    </div>'+
+                 '  </div>'+
+                 '</div>'+
+                 '';
+            }
+    	});
+    }
     
-	$.each(AH_historia, function(index, element)
-	{
-        if(element.termCode == AH_current_element.termCode)
-        {
-            periodo = element.termDesc;
-            html +=
-             '<div class="card_light">'+
-             '<div class="card-header" style="position:static;"><span>'+element.subjCode+'&nbsp;'+element.crseNumb+'&nbsp;'+element.crseTitl+'</span><span style="float:right;" class="color-'+element.colorGrd+'">'+element.grdeFinl+'</span></div>'+
-             '<div class="card-content">'+
-             '<div class="card-content-inner"><div><span>Instructor: </span>'+element.nameFacu+'</div><div><span>Créditos: '+element.credHour+'</span></div></div>'+
-             '</div>'+
-            
-             '</div>'+
-             '';
-        }
-	});
     $('.km-loader').hide();
     $('#div_content_idHA').html(html);
     $('#div_term_periodoHA').html(periodo);
@@ -147,7 +155,6 @@ function updateDetalleHistory()
         
         if(AH_current_index<=AH_promedio.length-1){$('#AH_next_arrow').show();  $('#AH_prev_arrow').show();}
     }
-    
 }
 
 function AH_showPrevius(){

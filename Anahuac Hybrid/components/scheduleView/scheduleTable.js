@@ -30,13 +30,33 @@ function diaDeLaSemana_XX(date_yyyymmdd){
 
 	return eval("dia_" + fecha.getDay());
 }
-function SV_addCourse(fecha, hour_1, hour_2, data)
+
+function SV_searchCourseColor(title)
 {
+    var max=-1;
+	for(var d=0; d<dias.length; d++)
+    {
+		var courses = schedule[dias[d]];
+        for(var i=0; i<courses.length; i++)
+        {
+            if(courses[i].item_json.title == title)
+                return courses[i].indexColor;
+            max=Math.max(max, courses[i].indexColor);
+        }
+    }
+    return max+1;
+}
+
+function SV_addCourse(fecha, hour_1, hour_2, tooltip, item_json)
+{
+    var color=SV_searchCourseColor(item_json.title);
 	var course = {
 		beginHour: SV_parseHour24(hour_1),
 		endHour: SV_parseHour24(hour_2),
 		rows: 0,
-		data: data,
+		tooltip: tooltip,
+        item_json: item_json,
+        indexColor: color,
 	};
 	course.rows = Math.round(2.0*(course.endHour - course.beginHour));
 	var day = diaDeLaSemana_XX(fecha);
@@ -51,9 +71,9 @@ function SV_buildTable(curseCounter)
 		hours.push(i)
 	
 	var html='';
-	html+='<tr><td style="width:14%; ">Hora</td>';
+	html+='<tr class="sty_sched_header"><td style="width:14%; ">Hora</td>';
 	for(var i=0; i<dias.length; i++)
-		html+='<td style="width:16%;">'+ST_numDia[i]+'</td>';
+		html+='<td style="width:16%; ">'+ST_numDia[i]+'</td>';
 	html+='</td>';
 	
 	var string=['A','B','C','D','E'];
@@ -61,7 +81,7 @@ function SV_buildTable(curseCounter)
     {
         var style = (j%2==0?'sty_line_1':'sty_line_2');
 		html+='<tr class="'+style+'">';
-        html+='<td style="text-align: center;">'+Math.floor(7+j/2)+':'+(j%2==0?'00':'30')+'</td>';
+        html+='<td class="sty_cell_hour">'+Math.floor(7+j/2)+':'+(j%2==0?'00':'30')+'</td>';
 		for(var i=0; i<dias.length; i++)
             html+='<td class="'+style+'">&nbsp;</td>';
             //html+='<td></td>';
@@ -91,8 +111,8 @@ function SV_buildTable(curseCounter)
                    
 					var content=tbody.rows[h+1].cells[1+d];
 					content.tag=course;
-					content.className='sty_cell';
-					content.innerHTML=course.data;
+					content.className='sty_cell_'+(course.indexColor%15); // de 0 a 14 
+					content.innerHTML=course.tooltip;
 					content.rowSpan=course.rows;
 					break;
 				}
