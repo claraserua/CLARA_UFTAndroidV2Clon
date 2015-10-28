@@ -2,10 +2,10 @@
   "ProjectName": "Anahuac Hybrid",
   "ProjectGuid": "24eba623-5d2c-42c5-a4be-2b3154b11f56",
   "projectVersion": 1,
-  "AppIdentifier": "com.app.RedAnahuac",
-  "DisplayName": "RedAnahuac",
+  "AppIdentifier": "mx.anahuac.dtimoviltest.rhorunner",
+  "DisplayName": "Red Anahuac",
   "Author": "Red de Universidades Anáhuac",
-  "Description": "App Anahuac",
+  "Description": "La app red Anáhuac mobile ofrece servicios académicos y financieros para los alumnos de la institución.",
   "BundleVersion": "2.0",
   "AndroidVersionCode": "2",
   "iOSDeviceFamily": [
@@ -46,7 +46,8 @@
     "org.apache.cordova.device-orientation",
     "org.apache.cordova.dialogs",
     "org.apache.cordova.network-information",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.vibration"
   ],
   "iOSDeploymentTarget": "8.4"
 }

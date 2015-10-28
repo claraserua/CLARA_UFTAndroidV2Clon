@@ -127,9 +127,23 @@ label {
 }
 
 #kendoUiMobileApp.km-android .button-group .km-button.primary {
-    color: #fff;
-    background-color: #33b5e5;
+    color: #fff !important;
+    background-color: #F7881C !important;
 }
+
+.km-android .km-tabstrip .km-state-active .km-icon {
+  color: #F7881C !important;
+}
+
+.km-android .km-tabstrip .km-state-active {
+  border-color: #F7881C !important;
+}
+
+
+.km-android .km-navbar .km-button:last-child .km-text, .km-android .k-toolbar .km-button:last-child .km-text, .km-android .km-tabstrip .km-button:last-child .km-text{
+color:#fff;    
+}
+
 
 #kendoUiMobileApp .group-separator {
     border: none;

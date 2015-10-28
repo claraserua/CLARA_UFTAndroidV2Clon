@@ -116,7 +116,7 @@ function getRolAccess(){
                }
          }else{
                 if(data.roles[0].trim() == "student" || data.roles[1].trim() == "student"){
-                    //vibrate();
+                    vibrate();
                     setTimeout(function() {
                     app.mobileApp.navigate('components/' + redirect + '/view.html');
                     $('.km-loader').hide();
@@ -140,7 +140,7 @@ function getRolAccess(){
 
 
 function vibrate(){
-        //navigator.notification.vibrate(10000);
+        navigator.notification.vibrate(2000);
     }
 
 function playBeep(){
