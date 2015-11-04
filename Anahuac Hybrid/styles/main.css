@@ -14,6 +14,12 @@ input[type="text"] {
     }
 
 
+.left{
+    
+    float:left; font-size:1.6em !important; top:10px!important;
+    
+}
+
 .android{
     
     float:right; top:-20px!important; height:5px !important; font-size:1.6em !important;

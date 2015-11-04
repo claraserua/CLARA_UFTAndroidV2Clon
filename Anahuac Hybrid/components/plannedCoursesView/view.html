@@ -1,7 +1,9 @@
 <div data-role="view" data-title="Cursos Planeados" data-layout="main-nonav" data-model="app.plannedCoursesView" data-show="app.plannedCoursesView.onShow" data-after-show="app.plannedCoursesView.afterShow">
     <!-- START_CUSTOM_CODE_plannedCoursesView -->
 
-	<div data-role="header">
+	
+    <!--
+    <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
@@ -9,7 +11,7 @@
             <a data-role="button" data-align="right" id="PC_prev_arrow"  onclick="PC_showPrevius()" style="color:#fff;">< Atras</a>
             <a data-role="button" data-align="right" id="PC_next_arrow"  onclick="PC_showNext()" style="color:#fff;">Siguiente ></a>
         </div>
-	</div>
+	</div>-->
     
        
 	   <div class="page-view" data-bind="invisible:error">
@@ -32,9 +34,16 @@
     
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <span class="km-icon km-home left"></span>
                 <div class="line-gray">Cursos Planeados </div>
                 <span class="km-icon km-refresh android" s onClick="CoursesPlaned();"></span>
-                <div class="line-orange"><span id="div_term_CPperiodo"></span></div>
+                
+                <div class="line-orange">
+                    <span class="left"><</span>
+                    <span id="div_term_CPperiodo"></span>
+                    <span >></span>
+                </div>
+                
             </div>
       </footer>
 
