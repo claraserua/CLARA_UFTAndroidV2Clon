@@ -5,15 +5,10 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
+            <a onClick="ValidFoundCourses();" data-align="right" data-role="button" data-icon="search">BUSCAR</a>
         </div>
 	</div>
     
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" ></div>
-            
-        </div>
-	</div>
     
 	   <div class="page-view" data-bind="invisible:error">
        
@@ -150,11 +145,13 @@
           </div>
        </div>
 
- <footer data-role="footer">
-            <div data-role="tabstrip" id="navigation-container">
-                <a onClick="ValidFoundCourses();" data-role="button" data-icon="search">BUSCAR</a>
+        
+    
+    <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Buscar Cursos</div>
             </div>
-        </footer>
+    </footer>
     
     
     <!-- END_CUSTOM_CODE_plannedCoursesView -->

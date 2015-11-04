@@ -10,12 +10,7 @@
 	</div>
     
     
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" >Periodo (<span id="periodo_id"></span>)</div>
-            
-        </div>
-	</div>
+ 
     
 	<div class="page-view" data-bind="invisible:error">
         <div class="page-content">
@@ -66,7 +61,12 @@
         </div>
     </div>
 
-    
+        <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Situación acad&eacute;mica</div>
+                <div class="line-orange"> Periodo (<span id="periodo_id"></span>)</div>
+            </div>
+      </footer>
     
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

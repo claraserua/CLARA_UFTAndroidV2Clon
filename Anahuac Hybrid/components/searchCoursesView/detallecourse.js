@@ -120,13 +120,13 @@ function getDetalleCurso_DCD(){
          if(favorito=='N'){
                $("#SC_btn_set").attr("onClick","set_favorit_Course()");
              $( "#icon-cd" ).removeClass( "km-icon km-trash" ).addClass( "km-icon km-toprated" );
-             $( "#txt-favorit" ).html('Agregar a cursos planeados');
+             $( "#txt-favorit" ).html('Agregar');
              
          }else{
             
              $("#SC_btn_set").attr("onClick","delete_favorit_Course()");
               $( "#icon-cd" ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-trash" );
-              $( "#txt-favorit" ).html('Eliminar de cursos planeados');
+              $( "#txt-favorit" ).html('Eliminar');
          }
          
         
@@ -187,7 +187,7 @@ function delete_favorit_Course(){
         
          $("#SC_btn_set").attr("onClick","set_favorit_Course()");
          $( "#icon-cd" ).removeClass( "km-icon km-trash" ).addClass( "km-icon km-toprated" );
-         $( "#txt-favorit" ).html('Agregar a cursos planeados');
+         $( "#txt-favorit" ).html('Agregar');
          
          $("#cvs-"+crn).css("color", "");
          $( "#if-"+crn ).html( "" );
@@ -224,7 +224,7 @@ function set_favorit_Course(){
         
          $("#SC_btn_set").attr("onClick","delete_favorit_Course()");
          $( "#icon-cd" ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-trash" );
-         $( "#txt-favorit" ).html('Eliminar de cursos planeados');
+         $( "#txt-favorit" ).html('Eliminar');
          
          
          $("#cvs-"+crn).css("color", "#F7881C");

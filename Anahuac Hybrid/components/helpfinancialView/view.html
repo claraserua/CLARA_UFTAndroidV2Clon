@@ -5,20 +5,10 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_HFinancial();">&nbsp;</a>
+            <a data-role="button" data-align="right" id="HF_prev_arrow"  onclick="HF_showPrevius()" style="color:#fff;">< Atras</a>
+            <a data-role="button" data-align="right" id="HF_next_arrow"  onclick="HF_showNext()" style="color:#fff;">Siguiente ></a>
         </div>
     </div>
-    
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" id="term_periodo_hf"></div>
-            <a data-role="button" id="HF_prev_arrow" class="km-widget km-button km-back" onclick="HF_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" id="HF_next_arrow" data-align="right" onclick="HF_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
-        </div>
-	</div>
-    
-    
-    
     
     
     <div class="page-view" data-bind="invisible:error">
@@ -32,4 +22,13 @@
     </div>
     <!-- START_CUSTOM_CODE_retentionsView -->
     <!-- END_CUSTOM_CODE_retentionsView -->
+    
+    
+    <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Apoyo Financiero</div>
+                <span class="km-icon km-refresh android" s onClick="Refresh_HFinancial();"></span>
+                <div class="line-orange"> <span id="term_periodo_hf"></span></div>
+            </div>
+      </footer>
 </div>

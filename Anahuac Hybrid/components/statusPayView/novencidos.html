@@ -5,28 +5,31 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
-            <a data-role="button" data-align="right" data-icon="refresh" onClick="SPNOVencidosFuct_Refresh();">&nbsp;</a>
+
+            <a data-role="button" data-align="right" id="SPNV_prev_arrow"  onclick="SPNV_showPrevius()" style="color:#fff;">< Atras</a>
+            <a data-role="button" data-align="right" id="SPNV_next_arrow"  onclick="SPNV_showNext()" style="color:#fff;">Siguiente ></a>
         </div>
 	</div>
     
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;"><div class="normal-header-title" id="term_periodo_nv"></div><div class="small-header-title">(NO VENCIDOS)</div></div>
-            <a data-role="button" id="SPNV_prev_arrow" class="km-widget km-button km-back" style="display:none;" onclick="SPNV_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" id="SPNV_next_arrow" data-align="right" style="display:none;" onclick="SPNV_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
-        </div>
-	</div>
-    
+   
     
    <div class="page-view" data-bind="invisible:error">
-     <div class="page-box" id="id_novencidosSP">
+   <div class="page-box" id="id_novencidosSP">
      
          
        
        
-     </div>
+   </div>
    </div>
 
 
+    
+     <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Estado de Cuenta</div>
+                <span class="km-icon km-refresh android" s onClick="SPNOVencidosFuct_Refresh();"></span>
+                <div class="line-orange"> <span id="term_periodo_nv"></span><br>(NO VENCIDOS)</div>
+            </div>
+      </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

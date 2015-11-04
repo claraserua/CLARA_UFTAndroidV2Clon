@@ -5,16 +5,12 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
-             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_Shedule();">&nbsp;</a>
+            
         </div>
 	</div>
     <!-- ____________________________________________________________________________________________ -->
     
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;"></div>
-        </div>
-	</div>
+    
     
      
 	 <div class="page-view" data-bind="invisible:error">
@@ -37,5 +33,14 @@
                 
             </div>
         </footer>
+    
+    
+    <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Calendario</div>
+                <span class="km-icon km-refresh android" s onClick="Refresh_Shedule();"></span>
+                
+            </div>
+      </footer>
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

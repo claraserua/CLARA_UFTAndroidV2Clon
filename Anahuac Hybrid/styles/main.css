@@ -2,7 +2,61 @@
 background-color:#666666 !important;
 z-index:2;
 }
+
+.km-android .km-list {
+  margin-bottom: 0em !important;
+}
+
+input[type="text"] {
+    
+   color:#33B5E5 !important;
+    
+    }
+
+
+.android{
+    
+    float:right; top:-20px!important; height:5px !important; font-size:1.6em !important;
+    
+}
+
+.header-top-android{
+ background-color: #666666 !important; border-bottom:5px solid #F7881C;
+}
+
+
+.line-gray{
+    color:#fff !important;  
+    margin-top:12px;
+}
+
+
+.line-orange{
+    
+    background-color: #F7881C;
+    color:#fff;
+    position:relative;
+    top:14px;
+    width:100%;
+    padding:8px;
+}
+
   
+
+
+.subheader-top-android{
+  background-color: #F7881C !important;
+  z-index: 2;
+  padding-top: 1.4em;
+  color: #FFF !important;
+  border-color: rgba(180,180,180,0.5);
+  text-align:center;
+}
+
+.subheader-top-android span{
+     position:relative;
+     bottom:10px;
+}
 
 a:hover {  text-decoration:none !important;  }
 

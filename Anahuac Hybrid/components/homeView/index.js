@@ -1,7 +1,7 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function() { $('.km-loader').hide(); detectIpad(); },
+    onShow: function() { $('.km-loader').hide(); detectTablet(); },
     afterShow: function() {  }
 });
 
@@ -22,7 +22,7 @@ function ExitApp(){
 }
 
 
-function detectIpad(){
+function detectTablet(){
     
     if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
         

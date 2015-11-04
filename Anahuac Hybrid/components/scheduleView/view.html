@@ -5,19 +5,13 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
-             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_Shedule();">&nbsp;</a>
+            
+            <a data-role="button" data-align="right" id="PC_prev_arrow"  onclick="H_showPrevius()" style="color:#fff;">< Atras</a>
+            <a data-role="button" data-align="right" id="PC_next_arrow"  onclick="H_showNext()" style="color:#fff;">Siguiente ></a>
+            
         </div>
 	</div>
     <!-- ____________________________________________________________________________________________ -->
-    
-        <div data-role="header" >
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important; z-index:0;" id="desc_H_Fecha"></div>
-            <a data-role="button" class="km-widget km-button km-back" onclick="H_showPrevius()" data-align="left">&nbsp;</a>
-            <a data-role="button" data-align="right" onclick="H_showNext()"><span class="km-icon km-details"></span>&nbsp;</a>
-        </div>
-	</div>
-    
     
     
 	 <div class="page-view" data-bind="invisible:error">
@@ -32,6 +26,9 @@
          </div>
     </div>
     
+     
+    
+    
     
     <!-- ____________________________________________________________________________________________ -->
     <footer data-role="footer">
@@ -42,5 +39,14 @@
                 
             </div>
     </footer>
+    
+    <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Horario</div>
+                <span class="km-icon km-refresh android" s onClick="CoursesPlaned();"></span>
+                <div class="line-orange"><span id="desc_H_Fecha"></span></div>
+            </div>
+      </footer>
+    
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

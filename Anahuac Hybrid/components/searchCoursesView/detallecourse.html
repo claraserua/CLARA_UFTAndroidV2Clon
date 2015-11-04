@@ -5,16 +5,13 @@
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" class="km-widget km-button km-back" data-align="left" onClick="Cursos_back();">Atras</a>
-             <a data-role="button" data-align="right" data-icon="refresh" onClick="getDetalleCurso_DCD();">&nbsp;</a>
+             
+            <a id="SC_btn_set" onclick="set_favorit_Course()" data-role="button" data-align="right"  ><span id="icon-cd" class="km-icon km-toprated"></span><span class="km-text" id="txt-favorit">Agregar</span></a>   
         </div>
       </div>
     
     
-    <div data-role="header">
-        <div data-role="navbar" style="background-color:#F7881C !important;">
-          <div class="km-view-title" style="font-weight: normal !important;" id="title_course_DC"></div>
-        </div>
-	</div>
+
     
     
     <div class="page-view" data-bind="invisible:error">
@@ -31,12 +28,16 @@
     <!-- END_CUSTOM_CODE_aboutView -->
     
      
-     <footer data-role="footer">
-            <div data-role="tabstrip" id="navigation-container">
+     
+    
+    
+    <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Detalle del Curso</div>
+                <span class="km-icon km-refresh android" s onClick="getAtributos();"></span>
+                <div class="line-orange"><br><span id="title_course_DC"></span></div>
                 
-            <a id="SC_btn_set" onclick="set_favorit_Course()" data-role="tab"  class="km-button km-state-active"><span id="icon-cd" class="km-icon km-toprated"></span><span class="km-text" id="txt-favorit">Agregar a cursos planeados</span></a>   
-         
-         </div>
+            </div>
         </footer>
     
    
