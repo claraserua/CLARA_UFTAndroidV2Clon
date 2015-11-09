@@ -1,5 +1,6 @@
 <div data-role="view" data-title="Noticias" data-layout="main"  data-model="app.newsView" data-show="app.newsView.onShow" data-after-show="app.newsView.afterShow">
    
+    <!--
      <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -7,12 +8,24 @@
             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_News();">&nbsp;</a>
         </div>
       </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_News();"></span>
+                <div class="line-gray">Noticias</div>
+                
+                <!--<div class="line-orange">
+                </div>-->
+            </div>
+       </footer>
     
     
     
     
      <div class="page-view" data-bind="invisible:error">
-         <div class="page-box" id="noticias">
+         <div class="page-box" id="noticias" style="margin-top:5px;">
         
             
  
@@ -25,10 +38,11 @@
     <!-- START_CUSTOM_CODE_newsView -->
     <!-- END_CUSTOM_CODE_newsView -->
     
-    
+    <!--
         <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Noticias</div>
             </div>
       </footer>
+    -->
 </div>

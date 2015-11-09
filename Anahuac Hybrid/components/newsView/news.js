@@ -30,8 +30,8 @@ app.newsView = kendo.observable({
 
 
 app.newsdetailView = kendo.observable({
-    onShow: function() { setDetailNews(); },
-    afterShow: function() {}
+    onShow: function() { },
+    afterShow: function() { setDetailNews(); }
 });
 
 
@@ -60,38 +60,39 @@ function getNoticias(){
     $( "#noticias" ).empty();
     $('.km-loader').show();
     $.ajax({
-     data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
-     dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
-     jsonp: 'callback',
-     contentType: "application/json; charset=utf-8",
-     complete:function(data){
-         $('.km-loader').hide(); 
-     },
-     success:function(data){
+        data: {websevicename: websevicename,username:usuario,password:password},
+        url:url,
+        dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
+        jsonp: 'callback',
+        contentType: "application/json; charset=utf-8",
+        complete:function(data){
+         	$('.km-loader').hide(); 
+        },
+        success:function(data){
          // do stuff with json (in this case an array)
-      News_Refresh=false;
-     var html = '';
-     var categoria = true;
-     var categoriaitem = '';
-     var fecha='';
-     var day='';
-     var mes='';
-      
-         newsView_arrayNews = data;
-         
-         if(data.length!=0){
+        News_Refresh=false;
+        var html = '';
+        var categoria = true;
+        var categoriaitem = '';
+        var fecha='';
+        var day='';
+        var mes='';
+
+        newsView_arrayNews = data;
+
+        if(data.length!=0){
         
-      $.each(data, function(index, element) {
+		$.each(data, function(index, element)
+        {
              
-               if(categoria){
-                    categoriaitem = element.vsCategoria; 
+               if(categoria)
+               {
+                   categoriaitem = element.vsCategoria; 
                    html +=
-					'<div class="card-2">'+
-                    '<div class="card-header">'+element.vsCategoria+'</div> '+
-                    '</div><div class="list-block media-list">'+
-					'<ul>';
-                  
+                        '<div class="card-2">'+
+                        '<div class="card-header">'+element.vsCategoria+'</div> '+
+                        '</div><div class="list-block media-list">'+
+                        '<ul>';
                }    
                
                 if(categoriaitem == element.vsCategoria){  categoria = false; }else{ categoria = true; }
@@ -155,39 +156,57 @@ function getNoticias(){
 function getviewDetalle(index){
     
     index_detail_news = index;
-    app.mobileApp.navigate('components/newsView/detallenews.html');
-    
-    
-}
-
-
-
-function setDetailNews(){
     
     var event = newsView_arrayNews[index_detail_news];
-    $('#N_categoria').html(event.vsCategoria);
-    $('#N_asunto').html(event.vsAsunto);
+    var datos= ''+
+        event.vsCategoria+'~o~'+
+        event.vsAsunto+'~o~'+
+        event.vsFechaNoticia+'~o~'+
+        event.vsCampus+'~o~'+
+        event.vsDetalleNoticia+'~o~'+
+        event.vsLiga+'~o~';
+    window.localStorage.setItem('noticia',datos);
     
-    var fecha='';
-     var day='';
-     var mes='';
-    
-    fecha = event.vsFechaNoticia.split(" ");
-            day = translateDay(fecha[0]);            
-            fecha = fecha[4];
-            if(fecha!=null){
+    app.mobileApp.navigate('components/newsView/detallenews.html');
+}
+
+function setDetailNews(){
+    try{
+        
+        var datos=window.localStorage.getItem('noticia').split('~o~');
+        var event = {
+            vsCategoria: datos[0],
+            vsAsunto: datos[1],
+            vsFechaNoticia: datos[2],
+            vsCampus: datos[3],
+            vsDetalleNoticia: datos[4],
+            vsLiga: datos[5],
+        };
+        
+        $('#N_categoria').html(event.vsCategoria);
+        $('#N_asunto').html(event.vsAsunto);
+        
+        var fecha='';
+        var day='';
+        var mes='';
+        
+        fecha = event.vsFechaNoticia.split(" ");
+        day = translateDay(fecha[0]);            
+        fecha = fecha[4];
+        if(fecha!=null){
             fecha = fecha.split("-");  
             mes = translateMes(fecha[1]);
             mes = fecha[0]+'-'+mes+'-'+fecha[2];
             day = day + ' '+ mes; 
-            }
-    
-    
-    $('#N_fecha').html(day);
-    $('#N_campus').html(event.vsCampus);
-    $('#N_detalle').html(event.vsDetalleNoticia);
-    $('#N_link').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
-    
+        }
+        
+        
+        $('#N_fecha').html(day);
+        $('#N_campus').html(event.vsCampus);
+        $('#N_detalle').html(event.vsDetalleNoticia);
+        $('#N_link').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
+    }catch(Exception){}
+
 }
 
 

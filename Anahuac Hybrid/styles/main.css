@@ -1,7 +1,69 @@
+.km-android .km-list input[type=password], .km-android .km-list input[type=search], .km-android .km-list input[type=number], .km-android .km-list input[type=tel], .km-android .km-list input[type=url], .km-android .km-list input[type=email], .km-android .km-list input[type=month], .km-android .km-list input[type=color], .km-android .km-list input[type=week], .km-android .km-list input[type=date], .km-android .km-list input[type=time], .km-android .km-list input[type=datetime], .km-android .km-list input[type=datetime-local], .km-android .km-list input[type=text]:not(.k-input), .km-android .km-list select:not([multiple]), .km-android .km-list .k-dropdown {
+  
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1.1rem;
+  min-width: 6em;
+  border: 0;
+  padding: .4em;
+  outline: 0;
+  right: .8em;
+  background: transparent;
+}
+
+.km-header, .km-footer {
+  z-index: 1000 !important;
+}
+
+
+.km-trash:after, .km-delete:after {
+  content: "\e221";
+}
+
+
+.icon-atras{
+    
+  background-image: url("../resources/img/icon-left-white.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  float: left;
+  position: relative;
+  width: 10px;
+  height: 15px;
+  top: 12px;
+  left: 10px;
+  color:#fff;
+    
+}
+
+
+
+.icon-right{
+    
+  background-image: url("../resources/img/icon-right.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  float: right;
+  position: relative;
+  height: 10px;
+  width: 7px;
+  top:5px;
+    
+}
+
 .km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-navbar {
 background-color:#666666 !important;
 z-index:2;
 }
+
+.km-android .km-list>li {
+  font-size: 1.1em; 
+  font-weight: normal;
+  line-height: 2em;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+
 
 .km-android .km-list {
   margin-bottom: 0em !important;
@@ -14,11 +76,28 @@ input[type="text"] {
     }
 
 
-.left{
-    
-    float:left; font-size:1.6em !important; top:10px!important;
-    
+.button_home{
+    float:left;  font-size:1.6em !important; left:8px !important; top:8px !important;
 }
+.button_refresh{
+    float:right; font-size:1.6em !important; right:5px !important; top:8px !important;
+}
+
+.button_left{
+    background-image: url("../resources/img/icon-left-white.png") !important;
+    background-repeat: no-repeat !important;    
+    float:left; font-size:1.6em !important; left:5px !important; margin-top: -22px !important; top:5px; position:relative; font-family:sans-serif; font-weight:normal;
+}
+.button_right{
+    background-image: url("../resources/img/icon-right-white.png") !important;
+    background-repeat: no-repeat !important;
+    float:right; font-size:1.6em !important; right:5px !important; margin-top: -22px !important; top:5px; position:relative; font-family:sans-serif; font-weight:normal;
+}
+
+.rotulo_center{
+    float:none; width:100%; top:-5px !important;
+}
+
 
 .android{
     
@@ -45,6 +124,7 @@ input[type="text"] {
     top:14px;
     width:100%;
     padding:8px;
+    margin-bottom:5px;
 }
 
   
@@ -370,7 +450,7 @@ color:#fff;
     background: #FFFFFF;
     color: #000;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 11px;
     line-height: 1.4;
     margin-top:.9em;
     margin-left: .9em;
@@ -397,7 +477,7 @@ color:#fff;
 }
 
 .item-title{
-    font-size: 17px;
+    font-size: 14px;
     font-weight: normal;
     color: #000;
     
@@ -411,7 +491,7 @@ color:#fff;
 }
 
 .item-after-right{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: normal;
     color: #8e8e93;
     float: right;
@@ -477,7 +557,7 @@ color:#fff;
 
 .content-block-title {
     color: #6d6d72;
-    font-size: 14px;
+    font-size: 11px;
     line-height: 1;
     margin: 15px 15px 10px;
     overflow: hidden;
@@ -516,7 +596,7 @@ color:#fff;
     background: #fff none repeat scroll 0 0;
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    font-size: 14px;
+    font-size: 12px;
     margin: 10px;
     position: relative;
 }
@@ -552,7 +632,7 @@ color:#fff;
 
 .card-header {
     border-radius: 2px 2px 0 0;
-    font-size: 17px;
+    font-size: 14px;
     font-weight:normal;
 }
 
@@ -615,7 +695,7 @@ color:#fff;
 
 .card-content-inner {
     padding: 15px;
-    font-size: 15px;
+    font-size: 11px;
     color: #8e8e93;
     position: relative;
     
@@ -768,7 +848,7 @@ color:#fff;
 
 
 .list-block .item-subtitle {
-    font-size: 15px;
+    font-size: 13px;
     max-width: 100%;
     overflow: hidden;
     position: relative;
@@ -1165,54 +1245,32 @@ background: -ms-linear-gradient(top, #e4efc0 0%,#abbd73 100%);
 
 
 
-/*Iphone 6 PORTRAIT*/
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px)  { 
+
+/*Tablet 600 x 1024*/
+@media only screen and (min-device-width: 600px) and (max-device-width: 1024px) and (orientation : portrait) { 
   
-    body{
-     background-image: url("../resources/bg/iphone_375x667.png");
-     }
-    
-    .km-content .home{  
-  background-image: url("../resources/bg/iphone6v_home_375x667.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  position: fixed;
-  height: 667px !important;
-  }
-}
-/*End Iphone 6 PORTRAIT*/
-
-
-
-/*iPad  PORTRAIT*/
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait) { 
-    
-    body{
-     background-image: url("../resources/bg/ipad_768x1024.png");
-     }
-    
   .km-content .home{  
-  background-image: url("../resources/bg/ipadv_home_768X1024.png") !important;
+  background-image: url("../resources/bg/android/600x1024.png") !important;
   background-repeat: no-repeat !important;
   background-size: 100% 100% !important;
   position: fixed;
-  height: 1050px !important;
-  }  
-}
-/*End iPad  PORTRAIT*/
-
-/*iPad  LANDSCAPE*/
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape) { 
-  .km-content .home{  
-  background-image: url("../resources/bg/ipadh_home_768x2014.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  position: fixed;
-  height: 768px !important;
+  height: 1024px !important;
   }
 }
 
-/*iPad  LANDSCAPE*/
+
+/*Tablet 600 x 1024*/
+@media only screen and (min-device-width: 600px) and (max-device-width: 1024px) and (orientation : landscape) { 
+  
+  .km-content .home{  
+  background-image: url("../resources/bg/android/1024x600.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  position: fixed;
+  height: 600px !important;
+  }
+}
+
 
 
 

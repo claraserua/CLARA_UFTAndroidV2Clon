@@ -67,10 +67,10 @@ function getDetalleCurso_DCD(){
              
              if(element.vsDetalle==null){detalle = '';}else{detalle=element.vsDetalle; }
              if(element.vsPrerequisito==null){prerequisitos= 'Ninguno';}else{prerequisitos=element.vsPrerequisito;}
+             if(element.vsEsFavo =='N'){favorito='N'; iconfavorit = '';}else{favorito='S'; iconfavorit = '<img src="resources/img/favorit.png"/> ';}
              
              
-             
-            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';
+            title_course = '<div class="normal-header-title">'+element.vsCrn+' '+element.vsSubj+element.vsCrse+' '+element.vsTitulo+'</div><div class="small-header-title">('+element.vsPeriodo+')</div>';   
             
             html +=
                 '<div class="card">'+
@@ -118,15 +118,18 @@ function getDetalleCurso_DCD(){
          $('#detallecurso').html(html);
          
          if(favorito=='N'){
-               $("#SC_btn_set").attr("onClick","set_favorit_Course()");
+             $("#SC_btn_set").attr("onClick","set_favorit_Course()");
              $( "#icon-cd" ).removeClass( "km-icon km-trash" ).addClass( "km-icon km-toprated" );
-             $( "#txt-favorit" ).html('Agregar');
+             $( "#txt-favorit" ).html('Agregar a cursos planeados');
              
+             $("#icon-img").attr("src","resources/img/favoritw.png");
          }else{
             
              $("#SC_btn_set").attr("onClick","delete_favorit_Course()");
-              $( "#icon-cd" ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-trash" );
-              $( "#txt-favorit" ).html('Eliminar');
+             $( "#icon-cd" ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-trash" );
+             $( "#txt-favorit" ).html('Eliminar de cursos planeados');
+             
+             $("#icon-img").attr("src","resources/img/basurero.png");
          }
          
         
@@ -135,6 +138,15 @@ function getDetalleCurso_DCD(){
      },
      error:function(){
           showNotification('Intentalo Nuevamente','Alerta');
+         
+   /* navigator.notification.alert(
+    'Opps!',  // message
+    alertDismissed,         // callback
+    'Inicie Sesion!',            // title
+    'Aceptar'                  // buttonName
+     );
+     
+         ExitApp();*/
      }      
      });
     
@@ -187,11 +199,15 @@ function delete_favorit_Course(){
         
          $("#SC_btn_set").attr("onClick","set_favorit_Course()");
          $( "#icon-cd" ).removeClass( "km-icon km-trash" ).addClass( "km-icon km-toprated" );
-         $( "#txt-favorit" ).html('Agregar');
+         $( "#txt-favorit" ).html('Agregar a cursos planeados');
          
          $("#cvs-"+crn).css("color", "");
          $( "#if-"+crn ).html( "" );
          
+         $("#icon-img").attr("src","resources/img/favorit.png");
+         
+             
+         //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
          
      },
      error:function(){
@@ -224,12 +240,15 @@ function set_favorit_Course(){
         
          $("#SC_btn_set").attr("onClick","delete_favorit_Course()");
          $( "#icon-cd" ).removeClass( "km-icon km-toprated" ).addClass( "km-icon km-trash" );
-         $( "#txt-favorit" ).html('Eliminar');
+         $( "#txt-favorit" ).html('Eliminar de cursos planeados');
          
          
          $("#cvs-"+crn).css("color", "#F7881C");
          $( "#if-"+crn ).html( '<img src="resources/img/favorit.png"/>' );
-       
+         
+         $("#icon-img").attr("src","resources/img/basurero.png");
+         
+         //showNotification('El curso se agrego a sus cursos Planeados','Curso Agregado')
          
      },
      error:function(){

@@ -121,7 +121,11 @@ function checkConnection ()
       }
   
   }
- 
+
+function goHome()
+{
+    app.mobileApp.navigate('components/homeView/view.html');
+} 
     
 
 

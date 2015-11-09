@@ -1,13 +1,27 @@
 <div data-role="view" data-title="Situación acad&eacute;mica" data-layout="main-nonav" data-model="app.academicStatusView" data-show="app.academicStatusView.onShow" data-after-show="app.academicStatusView.afterShow">
     <!-- START_CUSTOM_CODE_academicStatusView -->
 
-	<div data-role="header">
+	<!--
+    <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_SAcademica();">&nbsp;</a>
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_SAcademica();"></span>
+                <div class="line-gray">Situaci&oacute;n acad&eacute;mica</div>
+                
+                <div class="line-orange">
+                    <div class="rotulo_center">Periodo (<span id="periodo_id"></span>)</div>
+                </div>
+            </div>
+       </footer>
     
     
  
@@ -36,7 +50,7 @@
             </div>
             
             <div class="card_light">
-            <div class="card-header" style="position:static !important;" >Nivel de ingles:</div>
+            <div class="card-header" style="position:static !important;" >Nivel de inglés:</div>
             <div class="card-content">
             <div class="card-content-inner"><span id="nivel_ingles_id"></span></div>
             </div>
@@ -61,12 +75,13 @@
         </div>
     </div>
 
+    <!--
         <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Situación acad&eacute;mica</div>
                 <div class="line-orange"> Periodo (<span id="periodo_id"></span>)</div>
             </div>
       </footer>
-    
+    -->
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

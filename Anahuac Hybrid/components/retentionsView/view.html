@@ -1,5 +1,6 @@
 <div data-role="view" data-title="Retenciones" data-layout="main" data-model="app.aboutView" data-show="app.retentionsView.onShow" data-after-show="app.retentionsView.afterShow">
     
+    <!--
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -7,6 +8,18 @@
             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_VRetention();">&nbsp;</a>
         </div>
       </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_VRetention();"></span>
+                <div class="line-gray">Retenciones</div>
+                
+                <div class="line-orange">
+                </div>
+            </div>
+       </footer>
     
     
     
@@ -18,10 +31,11 @@
          </div>
     <!-- START_CUSTOM_CODE_retentionsView -->
     <!-- END_CUSTOM_CODE_retentionsView -->
-    
+    <!--
         <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Retenciones</div>
             </div>
       </footer>
+    -->
 </div>

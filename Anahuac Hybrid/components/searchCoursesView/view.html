@@ -1,6 +1,7 @@
 <div data-role="view" data-title="Búsqueda de Cursos" data-layout="main-nonav" data-model="app.searchCoursesView" data-show="app.searchCoursesView.onShow" data-after-show="app.searchCoursesView.afterShow">
     <!-- START_CUSTOM_CODE_plannedCoursesView -->
 
+    <!--
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -8,6 +9,17 @@
             <a onClick="ValidFoundCourses();" data-align="right" data-role="button" data-icon="search">BUSCAR</a>
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <div class="line-gray">Búsqueda de Cursos</div>
+                
+                <div class="line-orange">
+                </div>
+            </div>
+       </footer>
     
     
 	   <div class="page-view" data-bind="invisible:error">
@@ -127,7 +139,7 @@
             <ul data-role="listview" data-style="inset">
             <li>
                 <div style="padding:1px;">
-                    <input type="text" style="position:relative !important;" id="titulo" value="" placeholder="Titulo" />
+                    <input type="text" style="position:relative !important;" id="titulo" value="" placeholder="Título" />
                 </div>
              </li>
                 <li>
@@ -146,12 +158,25 @@
        </div>
 
         
-    
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            
+            <a onClick="ValidFoundCourses();" data-role="button"><!--BUSCAR-->
+                <!--
+                <span id="icon-cd" class="" style=></span>
+                -->
+                <img src="resources/img/search.png" style="width:20pt; height:20pt;" /> <br>
+                <span id="txt-favorit3" class="km-text">BUSCAR</span>
+            </a>
+        </div>
+	</div>
+    <!--
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Buscar Cursos</div>
             </div>
     </footer>
+    -->
     
     
     <!-- END_CUSTOM_CODE_plannedCoursesView -->

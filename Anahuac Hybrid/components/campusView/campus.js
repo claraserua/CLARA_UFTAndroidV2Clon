@@ -42,7 +42,7 @@ function getCampus(){
          PSCampus_Refresh = false;
          var html='<ul class="km-widget km-listview km-list" >';
          $.each(data, function(index, element) {
-          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCampus(\''+element.campCode+'\',\''+element.campDesc+'\')">'+element.campDesc+'</a></li>';
+          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCampus(\''+element.campCode+'\',\''+element.campDesc+'\')">'+element.campDesc+'<span class="icon-right"></span></a></li>';
         });
           html +='</ul>';
          

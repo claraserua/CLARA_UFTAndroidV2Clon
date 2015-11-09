@@ -1,7 +1,8 @@
 <div data-role="view" data-title="Horario" data-layout="main-nonav" data-model="app.scheduleView" data-show="app.scheduleView.onShow" data-after-show="app.scheduleView.afterShow">
     <!-- START_CUSTOM_CODE_academicStatusView -->
 
-	<div data-role="header">
+	<!--
+    <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
@@ -11,6 +12,22 @@
             
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_Shedule();"></span>
+                <div class="line-gray">Horario</div>
+                
+                <div class="line-orange">
+                    <div id="desc_H_Fecha" class="rotulo_center">periodo</div>
+                    <span class="button_left" onclick="H_showPrevius()">&nbsp;&nbsp;</span>
+                    <span class="button_right" onclick="H_showNext()">&nbsp;&nbsp;</span>
+                </div>
+                
+            </div>
+       </footer>
     <!-- ____________________________________________________________________________________________ -->
     
     
@@ -31,6 +48,15 @@
     
     
     <!-- ____________________________________________________________________________________________ -->
+    
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            <div data-role="view-title"></div>
+            <a data-role="button" class="km-state-active" data-icon="organize" onclick="toggleScheduleView()" >Cambiar Vista</a>
+            <a data-role="button" data-icon="calendar"  href="components/scheduleView/calendar.html">Calendario</a>
+        </div>
+	</div>
+    <!--
     <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
      
@@ -39,7 +65,7 @@
                 
             </div>
     </footer>
-    
+    <!--
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Horario</div>
@@ -47,6 +73,7 @@
                 <div class="line-orange"><span id="desc_H_Fecha"></span></div>
             </div>
       </footer>
+    -->
     
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

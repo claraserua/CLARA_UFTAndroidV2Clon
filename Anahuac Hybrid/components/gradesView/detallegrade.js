@@ -1,7 +1,7 @@
 'use strict';
 
 app.gradeDetalleView = kendo.observable({
-    onShow: function() { },
+    onShow: function() { $('#div_course_DG').html('&nbsp;'); },
     afterShow: function() { getDetalleGrade_gd(); }
 });
 
@@ -122,13 +122,13 @@ function getDetalleGrade_gd(){
                        '<div class="card-content-inner" >'+
                         '<table width="100%">'+
                         '<tr>'+
-                        '<td class="item-title" width="40%">&nbsp;</td>'+
-                        '<td class="item-title" width="30%" style="text-align:right;">Promedio Parcial:</td>'+
+                        '<td class="item-title" width="10%">&nbsp;</td>'+
+                        '<td class="item-title" width="60%" style="text-align:right;">Promedio Parcial:</td>'+
                         '<td class="item-title" width="30%" style="text-align:center;">'+GD_PromParcial+'</td>'+
                         '</tr>'+
                         '<tr>'+
-                        '<td class="item-title" width="40%">&nbsp;</td>'+
-                        '<td class="item-title" width="30%" style="text-align:right;">Promedio Final:</td>'+
+                        '<td class="item-title" width="10%">&nbsp;</td>'+
+                        '<td class="item-title" width="60%" style="text-align:right;">Promedio Final:</td>'+
                         '<td class="item-title" width="30%" style="text-align:center;">'+GD_PromFinal+'</td>'+
                         '</tr>'+
                        

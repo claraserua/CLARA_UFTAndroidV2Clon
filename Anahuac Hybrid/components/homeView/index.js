@@ -1,19 +1,25 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function() { $('.km-loader').hide(); detectTablet(); },
-    afterShow: function() {  }
+    onShow: function() { $('.km-loader').hide();  },
+    afterShow: function() { landscape(); }
 });
 
 // START_CUSTOM_CODE_homeView
 
 function ViewList(){
+    $('.km-content:visible').data('kendoMobileScroller').enable();
      app.mobileApp.navigate('components/listHomeView/view.html');
 }
 
 
 function clickHandler(redirect) { 
+    $('.km-content:visible').data('kendoMobileScroller').enable();
     app.mobileApp.navigate('components/'+redirect+'/view.html');
+}
+function clickHandler_5(redirect) { 
+    $('.km-content:visible').data('kendoMobileScroller').enable();
+    app.mobileApp.navigate('components/'+redirect);
 }
 
 
@@ -68,37 +74,38 @@ function detectTablet(){
 
 
 
-function showLoading() {
+function landscape() {
    
-    if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
         // PORTRAIT:
         if ($(window).height()>$(window).width()){
-            //$(document.documentElement).height(($(window).height())+'px');
-            //$('.km-footer').show();
+            initscrollTop();
+            $('.km-content:visible').data('kendoMobileScroller').disable();
+            $("#home").css("position", "fixed");  
         // LANDSCAPE:
         }else{
-           // $('.km-footer').hide();
-            //$(document.documentElement).height(($(window).height()-20)+'px');
-        //window.scrollTo(0,0);
+            $('.km-content:visible').data('kendoMobileScroller').enable();
+           $("#home").css("position", "relative");   
+
         }
-    }
+    
 
 }
 
 $(window).resize(function(){
-// BUG iOS7 - Safari - iPAD2
-    var access =  window.localStorage.getItem("access");
-    if(access=="FALSE")
-        return;
-if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
-        // PORTRAIT:
-        if ($(window).height()>$(window).width()){
-           //app.mobileApp.navigate('components/homeView/view.html');
-        // LANDSCAPE:
+    
+  
+    if ($(window).height()>$(window).width()){
+        
+        initscrollTop();
+        $('.km-content:visible').data('kendoMobileScroller').disable();
+        $("#home").css("position", "fixed"); 
+        
         }else{
-           //app.mobileApp.navigate('components/homeSplitView/view.html');
+        $('.km-content:visible').data('kendoMobileScroller').enable();
+        $("#home").css("position", "relative");
+          
         }
-    }
+    
 });
 
 

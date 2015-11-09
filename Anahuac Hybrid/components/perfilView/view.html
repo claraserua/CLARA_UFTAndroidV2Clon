@@ -1,6 +1,7 @@
 <div data-role="view" data-title="Perfil"  data-layout="main-nonav" data-model="app.perfilView" data-show="app.perfilView.onShow" data-after-show="app.perfilView.afterShow">
     <!-- START_CUSTOM_CODE_perfilView -->
 
+    <!--
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -8,7 +9,19 @@
             <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_perfil();">&nbsp;</a>
         </div>
       </div>
-    
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_perfil();"></span>
+                <div class="line-gray">Perfil</div>
+                
+                <div class="line-orange">
+                    <div id="nombre" class="rotulo_center">nombre</div>
+                </div>
+            </div>
+       </footer>
    
     
     <div class="page-view" data-bind="invisible:error">
@@ -61,14 +74,14 @@
     <!-- START_CUSTOM_CODE_aboutView -->
     <!-- END_CUSTOM_CODE_aboutView -->
     
-     
+     <!--
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Perfil</div>
                 <div class="line-orange"><span id="nombre">Perfil</span></div>
             </div>
     </footer>
-    
+    -->
    
     <!-- END_CUSTOM_CODE_perfilView -->
 </div>

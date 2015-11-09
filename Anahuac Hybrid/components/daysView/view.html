@@ -1,6 +1,7 @@
 <div data-role="view" data-title="Días"  data-layout="main-nonav" data-model="app.daysView" data-show="app.daysView.onShow" data-after-show="app.daysView.afterShow">
     <!-- START_CUSTOM_CODE_perfilView -->
 
+    <!--
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -14,6 +15,17 @@
           <div class="km-view-title" style="font-weight: normal !important;"></div>
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="icon-atras" onClick="clickHandler('searchCoursesView');">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
+                <div class="line-gray">Días</div>
+                
+                <div class="line-orange">
+                </div>
+            </div>
+       </footer>
     
     
     <div class="page-view" data-bind="invisible:error">
@@ -40,12 +52,19 @@
     
     
 
-    
+    <!--
      <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Días</div>
             </div>
      </footer>
+    -->
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            <div data-role="view-title"></div>
+            <a onClick="sendDays();" data-align="right" data-role="button" data-icon="reply">Aceptar</a>
+        </div>
+	</div>
     
     
     

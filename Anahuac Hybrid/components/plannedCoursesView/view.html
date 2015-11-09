@@ -2,7 +2,7 @@
     <!-- START_CUSTOM_CODE_plannedCoursesView -->
 
 	
-    <!--
+    <!----
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -12,6 +12,20 @@
             <a data-role="button" data-align="right" id="PC_next_arrow"  onclick="PC_showNext()" style="color:#fff;">Siguiente ></a>
         </div>
 	</div>-->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="CoursesPlaned();"></span>
+                <div class="line-gray">Cursos Planeados</div>
+                
+                <div class="line-orange">
+                    <div id="div_term_CPperiodo" class="rotulo_center">periodo</div>
+                    <span id="PC_prev_arrow" class="button_left" onclick="PC_showPrevius()">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="PC_next_arrow" class="button_right" onclick="PC_showNext()">&nbsp;&nbsp;&nbsp;</span>
+                </div>
+            </div>
+       </footer>
     
        
 	   <div class="page-view" data-bind="invisible:error">
@@ -31,21 +45,7 @@
          </div>
        </div>
 
-    
-    <footer data-role="footer" class="header-top-android"  >
-            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
-                <span class="km-icon km-home left"></span>
-                <div class="line-gray">Cursos Planeados </div>
-                <span class="km-icon km-refresh android" s onClick="CoursesPlaned();"></span>
-                
-                <div class="line-orange">
-                    <span class="left"><</span>
-                    <span id="div_term_CPperiodo"></span>
-                    <span >></span>
-                </div>
-                
-            </div>
-      </footer>
+
 
     <!-- END_CUSTOM_CODE_plannedCoursesView -->
 </div>

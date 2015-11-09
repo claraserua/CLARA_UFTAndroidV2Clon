@@ -1,6 +1,6 @@
 <div data-role="view" data-title="Apoyo Financiero" data-layout="main" data-model="app.aboutView" data-show="app.helpfinancialView.onShow" data-after-show="app.helpfinancialView.afterShow">
     
-    
+    <!--
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -9,6 +9,21 @@
             <a data-role="button" data-align="right" id="HF_next_arrow"  onclick="HF_showNext()" style="color:#fff;">Siguiente ></a>
         </div>
     </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_HFinancial();"></span>
+                <div class="line-gray">Apoyo Financiero</div>
+                
+                <div class="line-orange">
+                    <div id="term_periodo_hf" class="rotulo_center">periodo</div>
+                    <span id="HF_prev_arrow" class="button_left" onclick="HF_showPrevius()">&nbsp;&nbsp;</span>
+                    <span id="HF_next_arrow" class="button_right" onclick="HF_showNext()">&nbsp;&nbsp;</span>
+                </div>
+            </div>
+       </footer>
     
     
     <div class="page-view" data-bind="invisible:error">
@@ -23,7 +38,7 @@
     <!-- START_CUSTOM_CODE_retentionsView -->
     <!-- END_CUSTOM_CODE_retentionsView -->
     
-    
+    <!--
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Apoyo Financiero</div>
@@ -31,4 +46,5 @@
                 <div class="line-orange"> <span id="term_periodo_hf"></span></div>
             </div>
       </footer>
+    -->
 </div>

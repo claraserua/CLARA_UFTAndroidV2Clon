@@ -1,6 +1,7 @@
 <div data-role="view" data-title="Detalle del Curso"  data-layout="main-nonav" data-show="app.detailcourseView.onShow" data-after-show="app.detailcourseView.afterShow">
     <!-- START_CUSTOM_CODE_perfilView -->
 
+    <!--
     <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -9,6 +10,18 @@
             <a id="SC_btn_set" onclick="set_favorit_Course()" data-role="button" data-align="right"  ><span id="icon-cd" class="km-icon km-toprated"></span><span class="km-text" id="txt-favorit">Agregar</span></a>   
         </div>
       </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                
+                <span class="icon-atras" onClick="Cursos_back();">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
+                <span class="km-icon km-refresh button_refresh" onClick="getDetalleCurso_DCD();"></span>
+                <div class="line-gray">Detalle del Curso</div>
+                
+                <div class="line-orange"><br><span id="title_course_DC"></span></div>
+            </div>
+       </footer>
     
     
 
@@ -29,8 +42,17 @@
     
      
      
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            <div data-role="view-title"></div>
+            <a id="SC_btn_set" data-role="button"><!--FAVORITO-->
+                <img id="icon-img" src="" style="width:20pt; height:20pt;" /> <br>
+                <span id="txt-favorit" class="km-text">&nbsp;</span>
+            </a>
+        </div>
+	</div>
     
-    
+    <!--
     <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Detalle del Curso</div>
@@ -39,6 +61,7 @@
                 
             </div>
         </footer>
+    -->
     
    
     <!-- END_CUSTOM_CODE_perfilView -->

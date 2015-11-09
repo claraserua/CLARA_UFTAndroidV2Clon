@@ -59,7 +59,7 @@ function getCalificacionesP()
                 profesor = element.nameFacu;
                 //$('#nivel1').html(element.crseTitl);
                 //<li><a class="km-listview-link" data-role="listview-link">'+element.crseTitl+'</a></li>   
-                var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="setDetalleGrade_gd(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\',\''+element.stcrGrde+'\',\''+element.stcrMidd+'\')">'+element.crseTitl+'</a></li>';
+                var link = '<li><a class="km-listview-link" data-role="listview-link" onclick="setDetalleGrade_gd(\''+element.crseCrnn+'\',\''+titleCourse+'\',\''+profesor+'\',\''+element.stcrGrde+'\',\''+element.stcrMidd+'\')">'+element.crseTitl+'<span class="icon-right"></span></a></li>';
 
                 $( "#califparciales" ).append( link );
             }

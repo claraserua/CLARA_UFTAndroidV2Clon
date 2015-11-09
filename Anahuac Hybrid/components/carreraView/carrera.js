@@ -48,9 +48,9 @@ function getCarreras(){
          var html='<ul class="km-widget km-listview km-list" >';
          
          
-         html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarreraNinguno()">Ninguna</a></li>';
+         html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarreraNinguno()">Ninguna <span class="icon-right"></span></a></li>';
          $.each(data, function(index, element) {
-          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarrera(\''+element.subjCode+'\',\''+element.subjDesc+'\')">'+element.subjDesc+'</a></li>';
+          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setCarrera(\''+element.subjCode+'\',\''+element.subjDesc+'\')">'+element.subjDesc+'<span class="icon-right"></span></a></li>';
         });
           html +='</ul>';
          

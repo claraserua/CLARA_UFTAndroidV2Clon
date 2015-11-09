@@ -1,11 +1,22 @@
 <div data-role="view" data-title="Net Anáhuac" data-layout="main" data-transition="overlay:down" data-model="app.listHomeView" data-show="app.listHomeView.onShow" data-after-show="app.listHomeView.afterShow">
-   
+   <!--
      <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
         </div>
       </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="clickHandler('homeView');"></span> <!-- Home -->
+                <div class="line-gray">Net Anáhuac</div>
+                
+                <div class="line-orange">
+                </div>
+            </div>
+       </footer>
     
     <div class="page-view" data-bind="invisible:error">
         

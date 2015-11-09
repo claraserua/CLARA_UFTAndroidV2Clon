@@ -1,12 +1,26 @@
 <div data-role="view" data-title="Detalle del Evento" data-layout="main-nonav" data-model="app.eventDetailView" data-show="app.eventDetailView.onShow" data-after-show="app.eventDetailView.afterShow">
     <!-- START_CUSTOM_CODE_academicStatusView -->
 
+    <!--
 	<div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="backbutton" data-align="left">Atras</a>
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+              
+                
+                <span class="icon-atras" onClick="clickHandler('eventsView');">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
+                
+                <div class="line-gray">Detalle del Evento</div>
+                
+                <div class="line-orange"> <span id="asunto_id"></span></div>
+            </div>
+       </footer>
     
     
      
@@ -34,13 +48,14 @@
         
     </div>
     
-	
+	<!--
      <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Detalle del Evento</div>
                 <div class="line-orange"> <span id="asunto_id"></span></div>
             </div>
         </footer>
+    -->
 	
    
     <!-- END_CUSTOM_CODE_academicStatusView -->

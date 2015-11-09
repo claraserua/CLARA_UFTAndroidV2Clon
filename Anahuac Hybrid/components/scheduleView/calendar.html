@@ -1,13 +1,24 @@
 <div data-role="view" data-title="Calendario" data-layout="main-nonav"  data-show="app.calendarView.onShow" data-after-show="app.calendarView.afterShow">
     <!-- START_CUSTOM_CODE_academicStatusView -->
 
-	<div data-role="header">
+	<!--
+    <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
             <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Home</a>
             
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_Shedule();"></span>
+                <div class="line-gray">Calendario</div>
+                 <div class="line-orange"></div>
+            </div>
+       </footer>
     <!-- ____________________________________________________________________________________________ -->
     
     
@@ -17,13 +28,21 @@
          <div class="page-box">
 	
     		<div id="dp3"  data-date-format="dd-mm-yyyy"></div>
-               <input type="hidden" id="my_hidden_input">    
+            <input type="hidden" id="my_hidden_input">    
              
-            </div>
+         </div>
     </div>
     
     
     <!-- ____________________________________________________________________________________________ -->
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            <div data-role="view-title"></div>
+            <a data-role="button" data-icon="organize"  href="components/scheduleView/view.html">Cambiar Vista</a>
+            <a data-role="button" data-icon="calendar"  href="components/scheduleView/view.html">Calendario</a>
+        </div>
+	</div>
+    <!--
     <footer data-role="footer">
 		
             <div data-role="tabstrip" id="navigation-container">
@@ -42,5 +61,6 @@
                 
             </div>
       </footer>
+    -->
     <!-- END_CUSTOM_CODE_academicStatusView -->
 </div>

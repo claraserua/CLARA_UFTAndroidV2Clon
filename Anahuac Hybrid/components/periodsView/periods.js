@@ -41,7 +41,7 @@ function getPeriodos(){
          var html='<ul class="km-widget km-listview km-list">';
          $.each(data, function(index, element) {
          // alert(element.crseCrnn);
-          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setPeriodo(\''+element.termCode+'\',\''+element.termDesc+'\')">'+element.termDesc+'</a></li>';
+          html += '<li><a class="km-listview-link" data-role="listview-link" onClick="setPeriodo(\''+element.termCode+'\',\''+element.termDesc+'\')">'+element.termDesc+'<span class="icon-right"></span></a></li>';
           
         });
          

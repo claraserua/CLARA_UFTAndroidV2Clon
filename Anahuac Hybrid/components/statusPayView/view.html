@@ -1,5 +1,5 @@
 <div data-role="view" data-title="Estado de Cuenta" data-layout="main"  data-model="app.statusPayView" data-show="app.statusPayView.onShow" data-after-show="app.statusPayView.afterShow">
-   
+       <!--
      <div data-role="header">
         <div data-role="navbar">
           <div data-role="view-title"></div>
@@ -14,6 +14,18 @@
             
         </div>
 	</div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="SPCuentaPay_Refresh();"></span>
+                <div class="line-gray">Estado de Cuenta</div>
+                
+                <div class="line-orange">
+                </div>
+            </div>
+       </footer>
     
     
        <div class="page-view" data-bind="invisible:error">
@@ -21,10 +33,10 @@
         
    
          <ul data-role="listview">
-             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/vencidos.html"><span style="font-size:17px;">Vencidos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="vencidos"></span></a></li>
-             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/novencidos.html"><span style="font-size:17px;">No Vencidos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="novencidos"></span></a></li>
-             <li><span style="font-size:17px;">Saldo Total</span><span style="font-size:18px;  float:right; margin-right:13px; color:#8e8e93;" id="stotal"></span></li>
-             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/movimientos.html"><span style="font-size:17px;">Movimientos</span><span style="font-size:18px; float:right; margin-right:13px; color:#8e8e93;" id="movimientos"></span></a></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/vencidos.html"><span style="font-size:15px;">Vencidos</span><span class="icon-right"></span><span style="font-size:16px; float:right; margin-right:13px; color:#8e8e93;" id="vencidos"></span> </a> </li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/novencidos.html"><span style="font-size:15px;">No Vencidos</span><span class="icon-right"></span><span style="font-size:16px; float:right; margin-right:13px; color:#8e8e93;" id="novencidos"></span></a></li>
+             <li><span style="font-size:15px;">Saldo Total</span><span style="font-size:16px;  float:right; margin-right:13px; color:#8e8e93;" id="stotal"></span></li>
+             <li><a class="km-listview-link" data-role="listview-link" href="components/statusPayView/movimientos.html"><span style="font-size:15px;">Movimientos</span><span class="icon-right"></span><span style="font-size:16px; float:right; margin-right:13px; color:#8e8e93;" id="movimientos"></span></a></li>
          </ul>
         
         <!-- START_CUSTOM_CODE_aboutViewModel -->
@@ -33,10 +45,11 @@
     </div>
     <!-- START_CUSTOM_CODE_aboutView -->
     <!-- END_CUSTOM_CODE_aboutView -->
-    
+    <!--
      <footer data-role="footer" class="header-top-android"  >
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
                 <div class="line-gray">Estado de Cuenta</div>
             </div>
       </footer>
+    -->
 </div>

@@ -2,10 +2,12 @@
 
 app.movimientosView = kendo.observable({
     onShow: function() {
-        $('#SPMO_prev_arrow').hide();
-        $('#SPMO_next_arrow').hide();
-        $('#term_periodo_mov').html('');
-        if(SPMovimientos_Refresh == true){ $('#id_movimientosSP').empty(); }
+        if(SPMovimientos_Refresh == true){
+            $('#SPMO_prev_arrow').hide();
+            $('#SPMO_next_arrow').hide();
+            $('#term_periodo_mov').html('');
+            $('#id_movimientosSP').empty();
+        }
     },
     afterShow: function() { llenarFormaMovimientos(); }
 });
