@@ -1,0 +1,47 @@
+<div data-role="view" data-title="Cita de Inscripción" data-layout="main" data-model="app.inscriptionView" data-show="app.inscriptionView.onShow" data-after-show="app.inscriptionView.afterShow">
+    
+    <!--
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="Refresh_CitaIns();">&nbsp;</a>
+        </div>
+      </div>
+    -->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+                <span class="km-icon km-home button_home" onClick="goHome();"><span class="text-home">Inicio</span></span> <!-- Home -->
+                <span class="km-icon km-refresh button_refresh" onClick="Refresh_CitaIns();"></span>
+                <div class="line-gray">Cita de Inscripci&oacute;n</div>
+                
+                <div class="line-orange">
+                    <div id="ci_periodo01" class="rotulo_center">&nbsp;</div>
+                </div>
+            </div>
+       </footer>
+    
+    
+    
+    <div class="page-view" data-bind="invisible:error">
+        <div class="page-box">
+
+            <div id="div_inscripcion_id">
+                
+            </div>
+          
+           
+        </div>
+    </div>
+    
+    <!--
+       <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Cita de Inscripción</div>
+                <div class="line-orange"><span id="ci_periodo01"></span></div>
+            </div>
+    </footer>
+    -->
+
+</div>
