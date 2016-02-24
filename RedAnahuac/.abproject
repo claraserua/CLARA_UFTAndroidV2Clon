@@ -2,12 +2,12 @@
   "ProjectName": "RedAnahuac",
   "ProjectGuid": "24eba623-5d2c-42c5-a4be-2b3154b11f56",
   "projectVersion": 1,
-  "AppIdentifier": "mx.anahuac.dtimoviltest.rhorunner",
-  "DisplayName": "Red Anahuac",
+  "AppIdentifier": "com.mobile.redanahuac",
+  "DisplayName": "RedAnahuac",
   "Author": "Red de Universidades Anáhuac",
   "Description": "La app red Anáhuac mobile ofrece servicios académicos y financieros para los alumnos de la institución.",
   "BundleVersion": "2.0",
-  "AndroidVersionCode": "2",
+  "AndroidVersionCode": "10201",
   "iOSDeviceFamily": [
     "1",
     "2"

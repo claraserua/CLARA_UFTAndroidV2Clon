@@ -1,7 +1,14 @@
 'use strict';
 
 app.academicHistoryView = kendo.observable({
-    onShow: function() { if(VHA_Refresh == true){ $('#div_content_idHA').empty(); } },
+    onShow: function() {
+        if(VHA_Refresh == true){
+            $('#div_content_idHA').empty();
+            $('#AH_prev_arrow').hide();
+            $('#AH_next_arrow').hide();
+            $('#div_term_periodoHA').html('');
+        }
+    },
     afterShow: function() { llenarFormaHistoria(); }
 });
 
@@ -86,9 +93,12 @@ function getDetalleHistory(){
             {
                 AH_current_index = AH_promedio.length-1;
                 AH_current_element = AH_promedio[AH_current_index];
-                
-                updateDetalleHistory();
             }
+            else{
+                AH_promedio=[];
+                AH_historia=[];
+            }
+            updateDetalleHistory();
 		},
 		error:function(){
 			 showNotification('Intentalo Nuevamente','Alerta');
@@ -114,6 +124,8 @@ function updateDetalleHistory()
                (element.vsCrseTitl=="" && element.termCode!="HOLD" && element.termCode!="SINP"))
             {
                 html = '<div class="card_light"><div class="card-header"> '+message_no_grades+' </div></div>';
+                AH_promedio=[];
+                AH_historia=[];
             }
             else
             if(element.termCode == AH_current_element.termCode)
@@ -138,23 +150,14 @@ function updateDetalleHistory()
     $('#div_content_idHA').html(html);
     $('#div_term_periodoHA').html(periodo);
     
-    if(AH_promedio.length==1){
-        $('#AH_prev_arrow').hide();
-        $('#AH_next_arrow').hide();
     
-    }else{
-        if(AH_current_index==AH_promedio.length-1){
-            $('#AH_next_arrow').hide();
-            $('#AH_prev_arrow').show();
-              return;
-        }
-         if(AH_current_index==0){
-             $('#AH_prev_arrow').hide();
-             return;
-        }
-        
-        if(AH_current_index<=AH_promedio.length-1){$('#AH_next_arrow').show();  $('#AH_prev_arrow').show();}
-    }
+    // _________________ Paginacion ____________________
+    $('#AH_prev_arrow').show();
+    $('#AH_next_arrow').show();
+    if(AH_promedio.length<=1 || AH_current_index==0)
+        $('#AH_prev_arrow').hide();
+    if(AH_promedio.length<=1 || AH_current_index==AH_promedio.length-1)
+        $('#AH_next_arrow').hide();
 }
 
 function AH_showPrevius(){

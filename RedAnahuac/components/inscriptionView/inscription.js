@@ -44,10 +44,10 @@ function getInscripcion(){
          $('.km-loader').hide(); 
         }, 
      success:function(data){
-         // do stuff with json (in this case an array)
+        // do stuff with json (in this case an array)
         PSCitaIns_Refresh = false;
-       var html='';
-       if(data.length>0)
+        var html='';
+        if(data.length>0)
          {
         
              $.each(data, function(index, element)
@@ -71,13 +71,10 @@ function getInscripcion(){
                  
                  $('#ci_periodo01').html(element.termDes);
              });
-             
-            
-             
             
          }else{
               html ='<div class="card-content-inner">NO HAY FECHAS DISPONIBLES PARA INSCRIPCIÓN.</div>';
-                             
+              $('#ci_periodo01').html('');
          }
          $('#div_inscripcion_id').html(html);
      },
