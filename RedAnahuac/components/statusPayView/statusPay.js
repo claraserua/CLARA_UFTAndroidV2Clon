@@ -34,14 +34,11 @@ function getEstadoCuenta(){
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
     var websevicename = 'estado/'+usuario;
-    
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
 
     $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
+     url: url_webservice,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",

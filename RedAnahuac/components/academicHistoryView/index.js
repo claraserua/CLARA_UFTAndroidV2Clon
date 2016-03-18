@@ -1,12 +1,13 @@
 'use strict';
 
 app.academicHistoryView = kendo.observable({
+    
     onShow: function() {
         if(VHA_Refresh == true){
             $('#div_content_idHA').empty();
             $('#AH_prev_arrow').hide();
             $('#AH_next_arrow').hide();
-            $('#div_term_periodoHA').html('');
+            $('#div_term_periodoHA').html('&nbsp;');
         }
     },
     afterShow: function() { llenarFormaHistoria(); }
@@ -19,7 +20,7 @@ var VHA_Refresh = true;
 function Refresh_HAcademic(){
       VHA_Refresh = true;
       llenarFormaHistoria();
-  }
+}
 
 var AH_promedio=null;
 var AH_historia=null;
@@ -32,10 +33,10 @@ function llenarFormaHistoria()
 {
     
     
-	 if(VHA_Refresh==false)
+	if(VHA_Refresh==false)
         return;
     
-     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
@@ -45,8 +46,8 @@ function llenarFormaHistoria()
     
     $.ajax({
 		data: {websevicename: websevicename_promedio, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
-		dataType: 'jsonp', 
+        url: url_webservice,
+		dataType: 'jsonp',
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
         complete:function(data){
@@ -78,7 +79,7 @@ function getDetalleHistory(){
     
     $.ajax({
 		data: {websevicename: websevicename_detalle, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -154,10 +155,11 @@ function updateDetalleHistory()
     // _________________ Paginacion ____________________
     $('#AH_prev_arrow').show();
     $('#AH_next_arrow').show();
-    if(AH_promedio.length<=1 || AH_current_index==0)
+    if(AH_current_index==0 || AH_promedio.length<=1)
         $('#AH_prev_arrow').hide();
-    if(AH_promedio.length<=1 || AH_current_index==AH_promedio.length-1)
+    if(AH_current_index==AH_promedio.length-1 || AH_promedio.length<=1)
         $('#AH_next_arrow').hide();
+    
 }
 
 function AH_showPrevius(){

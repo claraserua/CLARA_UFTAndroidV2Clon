@@ -1,4 +1,5 @@
 <div data-role="view" data-title="Búsqueda de Cursos" data-layout="main-nonav" data-model="app.searchCoursesView" data-show="app.searchCoursesView.onShow" data-after-show="app.searchCoursesView.afterShow">
+    
     <!-- START_CUSTOM_CODE_plannedCoursesView -->
 
     <!--
@@ -12,8 +13,11 @@
     -->
        <footer data-role="footer" class="header-top-android">
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
-
-                <span class="km-icon km-home button_home" onClick="goHome();"><span class="text-home">Inicio</span> </span> <!-- Home -->
+                
+                <span class="km-icon km-home button_home" onClick="goHome();">
+                    <div class="rotulo_home">Inicio</div>
+                </span>
+                
                 <div class="line-gray">Búsqueda de Cursos</div>
                 
                 <div class="line-orange">
@@ -26,19 +30,19 @@
        
             <div class="page-box">
                 
-                <div class="card-content-inner">Está opción te permite guardar en una lista los cursos que planeas inscribir.</div>
+                <div class="card-content-inner">Esta opción te permite guardar en una lista los cursos que planeas inscribir.</div>
                 
             <form action="./index.html">
              
                 
               <div class="card">
                 <ul data-role="listview">
-             <li> 
-                 
-                 <input type="hidden" name="val_periodo" id="val_periodo" value="">
-                 <a class="km-listview-link" data-role="listview-link" href="components/periodsView/view.html"><span id="desc_periodo">*Periodo</span></a>
-                 
-             </li>
+                  <li> 
+                     
+                     <input type="hidden" name="val_periodo" id="val_periodo" value="">
+                     <a class="km-listview-link" data-role="listview-link" href="components/periodsView/view.html"><span id="desc_periodo">*Periodo</span></a>
+                     
+                  </li>
                 </ul>
                 </div>
                 

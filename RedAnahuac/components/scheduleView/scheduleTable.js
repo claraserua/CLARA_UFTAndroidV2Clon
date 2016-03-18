@@ -1,12 +1,13 @@
 var schedule;
-var dias=["Lu","Ma","Mi","Ju","Vi"];
+var _7_dias=["Lu","Ma","Mi","Ju","Vi","Sa","Do"];
+var _6_dias=["Lu","Ma","Mi","Ju","Vi","Sa"];
 var ST_numDia=['_','_','_','_','_'];
 
 function SV_initialice()
 {
 	schedule = [];
-	for(var i=0; i<dias.length; i++)
-		schedule[dias[i]]=[];
+	for(var i=0; i<_7_dias.length; i++)
+		schedule[_7_dias[i]]=[];
 }
 
 function SV_parseHour24(str_hour){
@@ -27,6 +28,7 @@ function diaDeLaSemana_XX(date_yyyymmdd){
 	var dia_4 = "Ju";
 	var dia_5 = "Vi";
 	var dia_6 = "Sa";
+	var dia_7 = "do";
 
 	return eval("dia_" + fecha.getDay());
 }
@@ -34,9 +36,9 @@ function diaDeLaSemana_XX(date_yyyymmdd){
 function SV_searchCourseColor(title)
 {
     var max=-1;
-	for(var d=0; d<dias.length; d++)
+	for(var d=0; d<_7_dias.length; d++)
     {
-		var courses = schedule[dias[d]];
+		var courses = schedule[_7_dias[d]];
         for(var i=0; i<courses.length; i++)
         {
             if(courses[i].item_json.title == title)
@@ -71,9 +73,9 @@ function SV_buildTable(curseCounter)
 		hours.push(i)
 	
 	var html='';
-	html+='<tr class="sty_sched_header"><td style="width:14%; ">Hora</td>';
-	for(var i=0; i<dias.length; i++)
-		html+='<td style="width:16%; ">'+ST_numDia[i]+'</td>';
+	html+='<tr class="sty_sched_header"><td style="width:10%; ">Hora</td>';
+	for(var i=0; i<_6_dias.length; i++)
+		html+='<td style="width:15%; ">'+ST_numDia[i]+'</td>';
 	html+='</td>';
 	
 	var string=['A','B','C','D','E'];
@@ -82,7 +84,7 @@ function SV_buildTable(curseCounter)
         var style = (j%2==0?'sty_line_1':'sty_line_2');
 		html+='<tr class="'+style+'">';
         html+='<td class="sty_cell_hour">'+Math.floor(7+j/2)+':'+(j%2==0?'00':'30')+'</td>';
-		for(var i=0; i<dias.length; i++)
+		for(var i=0; i<_6_dias.length; i++)
             html+='<td class="'+style+'">&nbsp;</td>';
             //html+='<td></td>';
 		html+='</tr>';
@@ -92,9 +94,9 @@ function SV_buildTable(curseCounter)
 	if(curseCounter==0)
         return;
 	var tbody = document.getElementById("tbody_sched_id");
-	for(var d=dias.length-1; d>=0; d--)
+	for(var d=_6_dias.length-1; d>=0; d--)
 	{
-		var coursesXday = schedule[dias[d]];
+		var coursesXday = schedule[_6_dias[d]];
 		for(var k=0; k<coursesXday.length; k++)
 		{
 			var course = coursesXday[k];
@@ -146,14 +148,12 @@ function numeracionXSemana(day, yyyy_mm_dd){
     }
     // Recorremos desde el lunes hasta el viernes
     ST_numDia=[];
-    for(var i=0; i<5; i++)
+    for(var i=0; i<_6_dias.length; i++)
     {
-        
         var numDia = new Date(day);
         numDia.setDate(day.getDate()-diasHastaLunes+i);
-        ST_numDia.push(dias[i]+'-'+numDia.getDate());
+        ST_numDia.push(_6_dias[i]+' '+numDia.getDate());
     }
-    
 }
 
 function getMonday(day){
@@ -190,7 +190,26 @@ function getFriday(day){
     }
     // Recorremos desde el lunes hasta el viernes
     var friday = new Date(day);
-    friday.setDate(day.getDate()-(diasHastaLunes-4));
+    friday.setDate(day.getDate() - diasHastaLunes + 4);
     return friday;
+}
+
+function getSunday(day){
+    var yyyy_mm_dd = format_YYYY_MM_DD(day);
+    var diaSemana = diaDeLaSemana_XX(yyyy_mm_dd);
+    var diasHastaLunes=0;
+    switch(diaSemana){
+        case 'Lu': diasHastaLunes=0; break;
+        case 'Ma': diasHastaLunes=1; break;
+        case 'Mi': diasHastaLunes=2; break;
+        case 'Ju': diasHastaLunes=3; break;
+        case 'Vi': diasHastaLunes=4; break;
+        case 'Sa': diasHastaLunes=5; break;
+        case 'Do': diasHastaLunes=6; break;
+    }
+    // Recorremos desde el lunes hasta el viernes
+    var sunday = new Date(day);
+    sunday.setDate(day.getDate() - diasHastaLunes + 6);
+    return sunday;
 }
 

@@ -1,0 +1,91 @@
+<div data-role="view" data-title="Ajustes"  data-layout="main-nonav" data-model="app.pinView" data-show="app.pinView.onShow" data-after-show="app.pinView.afterShow">
+    
+    <!-- START_CUSTOM_CODE_pinView -->
+
+    <!--
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a  data-align="left" class="km-widget km-button km-back" onclick="Cancelpin()"><span class="km-text">Atras</span></a>
+        </div>
+      </div>
+    
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" >Cambiar PIN <span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>  
+        </div>
+	</div>
+    -->
+    <footer data-role="footer" class="header-top-android">
+        <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+            
+            <span class="icon-atras" onClick="Cancelpin()">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
+            <!--<span class="km-icon km-refresh button_refresh" onClick="RefreshCursosfound();"></span>-->
+            <div class="line-gray">Cambiar PIN</div>
+            
+            <div class="line-orange"><span id="r387periodo"></span><div id="res-uni"></div></div>
+        </div>
+    </footer>
+    
+    
+    <div class="page-view" data-bind="invisible:error">
+        
+        
+        <div class="card-content-inner">Aquí puedes cambiar tu número de identificación (PIN). </div>
+        
+        <div class="page-content" id="formnip">
+            
+               <div class="card">
+            <ul data-role="listview" data-style="inset">
+            <li>
+                <div style="padding:1px;">
+                    <input type="password" style="position:relative !important; width:100%;" id="nipanterior" value="" placeholder="Ingresar NIP Anterior:" />
+                </div>
+             </li>
+                <li>
+                <div style="padding:1px;">
+                    <input type="password" style="position:relative !important; width:100%;" id="nipnuevo" value="" placeholder="Ingresar NIP Nuevo:" />
+                </div>
+            </li>
+                
+                <li>
+                <div style="padding:1px;">
+                    <input type="password" style="position:relative !important; width:100%;" id="nipnuevo2" value="" placeholder="Re-Ingresar NIP Nuevo:" />
+                </div>
+            </li>
+           
+        </ul>
+           </div>
+            
+            
+            
+           
+            <div class="button-group button-group-vertical">
+            <a data-role="button" data-click="changeNIP" class="primary" >Cambiar NIP</a>
+            <a  data-role="button" data-click="Cancelpin" >Cancelar</a>
+            </div>
+            
+            
+           
+         </div>
+        
+        
+         <div class="page-content" id="changeniptrue" style="display:none;">
+             
+             <div class="card-content-inner">El cambio de (PIN) se realizo correctamente!.</div>
+             
+         </div>
+      
+            </div>
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_aboutView -->
+    <!-- END_CUSTOM_CODE_aboutView -->
+    
+     
+    
+    
+
+
+

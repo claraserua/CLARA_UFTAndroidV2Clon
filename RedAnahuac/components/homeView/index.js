@@ -1,43 +1,43 @@
 'use strict';
 
-var home = false;
-
-
 app.homeView = kendo.observable({
-    onShow: function() { $('.km-loader').hide(); home = true; },
-    afterShow: function() { landscape();  }
+    onShow: function() { $('.km-loader').hide();  $('#home').height($( window ).height()-55); initscrollTop(); },
+    afterShow: function() { landscape(); addBackButtonEvent();  }
 });
 
 // START_CUSTOM_CODE_homeView
 
 function ViewList(){
-    home = false;
+    removeBackButtonEvent();
     $('.km-content:visible').data('kendoMobileScroller').enable();
      app.mobileApp.navigate('components/listHomeView/view.html');
 }
 
-
-function clickHandler(redirect) { 
-    home = false;
+function clickHandler(redirect) {
     $('.km-content:visible').data('kendoMobileScroller').enable();
     app.mobileApp.navigate('components/'+redirect+'/view.html');
 }
-function clickHandler_5(redirect) { 
-    home = false;
+function clickHandler_5(redirect) {
     $('.km-content:visible').data('kendoMobileScroller').enable();
     app.mobileApp.navigate('components/'+redirect);
 }
+function clickHandlerFromHome(redirect) {
+    removeBackButtonEvent();
+    $('.km-content:visible').data('kendoMobileScroller').enable();
+    app.mobileApp.navigate('components/'+redirect+'/view.html');
+}
+
 
 
 function ExitApp(){
-     home = false;
-     app.mobileApp.navigate('components/logoutView/view.html');
+    removeBackButtonEvent();
+    app.mobileApp.navigate('components/logoutView/view.html');
 }
 
 
 function detectTablet(){
     
-    if (kendo.support.mobileOS.ios && kendo.support.mobileOS.tablet) {
+    if (kendo.support.mobileOS.tablet) {
         
         if (window.matchMedia("(-webkit-device-pixel-ratio: 2)").matches) {
          /* retina display */
@@ -58,6 +58,7 @@ function detectTablet(){
         $("#home_icon_opi").attr( { src:"resources/img/icons/TuOpinion144x144@2x.png", width:"72px",height:"72px" } );
             
             }else{
+              
                 
         $("#home_icon_sc").attr("src","resources/img/icons/BusquedaCursos72x72.png");
         $("#home_icon_cp").attr("src","resources/img/icons/Cursosinteres72x72.png");
@@ -85,13 +86,14 @@ function landscape() {
    
         // PORTRAIT:
         if ($(window).height()>$(window).width()){
-            initscrollTop();
+           /* initscrollTop();
             $('.km-content:visible').data('kendoMobileScroller').disable();
-            $("#home").css("position", "fixed");  
+            $("#home").css("position", "fixed"); */ 
         // LANDSCAPE:
         }else{
-           $('.km-content:visible').data('kendoMobileScroller').enable();
-           $("#home").css("position", "relative");   
+           /* $('.km-content:visible').data('kendoMobileScroller').enable();
+           $("#home").css("position", "relative");   */
+             $('#home').height($( window ).height()+160);
 
         }
     
@@ -100,21 +102,24 @@ function landscape() {
 
 $(window).resize(function(){
     
-  if(home==true){
-  
+   
+    
     if ($(window).height()>$(window).width()){
         
-        initscrollTop();
+         $('#home').height($( window ).height()-55);
+        
+        /*initscrollTop();
         $('.km-content:visible').data('kendoMobileScroller').disable();
-        $("#home").css("position", "fixed"); 
+        $("#home").css("position", "fixed"); */
         
         }else{
-        $('.km-content:visible').data('kendoMobileScroller').enable();
-        $("#home").css("position", "relative");
+            
+             $('#home').height($( window ).height()+160);
+            
+       /* $('.km-content:visible').data('kendoMobileScroller').enable();
+        $("#home").css("position", "relative");*/
           
         }
-      }
-        
     
 });
 

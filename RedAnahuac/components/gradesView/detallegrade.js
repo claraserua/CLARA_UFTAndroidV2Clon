@@ -47,8 +47,6 @@ function getDetalleGrade_gd(){
    
     var websevicename = 'componente/'+usuario;
  
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
     var titulo = '<div class="normal-header-title">'+GD_CursoP+'</div><div class="small-header-title">'+GD_ProfesorP+'</div>';
      
     $('#div_course_DG').html(titulo);
@@ -59,7 +57,7 @@ function getDetalleGrade_gd(){
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
+     url: url_webservice,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",

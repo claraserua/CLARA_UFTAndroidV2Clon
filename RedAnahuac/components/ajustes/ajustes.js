@@ -1,17 +1,19 @@
 'use strict';
 
-app.perfilView = kendo.observable({
-    onShow: function() { if(BPerfil_Refresh==true){ emptyPerfil(); }  },
-    afterShow: function() { getPerfil(); }
+app.ajustesView = kendo.observable({
+    onShow: function() { $('#idalumno2').html(window.localStorage.getItem("usuario"));   },
+    afterShow: function() { //getPerfil(); 
+        
+    }
 });
 
 // START_CUSTOM_CODE_perfilView
-var BPerfil_Refresh = true;
+//var BPerfil_Refresh = true;
 
 
 function Refresh_perfil(){
-      BPerfil_Refresh = true;
-      getPerfil();
+     // BPerfil_Refresh = true;
+     // getPerfil();
   }
 
 function emptyPerfil(){
@@ -35,11 +37,10 @@ function getPerfil(){
     var websevicename = 'perfil/'+usuario;
     
     
+    /*if(BPerfil_Refresh==false)
+        return;*/
     
-    if(BPerfil_Refresh==false)
-        return;
-    
-     if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     $('.km-loader').show();
   

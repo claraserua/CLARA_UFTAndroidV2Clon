@@ -69,7 +69,8 @@ function H_showNext(){
 function gateDayActual(){
     var today = new Date();               // dia actual.
     var monday = getMonday(today);        // lunes de la semana actual
-    var friday = getFriday(today);        // viernes de la semana actual
+    //var friday = getFriday(today);        // viernes de la semana actual
+    var sunday = getSunday(today);        // domingo de la semana actual
     
     var dd = today.getDate();
     var mm = today.getMonth(); //January is 0!
@@ -80,7 +81,7 @@ function gateDayActual(){
    
     
     H_today = format_YYYY_MM_DD(monday);
-    H_to = format_YYYY_MM_DD(friday);
+    H_to = format_YYYY_MM_DD(sunday);
     H_date_Actual = format_YYYY_MM_DD(today);
 
     numeracionXSemana(monday,H_today);
@@ -92,7 +93,8 @@ function gateDayActual(){
 function getdayCalendar(customDay){
     var today = new Date(customDay);      // dia actual.
     var monday = getMonday(today);        // lunes de la semana actual
-    var friday = getFriday(today);        // viernes de la semana actual
+    //var friday = getFriday(today);        // viernes de la semana actual
+    var sunday = getSunday(today);        // domingo de la semana actual LMWJVSD
     
     var dd = today.getDate();
     var mm = today.getMonth(); //January is 0!
@@ -103,7 +105,7 @@ function getdayCalendar(customDay){
    
     
     H_today = format_YYYY_MM_DD(monday);
-    H_to = format_YYYY_MM_DD(friday);
+    H_to = format_YYYY_MM_DD(sunday);
     H_date_Actual = format_YYYY_MM_DD(today);
 
     numeracionXSemana(monday,H_today);
@@ -116,7 +118,6 @@ function convert_YYYYMMDD_to_DDMMYYYY(YYYYMMDD)
     return arr[2]+'-'+arr[1]+'-'+arr[0];
 }
 
-var max_tooltips=0;
 function buildScheduleOptions()
 {
 	var usuario =  window.localStorage.getItem("usuario");
@@ -133,7 +134,7 @@ function buildScheduleOptions()
     
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -142,13 +143,12 @@ function buildScheduleOptions()
         },
 		success:function(data)
 		{
-            var html = '';		
+            var html = '<br/>';
 			var counter=0;
-            max_tooltips=0;
             if(data==null || data.dates==null)
             {
-                ST_numDia=['Lu','Ma','Mi','Ju','Vi'];
-                console.log('data.dates='+data.dates);
+                for (var i=0; i<ST_numDia.length; i++)
+                    ST_numDia[i]=dias[i];
             }
             else
             {
@@ -197,9 +197,9 @@ function buildScheduleOptions()
                         if(arr!=null && 0<arr.length) salon=arr[1];
                         var tooltip =
                             '<div>'+
-                            '  <a data-toggle="tooltip" class="red-tooltip" id="a_tool_tip_'+max_tooltips+'"   '+
+                            '  <a data-toggle="tooltip" class="red-tooltip" '+
                             '  title="'+course.title+' - '+course.description+' | Instructores: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'<br/>'+salon+'   </a></div>'; // <br/><img src="resources/img/plus.png"/>
-    					max_tooltips++;
+    					
                         SV_addCourse(date.date, course.startTime, course.endTime, tooltip, course);
     				});
     				html += '</ul>';
@@ -236,26 +236,6 @@ function buildScheduleOptions()
 	});
 }
 
-function hideTooltips()
-{
-    try{
-        for(var i=0; i<max_tooltips; i++){
-            var id_tool_tip = $('#a_tool_tip_'+i).attr('aria-describedby');
-            if (id_tool_tip != null){
-                console.log('a_tool_tip_'+i+'='+id_tool_tip);
-                $('#'+id_tool_tip).remove();
-                console.log('after '+id_tool_tip+'  removed');
-            }
-            //
-        }
-    }catch(Exception){}
-}
-function SV_goHome(){
-    hideTooltips();
-    goHome();
-}
-
-
 
 
 function clickHandler_2(redirect) {
@@ -271,23 +251,20 @@ function toggleScheduleView(){
 
 function showScheduleView()
 {
-    
     initscrollTop();
     if(divScheduleTable){
         $('#div_horario').hide();
         $('#tbody_sched_id').show();
-        $('.km-content:visible').data('kendoMobileScroller').enable();
     }
     else{
-        $('.km-content:visible').data('kendoMobileScroller').enable();
         $('#div_horario').show();
         $('#tbody_sched_id').hide();
     }
 }
 
 app.scheduleView = kendo.observable({
-    onShow: function() { $('.km-content:visible').data('kendoMobileScroller').enable(); if(H_calendar==false){ $('#tbody_sched_id').html(''); } },
-    afterShow: function() { if(H_calendar==false){gateDayActual();} $('.km-content:visible').data('kendoMobileScroller').enable(); }
+    onShow: function() { if(H_calendar==false){ $('#tbody_sched_id').html(''); } },
+    afterShow: function() { if(H_calendar==false){gateDayActual();} }
 });
 
         

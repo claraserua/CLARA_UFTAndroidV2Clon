@@ -30,7 +30,7 @@ function llenarFormaNoVencidos()
 	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -51,10 +51,11 @@ function llenarFormaNoVencidos()
                  '<div class="card-header">NO TIENE NO VENCIDOS</div>'+
                  '</div>'+
                  '';
-             $('#id_novencidosSP').html(html);
+               $('#id_novencidosSP').html(html);
                
-                  return;
-                }
+               SPNV_updateNoVencidos();
+               return;
+            }
             
             
 			// do stuff with json (in this case an array)
@@ -107,11 +108,12 @@ function SPNV_updateNoVencidos()
      initscrollTop();
     
     // ------- Flechas de navegacion de paginado -------
+    
     $('#SPNV_prev_arrow').show();
     $('#SPNV_next_arrow').show();
-    if(SPNV_current_index==0)
+    if(SPNV_array_period.length==0 || SPNV_current_index==0)
         $('#SPNV_prev_arrow').hide();
-    if(SPNV_current_index==SPNV_array_period.length-1)
+    if(SPNV_array_period.length==0 || SPNV_current_index==SPNV_array_period.length-1)
         $('#SPNV_next_arrow').hide();
 }
 

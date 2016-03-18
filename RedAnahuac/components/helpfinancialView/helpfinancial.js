@@ -31,15 +31,13 @@ function getApoyoFinanciero(){
     var password = window.localStorage.getItem("password");
     var websevicename = 'apoyo/'+usuario;
     
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
     $( "#apoyof" ).empty();
     $('.km-loader').show();
     array_periodos_HF = new Array();
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
+     url: url_webservice,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
@@ -54,29 +52,30 @@ function getApoyoFinanciero(){
          var beca = '';
          
          
-         if(data.length!=0){
-         $.each(data, function(index, element)
+         if(data.length!=0)
          {
-             
-             if(element.desBeca=='nulo'){beca='NINGUNA';}else{beca=element.desBeca; }
-             if(element.desCredito=='nulo'){credito='NINGUNO';}else{credito=element.desCredito; }
-             array_periodos_HF[index] = element.periodo;
-             
-             html =
-             '<div id="HF_div_'+index+'" style="margin-top:15px;">'+
-             '<div class="card_light" id="HF_div_'+index+'">'+
-             '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after-right">'+beca+'</span></div>'+
-             '</div>'+
-              
-             '<div class="card_light">'+
-             '<div class="card-header"><span class="item-title">Crédito:</span><span class="item-after-right">'+credito+'</span></div>'+
-             '</div>'+
-             '</div>'+
-             '';
-             
-             
-              $( "#apoyof" ).append( html );
-        });}else{
+             $.each(data, function(index, element)
+             {
+                 if(element.desBeca=='nulo'){beca='NINGUNA';}else{beca=element.desBeca; }
+                 if(element.desCredito=='nulo'){credito='NINGUNO';}else{credito=element.desCredito; }
+                 array_periodos_HF[index] = element.periodo;
+                 
+                 html =
+                 '<div id="HF_div_'+index+'" style="margin-top:15px;">'+
+                 '<div class="card_light" id="HF_div_'+index+'">'+
+                 '<div class="card-header"><span class="item-title">Beca:</span><span class="item-after-right">'+beca+'</span></div>'+
+                 '</div>'+
+                  
+                 '<div class="card_light">'+
+                 '<div class="card-header"><span class="item-title">Crédito:</span><span class="item-after-right">'+credito+'</span></div>'+
+                 '</div>'+
+                 '</div>'+
+                 '';
+                 
+                 
+                 $( "#apoyof" ).append( html );
+             });
+         }else{
              
               html =
                  '<div class="card">'+
@@ -89,11 +88,11 @@ function getApoyoFinanciero(){
                  $('#HF_next_arrow').hide();
               
              $( "#apoyof" ).append( html );
-        }
+         }
         
          HF_max_elements= data.length;
-        HF_current_index = data.length-1;
-        HF_update();
+         HF_current_index = data.length-1;
+         HF_update();
      },
      error:function(){
          
@@ -112,6 +111,20 @@ function HF_update(){
         else
             $('#HF_div_'+i).hide();
     
+    
+    $('#HF_prev_arrow').show();
+    $('#HF_next_arrow').show();
+    
+    if (array_periodos_HF.length<=1 || HF_current_index==0){
+        $('#HF_prev_arrow').hide();
+    }
+    if (array_periodos_HF.length<=1 || HF_current_index==array_periodos_HF.length-1){
+        $('#HF_next_arrow').hide();
+    }
+    
+    //*/
+    /*
+    //_______
     if(array_periodos_HF.length==1){
         $('#HF_prev_arrow').hide();
         $('#HF_next_arrow').hide();
@@ -129,6 +142,7 @@ function HF_update(){
         
         if(HF_current_index<=array_periodos_HF.length-1){$('#HF_next_arrow').show();  $('#HF_prev_arrow').show();}
     }
+    //*/
 }
 
 function HF_showPrevius(){

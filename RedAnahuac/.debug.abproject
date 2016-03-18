@@ -1,1 +1,10 @@
-{}
+{
+  "CorePlugins": [
+    "cordova-plugin-device-orientation",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-vibration",
+    "cordova-plugin-whitelist"
+  ]
+}

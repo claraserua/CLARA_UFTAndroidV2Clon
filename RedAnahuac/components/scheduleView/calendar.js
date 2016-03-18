@@ -4,7 +4,7 @@ app.calendarView = kendo.observable({
     onShow: function() {  },
     afterShow: function() { 
     
-        $('.km-content:visible').data('kendoMobileScroller').enable();
+        
         
        var curDate = new Date();
        $('#dp3').datepicker({

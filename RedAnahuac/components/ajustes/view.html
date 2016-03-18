@@ -1,0 +1,54 @@
+<div data-role="view" data-title="Ajustes"  data-layout="main-nonav" data-model="app.ajustesView" data-show="app.ajustesView.onShow" data-after-show="app.ajustesView.afterShow">
+    <!-- START_CUSTOM_CODE_ajustesView -->
+
+    <!--
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a  data-align="left" class="km-widget km-button km-back" onclick="clickHandler('perfilView')"><span class="km-text">Atras</span></a>
+        </div>
+    </div>
+    
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#F7881C !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" ></div>
+            
+        </div>
+	</div>
+    -->
+    <footer data-role="footer" class="header-top-android">
+        <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+            
+            <span class="icon-atras" onClick="clickHandler('perfilView');">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
+            <!--<span class="km-icon km-refresh button_refresh" onClick="RefreshCursosfound();"></span>-->
+            <div class="line-gray">Ajustes</div>
+            
+            <div class="line-orange"><span id="r387periodo"></span><div id="res-uni"></div></div>
+        </div>
+    </footer>
+    
+    
+    <div class="page-view" data-bind="invisible:error">
+        <!--
+         <div class="card">
+            <ul data-role="listview" >
+            <li><a class="km-listview-link" data-role="listview-link" onclick="clickHandler('ajustes')">Ajustes</a></li>    
+            </ul>
+          </div>-->
+        
+        <div class="page-content">
+            
+            <div class="card_light">
+            <div class="card-header"><span class="item-title">Id Alumno:</span><span id="idalumno2" class="item-after-right"></span></div>           
+            </div>
+            
+             <ul data-role="listview" >
+            <li><a class="km-listview-link" data-role="listview-link" onclick="clickHandler_5('ajustes/pin.html')">Cambiar tu PIN  <span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a></li>    
+            </ul>
+           
+        </div>
+      
+    </div>
+        <!-- START_CUSTOM_CODE_aboutViewModel -->
+        <!-- END_CUSTOM_CODE_aboutViewModel -->
+</div>

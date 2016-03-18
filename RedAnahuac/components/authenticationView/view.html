@@ -20,40 +20,39 @@
     <div class="signin-view">
            
         <div class="login-screen-title"><span style="color:#0AB0E7">Net</span> <span style="color:#F7881C">Anáhuac</span></div>
-        <div class="card_login">
-            
-        <form>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <label>Usuario
-                        <input type="text" id="usuario"  placeholder="Usuario"  required autofocus>
-                    </label>
-                </li>
-                <li>
-                    <label>Contraseña
-                        <input type="password" id="password" placeholder="Contraseña" required>
-                    </label>
-                </li>
-                
-            </ul>
-        </form>
-            </div>
+        <div class="card_login" id="div_input_login">
+            <form>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <label>Usuario
+                            <input type="text" id="usuario"  placeholder="Usuario"  required autofocus>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Contraseña
+                            <input type="password" id="password" placeholder="Contraseña" required>
+                        </label>
+                    </li>
+                    
+                </ul>
+            </form>
+        </div>
     </div>
     
-      <div class="list-block">
-                
-          <div class="card_login">
-          <div class="button-group button-group-vertical" >
-          <a data-role="button"  data-click="IniciarSesion" class="primary" >Iniciar</a>
-          </div>
-          </div>
-          
-          <div class="list-block-label">Red de Universidades Anáhuac.</div>
-          <div class="list-block-label">
-              <a  onClick="clickHandler('aprivacidad');" >Aviso de Privacidad</a>
-              </div>
+    <div class="list-block" id="div_button_login">
+        
+        <div class="card_login">
+            <div class="button-group button-group-vertical" >
+                <a data-role="button"  data-click="IniciarSesion" class="primary" >Iniciar</a>
+            </div>
+        </div>
+        
+        <div class="list-block-label">Red de Universidades Anáhuac.</div>
+        <div class="list-block-label">
+            <a  onClick="clickHandler('aprivacidad');" >Aviso de Privacidad</a>
+        </div>
 
-      </div>
+    </div>
     
     
         <!-- START_CUSTOM_CODE_authenticationViewModel -->

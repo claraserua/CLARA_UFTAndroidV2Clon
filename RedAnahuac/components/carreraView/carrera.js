@@ -31,11 +31,10 @@ function getCarreras(){
      if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
     
     $('#carreras').empty();
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     $('.km-loader').show();
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
+     url: url_webservice,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",

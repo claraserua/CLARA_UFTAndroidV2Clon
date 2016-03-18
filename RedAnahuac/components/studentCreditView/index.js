@@ -24,7 +24,7 @@ function buildStudentCredit()
 	$('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp',
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -109,9 +109,6 @@ function buildTable(programName, div_id)
     }
     
     
-     /*if(variabProgramName==false)
-        return;*/
-    
     if(!checkConnection()){ showNotification('No network connection','Network'); return; }
     
     
@@ -119,7 +116,7 @@ function buildTable(programName, div_id)
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp',
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",

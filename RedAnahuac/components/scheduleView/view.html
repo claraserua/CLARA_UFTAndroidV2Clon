@@ -16,7 +16,9 @@
        <footer data-role="footer" class="header-top-android">
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
 
-                <span class="km-icon km-home button_home" onClick="SV_goHome();"><span class="text-home">Inicio</span></span> <!-- Home -->
+                <span class="km-icon km-home button_home" onClick="goHome();"> <!-- Home -->
+                    <div class="rotulo_home">Inicio</div>
+                </span>
                 <span class="km-icon km-refresh button_refresh" onClick="Refresh_Shedule();"></span>
                 <div class="line-gray">Horario</div>
                 
@@ -37,7 +39,9 @@
     		<div id="div_horario">
             </div>
 			<table id="table_schedule_id" border="0" cellspacing="0" cellpadding="2" class="sty_table" style=" width:100%; z-index:0;">
-				<tbody id="tbody_sched_id"></tbody>
+				<tbody id="tbody_sched_id">
+                    
+                </tbody>
 			</table>
     
          </div>

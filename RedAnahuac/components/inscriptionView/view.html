@@ -12,12 +12,16 @@
        <footer data-role="footer" class="header-top-android">
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
 
-                <span class="km-icon km-home button_home" onClick="goHome();"><span class="text-home">Inicio</span></span> <!-- Home -->
+                <span class="km-icon km-home button_home" onClick="goHome();"> <!-- Home -->
+                    <div class="rotulo_home">Inicio</div>
+                </span>
                 <span class="km-icon km-refresh button_refresh" onClick="Refresh_CitaIns();"></span>
                 <div class="line-gray">Cita de Inscripci&oacute;n</div>
                 
                 <div class="line-orange">
-                    <div id="ci_periodo01" class="rotulo_center">&nbsp;</div>
+                    <div> <span id="ci_periodo01">&nbsp;</span></div>
+                    <span id="INSC_prev_arrow" class="button_left" onclick="INSC_showPrevius()">&nbsp;&nbsp;</span>
+                    <span id="INSC_next_arrow" class="button_right" onclick="INSC_showNext()">&nbsp;&nbsp;</span>
                 </div>
             </div>
        </footer>

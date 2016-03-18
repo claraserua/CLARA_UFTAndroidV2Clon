@@ -1,30 +1,19 @@
 <div data-role="view" data-title="Detalle del Curso"  data-layout="main-nonav" data-show="app.detailcourseView.onShow" data-after-show="app.detailcourseView.afterShow">
     <!-- START_CUSTOM_CODE_perfilView -->
 
-    <!--
-    <div data-role="header">
-        <div data-role="navbar">
-          <div data-role="view-title"></div>
-            <a data-role="button" class="km-widget km-button km-back" data-align="left" onClick="Cursos_back();">Atras</a>
-             
-            <a id="SC_btn_set" onclick="set_favorit_Course()" data-role="button" data-align="right"  ><span id="icon-cd" class="km-icon km-toprated"></span><span class="km-text" id="txt-favorit">Agregar</span></a>   
-        </div>
-      </div>
-    -->
-       <footer data-role="footer" class="header-top-android">
+        <footer data-role="footer" class="header-top-android">
+            
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
-
                 
                 <span class="icon-atras" onClick="Cursos_back();">&nbsp;&nbsp;&nbsp;Atras</span> <!-- ATRAS -->
                 <span class="km-icon km-refresh button_refresh" onClick="getDetalleCurso_DCD();"></span>
                 <div class="line-gray">Detalle del Curso</div>
                 
-                <div class="line-orange"><br><span id="title_course_DC"></span></div>
+                <div class="line-orange"> <span id="title_course_DC"></span><div id="title_periodo_DC"></div></div>
             </div>
-       </footer>
+            
+        </footer>
     
-    
-
     
     
     <div class="page-view" data-bind="invisible:error">
@@ -33,7 +22,7 @@
         
         <div id="detallecurso">
   
-            </div>
+        </div>
         <!-- START_CUSTOM_CODE_aboutViewModel -->
         <!-- END_CUSTOM_CODE_aboutViewModel -->
     </div>

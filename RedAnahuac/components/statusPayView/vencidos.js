@@ -33,7 +33,7 @@ function llenarFormaVencidos()
 	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",

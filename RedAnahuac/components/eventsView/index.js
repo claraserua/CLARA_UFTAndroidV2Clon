@@ -48,7 +48,7 @@ function initEvents()
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -142,7 +142,8 @@ function initEventDetail(){
         $('#evento_id').html(event.vsDetEvento);
         $('#contacto_id').html(event.vsUbicacionContacto);
         $('#telefono_id').html(event.vsTelefono);
-        $('#link_id').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
+        //$('#link_id').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
+        $('#link_id').html('<a href="javascript:void(0)" onClick="OpenExternalLink(\''+event.vsLiga+'\')" >'+event.vsLiga+'</a>');
     }catch(Exception){}
 }
 

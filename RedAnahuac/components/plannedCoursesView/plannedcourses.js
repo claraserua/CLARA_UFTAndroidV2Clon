@@ -7,6 +7,30 @@ var PC_id_periodo=0;
 var PC_id_crn=0;
 var PC_id_card = 0;
 
+var _PC_schedule = [];
+var _PC_arr_schedule = [];
+
+function PC_getDayActual(){
+    var today = new Date();               // dia actual.
+    var monday = getMonday(today);        // lunes de la semana actual
+    var friday = getFriday(today);        // viernes de la semana actual
+    
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    var descmes =  month[mm] +' '+yyyy;
+    $('#desc_H_Fecha').html(descmes);
+    
+    
+    H_today = format_YYYY_MM_DD(monday);
+    H_to = format_YYYY_MM_DD(friday);
+    H_date_Actual = format_YYYY_MM_DD(today);
+
+    numeracionXSemana(monday,H_today);
+    CoursesPlaned();
+}
+
 function CoursesPlaned()
 {
 	var usuario =  window.localStorage.getItem("usuario");
@@ -18,13 +42,12 @@ function CoursesPlaned()
     $('#PC_prev_arrow').hide();
     $('#div_term_CPperiodo').empty();
     
-    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
-    
+    if(!checkConnection()) { showNotification('No hay Red disponible','Conexión'); return; }
     
 	$('.km-loader').show();
     $.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
@@ -33,29 +56,35 @@ function CoursesPlaned()
         },
 		success:function(data)
 		{
+            if(data==null)
+                return;
+            
     	    var html = '';
-            PC_max_courses = data.length;             
+            PC_max_courses = data.length;
             PC_current_index = 0;
 
             $('#load-content').remove();
             if(data.length != 0)
             {
-                $('#table_overlap_id').hide();
-                //ST_initialice();
+                _PC_schedule = _PCT_initialice();
+                
                 PC_array_period=[];
     			$.each(data, function(index, element)
     			{
-                    
                     html +=
-                     '<div class="card" id="PC_div_'+index+'">'+
-                     '<div class="card-header"><span>'+element.plCRN+' '+element.plSubj+element.plCrse+' '+element.plTitu+'</span><a onclick="delete_favorit_CoursePC(\''+element.plCRN+'\',\''+element.plTerm+'\','+index+');"><span class="km-icon km-trash" style="float:right;"></span></a></div>'+
-                     '<div class="card-content">'+
-                     '<div class="card-content-inner"><div><span class="item-orange-bold">Instructor:</span><span class="item-after"> '+element.plNomD+'</span></div><div><span class="item-orange-bold">Horario:</span><span class="item-after"> '+element.plHCre+'</span></div></div>'+
-                     '</div>'+
-                     '<input type="hidden" id="PC_hidden_'+index+'" value="'+element.plTerD.trim()+'"> </div>'+
-                     '';
+                        '<div class="card" id="PC_div_'+index+'">'+
+                        '<div class="card-header"><span>'+element.plCRN+' '+element.plSubj+element.plCrse+' '+element.plTitu+'</span><a onclick="delete_favorit_CoursePC(\''+element.plCRN+'\',\''+element.plTerm+'\','+index+');"><span class="km-icon km-trash" style="float:right;"></span></a></div>'+
+                        '<div class="card-content">'+
+                        '<div class="card-content-inner"><div><span class="item-orange-bold">Instructor:</span><span class="item-after"> '+element.plNomD+'</span></div><div><span class="item-orange-bold">Horario:</span><span class="item-after"> '+element.plHCre+'</span></div></div>'+
+                        '</div>'+
+                        '<input type="hidden" id="PC_hidden_'+index+'" value="'+element.plTerD.trim()+'"> </div>'+
+                        '';
+                    /**/
                     PC_addPeriod(element.plTerD);
-                  
+                    
+                    _PC_schedule = PC_array_period[ PC_searchPeriodIndex(element.plTerD) ].schedule;
+                    _PCT_addCourse(element.plHCre, element, _PC_schedule);
+                    //*/
     			});
                 PC_current_index = PC_array_period.length-1;
                 
@@ -79,10 +108,12 @@ function CoursesPlaned()
                 $('#PC_next_arrow').hide();
                 $('#PC_prev_arrow').hide();
                 $('#div_term_CPperiodo').empty();
+                
+                PC_array_period=[];
+                PC_updateCourses();
             }
-			       
-		
-          
+            
+            
 		},
 		error:function(){
 			 showNotification('Intentalo Nuevamente','Alerta');
@@ -91,33 +122,46 @@ function CoursesPlaned()
    
 }
 
-function PC_searchCouseIndex(str_period){
+function PC_searchPeriodIndex(p_period){
     if(PC_array_period!=null)
         for(var i=0; i<PC_array_period.length; i++)
-            if(PC_array_period[i]==str_period)
+            if(PC_array_period[i].period == p_period)
                 return i;
     return -1;
 }
 function PC_addPeriod(str_period){
     str_period = str_period.trim();
-    var index = PC_searchCouseIndex(str_period);
+    var index = PC_searchPeriodIndex(str_period);
     if(index==-1){
-        PC_array_period.push(str_period);
+        PC_array_period.push(
+            {
+                period: str_period,
+                schedule: _PCT_initialice(),
+            }
+        );
     }
-    else{
-       
-    }
-    
 }
 function PC_updateCourses()
 {     
     initscrollTop();
     
-    $('#div_term_CPperiodo').html(PC_array_period[PC_current_index]);
-    var str_period = PC_array_period[PC_current_index];
+    if(PC_array_period==null || PC_array_period.length==0)
+    {
+        $('#PC_prev_arrow').hide();
+        $('#PC_next_arrow').hide();
+        for(var d=0; d<5; d++)
+        {
+            $('#div_header_day_'+_PCT_dias[d]).css('left',(15+d*17)+'%');
+            $('#div_header_day_'+_PCT_dias[d]).width('17%');
+            $('#div_header_day_'+_PCT_dias[d]).html(_PCT_dias[d]);
+        }
+        return;
+    }
+    var str_period = PC_array_period[PC_current_index].period;
+    $('#div_term_CPperiodo').html(str_period);
+    console.log('periodo actual='+str_period);
     for(var i=0; i<PC_max_courses; i++)
     {
-        
         if($('#PC_hidden_'+i).val() == str_period)
         {
             $('#PC_div_'+i).show();
@@ -126,16 +170,22 @@ function PC_updateCourses()
             $('#PC_div_'+i).hide();
         }
     }
-  
-   
-    
+
+    // --- flechas de paginacion
     $('#PC_prev_arrow').show();
     $('#PC_next_arrow').show();
-    if(PC_current_index==0)
+    if(PC_array_period.length==0 || PC_current_index==0)
         $('#PC_prev_arrow').hide();
-    if(PC_current_index==PC_array_period.length-1)
+    if(PC_array_period.length==0 || PC_current_index==PC_array_period.length-1)
         $('#PC_next_arrow').hide();
 	
+    // Se selecciona el horario del periodo.
+    _PC_schedule = PC_array_period[PC_current_index].schedule;
+    
+    _PCT_buildTable(_PC_schedule, false);
+    $('[data-toggle="tooltip"]').tooltip();
+    
+    writeSchedule(_PC_schedule,'_PC_schedule add / '+str_period);
 }
 
 function PC_showPrevius(){
@@ -183,11 +233,10 @@ function delete_favorit_CoursePC(crn,periodo,index){
     var password = window.localStorage.getItem("password");
 
     var websevicename = 'favoritos/'+usuario+'/'+periodo+'/'+crn+'/DE';    
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
     
     $.ajax({
      data: {websevicename: websevicename,username:usuario,password:password},
-     url:url,
+     url: url_webservice,
      dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
      jsonp: 'callback',
      contentType: "application/json; charset=utf-8",
@@ -202,20 +251,42 @@ function delete_favorit_CoursePC(crn,periodo,index){
        showNotification('Ocurrio un error!','Opps!')
      }      
      });
+}
+
+function PC_toggleScheduleView(){
+    divScheduleTable = ! divScheduleTable;
+    PC_showScheduleView();
+}
+
+function PC_showScheduleView()
+{
+    initscrollTop();
+    if(divScheduleTable){
+        $('#courseplaneados').hide();
+        $('#div_vista_de_tabla').show();
     }
+    else{
+        $('#courseplaneados').show();
+        $('#div_vista_de_tabla').hide();
+    }
+}
+
 
 
 app.plannedCoursesView = kendo.observable({
-    onShow: function() {        
+    onShow: function() {
         
-        $('#courseplaneados').html(''); 
+        $('#courseplaneados').html('');
         $('#PC_next_arrow').hide();
         $('#PC_prev_arrow').hide();
         $('#div_term_CPperiodo').html('');
-        
+        //$('#tbody_courses_id').html('');
+        $('#div_courseTable').html('');
+        _PCT_putBars();
+        PC_showScheduleView();
     
     },
-    afterShow: function() {  CoursesPlaned(); }
+    afterShow: function() {  PC_getDayActual(); }
 });
 
 // START_CUSTOM_CODE_plannedCoursesView

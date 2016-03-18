@@ -1,12 +1,12 @@
 'use strict';
 
 app.searchCoursesView = kendo.observable({
-                                             onShow: function() {
-                                             },
-                                               afterShow: function() { $('#resultados_SC').empty();
-                                             }
-                                         });
-
+    onShow: function() {  initscrollTop(); 
+    },
+    afterShow: function() {
+        $('#resultados_SC').empty();   initscrollTop(); 
+    }
+});
 function ValidFoundCourses() {
     
     var titulo = $('#titulo').val();

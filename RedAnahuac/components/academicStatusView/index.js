@@ -28,10 +28,17 @@ function emptySituAcadem(){
 }
 
 
+function replaceNot(str){
+    if(str==null)
+        return '';
+    str = str.trim();
+    if(str=='not')
+        str = 'no disponible';
+    return str;
+}
+
 function llenarFormaAcademicStatus()
 {
-    
-    
 	var usuario =  window.localStorage.getItem("usuario");
     var password = window.localStorage.getItem("password");
 	var websevicename = 'situacion/'+usuario;
@@ -39,42 +46,38 @@ function llenarFormaAcademicStatus()
     if(SAcademica_Refresh==false)
         return;
     
-      if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
+    if(!checkConnection()){ showNotification('No hay Red disponible','Conexión'); return; }
 
     $('.km-loader').show();
 	$.ajax({
 		data: {websevicename: websevicename, username:usuario, password:password},
-		url: 'http://redanahuac.mx/mobile/webservice/curl.php',
+		url: url_webservice,
 		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
 		jsonp: 'callback',
 		contentType: "application/json; charset=utf-8",
         complete:function(data){
-         $('.km-loader').hide(); 
+            $('.km-loader').hide(); 
         },
 		success:function(data)
 		{
             SAcademica_Refresh=false;
 			// do stuff with json (in this case an array)
 			$.each(data, function(index, element) {
-				$('#periodo_id').html(element.headSitu);
-				$('#intentos_cursos_id').html(element.siacOUou);
-				$('#reprobadas_id').html(element.siacRPrp);
-				$('#nivel_ingles_id').html(element.siacNIni);
-				$('#prom_pond_periodo_id').html(element.promTerm);
-				$('#prom_pond_global_id').html(element.promGlob);
-				$('#avance_id').html(element.porcAvan);
-				$('#creditos_inscritos').html(element.credInsc);
-				$('#estandar_academico_id').html(element.estnAcdm);
+				$('#periodo_id').html(replaceNot(element.headSitu));
+				$('#intentos_cursos_id').html(replaceNot(element.siacOUou));
+				$('#reprobadas_id').html(replaceNot(element.siacRPrp));
+				$('#nivel_ingles_id').html(replaceNot(element.siacNIni));
+				$('#prom_pond_periodo_id').html(replaceNot(element.promTerm));
+				$('#prom_pond_global_id').html(replaceNot(element.promGlob));
+				$('#avance_id').html(replaceNot(element.porcAvan));
+				$('#creditos_inscritos').html(replaceNot(element.credInsc));
+				$('#estandar_academico_id').html(replaceNot(element.estnAcdm));
 			});
 		},
-		error:function(){
-            
-              showNotification('Intentalo Nuevamente','Alerta');
-
-            
+		error:function()
+        {
+            showNotification('Intentalo Nuevamente','Alerta');
 		}
-        
-        
         
 	});
 }

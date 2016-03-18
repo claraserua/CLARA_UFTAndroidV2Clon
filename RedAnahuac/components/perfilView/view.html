@@ -12,8 +12,10 @@
     -->
        <footer data-role="footer" class="header-top-android">
             <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
-
-                <span class="km-icon km-home button_home" onClick="goHome();"><span class="text-home">Inicio</span></span> <!-- Home -->
+                
+                <span class="km-icon km-home button_home" onClick="goHome();"> <!-- Home -->
+                    <div class="rotulo_home">Inicio</div>
+                </span>
                 <span class="km-icon km-refresh button_refresh" onClick="Refresh_perfil();"></span>
                 <div class="line-gray">Perfil</div>
                 
@@ -25,6 +27,11 @@
    
     
     <div class="page-view" data-bind="invisible:error">
+         <div class="card">
+            <ul data-role="listview" >
+            <li><a class="km-listview-link" data-role="listview-link" onclick="clickHandler('ajustes')">Ajustes <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></li>    
+            </ul>
+         </div>
         <div class="page-content">
             
             <div class="card_light">

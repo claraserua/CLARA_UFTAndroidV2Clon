@@ -55,13 +55,11 @@ function getNoticias(){
     var password = window.localStorage.getItem("password");
     var websevicename = 'noticia/'+usuario;
     
-    var url = 'http://redanahuac.mx/mobile/webservice/curl.php';
-    
     $( "#noticias" ).empty();
     $('.km-loader').show();
     $.ajax({
         data: {websevicename: websevicename,username:usuario,password:password},
-        url:url,
+        url: url_webservice,
         dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
         jsonp: 'callback',
         contentType: "application/json; charset=utf-8",
@@ -204,9 +202,18 @@ function setDetailNews(){
         $('#N_fecha').html(day);
         $('#N_campus').html(event.vsCampus);
         $('#N_detalle').html(event.vsDetalleNoticia);
-        $('#N_link').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
+        //$('#N_link').html('<a href="'+event.vsLiga+'" data-rel="external">'+event.vsLiga+'</a>');
+        //event.vsLiga
+        $('#N_link').html('<a href="javascript:void(0)" onClick="OpenExternalLink(\''+event.vsLiga+'\')" >'+event.vsLiga+'</a>');
     }catch(Exception){}
 
+}
+
+
+function OpenExternalLink(liga){
+    
+    var ref = window.open(liga, '_blank', 'location=yes');
+    
 }
 
 

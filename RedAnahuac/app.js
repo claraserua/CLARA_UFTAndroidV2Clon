@@ -1,3 +1,5 @@
+var url_webservice = 'http://redanahuac.mx/mobile/webservice/curl.php';
+
 (function() {
     // store a reference to the application object that will be created
     // later on so that we can use it if need be
@@ -41,6 +43,16 @@
                     });
                 }
             }
+            
+            //document.addEventListener("backbutton", function() {alert('onBackKeyDown')});
+            /*
+            document.addEventListener("backbutton",
+                function(e)
+                {
+                    e.preventDefault();
+                }
+            );
+            //*/
 
             bootstrap();
         }, false);
@@ -64,9 +76,29 @@
         }
     };
 }());
-
+/*
+function onBackKeyDown() {
+    console.log('onBackKeyDown');
+}
+//*/
 // START_CUSTOM_CODE_kendoUiMobileApp
 
+var backButtonEventActive=false;
+function backButton_Push(e){
+    e.preventDefault();
+}
+function addBackButtonEvent(){
+    if(backButtonEventActive==false){
+        document.addEventListener("backbutton", backButton_Push);
+        backButtonEventActive=true;
+    }
+}
+function removeBackButtonEvent(){
+    if(backButtonEventActive==true){
+        document.removeEventListener("backbutton", backButton_Push);
+        backButtonEventActive=false;
+    }
+}
 
 function showNotification(message,title){
     
@@ -124,7 +156,6 @@ function checkConnection ()
 
 function goHome()
 {
-    //alert('entra');
     app.mobileApp.navigate('components/homeView/view.html');
 } 
     

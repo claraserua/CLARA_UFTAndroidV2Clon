@@ -9,39 +9,40 @@ app.logoutView = kendo.observable({
 
 function LogoutApp(){
  
-     VHA_Refresh = true;
-     SAcademica_Refresh = true;
-     Events_Refresh = true;
-     CPGrades_Refresh = true;
-     HFinancial_Refresh = true;
-     PSCitaIns_Refresh = true;
-     News_Refresh = true;
-     BPerfil_Refresh = true;
-     VRetention_Refresh = true;
-     SPCuenta_Refresh = true;
-     SPMovimientos_Refresh = true;
-     SPNOVencidos_Refresh = true;
-     SPVencidos_Refresh = true;
-     RCEducativo_Refresh = true;
-     variabProgramName = true;
-     H_calendar = false;
+    VHA_Refresh = true;
+    SAcademica_Refresh = true;
+    Events_Refresh = true;
+    CPGrades_Refresh = true;
+    HFinancial_Refresh = true;
+    PSCitaIns_Refresh = true;
+    News_Refresh = true;
+    BPerfil_Refresh = true;
+    VRetention_Refresh = true;
+    SPCuenta_Refresh = true;
+    SPMovimientos_Refresh = true;
+    SPNOVencidos_Refresh = true;
+    SPVencidos_Refresh = true;
+    RCEducativo_Refresh = true;
+    variabProgramName = true;
+    H_calendar = false;
+     
+    $('#val_periodo').val('');
+    $('#desc_periodo').html('*Periodo');
+    $('#val_campus').val('');
+    $('#desc_campus').html('*Campus');
+    $('#val_carrera').val('');
+    $('#desc_carrera').html('Materia');
+    $('#val_atributos').val('');
+    $('#txt-atributos').html('');
+    $('#val_dias').val('');
+    $('#txt-days').html('');
+    $('#titulo').val('');
+    $('#instructor').val('');
+    $('#password').val('');
     
-     $('#val_periodo').val('');
-     $('#desc_periodo').html('*Periodo');
-     $('#val_campus').val('');
-     $('#desc_campus').html('*Campus');
-     $('#val_carrera').val('');
-     $('#desc_carrera').html('Materia');
-     $('#val_atributos').val('');
-     $('#txt-atributos').html('');
-     $('#val_dias').val('');
-     $('#txt-days').html('');
-     $('#titulo').val('');
-     $('#instructor').val('');
     
-    
-     window.localStorage.setItem("access","FALSE");
-     app.mobileApp.navigate('components/authenticationView/view.html');
+    window.localStorage.setItem("access","FALSE");
+    app.mobileApp.navigate('components/authenticationView/view.html');
     
  
 }
