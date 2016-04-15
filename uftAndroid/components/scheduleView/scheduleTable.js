@@ -51,6 +51,33 @@ function SV_searchCourseColor(title)
 
 function SV_addCourse(fecha, hour_1, hour_2, tooltip, item_json)
 {
+    
+    var arrTimeX = hour_1.split(":");
+    var hrX      = arrTimeX[0];
+    var mnX      = arrTimeX[1];
+    
+    if (parseInt(mnX) >= 35) {
+        hrX = (parseInt(hrX) + 1).toString();
+        mnX = '00';
+        
+        if (hrX.length === 1) {
+            hrX = '0' + hrX;
+        }
+        
+        hour_1 = hrX + ':' + mnX + ':00';
+    }
+
+    if (parseInt(mnX) >= 10 && parseInt(mnX) < 30) {
+        //hrX = (parseInt(hrX) + 1).toString();
+        mnX = '30';
+        
+        if (hrX.length === 1) {
+            hrX = '0' + hrX;
+        }
+        
+        hour_1 = hrX + ':' + mnX + ':00';
+    }
+    
     var color=SV_searchCourseColor(item_json.title);
 	var course = {
 		beginHour: SV_parseHour24(hour_1),
