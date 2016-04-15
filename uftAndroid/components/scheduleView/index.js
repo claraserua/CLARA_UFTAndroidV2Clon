@@ -198,7 +198,7 @@ function buildScheduleOptions()
                         var tooltip =
                             '<div>'+
                             '  <a data-toggle="tooltip" class="red-tooltip" '+
-                            '  title="'+course.title+' - '+course.description+' | Instructores: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'<br/>'+salon+'   </a></div>'; // <br/><img src="resources/img/plus.png"/>
+                            '  title="'+course.title+' - '+course.description+' | Instructores: '+html_instructors+' | Horario: '+course.startTime.substring(0,5)+' - '+course.endTime.substring(0,5)+' | Lugar: '+course.location+'">'+course.title+'<br/>'+((salon === undefined) ? 'Sin salón' : salon)+'</a></div>'; // <br/><img src="resources/img/plus.png"/>
     					
                         SV_addCourse(date.date, course.startTime, course.endTime, tooltip, course);
     				});
@@ -216,7 +216,7 @@ function buildScheduleOptions()
                  html =
                  '<div class="card">'+
                  '<div class="card-content">'+
-                 '<div class="card-content-inner"><span class="item-orange-bold">NO TIENE HORARIOS DISPONIBLES.</span></div>'+
+                 '<div class="card-content-inner"><span class="item-blue-bold">NO TIENE HORARIOS DISPONIBLES.</span></div>'+
                  '</div>'+
                  '</div>'+
                  '';
