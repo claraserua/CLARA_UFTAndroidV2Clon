@@ -1,0 +1,24 @@
+<div data-role="view" data-title="Becas" data-layout="main-nonav" data-model="app.becasView" data-show="app.becasView.onShow" data-after-show="app.becasView.afterShow">
+    <!-- START_CUSTOM_CODE_BecasView -->
+
+    <footer data-role="footer" class="header-top-android">
+        <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+            <span class="icon-atras" onClick="clickHandler('helpfinancialView');">&nbsp;&nbsp;&nbsp;Atr&aacute;s</span>
+            <span class="km-icon km-refresh button_refresh" onClick="SPBecasFuct_Refresh();"></span>
+            
+            <div class="line-gray">Becas</div>
+            <div class="line-blue">
+                <div id="term_periodo_beca" class="rotulo_center"></div>
+                <span id="SPBE_prev_arrow" class="button_left" onclick="SPBE_showPrevius()">&nbsp;&nbsp;</span>
+                <span id="SPBE_next_arrow" class="button_right" onclick="SPBE_showNext()">&nbsp;&nbsp;</span>
+            </div>
+        </div>
+    </footer>
+    
+	<div class="page-view" data-bind="invisible:error">
+        <div class="page-box" id="id_becasSP">             
+        </div>
+    </div>
+
+    <!-- END_CUSTOM_CODE_BecasView -->
+</div>
