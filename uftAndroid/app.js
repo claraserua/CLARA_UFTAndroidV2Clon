@@ -1,4 +1,4 @@
-var url_webservice = 'http://redanahuac.mx/mobile/webservice/curl.php';
+var url_webservice = 'http://redanahuac.mx/mobile/webservice/curlufttest.php';
 
 (function() {
     // store a reference to the application object that will be created
