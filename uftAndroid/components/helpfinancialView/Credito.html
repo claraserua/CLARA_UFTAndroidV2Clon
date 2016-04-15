@@ -1,0 +1,34 @@
+<div data-role="view" data-title="Crédito" data-layout="main-nonav" data-model="app.CreditoView" data-show="app.CreditoView.onShow" data-after-show="app.CreditoView.afterShow">
+    <!-- START_CUSTOM_CODE_CreditoView -->
+
+	<!--<div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+             <a data-role="backbutton" data-align="left">Atr&aacute;s</a>
+            <a data-role="button" data-align="right" data-icon="refresh" onClick="SPCreditoFuct_Refresh();">&nbsp;</a>
+        </div>
+	</div>-->
+
+    <footer data-role="footer" class="header-top-android">
+        <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+            <span class="icon-atras" onClick="clickHandler('helpfinancialView');">&nbsp;&nbsp;&nbsp;Atr&aacute;s</span>
+            <span class="km-icon km-refresh button_refresh" onClick="SPCreditoFuct_Refresh();"></span>
+            
+            <div class="line-gray">Créditos</div>
+            <div class="line-blue">
+                <div id="term_periodo_credito" class="rotulo_center"></div>
+                <span id="SPCR_prev_arrow" class="button_left" onclick="SPCR_showPrevius()">&nbsp;&nbsp;</span>
+                <span id="SPCR_next_arrow" class="button_right" onclick="SPCR_showNext()">&nbsp;&nbsp;</span>
+            </div>
+        </div>
+    </footer>
+    
+
+    
+	<div class="page-view" data-bind="invisible:error">
+        <div class="page-box" id="id_creditoSP">             
+        </div>
+    </div>
+
+    <!-- END_CUSTOM_CODE_CreditoView -->
+</div>
