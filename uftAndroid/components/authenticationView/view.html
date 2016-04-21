@@ -1,0 +1,66 @@
+<div data-role="view" class="login" data-title="Iniciar Sesión" data-transition="zoom" data-layout="main-nonav" data-model="app.authenticationView" data-show="app.authenticationView.onShow" data-after-show="app.authenticationView.afterShow">
+    
+     <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            
+        </div>
+      </div>
+    
+    
+   
+    <div data-role="header">
+        <div data-role="navbar" style="background-color:#0079BA !important;">
+          <div class="km-view-title" style="font-weight: normal !important;" ></div>
+            
+        </div>
+	</div>
+    
+    
+    <div class="signin-view">
+           
+        <div class="login-screen-title"><span style="color:#0AB0E7">Finis</span> <span style="color:#0079BA">Terrae V2</span></div>
+        <div class="card_login" id="div_input_login">
+            <form>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <label>Usuario
+                            <input type="text" id="usuario"  placeholder="Usuario"  required autofocus>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Contraseña
+                            <input type="password" id="password" placeholder="Contraseña" required>
+                        </label>
+                    </li>
+                    
+                </ul>
+            </form>
+        </div>
+    </div>
+    
+    <div class="list-block" id="div_button_login">
+        
+        <div class="card_login">
+            <div class="button-group button-group-vertical" >
+                <a data-role="button"  data-click="IniciarSesion" class="primary" >Iniciar</a>
+            </div>
+        </div>
+        
+        <div class="list-block-label">Red de Universidades Anáhuac.</div>
+        <div class="list-block-label">
+            <a  onClick="clickHandler('aprivacidad');" >Aviso de Privacidad</a>
+        </div>
+
+    </div>
+    
+    
+        <!-- START_CUSTOM_CODE_authenticationViewModel -->
+        <!-- END_CUSTOM_CODE_authenticationViewModel -->
+   
+    <div class="offline" align="center" style="display:none;">
+        You are currently offline. Before using this app in offline mode you must initialize it while you are online
+    </div>
+    <!-- START_CUSTOM_CODE_authenticationView -->
+    <!-- END_CUSTOM_CODE_authenticationView -->
+</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-app.becasView = kendo.observable({
+app.BecasView = kendo.observable({
     onShow: function() {
         $('#SPBE_prev_arrow').hide();
         $('#SPBE_next_arrow').hide();

@@ -1,0 +1,53 @@
+
+<div data-role="view" data-title="Detalle Noticia" data-layout="main-nonav" data-model="app.newsdetailView" data-show="app.newsdetailView.onShow" data-after-show="app.newsdetailView.afterShow">
+    <!-- START_CUSTOM_CODE_academicStatusView -->
+
+	<!--
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="backbutton" data-align="left">Atras</a>
+        </div>
+	</div>
+    -->
+   <footer data-role="footer" class="header-top-android">
+        <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+
+            <span class="icon-atras" onClick="clickHandler('newsView');">&nbsp;&nbsp;&nbsp;Atr&aacute;s</span> <!-- ATRAS -->
+            <span class="km-icon km-refresh button_refresh" onClick="setDetailNews()"></span>
+            <div class="line-gray">Detalle Noticia</div>
+            
+            <div class="line-blue"> <span id="N_asunto"></span></div>
+        </div>
+   </footer>
+    
+    
+    <div class="page-box">      
+         <div class="card" style="margin-top:10px;">
+            <div class="card-header"><span id="N_categoria"></span></div>
+            
+             <div class="card-content">
+                 <div class="card-content-inner">
+				   <div id="N_fecha">fecha </div>
+				   <br/>
+				   <div id="N_campus" class="item-title">Campus</div>
+				   <div id="N_detalle">evento</div>
+				   <br/>
+				   <div id="N_link" style="color:#0033CC;">liga</div>
+                 </div>
+            </div>
+         </div>
+        
+    </div>
+    
+	<!--
+	     <footer data-role="footer" class="header-top-android"  >
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                <div class="line-gray">Detalle Noticia</div>
+                <div class="line-orange"> <span id="N_asunto"></span></div>
+            </div>
+        </footer>
+    -->
+   
+    <!-- END_CUSTOM_CODE_academicStatusView -->
+</div>

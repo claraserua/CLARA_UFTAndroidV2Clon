@@ -1,0 +1,94 @@
+<div data-role="view" data-title="Finis Terrae V2"  data-layout="main" data-transition="overlay:down" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow">
+    <!-- START_CUSTOM_CODE_homeView -->
+
+   
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                        
+                <span class="km-icon km-drawer-icon button_home" onClick="ViewList();"></span> <!-- VER COMO LISTA -->
+                <span style="float:right; color:#fff; position: relative; top:12px; right:10px;" onClick="ExitApp();">Salir</span>
+                <div class="line-gray">Finis Terrae V2</div>
+                
+                <div class="line-blue">
+                </div>
+            </div>
+       </footer>
+   
+    <div class="page-view" data-bind="invisible:error">
+        
+    <div class="km-content home" id="home" data-content-height="100%">
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('searchCoursesView')">
+                    <div class="round_img" ><img id="home_icon_sc"  alt="Búsqueda de Cursos" src="resources/img/icons/BusquedaCursos72x72.png"/></div><div><div>Búsqueda de Cursos</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('plannedCoursesView')">
+                    <div class="round_img"><img id="home_icon_cp" alt="Cursos Planeados" src="resources/img/icons/Cursosinteres72x72.png"/></div><div><div>Cursos Planeados</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('inscriptionView')">
+                    <div class="round_img"><img id="home_icon_ci"  alt="Cita de Inscripción" src="resources/img/icons/CitaInscripcion72x72.png"/></div><div><div>Toma de Ramos</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('scheduleView')">
+                    <div class="round_img"><img id="home_icon_hor" alt="Horario" src="resources/img/icons/Horario72x72.png"/></div><div><div>Horario</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('perfilView')">
+                    <div class="round_img"><img id="home_icon_per"  alt="Perfil" src="resources/img/icons/Perfil72x72.png"/></div><div><div>Perfil</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('academicStatusView')">
+                    <div class="round_img"><img id="home_icon_sa"  alt="Situación Académica" src="resources/img/icons/SituacionAcademica72x72.png"/></div><div><div>Situación Académica</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('gradesView')">
+                    <div class="round_img"><img id="home_icon_cal" alt="Calificaciones Parciales" src="resources/img/icons/Calif_Parciales72x72.png"/></div><div><div>Calificaciones Parciales</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('academicHistoryView')">
+                    <div class="round_img"><img id="home_icon_ha" alt="Historia Académica" src="resources/img/icons/HistoriaAcademica72x72.png"/></div><div><div>Historia Académica</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('statusPayView')">
+                    <div class="round_img"><img id="home_icon_ec" title="" alt="" src="resources/img/icons/EstadoCuenta72x72.png"/></div><div><div>Estado de Cuenta</div></div></a>
+            </li>
+            <!--<li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('studentCreditView')">
+                    <div class="round_img"><img id="home_icon_ce" alt="Crédito Educativo" src="resources/img/icons/CreditoEducativo72x72.png"/></div><div><div>Crédito Educativo</div></div></a>
+            </li>-->
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('helpfinancialView')">
+                    <div class="round_img"><img id="home_icon_af"  alt="Apoyo Financiero" src="resources/img/icons/ApoyoFinanciero72x72.png"/></div><div><div>Apoyo Financiero</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('retentionsView')">
+                    <div class="round_img"><img id="home_icon_ret" alt="Retenciones" src="resources/img/icons/Retencion72x72.png"/></div><div><div>Retenciones</div></div></a>
+            </li>
+            <!--<li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('newsView')">
+                    <div class="round_img"><img id="home_icon_not"  alt="Noticias" src="resources/img/icons/Noticias72x72.png"/></div><div><div>Noticias</div></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('eventsView')">
+                    <div class="round_img"><img id="home_icon_eve" alt="Eventos" src="resources/img/icons/Eventos72x72.png"/></div><div><div>Eventos</div></div></a>
+            </li>-->
+            <li>
+                <a href="javascript:void(0)" onClick="clickHandlerFromHome('opinionView')" >
+                    <div class="round_img"><img id="home_icon_opi" alt="Tu Opinión" src="resources/img/icons/TuOpinion72x72.png"/></div><div><div>Tu Opinión</div></div></a>
+            </li>
+
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+        </div>
+            </div>
+     
+
+    
+    <!-- END_CUSTOM_CODE_homeView -->
+</div>
+
+

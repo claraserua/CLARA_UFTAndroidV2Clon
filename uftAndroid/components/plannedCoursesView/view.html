@@ -1,0 +1,91 @@
+<div data-role="view" data-title="Cursos Planeados" data-layout="main-nonav" data-model="app.plannedCoursesView" data-show="app.plannedCoursesView.onShow" data-after-show="app.plannedCoursesView.afterShow">
+    <!-- START_CUSTOM_CODE_plannedCoursesView -->
+
+	
+    <!----
+    <div data-role="header">
+        <div data-role="navbar">
+          <div data-role="view-title"></div>
+            <a data-role="button" data-align="left" href="components/homeView/view.html" data-icon="home">Inicio</a>
+            
+            <a data-role="button" data-align="right" id="PC_prev_arrow"  onclick="PC_showPrevius()" style="color:#fff;">< Atras</a>
+            <a data-role="button" data-align="right" id="PC_next_arrow"  onclick="PC_showNext()" style="color:#fff;">Siguiente ></a>
+        </div>
+	</div>-->
+       <footer data-role="footer" class="header-top-android">
+            <div data-role="tabstrip" style="box-shadow:none;" id="navigation-container">
+                
+                <span class="km-icon km-home button_home" onClick="goHome();"> <!-- Home -->
+                    <div class="rotulo_home">Inicio</div>
+                </span>
+                
+                <span class="km-icon km-refresh button_refresh" onClick="CoursesPlaned();"></span>
+                <div class="line-gray">Cursos Planeados</div>
+                
+                <div class="line-blue">
+                    <div id="div_term_CPperiodo" class="rotulo_center">periodo</div>
+                    <span id="PC_prev_arrow" class="button_left" onclick="PC_showPrevius()">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="PC_next_arrow" class="button_right" onclick="PC_showNext()">&nbsp;&nbsp;&nbsp;</span>
+                </div>
+            </div>
+       </footer>
+    
+       
+    <div class="page-view" data-bind="invisible:error">
+        <div class="page-box">
+             
+             <div class="card-content-inner">Esta opción te permite consultar los cursos que planeas inscribir.</div>
+         
+             <div id="courseplaneados">
+
+			 </div>
+			 
+             
+                <div style="display:none">
+                    <table id="table_courses_id" border="0" cellspacing="0" cellpadding="2" class="sty_table"style="width:100%;">
+                        <tbody id="tbody_courses_id"></tbody>
+                    </table>
+                </div>
+                
+                <div id="div_vista_de_tabla" style="background-color:Gray; position: absolute; left: 0; top: 50pt; width: 100%; ">
+                    
+            		<div id="div_bars_id" style="position: absolute; top:0; left:0; margin: 0; padding: 0; border-width: 0; width: 100%;"></div>
+            		<div id="div_hours_id" style="position: absolute; top:0; left:0; margin: 0; padding: 0; border-width: 0; width: 15%;"></div>
+                    
+                    <div id="div_header_day_Lu" style="position: absolute; top:0; left:15%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    <div id="div_header_day_Ma" style="position: absolute; top:0; left:15%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    <div id="div_header_day_Mi" style="position: absolute; top:0; left:15%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    <div id="div_header_day_Ju" style="position: absolute; top:0; left:15%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    <div id="div_header_day_Vi" style="position: absolute; top:0; left:15%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    <div id="div_header_day_Sa" style="position: absolute; top:0; left: 0%; width:17%; color:White; font-size:10pt; text-align:center;"></div>
+                    
+                    <!-- Primer plano -->
+            		<div id="div_courseTable" style="opacity: 1.0; position: absolute; left: 0; top: 0pt; width: 100%;"></div>
+                    
+                    <div id="div_separador_Lu" style="position: absolute; top:0; left:15%; width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    <div id="div_separador_Ma" style="position: absolute; top:0; left:32%; width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    <div id="div_separador_Mi" style="position: absolute; top:0; left:49%; width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    <div id="div_separador_Ju" style="position: absolute; top:0; left:66%; width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    <div id="div_separador_Vi" style="position: absolute; top:0; left:83%; width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    <div id="div_separador_Sa" style="position: absolute; top:0; left:100%;width:2px; height:416pt; color:White; background-color:White; font-size:10pt;"></div>
+                    
+                </div>
+           
+        </div>
+    </div>
+    
+    
+    
+    
+    <div data-role="header">
+        <div data-role="tabstrip" id="navigation-container">
+            <div data-role="view-title"></div>
+            <a data-role="button" class="km-state-active" data-icon="organize" onclick="PC_toggleScheduleView()" >Cambiar Vista</a>
+            
+        </div>
+	</div>
+
+
+
+    <!-- END_CUSTOM_CODE_plannedCoursesView -->
+</div>
