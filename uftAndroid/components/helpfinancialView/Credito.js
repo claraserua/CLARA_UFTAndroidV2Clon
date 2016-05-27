@@ -72,7 +72,11 @@ function SPCR_updateCredito()
                  '<div class="card-content-inner">'+
                      '<table  width="100%">';
     
-    html +='<tr><td class="item-title" width="60%">Cr&eacute;ditos</td><td class="item-title" width="40%" style="text-align:right;">Monto</td></tr>';
+    if (SPCR_array_json.length >= 1) {
+        html +='<tr><td class="item-title" width="60%">Cr&eacute;ditos</td><td class="item-title" width="40%" style="text-align:right;">Monto</td></tr>';
+    } else {
+        html +='<tr><td class="item-title" width="100%" colspan="2">No cuentas con Cr&eacute;dito.</td></tr>';
+    }
     
     var termDesc = SPCR_array_period[SPCR_current_index];
     $.each(SPCR_array_json, function(index, element)
@@ -103,6 +107,11 @@ function SPCR_updateCredito()
     
     if(SPCR_current_index == SPCR_array_period.length - 1)
         $('#SPCR_next_arrow').hide();
+
+    if (SPCR_array_json.length === 0) {
+        $('#SPCR_prev_arrow').hide();
+        $('#SPCR_next_arrow').hide();    
+    }
         
 }
 

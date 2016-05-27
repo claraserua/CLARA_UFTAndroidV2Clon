@@ -72,7 +72,11 @@ function SPBE_updateBecas()
                  '<div class="card-content-inner">'+
                      '<table  width="100%">';
     
-    html +='<tr><td class="item-title" width="40%">Becas</td></tr>';
+    if (SPBE_array_json.length >= 1) {
+        html +='<tr><td class="item-title" width="40%">Becas</td></tr>';
+    } else {
+        html +='<tr><td class="item-title" width="40%">No cuentas con Beca.</td></tr>';
+    }
     
     var termDesc = SPBE_array_period[SPBE_current_index];
     $.each(SPBE_array_json, function(index, element)
@@ -99,6 +103,11 @@ function SPBE_updateBecas()
     
     if(SPBE_current_index == SPBE_array_period.length - 1)
         $('#SPBE_next_arrow').hide();
+    
+    if (SPBE_array_json.length === 0) {
+        $('#SPBE_prev_arrow').hide();
+        $('#SPBE_next_arrow').hide();    
+    }
 }
 
 function searchElement(array, element){

@@ -70,6 +70,11 @@ function getDetalleGrade_gd(){
          var calificacion = '';
          
              var html =
+                    '';
+        
+         if(data.length!=0){
+
+                html +=
                     '<div class="card">'+
                       '<div class="card-content">'+
                       '<div class="card-content-inner">'+
@@ -79,8 +84,7 @@ function getDetalleGrade_gd(){
                         '<td class="item-title" width="30%" style="text-align:center;">%</td>'+
                         '<td class="item-title" width="30%" style="text-align:center;">Calificación</td>'+
                     '</tr>';
-        
-         if(data.length!=0){
+             
          $.each(data, function(index, element) {
             
           
